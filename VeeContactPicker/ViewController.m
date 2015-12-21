@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "VeeContactPickerViewController.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)showVeecontactPickerPressed:(id)sender {
+    /*VeeContactPickerViewController* VeePickerVC = [[VeeContactPickerViewController alloc] initWithCompletionHandler:^(id<ABContact> abContact) {
+     if (abContact){
+     NSLog(@"Selected %@", [abContact displayName]);
+     }
+     }];*/
+    
+    VeeContactPickerViewController* acPickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
+    [self presentViewController:acPickerVC animated:YES completion:nil];
+}
+
+#pragma mark - VeeContactPickerDelegate
+
+- (void)didSelectABContact:(id<ABContactProt>)abContact
+{
+    NSLog(@"Selected %@", [abContact displayName]);
 }
 
 @end
