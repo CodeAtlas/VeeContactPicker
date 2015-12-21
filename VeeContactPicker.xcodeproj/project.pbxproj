@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		860C626D1C28521200876682 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626C1C28521200876682 /* main.m */; };
+		860C62701C28521200876682 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626F1C28521200876682 /* AppDelegate.m */; };
+		860C62731C28521200876682 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62721C28521200876682 /* ViewController.m */; };
+		860C62761C28521200876682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62741C28521200876682 /* Main.storyboard */; };
+		860C62781C28521200876682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 860C62771C28521200876682 /* Assets.xcassets */; };
+		860C627B1C28521200876682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62791C28521200876682 /* LaunchScreen.storyboard */; };
+		860C62861C28521200876682 /* VeeContactPickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62851C28521200876682 /* VeeContactPickerTests.m */; };
+		860C62911C28521200876682 /* VeeContactPickerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62901C28521200876682 /* VeeContactPickerUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		860C62821C28521200876682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 860C62601C28521200876682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 860C62671C28521200876682;
+			remoteInfo = VeeContactPicker;
+		};
+		860C628D1C28521200876682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 860C62601C28521200876682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 860C62671C28521200876682;
+			remoteInfo = VeeContactPicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		860C62681C28521200876682 /* VeeContactPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeeContactPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		860C626C1C28521200876682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		860C626E1C28521200876682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		860C626F1C28521200876682 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		860C62711C28521200876682 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		860C62721C28521200876682 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		860C62751C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		860C62771C28521200876682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		860C627A1C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		860C627C1C28521200876682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		860C62811C28521200876682 /* VeeContactPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeeContactPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		860C62851C28521200876682 /* VeeContactPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerTests.m; sourceTree = "<group>"; };
+		860C62871C28521200876682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		860C628C1C28521200876682 /* VeeContactPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeeContactPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		860C62901C28521200876682 /* VeeContactPickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerUITests.m; sourceTree = "<group>"; };
+		860C62921C28521200876682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		860C62651C28521200876682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C627E1C28521200876682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C62891C28521200876682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		860C625F1C28521200876682 = {
+			isa = PBXGroup;
+			children = (
+				860C626A1C28521200876682 /* VeeContactPicker */,
+				860C62841C28521200876682 /* VeeContactPickerTests */,
+				860C628F1C28521200876682 /* VeeContactPickerUITests */,
+				860C62691C28521200876682 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		860C62691C28521200876682 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				860C62681C28521200876682 /* VeeContactPicker.app */,
+				860C62811C28521200876682 /* VeeContactPickerTests.xctest */,
+				860C628C1C28521200876682 /* VeeContactPickerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		860C626A1C28521200876682 /* VeeContactPicker */ = {
+			isa = PBXGroup;
+			children = (
+				860C626E1C28521200876682 /* AppDelegate.h */,
+				860C626F1C28521200876682 /* AppDelegate.m */,
+				860C62711C28521200876682 /* ViewController.h */,
+				860C62721C28521200876682 /* ViewController.m */,
+				860C62741C28521200876682 /* Main.storyboard */,
+				860C62771C28521200876682 /* Assets.xcassets */,
+				860C62791C28521200876682 /* LaunchScreen.storyboard */,
+				860C627C1C28521200876682 /* Info.plist */,
+				860C626B1C28521200876682 /* Supporting Files */,
+			);
+			path = VeeContactPicker;
+			sourceTree = "<group>";
+		};
+		860C626B1C28521200876682 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				860C626C1C28521200876682 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		860C62841C28521200876682 /* VeeContactPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				860C62851C28521200876682 /* VeeContactPickerTests.m */,
+				860C62871C28521200876682 /* Info.plist */,
+			);
+			path = VeeContactPickerTests;
+			sourceTree = "<group>";
+		};
+		860C628F1C28521200876682 /* VeeContactPickerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				860C62901C28521200876682 /* VeeContactPickerUITests.m */,
+				860C62921C28521200876682 /* Info.plist */,
+			);
+			path = VeeContactPickerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		860C62671C28521200876682 /* VeeContactPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 860C62951C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPicker" */;
+			buildPhases = (
+				860C62641C28521200876682 /* Sources */,
+				860C62651C28521200876682 /* Frameworks */,
+				860C62661C28521200876682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VeeContactPicker;
+			productName = VeeContactPicker;
+			productReference = 860C62681C28521200876682 /* VeeContactPicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		860C62801C28521200876682 /* VeeContactPickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 860C62981C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPickerTests" */;
+			buildPhases = (
+				860C627D1C28521200876682 /* Sources */,
+				860C627E1C28521200876682 /* Frameworks */,
+				860C627F1C28521200876682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				860C62831C28521200876682 /* PBXTargetDependency */,
+			);
+			name = VeeContactPickerTests;
+			productName = VeeContactPickerTests;
+			productReference = 860C62811C28521200876682 /* VeeContactPickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		860C628B1C28521200876682 /* VeeContactPickerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 860C629B1C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPickerUITests" */;
+			buildPhases = (
+				860C62881C28521200876682 /* Sources */,
+				860C62891C28521200876682 /* Frameworks */,
+				860C628A1C28521200876682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				860C628E1C28521200876682 /* PBXTargetDependency */,
+			);
+			name = VeeContactPickerUITests;
+			productName = VeeContactPickerUITests;
+			productReference = 860C628C1C28521200876682 /* VeeContactPickerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		860C62601C28521200876682 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Code Atlas SRL";
+				TargetAttributes = {
+					860C62671C28521200876682 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					860C62801C28521200876682 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 860C62671C28521200876682;
+					};
+					860C628B1C28521200876682 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 860C62671C28521200876682;
+					};
+				};
+			};
+			buildConfigurationList = 860C62631C28521200876682 /* Build configuration list for PBXProject "VeeContactPicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 860C625F1C28521200876682;
+			productRefGroup = 860C62691C28521200876682 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				860C62671C28521200876682 /* VeeContactPicker */,
+				860C62801C28521200876682 /* VeeContactPickerTests */,
+				860C628B1C28521200876682 /* VeeContactPickerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		860C62661C28521200876682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				860C627B1C28521200876682 /* LaunchScreen.storyboard in Resources */,
+				860C62781C28521200876682 /* Assets.xcassets in Resources */,
+				860C62761C28521200876682 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C627F1C28521200876682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C628A1C28521200876682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		860C62641C28521200876682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				860C62731C28521200876682 /* ViewController.m in Sources */,
+				860C62701C28521200876682 /* AppDelegate.m in Sources */,
+				860C626D1C28521200876682 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C627D1C28521200876682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				860C62861C28521200876682 /* VeeContactPickerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		860C62881C28521200876682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				860C62911C28521200876682 /* VeeContactPickerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		860C62831C28521200876682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 860C62671C28521200876682 /* VeeContactPicker */;
+			targetProxy = 860C62821C28521200876682 /* PBXContainerItemProxy */;
+		};
+		860C628E1C28521200876682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 860C62671C28521200876682 /* VeeContactPicker */;
+			targetProxy = 860C628D1C28521200876682 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		860C62741C28521200876682 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				860C62751C28521200876682 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		860C62791C28521200876682 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				860C627A1C28521200876682 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		860C62931C28521200876682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		860C62941C28521200876682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		860C62961C28521200876682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VeeContactPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		860C62971C28521200876682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VeeContactPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		860C62991C28521200876682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VeeContactPickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VeeContactPicker.app/VeeContactPicker";
+			};
+			name = Debug;
+		};
+		860C629A1C28521200876682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VeeContactPickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VeeContactPicker.app/VeeContactPicker";
+			};
+			name = Release;
+		};
+		860C629C1C28521200876682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VeeContactPickerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPickerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VeeContactPicker;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		860C629D1C28521200876682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VeeContactPickerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPickerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VeeContactPicker;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		860C62631C28521200876682 /* Build configuration list for PBXProject "VeeContactPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				860C62931C28521200876682 /* Debug */,
+				860C62941C28521200876682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		860C62951C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				860C62961C28521200876682 /* Debug */,
+				860C62971C28521200876682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		860C62981C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				860C62991C28521200876682 /* Debug */,
+				860C629A1C28521200876682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		860C629B1C28521200876682 /* Build configuration list for PBXNativeTarget "VeeContactPickerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				860C629C1C28521200876682 /* Debug */,
+				860C629D1C28521200876682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 860C62601C28521200876682 /* Project object */;
+}
