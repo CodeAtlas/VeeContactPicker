@@ -84,10 +84,10 @@
     if (_firstName) {
         return _firstName;
     }
-    if (_middleName){
+    if (_middleName) {
         return _middleName;
     }
-    if (_nickname){
+    if (_nickname) {
         return _nickname;
     }
     if ([_emails count] > 0) {
@@ -108,7 +108,7 @@
 - (BOOL)isEqualToAbContact:(ACContact*)acContact
 {
     if (![acContact recordId]) {
-        //TODO: handle this case
+        NSLog(@"Warning: acContact %@ has a null record id", acContact);
         return NO;
     }
     //Two contacts are equal if they have the same recordId

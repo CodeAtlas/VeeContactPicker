@@ -17,23 +17,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)showVeecontactPickerPressed:(id)sender {
-    /*VeeContactPickerViewController* VeePickerVC = [[VeeContactPickerViewController alloc] initWithCompletionHandler:^(id<ABContact> abContact) {
+    
+     //With Completion Block
+    
+    /*
+     VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithCompletionHandler:^(id<ABContact> abContact) {
      if (abContact){
      NSLog(@"Selected %@", [abContact displayName]);
      }
      }];*/
     
-    VeeContactPickerViewController* acPickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
-    [self presentViewController:acPickerVC animated:YES completion:nil];
+    //With delegation
+    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
+    [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 
 #pragma mark - VeeContactPickerDelegate
