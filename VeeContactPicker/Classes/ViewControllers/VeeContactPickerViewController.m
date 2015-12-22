@@ -55,7 +55,22 @@
 {
     //Default options:
     _showContactDetailLabel = NO;
+    _showFirstNameFirst = YES;
     _veeContactDetail = VeeContactDetailPhoneNumber;
+}
+
+//#pragma mark - Options
+
+#pragma mark - Strings
+
+-(NSString*)localizedTitle
+{
+    return @"Choose a contact:";
+}
+
+-(NSString*)localizedCancelButtonTitle
+{
+    return @"Cancel";
 }
 
 #pragma mark - ViewController lifecycle
@@ -144,20 +159,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Strings
-
-//Override to localize the title
--(NSString*)localizedTitle
-{
-    return @"Choose a contact:";
-}
-
-//Override to localize the cancel button title
--(NSString*)localizedCancelButtonTitle
-{
-    return @"Cancel";
 }
 
 #pragma mark - AddressBook utils
@@ -287,28 +288,36 @@
     veeContactUITableViewCell.secondLabel.text = @"";
     veeContactUITableViewCell.thirdLabel.text = @"";
 
+    NSString *firstInfo = [abContact firstName];
+    NSString *secondInfo;
+        
+    if ([abContact middleName]){
+        secondInfo = [NSString stringWithFormat:@"%@ %@",[abContact middleName],[abContact lastName]];
+    }
+    else{
+        secondInfo = [abContact lastName];
+    }
+    
+    if (_showFirstNameFirst == NO){
+        //Switch firstInfo and secondInfo
+        NSString *tmp = firstInfo;
+        firstInfo = secondInfo;
+        secondInfo = tmp;
+    }
+    
     //Load ACContact information into the cell
-    if ([abContact firstName] && [abContact lastName]){
-        veeContactUITableViewCell.firstLabel.text = [abContact firstName];
-        if ([abContact middleName]){
-            veeContactUITableViewCell.secondLabel.text = [NSString stringWithFormat:@"%@ %@",[abContact middleName],[abContact lastName]];
-        }
-        else{
-            veeContactUITableViewCell.secondLabel.text = [abContact lastName];
+    if (firstInfo)
+    {
+        veeContactUITableViewCell.firstLabel.text = firstInfo;
+        
+        if(secondInfo)
+        {
+            veeContactUITableViewCell.secondLabel.text = secondInfo;
         }
     }
     else{
-        if ([abContact firstName]){
-            veeContactUITableViewCell.firstLabel.text = [abContact firstName];
-        }
-        else if([abContact lastName])
-        {
-            if ([abContact middleName]){
-                veeContactUITableViewCell.secondLabel.text = [NSString stringWithFormat:@"%@ %@",[abContact middleName],[abContact lastName]];
-            }
-            else{
-                veeContactUITableViewCell.firstLabel.text = [abContact lastName];
-            }
+        if(secondInfo){
+            veeContactUITableViewCell.firstLabel.text = secondInfo;
         }
         else{
             veeContactUITableViewCell.firstLabel.text = [abContact displayName];
@@ -337,7 +346,7 @@
             }
         }
 
-        //Change constraints: //TODO: not working
+        //Change constraints: //TODO: this is not working
         veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 20;
     }
     return veeContactUITableViewCell;

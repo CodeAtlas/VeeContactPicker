@@ -26,17 +26,19 @@
 - (IBAction)showVeecontactPickerPressed:(id)sender {
     
      //With Completion Block
-    
     /*
      VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithCompletionHandler:^(id<ABContact> abContact) {
      if (abContact){
      NSLog(@"Selected %@", [abContact displayName]);
      }
-     }];*/
+     }];
+     */
+    
     
     //With delegation
     VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
     //veePickerVC.showContactDetailLabel = YES;
+    //veePickerVC.showFirstNameFirst = NO;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 

@@ -60,8 +60,8 @@
         else if (_lastName && _lastName.length > 0) {
             _sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
         }
-        else if (_displayName) {
-            _sectionIdentifier = [[_displayName substringToIndex:1] uppercaseString];
+        else if ([self displayName]) {
+            _sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
         }
         else {
             _sectionIdentifier = @"#";

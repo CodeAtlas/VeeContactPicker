@@ -56,13 +56,18 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 @property (nonatomic, assign) BOOL showContactDetailLabel;
 @property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default is VeeContactDetailPhoneNumber
+@property (nonatomic, assign) BOOL showFirstNameFirst; //Default is YES; if NO show last name first
 
 //TODO: firstNameOrSurnameOrderOption
-
-//picker delegate
-//avoidContactsWithABId:(NSArray)...
-//overrideWithACContacts
 //contactEmptyImageView
+
+#pragma mark - Strings
+
+//Override to localize the title
+-(NSString*)localizedTitle;
+
+//Override to localize the cancel button title
+-(NSString*)localizedCancelButtonTitle;
 
 #pragma mark - Appearance
 //TODO: ...
