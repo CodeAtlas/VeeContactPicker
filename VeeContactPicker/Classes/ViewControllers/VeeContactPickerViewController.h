@@ -13,6 +13,7 @@
 
 @interface VeeContactPickerViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource>
 
+//When you want to show a detail label for all contacts, this enum defines which field to show into
 typedef NS_ENUM(NSInteger, VeeContactDetail) {
     //Default
     VeeContactDetailPhoneNumber, //0
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 @property (nonatomic, strong) IBOutlet UITableView* contactsTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButtonItem;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 
 #pragma mark - IBActions
 
@@ -52,7 +54,9 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Options
 
-@property (nonatomic, assign) VeeContactDetail veeContactDetail;
+@property (nonatomic, assign) BOOL showContactDetailLabel;
+@property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default is VeeContactDetailPhoneNumber
+
 //TODO: firstNameOrSurnameOrderOption
 
 //picker delegate

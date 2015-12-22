@@ -66,6 +66,9 @@
         else {
             _sectionIdentifier = @"#";
         }
+        if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO){
+            _sectionIdentifier = @"#";
+        }
     }
     return self;
 }

@@ -36,6 +36,7 @@
     
     //With delegation
     VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
+    //veePickerVC.showContactDetailLabel = YES;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 

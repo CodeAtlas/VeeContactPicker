@@ -36,6 +36,7 @@
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _completionHandler = didSelectABContact;
+        [self initDefaultOptions];
     }
     return self;
 }
@@ -45,8 +46,16 @@
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _contactPickerDelegate = contactPickerDelegate;
+        [self initDefaultOptions];
     }
     return self;
+}
+
+-(void)initDefaultOptions
+{
+    //Default options:
+    _showContactDetailLabel = NO;
+    _veeContactDetail = VeeContactDetailPhoneNumber;
 }
 
 #pragma mark - ViewController lifecycle
@@ -54,18 +63,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    _titleNavigationItem.title = [self localizedTitle];
+    _cancelBarButtonItem.title = [self localizedCancelButtonTitle];
+    
     //Data source loading
     if (!_addressBookRef) {
         CFErrorRef error = NULL;
         _addressBookRef = ABAddressBookCreateWithOptions(NULL, &error);
         if (!_addressBookRef) {
             NSLog(@"ABAddressBookCreateWithOptions error: %@", CFBridgingRelease(error));
-            //TODO: Handle error
         }
 
         if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-            //Ask for address book permission //TODO: refactor
+            //Ask for address book permission
             ABAddressBookRequestAccessWithCompletion(_addressBookRef, ^(bool granted, CFErrorRef error) {
                 if (!granted) {
                     //TODO: handle denied case, dismiss view controller?
@@ -74,16 +85,15 @@
 
             });
         }
-        //TOOD: handle not authorized status
+        //TODO: handle not authorized status
 
+        
         //Authorized...
 
         _allSectionIdentifiers = [self allSectionIdentifiers];
-        _abContacts = [self abContacts];         //TODO: change this
         
         //Sort contacts by first name, in the address book way
-        _abContacts = (NSArray<ABContactProt>*)[_abContacts sortedArrayUsingComparator:^NSComparisonResult(ACContact* firstContact, ACContact* secondContact) {
-          
+        _abContacts = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(ACContact* firstContact, ACContact* secondContact) {
             NSString *firstContactSortProperty = firstContact.firstName;
             NSString *secondContactSortProperty = secondContact.firstName;
             
@@ -123,7 +133,6 @@
             }
         }];
 
-        _veeContactDetail = VeeContactDetailEmail;
         CFRelease(_addressBookRef);
     }
     
@@ -137,9 +146,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Strings
+
+//Override to localize the title
+-(NSString*)localizedTitle
+{
+    return @"Choose a contact:";
+}
+
+//Override to localize the cancel button title
+-(NSString*)localizedCancelButtonTitle
+{
+    return @"Cancel";
+}
+
 #pragma mark - AddressBook utils
 
-- (BOOL)hasAddressBookPermissions
+- (BOOL)hasAddressBookPermissions //TODO: use this
 {
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         return YES;
@@ -150,7 +173,7 @@
 
 #pragma mark - Data source
 
-//You can overwrite this method to change the data source of the VeeContactPicker
+//Override to change the data source of the VeeContactPicker
 - (NSArray<ABContactProt>*)abContacts
 {
     NSMutableArray<ABContactProt>* mutableACContacts = (NSMutableArray<ABContactProt>*)[NSMutableArray new];
@@ -177,7 +200,8 @@
                 [linkedPersonsToSkip addObjectsFromArray:linkedRecordsOfPerson];
             }
             
-            [mutableACContacts addObject:[[ACContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of linked contacts, that could be useful for searching
+            //TODO: avoid ACContact dependency
+            [mutableACContacts addObject:[[ACContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of all linked contacts, that could be useful for searching
         }
     }
     return (NSArray<ABContactProt>*) [NSArray arrayWithArray:mutableACContacts];
@@ -201,8 +225,7 @@
 
 - (NSArray<NSString*>*)allSectionIdentifiers
 {
-    //TODO: localize
-    return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", kVeeSectionIdentifierNoLetter, nil];
+    return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
 }
 
 #pragma mark - TableView data source
@@ -257,11 +280,14 @@
         abContact = [[_abContactsForSectionIdentifiers objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
     }
 
-    //Load ACContact information into the cell
+    //Load empty default values
+    veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 0;
+    veeContactUITableViewCell.thirdLabel.hidden = YES;
     veeContactUITableViewCell.firstLabel.text = @"";
     veeContactUITableViewCell.secondLabel.text = @"";
     veeContactUITableViewCell.thirdLabel.text = @"";
 
+    //Load ACContact information into the cell
     if ([abContact firstName] && [abContact lastName]){
         veeContactUITableViewCell.firstLabel.text = [abContact firstName];
         if ([abContact middleName]){
@@ -288,18 +314,7 @@
             veeContactUITableViewCell.firstLabel.text = [abContact displayName];
         }
     }
-
-    if (_veeContactDetail == VeeContactDetailPhoneNumber) {
-        if ([[abContact phoneNumbers] count] > 0) {
-            veeContactUITableViewCell.thirdLabel.text = [[abContact phoneNumbers] firstObject];
-        }
-    }
-    else if (_veeContactDetail == VeeContactDetailEmail) {
-        if ([[abContact emails] count] > 0) {
-            veeContactUITableViewCell.thirdLabel.text = [[abContact emails] firstObject];
-        }
-    }
-
+    
     if ([abContact thumbnailImage]) {
         veeContactUITableViewCell.contactImageView.image = [abContact thumbnailImage];
     }
@@ -307,6 +322,24 @@
         [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForString:[abContact displayName]]];
     }
 
+    if (_showContactDetailLabel){
+        
+        veeContactUITableViewCell.thirdLabel.hidden = NO;
+        
+        if (_veeContactDetail == VeeContactDetailPhoneNumber) {
+            if ([[abContact phoneNumbers] count] > 0) {
+                veeContactUITableViewCell.thirdLabel.text = [[abContact phoneNumbers] firstObject];
+            }
+        }
+        else if (_veeContactDetail == VeeContactDetailEmail) {
+            if ([[abContact emails] count] > 0) {
+                veeContactUITableViewCell.thirdLabel.text = [[abContact emails] firstObject];
+            }
+        }
+
+        //Change constraints: //TODO: not working
+        veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 20;
+    }
     return veeContactUITableViewCell;
 }
 

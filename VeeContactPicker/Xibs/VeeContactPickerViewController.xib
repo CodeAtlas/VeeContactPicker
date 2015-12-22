@@ -10,6 +10,7 @@
                 <outlet property="cancelBarButtonItem" destination="xsp-I1-qeu" id="Phf-dh-77O"/>
                 <outlet property="contactsTableView" destination="NzL-9t-n6C" id="JqC-Ov-YUZ"/>
                 <outlet property="searchDisplayController" destination="nVF-SD-Cbm" id="je8-VG-jbu"/>
+                <outlet property="titleNavigationItem" destination="vBl-Xv-Isn" id="ndq-2m-JOy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lzU-0Z-sk2"/>
             </connections>
         </placeholder>

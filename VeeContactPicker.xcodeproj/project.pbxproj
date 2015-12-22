@@ -119,10 +119,10 @@
 		860C626A1C28521200876682 /* VeeContactPicker */ = {
 			isa = PBXGroup;
 			children = (
+				860C629E1C28521C00876682 /* VeeContactPickerExample */,
 				860C62AF1C28529700876682 /* Classes */,
-				860C62A01C28526D00876682 /* Dependencies */,
-				860C629E1C28521C00876682 /* Example */,
 				860C62B21C2852BB00876682 /* Xibs */,
+				860C62A01C28526D00876682 /* Dependencies */,
 			);
 			path = VeeContactPicker;
 			sourceTree = "<group>";
@@ -153,21 +153,22 @@
 			path = VeeContactPickerUITests;
 			sourceTree = "<group>";
 		};
-		860C629E1C28521C00876682 /* Example */ = {
+		860C629E1C28521C00876682 /* VeeContactPickerExample */ = {
 			isa = PBXGroup;
 			children = (
-				860C626B1C28521200876682 /* Supporting Files */,
-				860C62B41C2854CB00876682 /* ACContact.h */,
-				860C62B51C2854CB00876682 /* ACContact.m */,
 				860C626E1C28521200876682 /* AppDelegate.h */,
 				860C626F1C28521200876682 /* AppDelegate.m */,
+				860C62711C28521200876682 /* ViewController.h */,
+				860C62721C28521200876682 /* ViewController.m */,
+				860C62B41C2854CB00876682 /* ACContact.h */,
+				860C62B51C2854CB00876682 /* ACContact.m */,
 				860C62771C28521200876682 /* Assets.xcassets */,
 				860C627C1C28521200876682 /* Info.plist */,
 				860C62791C28521200876682 /* LaunchScreen.storyboard */,
 				860C62741C28521200876682 /* Main.storyboard */,
-				860C62711C28521200876682 /* ViewController.h */,
-				860C62721C28521200876682 /* ViewController.m */,
+				860C626B1C28521200876682 /* Supporting Files */,
 			);
+			name = VeeContactPickerExample;
 			path = Example;
 			sourceTree = "<group>";
 		};

@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thirdLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstLabelCenterYAlignmenetConstraint;
+
 @end

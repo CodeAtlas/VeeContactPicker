@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-1h-VBe" userLabel="Contact detail ">
-                        <rect key="frame" x="66" y="33" width="38" height="18"/>
+                        <rect key="frame" x="66" y="40" width="38" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                     <constraint firstItem="O1J-uh-sxD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9XE-88-WJ5"/>
                     <constraint firstItem="xVL-cA-Zln" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BbY-aW-fq2"/>
                     <constraint firstItem="O1J-uh-sxD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HJJ-qJ-lTC"/>
+                    <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="bottom" id="KCz-jv-GWF"/>
                     <constraint firstItem="xVL-cA-Zln" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="OFW-gL-sEc"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dB7-1h-VBe" secondAttribute="trailing" constant="8" id="PjO-Mt-gav"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="bottom" constant="4" id="TpN-n8-4bt"/>
@@ -59,6 +60,7 @@
                     <constraint firstItem="O1J-uh-sxD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="igc-X8-oHb"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="top" constant="4" id="jsm-gg-A1c"/>
                     <constraint firstItem="xVL-cA-Zln" firstAttribute="leading" secondItem="O1J-uh-sxD" secondAttribute="trailing" constant="4" id="mzv-5K-KAh"/>
+                    <constraint firstItem="dB7-1h-VBe" firstAttribute="trailing" secondItem="O1J-uh-sxD" secondAttribute="trailing" id="tIX-c3-6rX"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="uly-h7-o5o"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="leading" secondItem="O1J-uh-sxD" secondAttribute="leading" id="xBG-IB-fjB"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Caj-0K-P7x" secondAttribute="leading" id="xJl-pU-vPp"/>
@@ -67,8 +69,11 @@
                     <mask key="constraints">
                         <exclude reference="9XE-88-WJ5"/>
                         <exclude reference="HJJ-qJ-lTC"/>
+                        <exclude reference="PjO-Mt-gav"/>
                         <exclude reference="TpN-n8-4bt"/>
                         <exclude reference="jsm-gg-A1c"/>
+                        <exclude reference="tIX-c3-6rX"/>
+                        <exclude reference="uly-h7-o5o"/>
                         <exclude reference="BbY-aW-fq2"/>
                         <exclude reference="OFW-gL-sEc"/>
                     </mask>
@@ -77,6 +82,7 @@
             <connections>
                 <outlet property="contactImageView" destination="Caj-0K-P7x" id="AS5-oy-hYn"/>
                 <outlet property="firstLabel" destination="O1J-uh-sxD" id="M3y-Ac-Aoa"/>
+                <outlet property="firstLabelCenterYAlignmenetConstraint" destination="HJJ-qJ-lTC" id="M5d-hR-OXT"/>
                 <outlet property="secondLabel" destination="xVL-cA-Zln" id="AX7-yV-tOC"/>
                 <outlet property="thirdLabel" destination="dB7-1h-VBe" id="d35-Xi-ACH"/>
             </connections>
