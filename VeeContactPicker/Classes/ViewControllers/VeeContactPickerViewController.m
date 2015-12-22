@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSArray<NSString *>* abContactsSearchResultsSortedKeysForSections;
 @property (nonatomic,strong) NSDictionary* abContactsForSectionIdentifiers; //TODO: use generics
 @property (nonatomic,strong) NSDictionary* abContactsForSectionIdentifiersSearchResults; //TODO: use generics
+@property (nonatomic,strong) NSMutableDictionary<NSString*,UIColor*>* colorsCache;
 
 @end
 
@@ -65,7 +66,7 @@
 
 -(NSString*)localizedTitle
 {
-    return @"Choose a contact:";
+    return @"Choose a contact";
 }
 
 -(NSString*)localizedCancelButtonTitle
@@ -136,7 +137,7 @@
         _abContactsForSectionIdentifiers = [self contactsDictionaryWithSectionIdentifiers:_abContacts];
         _abContactsSortedKeysForSections = [[_abContactsForSectionIdentifiers allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString* firstKey, NSString* secondKey) {
             
-            //Because we want '#' to be the last section and not the first one:
+            //Re-sort section identifiers because we want '#' to be the last section and not the first one:
             if ([firstKey isEqualToString:kVeeSectionIdentifierNoLetter]){
                 return NSOrderedDescending;
             }
@@ -243,6 +244,7 @@
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:section];
+        NSLog(@"Searching result: %zd row",[[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count]);
         return [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count];
     }
     NSString* sectionIdentifier = [_abContactsSortedKeysForSections objectAtIndex:section];
@@ -391,10 +393,16 @@
     if (!_contactLettersColorPalette){
         return [UIColor lightGrayColor];
     }
-    //TODO: add cache
+    if (! _colorsCache){
+        _colorsCache = (NSMutableDictionary<NSString*,UIColor*>*)[NSMutableDictionary new];
+    }
+    if ([_colorsCache objectForKey:contactDisplayName]){
+        return [_colorsCache objectForKey:contactDisplayName];
+    }
     
     unsigned long hashNumber = hash((unsigned char*)[contactDisplayName UTF8String]);
     UIColor *color = _contactLettersColorPalette[hashNumber % [_contactLettersColorPalette count]];
+    [_colorsCache setObject:color forKey:contactDisplayName];
     return color;
 }
 
