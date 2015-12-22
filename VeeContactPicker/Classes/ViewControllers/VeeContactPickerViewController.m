@@ -7,9 +7,9 @@
 //
 
 #import "ACContact.h"
+#import "UIImageView+Letters.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactUITableViewCell.h"
-#import "UIImageView+Letters.h"
 
 #define kVeeContactCellNibName @"VeeContactUITableViewCell"
 #define kVeeContactCellIdentifier @"VeeContactCell" //Also referenced into the xib
@@ -18,13 +18,17 @@
 
 @interface VeeContactPickerViewController ()
 
-@property (nonatomic,strong) NSArray<ABContactProt>* abContactsSearchResults;
+@property (nonatomic) ABAddressBookRef addressBookRef;
 
-@property (nonatomic,strong) NSArray<NSString *>* abContactsSortedKeysForSections;
-@property (nonatomic,strong) NSArray<NSString *>* abContactsSearchResultsSortedKeysForSections;
-@property (nonatomic,strong) NSDictionary* abContactsForSectionIdentifiers; //TODO: use generics
-@property (nonatomic,strong) NSDictionary* abContactsForSectionIdentifiersSearchResults; //TODO: use generics
-@property (nonatomic,strong) NSMutableDictionary<NSString*,UIColor*>* colorsCache;
+@property (nonatomic, strong) NSArray<ABContactProt>* abContactsCache;
+@property (nonatomic, strong) NSArray<ABContactProt>* abContactsSearchResults;
+@property (nonatomic, strong) NSArray<NSString*>* sectionIdentifiersCache;
+
+@property (nonatomic, strong) NSArray<NSString*>* abContactsSortedKeysForSections;
+@property (nonatomic, strong) NSArray<NSString*>* abContactsSearchResultsSortedKeysForSections;
+@property (nonatomic, strong) NSDictionary* abContactsForSectionIdentifiers; //TODO: use generics
+@property (nonatomic, strong) NSDictionary* abContactsForSectionIdentifiersSearchResults; //TODO: use generics
+@property (nonatomic, strong) NSMutableDictionary<NSString*, UIColor*>* colorsCache;
 
 @end
 
@@ -32,7 +36,7 @@
 
 #pragma mark - Initializers
 
--(instancetype)initWithCompletionHandler:(void(^)(id<ABContactProt> abContact))didSelectABContact
+- (instancetype)initWithCompletionHandler:(void (^)(id<ABContactProt> abContact))didSelectABContact
 {
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
@@ -42,7 +46,7 @@
     return self;
 }
 
--(instancetype)initWithDelegate:(id<VeeContactPickerDelegate>)contactPickerDelegate
+- (instancetype)initWithDelegate:(id<VeeContactPickerDelegate>)contactPickerDelegate
 {
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
@@ -52,7 +56,7 @@
     return self;
 }
 
--(void)initDefaultOptions
+- (void)initDefaultOptions
 {
     //Default options:
     _showContactDetailLabel = NO;
@@ -64,12 +68,12 @@
 
 #pragma mark - Strings
 
--(NSString*)localizedTitle
+- (NSString*)localizedTitle
 {
     return @"Choose a contact";
 }
 
--(NSString*)localizedCancelButtonTitle
+- (NSString*)localizedCancelButtonTitle
 {
     return @"Cancel";
 }
@@ -79,81 +83,85 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     _titleNavigationItem.title = [self localizedTitle];
     _cancelBarButtonItem.title = [self localizedCancelButtonTitle];
-    
-    //Data source loading
-    if (!_addressBookRef) {
-        CFErrorRef error = NULL;
-        _addressBookRef = ABAddressBookCreateWithOptions(NULL, &error);
-        if (!_addressBookRef) {
-            NSLog(@"ABAddressBookCreateWithOptions error: %@", CFBridgingRelease(error));
-        }
 
-        if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-            //Ask for address book permission
-            ABAddressBookRequestAccessWithCompletion(_addressBookRef, ^(bool granted, CFErrorRef error) {
-                if (!granted) {
-                    //TODO: handle denied case, dismiss view controller?
-                    return;
-                }
-
-            });
-        }
-        //TODO: handle not authorized status
-
-        
-        //Authorized...
-
-        _allSectionIdentifiers = [self allSectionIdentifiers];
-        
-        //Sort contacts by first name, in the address book way
-        _abContacts = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(ACContact* firstContact, ACContact* secondContact) {
-            NSString *firstContactSortProperty = firstContact.firstName;
-            NSString *secondContactSortProperty = secondContact.firstName;
-            
-            if([firstContact.firstName isEqualToString:@""]){
-                firstContactSortProperty = firstContact.lastName;
-                if([firstContact.lastName isEqualToString:@""]){
-                    firstContactSortProperty = firstContact.displayName;
-                }
-            }
-            if([secondContact.firstName isEqualToString:@""]){
-                secondContactSortProperty = secondContact.lastName;
-                if([secondContact.lastName isEqualToString:@""]){
-                    secondContactSortProperty = secondContact.displayName;
-                }
-            }
-            NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch|NSCaseInsensitiveSearch];
-            if (result == NSOrderedSame){
-                return [firstContact.displayName compare:secondContact.displayName options:NSDiacriticInsensitiveSearch|NSCaseInsensitiveSearch];
-            }
-            else{
-                return result;
-            }
-        }];
-        
-        _abContactsForSectionIdentifiers = [self contactsDictionaryWithSectionIdentifiers:_abContacts];
-        _abContactsSortedKeysForSections = [[_abContactsForSectionIdentifiers allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString* firstKey, NSString* secondKey) {
-            
-            //Re-sort section identifiers because we want '#' to be the last section and not the first one:
-            if ([firstKey isEqualToString:kVeeSectionIdentifierNoLetter]){
-                return NSOrderedDescending;
-            }
-            else if([secondKey isEqualToString:kVeeSectionIdentifierNoLetter]){
-                return NSOrderedAscending;
-            }
-            else{
-                return [firstKey caseInsensitiveCompare:secondKey];
-            }
-        }];
-
-        CFRelease(_addressBookRef);
-    }
-    
     //Register nibs
     [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
+    
+    //Check address book permission, and ask for it if needed
+
+    CFErrorRef error = NULL;
+    _addressBookRef = ABAddressBookCreateWithOptions(NULL, &error);
+    if (error) {
+        NSLog(@"Warning - ABAddressBookCreateWithOptions error: %@", CFBridgingRelease(error));
+    }
+
+    if ([self hasAddressBookPermissions] == NO) {
+        //Ask for address book permission
+        ABAddressBookRequestAccessWithCompletion(_addressBookRef, ^(bool granted, CFErrorRef error) {
+            if (!granted) {
+                NSLog(@"Warning - ABAddressBookRequestAccessWithCompletion not granted");
+                //TODO: empty view
+            }
+            else{
+                [self performSelectorOnMainThread:@selector(loadDataSource) withObject:nil waitUntilDone:YES];
+            }
+        });
+    }
+    
+    [self loadDataSource];
+}
+
+-(void)loadDataSource
+{
+    _sectionIdentifiersCache = [self sectionIdentifiers];
+    
+    //Sort contacts by first name, in the address book way
+    //TODO: check showFirstNameFirst
+    _abContactsCache = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(ACContact* firstContact, ACContact* secondContact) {
+        NSString* firstContactSortProperty = firstContact.firstName;
+        NSString* secondContactSortProperty = secondContact.firstName;
+        
+        if ([firstContact.firstName isEqualToString:@""]) {
+            firstContactSortProperty = firstContact.lastName;
+            if ([firstContact.lastName isEqualToString:@""]) {
+                firstContactSortProperty = firstContact.displayName;
+            }
+        }
+        if ([secondContact.firstName isEqualToString:@""]) {
+            secondContactSortProperty = secondContact.lastName;
+            if ([secondContact.lastName isEqualToString:@""]) {
+                secondContactSortProperty = secondContact.displayName;
+            }
+        }
+        NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+        if (result == NSOrderedSame) {
+            return [firstContact.displayName compare:secondContact.displayName options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+        }
+        else {
+            return result;
+        }
+    }];
+    
+    _abContactsForSectionIdentifiers = [self abContactsDictionaryWithSectionIdentifiers:_abContactsCache];
+    _abContactsSortedKeysForSections = [[_abContactsForSectionIdentifiers allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString* firstKey, NSString* secondKey) {
+        
+        //Re-sort section identifiers because we want '#' to be the last section and not the first one:
+        if ([firstKey isEqualToString:kVeeSectionIdentifierNoLetter]) {
+            return NSOrderedDescending;
+        }
+        else if ([secondKey isEqualToString:kVeeSectionIdentifierNoLetter]) {
+            return NSOrderedAscending;
+        }
+        else {
+            return [firstKey caseInsensitiveCompare:secondKey];
+        }
+    }];
+    
+    
+    [_contactsTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -169,13 +177,11 @@
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         return YES;
     }
-    NSLog(@"%@ failed to get address book permissions", NSStringFromClass([self class]));
     return NO;
 }
 
 #pragma mark - Data source
 
-//Override to change the data source of the VeeContactPicker
 - (NSArray<ABContactProt>*)abContacts
 {
     NSMutableArray<ABContactProt>* mutableACContacts = (NSMutableArray<ABContactProt>*)[NSMutableArray new];
@@ -189,31 +195,36 @@
 
         for (int i = 0; i < peopleInSource.count; i++) {
             ABRecordRef person = CFArrayGetValueAtIndex((__bridge CFArrayRef)(peopleInSource), i);
-            
+
             if ([linkedPersonsToSkip containsObject:(__bridge id)(person)]) {
                 continue;
             }
 
             NSArray* linkedRecordsOfPerson = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople(person);
-            
+
             //If the contact is composed by 2 or more records
             if (linkedRecordsOfPerson.count > 1) {
                 //To avoid duplicates, I add all linked record in linkedPersonsToSkip, so next time I can recognie and skip them
                 [linkedPersonsToSkip addObjectsFromArray:linkedRecordsOfPerson];
             }
-            
+
             //TODO: avoid ACContact dependency
             [mutableACContacts addObject:[[ACContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of all linked contacts, that could be useful for searching
         }
     }
-    return (NSArray<ABContactProt>*) [NSArray arrayWithArray:mutableACContacts];
+    return (NSArray<ABContactProt>*)[NSArray arrayWithArray:mutableACContacts];
 }
 
-- (NSDictionary*)contactsDictionaryWithSectionIdentifiers:(NSArray*)abContacts
+- (NSArray<NSString*>*)sectionIdentifiers
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+}
+
+- (NSDictionary*)abContactsDictionaryWithSectionIdentifiers:(NSArray*)abContacts
 {
     NSMutableDictionary* abContactsSectionedMutable = [NSMutableDictionary new];
-
-    for (id<ABContactProt> abContact in abContacts){
+    
+    for (id<ABContactProt> abContact in abContacts) {
         NSArray* abContactsForSectionIdentifier = [abContactsSectionedMutable objectForKey:[abContact sectionIdentifier]];
         if (abContactsForSectionIdentifier == nil) {
             [abContactsSectionedMutable setObject:[NSArray arrayWithObject:abContact] forKey:[abContact sectionIdentifier]];
@@ -223,11 +234,6 @@
         }
     }
     return [NSDictionary dictionaryWithDictionary:abContactsSectionedMutable];
-}
-
-- (NSArray<NSString*>*)allSectionIdentifiers
-{
-    return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
 }
 
 #pragma mark - TableView data source
@@ -244,7 +250,7 @@
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:section];
-        NSLog(@"Searching result: %zd row",[[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count]);
+        NSLog(@"Searching result: %zd row", [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count]);
         return [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count];
     }
     NSString* sectionIdentifier = [_abContactsSortedKeysForSections objectAtIndex:section];
@@ -261,7 +267,7 @@
 
 - (NSArray<NSString*>*)sectionIndexTitlesForTableView:(UITableView*)tableView
 {
-    return _allSectionIdentifiers;
+    return _sectionIdentifiersCache;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -273,12 +279,12 @@
 
     //Load ACContact for this cell
     id<ABContactProt> abContact;
-    
+
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:indexPath.section];
         abContact = [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
     }
-    else{
+    else {
         NSString* sectionIdentifier = [_abContactsSortedKeysForSections objectAtIndex:indexPath.section];
         abContact = [[_abContactsForSectionIdentifiers objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
     }
@@ -290,42 +296,40 @@
     veeContactUITableViewCell.secondLabel.text = @"";
     veeContactUITableViewCell.thirdLabel.text = @"";
 
-    NSString *firstInfo = [abContact firstName];
-    NSString *secondInfo;
-        
-    if ([abContact middleName]){
-        secondInfo = [NSString stringWithFormat:@"%@ %@",[abContact middleName],[abContact lastName]];
+    NSString* firstInfo = [abContact firstName];
+    NSString* secondInfo;
+
+    if ([abContact middleName]) {
+        secondInfo = [NSString stringWithFormat:@"%@ %@", [abContact middleName], [abContact lastName]];
     }
-    else{
+    else {
         secondInfo = [abContact lastName];
     }
-    
-    if (_showFirstNameFirst == NO){
+
+    if (_showFirstNameFirst == NO) {
         //Switch firstInfo and secondInfo
-        NSString *tmp = firstInfo;
+        NSString* tmp = firstInfo;
         firstInfo = secondInfo;
         secondInfo = tmp;
     }
-    
+
     //Load ACContact information into the cell
-    if (firstInfo)
-    {
+    if (firstInfo) {
         veeContactUITableViewCell.firstLabel.text = firstInfo;
-        
-        if(secondInfo)
-        {
+
+        if (secondInfo) {
             veeContactUITableViewCell.secondLabel.text = secondInfo;
         }
     }
-    else{
-        if(secondInfo){
+    else {
+        if (secondInfo) {
             veeContactUITableViewCell.firstLabel.text = secondInfo;
         }
-        else{
+        else {
             veeContactUITableViewCell.firstLabel.text = [abContact displayName];
         }
     }
-    
+
     if ([abContact thumbnailImage]) {
         veeContactUITableViewCell.contactImageView.image = [abContact thumbnailImage];
     }
@@ -333,10 +337,10 @@
         [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForString:[abContact displayName]]];
     }
 
-    if (_showContactDetailLabel){
-        
+    if (_showContactDetailLabel) {
+
         veeContactUITableViewCell.thirdLabel.hidden = NO;
-        
+
         if (_veeContactDetail == VeeContactDetailPhoneNumber) {
             if ([[abContact phoneNumbers] count] > 0) {
                 veeContactUITableViewCell.thirdLabel.text = [[abContact phoneNumbers] firstObject];
@@ -354,26 +358,26 @@
     return veeContactUITableViewCell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [self dismissViewControllerAnimated:YES completion:^{
         //Both delegate and blocks
         id<ABContactProt> abContact;
-        
+
         if (tableView == self.searchDisplayController.searchResultsTableView) {
             NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:indexPath.section];
             abContact = [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
         }
-        else{
+        else {
             NSString* sectionIdentifier = [_abContactsSortedKeysForSections objectAtIndex:indexPath.section];
             abContact = [[_abContactsForSectionIdentifiers objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
         }
-        
-        if (_contactPickerDelegate){
+
+        if (_contactPickerDelegate) {
             [_contactPickerDelegate didSelectABContact:abContact];
         }
-        
-        if (_completionHandler){
+
+        if (_completionHandler) {
             _completionHandler(abContact);
         }
     }];
@@ -388,33 +392,33 @@
 
 #pragma mark - UIImage+Letters colors helper
 
--(UIColor*)colorForString:(NSString*)contactDisplayName
+- (UIColor*)colorForString:(NSString*)contactDisplayName
 {
-    if (!_contactLettersColorPalette){
+    if (!_contactLettersColorPalette) {
         return [UIColor lightGrayColor];
     }
-    if (! _colorsCache){
-        _colorsCache = (NSMutableDictionary<NSString*,UIColor*>*)[NSMutableDictionary new];
+    if (!_colorsCache) {
+        _colorsCache = (NSMutableDictionary<NSString*, UIColor*>*)[NSMutableDictionary new];
     }
-    if ([_colorsCache objectForKey:contactDisplayName]){
+    if ([_colorsCache objectForKey:contactDisplayName]) {
         return [_colorsCache objectForKey:contactDisplayName];
     }
-    
+
     unsigned long hashNumber = hash((unsigned char*)[contactDisplayName UTF8String]);
-    UIColor *color = _contactLettersColorPalette[hashNumber % [_contactLettersColorPalette count]];
+    UIColor* color = _contactLettersColorPalette[hashNumber % [_contactLettersColorPalette count]];
     [_colorsCache setObject:color forKey:contactDisplayName];
     return color;
 }
 
 /*http://www.cse.yorku.ca/~oz/hash.html djb2 algorithm to generate an unsigned long hash from a given string */
-unsigned long hash(unsigned char *str)
+unsigned long hash(unsigned char* str)
 {
     unsigned long hash = 5381;
     int c;
-    
+
     while ((c = *str++))
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-    
+
     return hash;
 }
 
@@ -423,7 +427,7 @@ unsigned long hash(unsigned char *str)
 - (IBAction)cancelBarButtonItemPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        if (_completionHandler){
+        if (_completionHandler) {
             _completionHandler(nil);
         }
     }];
@@ -431,7 +435,7 @@ unsigned long hash(unsigned char *str)
 
 #pragma mark - Search
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchString:(NSString*)searchString
 {
     [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     return YES;
@@ -439,9 +443,9 @@ unsigned long hash(unsigned char *str)
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
-    _abContactsSearchResults = (NSArray<ABContactProt>*)[_abContacts filteredArrayUsingPredicate:resultPredicate];
-    _abContactsForSectionIdentifiersSearchResults = [self contactsDictionaryWithSectionIdentifiers:_abContactsSearchResults];
+    NSPredicate* resultPredicate = [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
+    _abContactsSearchResults = (NSArray<ABContactProt>*)[_abContactsCache filteredArrayUsingPredicate:resultPredicate];
+    _abContactsForSectionIdentifiersSearchResults = [self abContactsDictionaryWithSectionIdentifiers:_abContactsSearchResults];
     _abContactsSearchResultsSortedKeysForSections = [[_abContactsForSectionIdentifiersSearchResults allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 

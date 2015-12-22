@@ -37,10 +37,11 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Data source
 
-@property (nonatomic) ABAddressBookRef addressBookRef;
+//Override to change the data source of the VeeContactPicker
+- (NSArray<ABContactProt>*)abContacts;
+- (NSArray<NSString*>*)sectionIdentifiers;
 
-@property (nonatomic, strong) NSArray<ABContactProt>* abContacts;
-@property (nonatomic, strong) NSArray<NSString*>* allSectionIdentifiers;
+//Override if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
 
 @property (nonatomic, strong) NSArray<UIColor*>* contactLettersColorPalette; //Set your palette otherwise lightgraycolor will be used for all contact image placeholders
 
@@ -56,7 +57,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 @property (nonatomic, assign) BOOL showContactDetailLabel;
 @property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default is VeeContactDetailPhoneNumber
-@property (nonatomic, assign) BOOL showFirstNameFirst; //Default is YES; if NO show last name first
+@property (nonatomic, assign) BOOL showFirstNameFirst;
 
 //TODO: firstNameOrSurnameOrderOption
 //contactEmptyImageView
