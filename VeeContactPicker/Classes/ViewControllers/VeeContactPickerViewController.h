@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 #pragma mark - Data source
 
 //Override to change the data source of the VeeContactPicker
-- (NSArray<ABContactProt>*)abContacts; //This is the only method in which instances of ABContatProt are instantiated
+- (NSArray<ABContactProt>*)unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
 - (NSArray<NSString*>*)sectionIdentifiers;
 
 //Override if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)

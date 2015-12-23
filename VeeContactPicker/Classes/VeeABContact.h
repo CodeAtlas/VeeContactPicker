@@ -15,6 +15,8 @@
 
 - (instancetype)initWithPerson:(ABRecordRef)person;
 
+-(void)updateDataFromABRecordRef:(ABRecordRef)person;
+
 @property (nonatomic,strong) NSNumber *recordId; //For unified contacts it will be just the first one
 @property (nonatomic,strong) UIImage* thumbnailImage;
 @property (nonatomic,copy) NSString* firstName;

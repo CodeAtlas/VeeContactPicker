@@ -120,7 +120,7 @@
     
     //Sort contacts by first name, in the address book way
     //TODO: check showFirstNameFirst
-    _abContactsCache = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(id<ABContactProt> firstContact, id<ABContactProt> secondContact) {
+    _abContactsCache = (NSArray<ABContactProt>*)[[self unifiedABContacts] sortedArrayUsingComparator:^NSComparisonResult(id<ABContactProt> firstContact, id<ABContactProt> secondContact) {
         NSString* firstContactSortProperty = firstContact.firstName;
         NSString* secondContactSortProperty = secondContact.firstName;
         
@@ -182,7 +182,7 @@
 
 #pragma mark - Data source
 
-- (NSArray<ABContactProt>*)abContacts
+- (NSArray<ABContactProt>*)unifiedABContacts
 {
     NSMutableArray<ABContactProt>* mutableACContacts = (NSMutableArray<ABContactProt>*)[NSMutableArray new];
     NSMutableSet* linkedPersonsToSkip = [NSMutableSet new]; //Use this set to skip linked records of a contact that are already been processed
@@ -200,15 +200,25 @@
                 continue;
             }
 
+            VeeABContact* veeABContactUnified = [[VeeABContact alloc] initWithPerson:person];
+            
             NSArray* linkedRecordsOfPerson = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople(person);
 
             //If the contact is composed by 2 or more records
             if (linkedRecordsOfPerson.count > 1) {
-                //To avoid duplicates, I add all linked record in linkedPersonsToSkip, so next time I can recognie and skip them
-                [linkedPersonsToSkip addObjectsFromArray:linkedRecordsOfPerson];
-            }
 
-            [mutableACContacts addObject:[[VeeABContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of all linked contacts, that could be useful for searching
+                //To avoid duplicates, we add all linked records in linkedPersonsToSkip, so next time we can recognie and skip them
+                [linkedPersonsToSkip addObjectsFromArray:linkedRecordsOfPerson];
+
+                for (int j = 0; j < linkedRecordsOfPerson.count; j++) {
+                    //Add information to the unified contact from linked records
+                    ABRecordRef linkedABRecordRef = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedRecordsOfPerson), j);
+                    [veeABContactUnified updateDataFromABRecordRef:linkedABRecordRef];
+                }
+            }
+            
+            [mutableACContacts addObject:veeABContactUnified];
+
         }
     }
     return (NSArray<ABContactProt>*)[NSArray arrayWithArray:mutableACContacts];
@@ -249,7 +259,6 @@
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:section];
-        NSLog(@"Searching result: %zd row", [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count]);
         return [[_abContactsForSectionIdentifiersSearchResults objectForKey:sectionIdentifier] count];
     }
     NSString* sectionIdentifier = [_abContactsSortedKeysForSections objectAtIndex:section];

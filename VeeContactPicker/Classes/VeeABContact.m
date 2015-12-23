@@ -15,62 +15,84 @@
     self = [super init];
     if (self) {
 
-        _recordId = [NSNumber numberWithInt:ABRecordGetRecordID(person)];
-        _firstName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-        _lastName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
-        _middleName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonMiddleNameProperty));
-        _nickname = CFBridgingRelease(ABRecordCopyValue(person, kABPersonNicknameProperty));
-        _organizationName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
+        _recordId = [NSNumber numberWithInt:ABRecordGetRecordID(person)];        
+        [self updateDataFromABRecordRef:person];
+    }
+    return self;
+}
 
+-(void)updateDataFromABRecordRef:(ABRecordRef)person
+{
+    if (!_firstName){
+        _firstName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+    }
+    if (!_lastName){
+        _lastName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+    }
+    if (!_middleName){
+        _middleName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonMiddleNameProperty));
+    }
+    if (!_nickname){
+        _nickname = CFBridgingRelease(ABRecordCopyValue(person, kABPersonNicknameProperty));
+    }
+    if (!_organizationName){
+        _organizationName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
+    }
+    
+    if (!_thumbnailImage){
         if (ABPersonHasImageData(person)) {
             NSData* imgData = (__bridge_transfer NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
             [self setThumbnailImage:[UIImage imageWithData:imgData]];
         }
-
-        ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-
-        CFIndex phoneNumbersCount = ABMultiValueGetCount(phoneNumbers);
-        if (phoneNumbersCount > 0) {
-            NSMutableArray* phoneNumbersMutable = [NSMutableArray new];
-            for (CFIndex i = 0; i < phoneNumbersCount; i++) {
-                NSString* phoneNumber = CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneNumbers, i));
-                [phoneNumbersMutable addObject:phoneNumber];
-            }
-            [self setPhoneNumbers:[NSArray arrayWithArray:phoneNumbersMutable]];
-            CFRelease(phoneNumbers);
-        }
-
-        ABMultiValueRef emails = ABRecordCopyValue(person, kABPersonEmailProperty);
-
-        CFIndex emailsCount = ABMultiValueGetCount(emails);
-        if (emailsCount > 0) {
-            NSMutableArray* emailsMutable = [NSMutableArray new];
-            for (CFIndex i = 0; i < emailsCount; i++) {
-                NSString* email = CFBridgingRelease(ABMultiValueCopyValueAtIndex(emails, i));
-                [emailsMutable addObject:email];
-            }
-            [self setEmails:[NSArray arrayWithArray:emailsMutable]];
-            CFRelease(emails);
-        }
-
-        //First Letter as Section identifier
-        if (_firstName && _firstName.length > 0) {
-            _sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
-        }
-        else if (_lastName && _lastName.length > 0) {
-            _sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
-        }
-        else if ([self displayName]) {
-            _sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
-        }
-        else {
-            _sectionIdentifier = @"#";
-        }
-        if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO){
-            _sectionIdentifier = @"#";
-        }
     }
-    return self;
+    
+    ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    
+    CFIndex phoneNumbersCount = ABMultiValueGetCount(phoneNumbers);
+    if (phoneNumbersCount > 0) {
+        NSMutableArray* phoneNumbersMutable = [NSMutableArray new];
+        for (CFIndex i = 0; i < phoneNumbersCount; i++) {
+            NSString* phoneNumber = CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneNumbers, i));
+            [phoneNumbersMutable addObject:phoneNumber];
+        }
+        [self setPhoneNumbers:[NSArray arrayWithArray:phoneNumbersMutable]];
+        CFRelease(phoneNumbers);
+    }
+    
+    ABMultiValueRef emails = ABRecordCopyValue(person, kABPersonEmailProperty);
+    
+    CFIndex emailsCount = ABMultiValueGetCount(emails);
+    if (emailsCount > 0) {
+        NSMutableArray* emailsMutable = [NSMutableArray new];
+        for (CFIndex i = 0; i < emailsCount; i++) {
+            NSString* email = CFBridgingRelease(ABMultiValueCopyValueAtIndex(emails, i));
+            [emailsMutable addObject:email];
+        }
+        [self setEmails:[NSArray arrayWithArray:emailsMutable]];
+        CFRelease(emails);
+    }
+    
+    [self updateSectionIdentifier];
+}
+
+-(void)updateSectionIdentifier
+{
+    //First Letter as Section identifier
+    if (_firstName && _firstName.length > 0) {
+        _sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
+    }
+    else if (_lastName && _lastName.length > 0) {
+        _sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
+    }
+    else if ([self displayName]) {
+        _sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
+    }
+    else {
+        _sectionIdentifier = @"#";
+    }
+    if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO){
+        _sectionIdentifier = @"#";
+    }
 }
 
 - (NSString*)displayName
@@ -131,7 +153,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ - RecordId: %@, FirstName: %@, LastName: %@, OrganizationName: %@, DisplayName: %@]", NSStringFromClass([self class]), _recordId, _firstName, _lastName, _organizationName, _displayName];
+    return [NSString stringWithFormat:@"[%@ - RecordId: %@, FirstName: %@, LastName: %@, OrganizationName: %@, DisplayName: %@, PhoneNumbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordId, _firstName, _lastName, _organizationName, _displayName,_phoneNumbers,_emails];
 }
 
 @end
