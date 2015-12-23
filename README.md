@@ -1,9 +1,9 @@
 # VeeContactPicker
 A replacement for the (bugged) iOS ABPeoplePickerNavigationViewController, with contact images.
 
-**Features:**
-
 ![VeeContactPicker screenshot](/Screenshots/veecontactpicker.png?raw=true "Screenshot")
+
+**Features:**
 
 - iOS 7+
 - Loads contacts instantaneously, not like the iOS official controller (http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)
