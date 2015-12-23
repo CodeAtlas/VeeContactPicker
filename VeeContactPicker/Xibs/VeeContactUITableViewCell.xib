@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name very long name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1J-uh-sxD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Name very long name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1J-uh-sxD">
                         <rect key="frame" x="66" y="19" width="120" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="49c-Ms-SiE"/>
@@ -30,7 +30,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVL-cA-Zln">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVL-cA-Zln">
                         <rect key="frame" x="190" y="19" width="69" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,10 +53,11 @@
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="bottom" id="KCz-jv-GWF"/>
                     <constraint firstItem="xVL-cA-Zln" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="OFW-gL-sEc"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dB7-1h-VBe" secondAttribute="trailing" constant="8" id="PjO-Mt-gav"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="O1J-uh-sxD" secondAttribute="trailing" constant="16" id="SwM-lW-RLC"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="bottom" constant="4" id="TpN-n8-4bt"/>
                     <constraint firstItem="Caj-0K-P7x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Zn9-W2-B4S"/>
                     <constraint firstItem="O1J-uh-sxD" firstAttribute="leading" secondItem="Caj-0K-P7x" secondAttribute="trailing" constant="8" id="dzE-6b-v0m"/>
-                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="xVL-cA-Zln" secondAttribute="trailing" constant="8" id="eOL-BN-imT"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="xVL-cA-Zln" secondAttribute="trailing" constant="16" id="eOL-BN-imT"/>
                     <constraint firstItem="O1J-uh-sxD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="igc-X8-oHb"/>
                     <constraint firstItem="dB7-1h-VBe" firstAttribute="top" secondItem="O1J-uh-sxD" secondAttribute="top" constant="4" id="jsm-gg-A1c"/>
                     <constraint firstItem="xVL-cA-Zln" firstAttribute="leading" secondItem="O1J-uh-sxD" secondAttribute="trailing" constant="4" id="mzv-5K-KAh"/>
