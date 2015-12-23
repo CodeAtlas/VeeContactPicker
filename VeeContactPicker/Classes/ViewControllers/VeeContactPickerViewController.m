@@ -6,7 +6,7 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "ACContact.h"
+#import "VeeABContact.h"
 #import "UIImageView+Letters.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactUITableViewCell.h"
@@ -120,7 +120,7 @@
     
     //Sort contacts by first name, in the address book way
     //TODO: check showFirstNameFirst
-    _abContactsCache = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(ACContact* firstContact, ACContact* secondContact) {
+    _abContactsCache = (NSArray<ABContactProt>*)[[self abContacts] sortedArrayUsingComparator:^NSComparisonResult(id<ABContactProt> firstContact, id<ABContactProt> secondContact) {
         NSString* firstContactSortProperty = firstContact.firstName;
         NSString* secondContactSortProperty = secondContact.firstName;
         
@@ -208,8 +208,7 @@
                 [linkedPersonsToSkip addObjectsFromArray:linkedRecordsOfPerson];
             }
 
-            //TODO: avoid ACContact dependency
-            [mutableACContacts addObject:[[ACContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of all linked contacts, that could be useful for searching
+            [mutableACContacts addObject:[[VeeABContact alloc] initWithPerson:person]]; //TODO: In this way we lose the info of all linked contacts, that could be useful for searching
         }
     }
     return (NSArray<ABContactProt>*)[NSArray arrayWithArray:mutableACContacts];

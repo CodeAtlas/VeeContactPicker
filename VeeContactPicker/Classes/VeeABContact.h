@@ -1,9 +1,9 @@
 //
-//  ACContact.h
-//  ACContactPicker
+//  VeeABContact.h
+//  VeeContactPicker
 //
 //  Created by Andrea Cipriani on 14/12/15.
-//  Copyright © 2015 Andrea Cipriani. All rights reserved.
+//  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 #import "ABContactProt.h"
 @import AddressBook;
 
-@interface ACContact: NSObject<ABContactProt>
+@interface VeeABContact: NSObject<ABContactProt>
 
 - (instancetype)initWithPerson:(ABRecordRef)person;
 

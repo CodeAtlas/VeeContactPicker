@@ -1,14 +1,14 @@
 //
-//  ACContact.m
-//  ACContactPicker
+//  VeeABContact.m
+//  VeeContactPicker
 //
 //  Created by Andrea Cipriani on 14/12/15.
-//  Copyright © 2015 Andrea Cipriani. All rights reserved.
+//  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "ACContact.h"
+#import "VeeABContact.h"
 
-@implementation ACContact
+@implementation VeeABContact
 
 - (instancetype)initWithPerson:(ABRecordRef)person
 {
@@ -108,17 +108,17 @@
     return [self isEqualToAbContact:other];
 }
 
-- (BOOL)isEqualToAbContact:(ACContact*)acContact
+- (BOOL)isEqualToAbContact:(VeeABContact*)veeABContact
 {
-    if (![acContact recordId]) {
-        NSLog(@"Warning: acContact %@ has a null record id", acContact);
+    if (![veeABContact recordId]) {
+        NSLog(@"Warning: VeeABContact %@ has a null record id", veeABContact);
         return NO;
     }
     //Two contacts are equal if they have the same recordId
-    if (self == acContact) {
+    if (self == veeABContact) {
         return YES;
     }
-    if (![[self recordId] isEqualToNumber:[acContact recordId]]) {
+    if (![[self recordId] isEqualToNumber:[veeABContact recordId]]) {
         return NO;
     }
     return YES;
