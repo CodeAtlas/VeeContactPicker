@@ -56,19 +56,15 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 #pragma mark - Options
 
 @property (nonatomic, assign) BOOL showContactDetailLabel;
-@property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default is VeeContactDetailPhoneNumber
+@property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default value is VeeContactDetailPhoneNumber
 @property (nonatomic, assign) BOOL showFirstNameFirst;
-
-//TODO: firstNameOrSurnameOrderOption
-//contactEmptyImageView
+@property (nonatomic, assign) BOOL showLettersWhenContactImageIsMissing; //Default value is YES
+@property (nonatomic, assign) UIImage* contactThumbnailImagePlaceholder; //Used when showLettersWhenContactImageIsMissing = NO
 
 #pragma mark - Strings
 
-//Override to localize the title
--(NSString*)localizedTitle;
-
-//Override to localize the cancel button title
--(NSString*)localizedCancelButtonTitle;
+@property (nonatomic,copy) NSString* localizedTitle;
+@property (nonatomic,copy) NSString* localizedCancelButtonTitle;
 
 #pragma mark - Appearance
 //TODO: ...

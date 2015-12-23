@@ -62,21 +62,14 @@
     _showContactDetailLabel = NO;
     _showFirstNameFirst = YES;
     _veeContactDetail = VeeContactDetailPhoneNumber;
+    _showLettersWhenContactImageIsMissing = YES;
+    
+    //Strings
+    _localizedTitle = @"Choose a contact";
+    _localizedCancelButtonTitle = @"Cancel";
 }
 
 //#pragma mark - Options
-
-#pragma mark - Strings
-
-- (NSString*)localizedTitle
-{
-    return @"Choose a contact";
-}
-
-- (NSString*)localizedCancelButtonTitle
-{
-    return @"Cancel";
-}
 
 #pragma mark - ViewController lifecycle
 
@@ -84,8 +77,9 @@
 {
     [super viewDidLoad];
 
-    _titleNavigationItem.title = [self localizedTitle];
-    _cancelBarButtonItem.title = [self localizedCancelButtonTitle];
+    //Load custom strings if they have been set 
+    _titleNavigationItem.title = _localizedTitle;
+    _cancelBarButtonItem.title = _localizedCancelButtonTitle;
 
     //Register nibs
     [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
@@ -303,7 +297,8 @@
     veeContactUITableViewCell.firstLabel.text = @"";
     veeContactUITableViewCell.secondLabel.text = @"";
     veeContactUITableViewCell.thirdLabel.text = @"";
-
+    veeContactUITableViewCell.contactImageView.image = nil;
+    
     NSString* firstInfo = [abContact firstName];
     NSString* secondInfo;
 
@@ -342,7 +337,14 @@
         veeContactUITableViewCell.contactImageView.image = [abContact thumbnailImage];
     }
     else {
-        [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForString:[abContact displayName]]];
+        if (_showLettersWhenContactImageIsMissing){
+            [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForString:[abContact displayName]]];
+        }
+        else{
+            if (_contactThumbnailImagePlaceholder){
+                [veeContactUITableViewCell.contactImageView setImage:_contactThumbnailImagePlaceholder];
+            }
+        }
     }
 
     if (_showContactDetailLabel) {
@@ -412,14 +414,14 @@
         return [_colorsCache objectForKey:contactDisplayName];
     }
 
-    unsigned long hashNumber = hash((unsigned char*)[contactDisplayName UTF8String]);
+    unsigned long hashNumber = djb2StringToLong((unsigned char*)[contactDisplayName UTF8String]);
     UIColor* color = _contactLettersColorPalette[hashNumber % [_contactLettersColorPalette count]];
     [_colorsCache setObject:color forKey:contactDisplayName];
     return color;
 }
 
 /*http://www.cse.yorku.ca/~oz/hash.html djb2 algorithm to generate an unsigned long hash from a given string */
-unsigned long hash(unsigned char* str)
+unsigned long djb2StringToLong(unsigned char* str)
 {
     unsigned long hash = 5381;
     int c;

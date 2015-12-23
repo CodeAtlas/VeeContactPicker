@@ -46,6 +46,7 @@
         [colors addObject:color];
     }
     veePickerVC.contactLettersColorPalette = colors;
+    //veePickerVC.showLettersWhenContactImageIsMissing = NO;
     
     //Present the VeePickerViewController
     [self presentViewController:veePickerVC animated:YES completion:nil];
