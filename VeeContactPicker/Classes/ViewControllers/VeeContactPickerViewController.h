@@ -58,8 +58,11 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 @property (nonatomic, assign) BOOL showContactDetailLabel;
 @property (nonatomic, assign) VeeContactDetail veeContactDetail; //Default value is VeeContactDetailPhoneNumber
 @property (nonatomic, assign) BOOL showFirstNameFirst;
+
 @property (nonatomic, assign) BOOL showLettersWhenContactImageIsMissing; //Default value is YES
+- (UIColor*)colorForABContact:(id<ABContactProt>)abContact; //By default it's generated from djb2 algorithm (to generate an unsigned long hash from a given string) with the composite name, and a cache
 @property (nonatomic, assign) UIImage* contactThumbnailImagePlaceholder; //Used when showLettersWhenContactImageIsMissing = NO
+
 
 #pragma mark - Strings
 

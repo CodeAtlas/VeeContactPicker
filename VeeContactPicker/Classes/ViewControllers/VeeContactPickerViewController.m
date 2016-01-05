@@ -338,7 +338,7 @@
     }
     else {
         if (_showLettersWhenContactImageIsMissing){
-            [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForString:[abContact displayName]]];
+            [veeContactUITableViewCell.contactImageView setImageWithString:[abContact displayName] color:[self colorForABContact:abContact]];
         }
         else{
             if (_contactThumbnailImagePlaceholder){
@@ -404,21 +404,23 @@
 
 #pragma mark - UIImage+Letters colors helper
 
-- (UIColor*)colorForString:(NSString*)contactDisplayName
+- (UIColor*)colorForABContact:(id<ABContactProt>)abContact
 {
+    NSString* contactIdentifier = [abContact compositeName];
+    
     if (!_contactLettersColorPalette) {
         return [UIColor lightGrayColor];
     }
     if (!_colorsCache) {
         _colorsCache = (NSMutableDictionary<NSString*, UIColor*>*)[NSMutableDictionary new];
     }
-    if ([_colorsCache objectForKey:contactDisplayName]) {
-        return [_colorsCache objectForKey:contactDisplayName];
+    if ([_colorsCache objectForKey:contactIdentifier]) {
+        return [_colorsCache objectForKey:contactIdentifier];
     }
-
-    unsigned long hashNumber = djb2StringToLong((unsigned char*)[contactDisplayName UTF8String]);
+    
+    unsigned long hashNumber = djb2StringToLong((unsigned char*)[contactIdentifier UTF8String]);
     UIColor* color = _contactLettersColorPalette[hashNumber % [_contactLettersColorPalette count]];
-    [_colorsCache setObject:color forKey:contactDisplayName];
+    [_colorsCache setObject:color forKey:contactIdentifier];
     return color;
 }
 
