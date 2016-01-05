@@ -39,6 +39,10 @@
         _organizationName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
     }
     
+    if (!_compositeName){
+        _compositeName = (__bridge_transfer NSString*)ABRecordCopyCompositeName(person);
+    }
+    
     if (!_thumbnailImage){
         if (ABPersonHasImageData(person)) {
             NSData* imgData = (__bridge_transfer NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
@@ -153,7 +157,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ - RecordId: %@, FirstName: %@, LastName: %@, OrganizationName: %@, DisplayName: %@, PhoneNumbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordId, _firstName, _lastName, _organizationName, _displayName,_phoneNumbers,_emails];
+    return [NSString stringWithFormat:@"[%@ - RecordId: %@, FirstName: %@, LastName: %@, Composite name: %@, OrganizationName: %@, DisplayName: %@, PhoneNumbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordId, _firstName, _lastName, _compositeName, _organizationName, _displayName,_phoneNumbers,_emails];
 }
 
 @end
