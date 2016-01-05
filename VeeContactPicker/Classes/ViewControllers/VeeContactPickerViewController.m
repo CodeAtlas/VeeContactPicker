@@ -370,6 +370,8 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     [self dismissViewControllerAnimated:YES completion:^{
         //Both delegate and blocks
         id<ABContactProt> abContact;
