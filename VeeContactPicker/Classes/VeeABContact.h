@@ -25,7 +25,7 @@
 @property (nonatomic,copy) NSString* nickname;
 @property (nonatomic,copy) NSString* organizationName;
 @property (nonatomic,copy) NSString* compositeName; //ABRecordCompositeName
-@property (nonatomic,copy) NSString* displayName; //Is different from compositeName because should nevery be empty. If a contact has no name/surname it will be another information such as the organization name, a phone number...
+@property (nonatomic,copy) NSString* displayName; //Is different from compositeName because it should nevery be empty. If a contact has no name/surname it will be another information such as the organization name, a phone number...
 @property (nonatomic,strong) NSArray* phoneNumbers;
 @property (nonatomic,strong) NSArray* emails;
 

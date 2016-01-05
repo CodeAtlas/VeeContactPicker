@@ -39,9 +39,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 //Override to change the data source of the VeeContactPicker
 - (NSArray<ABContactProt>*)unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
-- (NSArray<NSString*>*)sectionIdentifiers;
-
-//Override if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
+- (NSArray<NSString*>*)sectionIdentifiers; //Override if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
 
 @property (nonatomic, strong) NSArray<UIColor*>* contactLettersColorPalette; //Set your palette otherwise lightgraycolor will be used for all contact image placeholders
 

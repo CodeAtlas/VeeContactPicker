@@ -88,7 +88,7 @@
     else if (_lastName && _lastName.length > 0) {
         _sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
     }
-    else if ([self displayName]) {
+    else if ([self displayName] && [self displayName].length > 0) {
         _sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
     }
     else {
