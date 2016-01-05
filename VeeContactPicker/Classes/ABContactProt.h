@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString* middleName;
 @property (nonatomic, copy) NSString* nickname;
 @property (nonatomic, copy) NSString* displayName;
+@property (nonatomic, copy) NSString* compositeName;
 @property (nonatomic, strong) NSArray* phoneNumbers;
 @property (nonatomic, strong) NSArray* emails;
 
