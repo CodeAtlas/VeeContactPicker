@@ -21,6 +21,7 @@
 		860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62A91C28528E00876682 /* VeeContactUITableViewCell.m */; };
 		860C62AE1C28528E00876682 /* VeeContactUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860C62AA1C28528E00876682 /* VeeContactUITableViewCell.xib */; };
 		860C62B61C2854CB00876682 /* VeeABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62B51C2854CB00876682 /* VeeABContact.m */; };
+		86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		860C62AA1C28528E00876682 /* VeeContactUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VeeContactUITableViewCell.xib; sourceTree = "<group>"; };
 		860C62B41C2854CB00876682 /* VeeABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeABContact.h; sourceTree = "<group>"; };
 		860C62B51C2854CB00876682 /* VeeABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeABContact.m; sourceTree = "<group>"; };
+		86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Boldify.h"; sourceTree = "<group>"; };
+		86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Boldify.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 			children = (
 				860C62A11C28527E00876682 /* UIImageView+Letters.h */,
 				860C62A21C28527E00876682 /* UIImageView+Letters.m */,
+				86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */,
+				86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */,
 				860C62B61C2854CB00876682 /* VeeABContact.m in Sources */,
 				860C62A31C28527F00876682 /* UIImageView+Letters.m in Sources */,
+				86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */,
 				860C626D1C28521200876682 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
