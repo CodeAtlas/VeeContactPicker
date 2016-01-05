@@ -10,6 +10,7 @@
 #import "UIImageView+Letters.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactUITableViewCell.h"
+#import "UILabel+Boldify.h"
 
 #define kVeeContactCellNibName @"VeeContactUITableViewCell"
 #define kVeeContactCellIdentifier @"VeeContactCell" //Also referenced into the xib
@@ -295,12 +296,12 @@
     veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 0;
     veeContactUITableViewCell.thirdLabel.hidden = YES;
     veeContactUITableViewCell.firstLabel.text = @"";
-    veeContactUITableViewCell.secondLabel.text = @"";
     veeContactUITableViewCell.thirdLabel.text = @"";
     veeContactUITableViewCell.contactImageView.image = nil;
     
     NSString* firstInfo = [abContact firstName];
     NSString* secondInfo;
+    NSString* concatInfo;
 
     if ([abContact middleName]) {
         secondInfo = [NSString stringWithFormat:@"%@ %@", [abContact middleName], [abContact lastName]];
@@ -310,7 +311,7 @@
     }
 
     if (_showFirstNameFirst == NO) {
-        //Switch firstInfo and secondInfo
+        //Swap firstInfo and secondInfo
         NSString* tmp = firstInfo;
         firstInfo = secondInfo;
         secondInfo = tmp;
@@ -318,21 +319,25 @@
 
     //Load ACContact information into the cell
     if (firstInfo) {
-        veeContactUITableViewCell.firstLabel.text = firstInfo;
-
+        concatInfo = firstInfo;
         if (secondInfo) {
-            veeContactUITableViewCell.secondLabel.text = secondInfo;
+            concatInfo = [concatInfo stringByAppendingString:[NSString stringWithFormat:@" %@",secondInfo]];
         }
+        veeContactUITableViewCell.firstLabel.text = concatInfo;
+        [veeContactUITableViewCell.firstLabel boldSubstring:firstInfo];
     }
     else {
         if (secondInfo) {
-            veeContactUITableViewCell.firstLabel.text = secondInfo;
+            concatInfo = secondInfo;
         }
         else {
-            veeContactUITableViewCell.firstLabel.text = [abContact displayName];
+            concatInfo = [abContact displayName];
         }
+        veeContactUITableViewCell.firstLabel.text = concatInfo;
+        [veeContactUITableViewCell.firstLabel boldSubstring:concatInfo];
     }
 
+    
     if ([abContact thumbnailImage]) {
         veeContactUITableViewCell.contactImageView.image = [abContact thumbnailImage];
     }

@@ -11,9 +11,8 @@
 @interface VeeContactUITableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
-@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secondLabel;
-@property (weak, nonatomic) IBOutlet UILabel *thirdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel; //TODO: rename in primaryLabel
+@property (weak, nonatomic) IBOutlet UILabel *thirdLabel; //TODO: rename in secondaryLabel
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstLabelCenterYAlignmenetConstraint;
 
