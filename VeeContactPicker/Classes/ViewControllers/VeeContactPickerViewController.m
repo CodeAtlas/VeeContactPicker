@@ -167,7 +167,7 @@
 
 #pragma mark - AddressBook utils
 
-- (BOOL)hasAddressBookPermissions //TODO: use this
+- (BOOL)hasAddressBookPermissions
 {
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         return YES;

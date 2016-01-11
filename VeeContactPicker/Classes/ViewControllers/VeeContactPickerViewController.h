@@ -37,10 +37,8 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Data source
 
-//Override to change the data source of the VeeContactPicker
-- (NSArray<ABContactProt>*)unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
-- (NSArray<NSString*>*)sectionIdentifiers; //Override if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
-
+@property (nonatomic,strong) NSArray<ABContactProt>* unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
+@property (nonatomic,strong) NSArray<NSString*>* sectionIdentifiers; //Set it if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
 @property (nonatomic, strong) NSArray<UIColor*>* contactLettersColorPalette; //Set your palette otherwise lightgraycolor will be used for all contact image placeholders
 
 #pragma mark - Contact picker delegate
@@ -60,7 +58,6 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 @property (nonatomic, assign) BOOL showLettersWhenContactImageIsMissing; //Default value is YES
 - (UIColor*)colorForABContact:(id<ABContactProt>)abContact; //By default it's generated from djb2 algorithm (to generate an unsigned long hash from a given string) with the composite name, and a cache
 @property (nonatomic, assign) UIImage* contactThumbnailImagePlaceholder; //Used when showLettersWhenContactImageIsMissing = NO
-
 
 #pragma mark - Strings
 
