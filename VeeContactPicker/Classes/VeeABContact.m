@@ -131,20 +131,20 @@
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    return [self isEqualToAbContact:other];
+    return [self isEqualToABContactProt:other];
 }
 
-- (BOOL)isEqualToAbContact:(VeeABContact*)veeABContact
+- (BOOL)isEqualToABContactProt:(id<ABContactProt>)abContactProt
 {
-    if (![veeABContact recordId]) {
-        NSLog(@"Warning: VeeABContact %@ has a null record id", veeABContact);
+    if (![abContactProt recordId]) {
+        NSLog(@"Warning: VeeABContact %@ has a null record id", abContactProt);
         return NO;
     }
     //Two contacts are equal if they have the same recordId
-    if (self == veeABContact) {
+    if (self == abContactProt) {
         return YES;
     }
-    if (![[self recordId] isEqualToNumber:[veeABContact recordId]]) {
+    if (![[self recordId] isEqualToNumber:[abContactProt recordId]]) {
         return NO;
     }
     return YES;
