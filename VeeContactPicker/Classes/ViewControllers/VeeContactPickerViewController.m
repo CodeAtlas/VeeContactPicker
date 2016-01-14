@@ -412,7 +412,9 @@
 - (UIColor*)colorForABContact:(id<ABContactProt>)abContact
 {
     NSString* contactIdentifier = [abContact compositeName];
-    
+    if (contactIdentifier == nil){
+        return [UIColor lightGrayColor];
+    }
     if (!_contactLettersColorPalette) {
         return [UIColor lightGrayColor];
     }
