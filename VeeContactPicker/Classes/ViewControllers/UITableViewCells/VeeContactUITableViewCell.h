@@ -10,10 +10,9 @@
 
 @interface VeeContactUITableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
-@property (weak, nonatomic) IBOutlet UILabel *firstLabel; //TODO: rename in primaryLabel
-@property (weak, nonatomic) IBOutlet UILabel *thirdLabel; //TODO: rename in secondaryLabel
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstLabelCenterYAlignmenetConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView* contactImageView;
+@property (weak, nonatomic) IBOutlet UILabel* primaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel* secondaryLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* primaryLabelCenterYAlignmentConstraint;
 
 @end

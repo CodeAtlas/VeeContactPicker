@@ -293,10 +293,10 @@
     }
 
     //Load empty default values
-    veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 0;
-    veeContactUITableViewCell.thirdLabel.hidden = YES;
-    veeContactUITableViewCell.firstLabel.text = @"";
-    veeContactUITableViewCell.thirdLabel.text = @"";
+    veeContactUITableViewCell.primaryLabelCenterYAlignmentConstraint.constant = 0;
+    veeContactUITableViewCell.secondaryLabel.hidden = YES;
+    veeContactUITableViewCell.primaryLabel.text = @"";
+    veeContactUITableViewCell.secondaryLabel.text = @"";
     veeContactUITableViewCell.contactImageView.image = nil;
     
     NSString* firstInfo = [abContact firstName];
@@ -323,8 +323,8 @@
         if (secondInfo) {
             concatInfo = [concatInfo stringByAppendingString:[NSString stringWithFormat:@" %@",secondInfo]];
         }
-        veeContactUITableViewCell.firstLabel.text = concatInfo;
-        [veeContactUITableViewCell.firstLabel boldSubstring:firstInfo];
+        veeContactUITableViewCell.primaryLabel.text = concatInfo;
+        [veeContactUITableViewCell.primaryLabel boldSubstring:firstInfo];
     }
     else {
         if (secondInfo) {
@@ -333,8 +333,8 @@
         else {
             concatInfo = [abContact displayName];
         }
-        veeContactUITableViewCell.firstLabel.text = concatInfo;
-        [veeContactUITableViewCell.firstLabel boldSubstring:concatInfo];
+        veeContactUITableViewCell.primaryLabel.text = concatInfo;
+        [veeContactUITableViewCell.primaryLabel boldSubstring:concatInfo];
     }
 
     
@@ -354,21 +354,21 @@
 
     if (_showContactDetailLabel) {
 
-        veeContactUITableViewCell.thirdLabel.hidden = NO;
+        veeContactUITableViewCell.secondaryLabel.hidden = NO;
 
         if (_veeContactDetail == VeeContactDetailPhoneNumber) {
             if ([[abContact phoneNumbers] count] > 0) {
-                veeContactUITableViewCell.thirdLabel.text = [[abContact phoneNumbers] firstObject];
+                veeContactUITableViewCell.secondaryLabel.text = [[abContact phoneNumbers] firstObject];
             }
         }
         else if (_veeContactDetail == VeeContactDetailEmail) {
             if ([[abContact emails] count] > 0) {
-                veeContactUITableViewCell.thirdLabel.text = [[abContact emails] firstObject];
+                veeContactUITableViewCell.secondaryLabel.text = [[abContact emails] firstObject];
             }
         }
 
         //Change constraints: //TODO: this is not working
-        veeContactUITableViewCell.firstLabelCenterYAlignmenetConstraint.constant = 20;
+        veeContactUITableViewCell.primaryLabelCenterYAlignmentConstraint.constant = 20;
     }
     return veeContactUITableViewCell;
 }

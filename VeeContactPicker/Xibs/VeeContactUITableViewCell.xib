@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -29,7 +29,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-1h-VBe" userLabel="Contact detail ">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-1h-VBe" userLabel="Secondary label">
                         <rect key="frame" x="66" y="40" width="38" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,9 +74,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contactImageView" destination="Caj-0K-P7x" id="AS5-oy-hYn"/>
-                <outlet property="firstLabel" destination="O1J-uh-sxD" id="M3y-Ac-Aoa"/>
-                <outlet property="firstLabelCenterYAlignmenetConstraint" destination="HJJ-qJ-lTC" id="M5d-hR-OXT"/>
-                <outlet property="thirdLabel" destination="dB7-1h-VBe" id="d35-Xi-ACH"/>
+                <outlet property="primaryLabel" destination="O1J-uh-sxD" id="zsc-Gx-UhT"/>
+                <outlet property="primaryLabelCenterYAlignmentConstraint" destination="HJJ-qJ-lTC" id="6bd-xo-noF"/>
+                <outlet property="secondaryLabel" destination="dB7-1h-VBe" id="KnJ-hs-J2R"/>
             </connections>
         </tableViewCell>
     </objects>
