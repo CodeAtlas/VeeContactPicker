@@ -186,10 +186,8 @@
 		860C62AF1C28529700876682 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				86D7F7901C8ED8A40060FA7A /* Model */,
 				860C62B11C2852AD00876682 /* ViewControllers */,
-				860C629F1C28525E00876682 /* VeeContactProt.h */,
-				860C62B41C2854CB00876682 /* VeeContact.h */,
-				860C62B51C2854CB00876682 /* VeeContact.m */,
 				860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */,
 			);
 			path = Classes;
@@ -221,6 +219,16 @@
 				860C62A91C28528E00876682 /* VeeContactUITableViewCell.m */,
 			);
 			path = UITableViewCells;
+			sourceTree = "<group>";
+		};
+		86D7F7901C8ED8A40060FA7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				860C629F1C28525E00876682 /* VeeContactProt.h */,
+				860C62B41C2854CB00876682 /* VeeContact.h */,
+				860C62B51C2854CB00876682 /* VeeContact.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

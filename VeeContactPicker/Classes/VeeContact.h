@@ -6,29 +6,30 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
+#import "VeeContactProt.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VeeContactProt.h"
 @import AddressBook;
 
-@interface VeeContact: NSObject<VeeContactProt>
+@interface VeeContact : NSObject <VeeContactProt>
 
-- (instancetype)initWithPerson:(ABRecordRef)person;
+- (instancetype)initWithLinkedPeopleOfABRecord:(ABRecordRef)abRecordRef;
 
--(void)updateDataFromABRecordRef:(ABRecordRef)person;
+@property (nonatomic, readonly, strong) NSSet<NSNumber*>* recordIds;
+@property (nonatomic, readonly, strong) NSDate* modifiedAt;
+@property (nonatomic, readonly, strong) NSDate* createdAt;
+@property (nonatomic, readonly, copy) NSString* firstName;
+@property (nonatomic, readonly, copy) NSString* lastName;
+@property (nonatomic, readonly, copy) NSString* middleName;
+@property (nonatomic, readonly, copy) NSString* nickname;
+@property (nonatomic, readonly, copy) NSString* organizationName;
+@property (nonatomic, readonly, copy) NSString* compositeName;
+@property (nonatomic, readonly, copy) NSString* displayName;
+@property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 
-@property (nonatomic,strong) NSNumber *recordId; //For unified contacts it will be just the first one
-@property (nonatomic,strong) UIImage* thumbnailImage;
-@property (nonatomic,copy) NSString* firstName;
-@property (nonatomic,copy) NSString* lastName;
-@property (nonatomic,copy) NSString* middleName;
-@property (nonatomic,copy) NSString* nickname;
-@property (nonatomic,copy) NSString* organizationName;
-@property (nonatomic,copy) NSString* compositeName; //ABRecordCompositeName
-@property (nonatomic,copy) NSString* displayName; //Is different from compositeName because it should nevery be empty. If a contact has no name/surname it will be another information such as the organization name, a phone number...
-@property (nonatomic,strong) NSArray* phoneNumbers;
-@property (nonatomic,strong) NSArray* emails;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
 
-@property (nonatomic,copy) NSString* sectionIdentifier;
+@property (nonatomic, readonly, copy) NSString* sectionIdentifier;
 
 @end

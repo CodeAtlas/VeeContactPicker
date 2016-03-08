@@ -11,18 +11,22 @@
 
 @protocol VeeContactProt <NSObject>
 
-@property (nonatomic, strong) NSNumber* recordId; //For unified contacts just choose one recordId
-@property (nonatomic, strong) UIImage* thumbnailImage;
-@property (nonatomic, copy) NSString* firstName;
-@property (nonatomic, copy) NSString* lastName;
-@property (nonatomic, copy) NSString* middleName;
-@property (nonatomic, copy) NSString* nickname;
-@property (nonatomic, copy) NSString* displayName;
-@property (nonatomic, copy) NSString* compositeName;
-@property (nonatomic,copy) NSString* organizationName;
-@property (nonatomic, strong) NSArray* phoneNumbers;
-@property (nonatomic, strong) NSArray* emails;
+@property (nonatomic, readonly, strong) NSSet<NSNumber*>* recordIds;
+@property (nonatomic, readonly, strong) NSDate* modifiedAt;
+@property (nonatomic, readonly, strong) NSDate* createdAt;
+@property (nonatomic, readonly, copy) NSString* firstName;
+@property (nonatomic, readonly, copy) NSString* lastName;
+@property (nonatomic, readonly, copy) NSString* middleName;
+@property (nonatomic, readonly, copy) NSString* nickname;
+@property (nonatomic, readonly, copy) NSString* organizationName;
+@property (nonatomic, readonly, copy) NSString* compositeName;
+@property (nonatomic, readonly, copy) NSString* displayName;
+@property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 
-@property (nonatomic, copy) NSString* sectionIdentifier;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
+
+@property (nonatomic, readonly, copy) NSString* sectionIdentifier;
+
 
 @end

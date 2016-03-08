@@ -195,9 +195,9 @@
                 continue;
             }
 
-            VeeContact* veeABContactUnified = [[VeeContact alloc] initWithPerson:person];
+            VeeContact* veeABContactUnified = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:person];
             
-            NSArray* linkedRecordsOfPerson = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople(person);
+            /*NSArray* linkedRecordsOfPerson = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople(person);
 
             //If the contact is composed by 2 or more records
             if (linkedRecordsOfPerson.count > 1) {
@@ -210,7 +210,7 @@
                     ABRecordRef linkedABRecordRef = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedRecordsOfPerson), j);
                     [veeABContactUnified updateDataFromABRecordRef:linkedABRecordRef];
                 }
-            }
+            }*/
             
             [mutableACContacts addObject:veeABContactUnified];
 
