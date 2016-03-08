@@ -6,7 +6,7 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "ABContactProt.h"
+#import "VeeContactProt.h"
 #import "VeeContactPickerDelegate.h"
 #import <UIKit/UIKit.h>
 @import AddressBook;
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Initializers
 
-- (instancetype)initWithCompletionHandler:(void (^)(id<ABContactProt> abContact))didSelectABContact;
+- (instancetype)initWithCompletionHandler:(void (^)(id<VeeContactProt> abContact))didSelectABContact;
 - (instancetype)initWithDelegate:(id<VeeContactPickerDelegate>)contactPickerDelegate;
 
 #pragma mark - Outlets
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Data source
 
-@property (nonatomic,strong) NSArray<ABContactProt>* unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
+@property (nonatomic,strong) NSArray<VeeContactProt>* unifiedABContacts; //This is the only method in which instances of ABContatProt are instantiated
 @property (nonatomic,strong) NSArray<NSString*>* sectionIdentifiers; //Set it if you want to change section identifiers, by default they are taken from UILocalizedIndexedCollation class (sectionIndexTitles)
 @property (nonatomic, strong) NSArray<UIColor*>* contactLettersColorPalette; //Set your palette otherwise lightgraycolor will be used for all contact image placeholders
 
@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 
 #pragma mark - Contact picker completion handler
 
-@property (nonatomic, strong) void (^completionHandler)(id<ABContactProt>);
+@property (nonatomic, strong) void (^completionHandler)(id<VeeContactProt>);
 
 #pragma mark - Options
 
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, VeeContactDetail) {
 @property (nonatomic, assign) BOOL showFirstNameFirst;
 
 @property (nonatomic, assign) BOOL showLettersWhenContactImageIsMissing; //Default value is YES
-- (UIColor*)colorForABContact:(id<ABContactProt>)abContact; //By default it's generated from djb2 algorithm (to generate an unsigned long hash from a given string) with the composite name, and a cache
+- (UIColor*)colorForABContact:(id<VeeContactProt>)abContact; //By default it's generated from djb2 algorithm (to generate an unsigned long hash from a given string) with the composite name, and a cache
 @property (nonatomic, assign) UIImage* contactThumbnailImagePlaceholder; //Used when showLettersWhenContactImageIsMissing = NO
 
 #pragma mark - Strings

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol ABContactProt <NSObject>
+@protocol VeeContactProt <NSObject>
 
 @property (nonatomic, strong) NSNumber* recordId; //For unified contacts just choose one recordId
 @property (nonatomic, strong) UIImage* thumbnailImage;

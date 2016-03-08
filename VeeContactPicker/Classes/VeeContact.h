@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ABContactProt.h"
+#import "VeeContactProt.h"
 @import AddressBook;
 
-@interface VeeABContact: NSObject<ABContactProt>
+@interface VeeContact: NSObject<VeeContactProt>
 
 - (instancetype)initWithPerson:(ABRecordRef)person;
 

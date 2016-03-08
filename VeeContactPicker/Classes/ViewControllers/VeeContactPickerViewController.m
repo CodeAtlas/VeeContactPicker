@@ -6,7 +6,7 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeABContact.h"
+#import "VeeContact.h"
 #import "UIImageView+Letters.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactUITableViewCell.h"
@@ -21,8 +21,8 @@
 
 @property (nonatomic) ABAddressBookRef addressBookRef;
 
-@property (nonatomic, strong) NSArray<ABContactProt>* abContactsCache;
-@property (nonatomic, strong) NSArray<ABContactProt>* abContactsSearchResults;
+@property (nonatomic, strong) NSArray<VeeContactProt>* abContactsCache;
+@property (nonatomic, strong) NSArray<VeeContactProt>* abContactsSearchResults;
 @property (nonatomic, strong) NSArray<NSString*>* sectionIdentifiersCache;
 
 @property (nonatomic, strong) NSArray<NSString*>* abContactsSortedKeysForSections;
@@ -37,7 +37,7 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithCompletionHandler:(void (^)(id<ABContactProt> abContact))didSelectABContact
+- (instancetype)initWithCompletionHandler:(void (^)(id<VeeContactProt> abContact))didSelectABContact
 {
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
@@ -115,7 +115,7 @@
     
     //Sort contacts by first name, in the address book way
     //TODO: check showFirstNameFirst
-    _abContactsCache = (NSArray<ABContactProt>*)[[self unifiedABContacts] sortedArrayUsingComparator:^NSComparisonResult(id<ABContactProt> firstContact, id<ABContactProt> secondContact) {
+    _abContactsCache = (NSArray<VeeContactProt>*)[[self unifiedABContacts] sortedArrayUsingComparator:^NSComparisonResult(id<VeeContactProt> firstContact, id<VeeContactProt> secondContact) {
         NSString* firstContactSortProperty = firstContact.firstName;
         NSString* secondContactSortProperty = secondContact.firstName;
         
@@ -177,9 +177,9 @@
 
 #pragma mark - Data source
 
-- (NSArray<ABContactProt>*)unifiedABContacts
+- (NSArray<VeeContactProt>*)unifiedABContacts
 {
-    NSMutableArray<ABContactProt>* mutableACContacts = (NSMutableArray<ABContactProt>*)[NSMutableArray new];
+    NSMutableArray<VeeContactProt>* mutableACContacts = (NSMutableArray<VeeContactProt>*)[NSMutableArray new];
     NSMutableSet* linkedPersonsToSkip = [NSMutableSet new]; //Use this set to skip linked records of a contact that are already been processed
 
     NSArray* abSources = (__bridge_transfer NSArray*)(ABAddressBookCopyArrayOfAllSources(_addressBookRef));
@@ -195,7 +195,7 @@
                 continue;
             }
 
-            VeeABContact* veeABContactUnified = [[VeeABContact alloc] initWithPerson:person];
+            VeeContact* veeABContactUnified = [[VeeContact alloc] initWithPerson:person];
             
             NSArray* linkedRecordsOfPerson = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople(person);
 
@@ -216,7 +216,7 @@
 
         }
     }
-    return (NSArray<ABContactProt>*)[NSArray arrayWithArray:mutableACContacts];
+    return (NSArray<VeeContactProt>*)[NSArray arrayWithArray:mutableACContacts];
 }
 
 - (NSArray<NSString*>*)sectionIdentifiers
@@ -228,7 +228,7 @@
 {
     NSMutableDictionary* abContactsSectionedMutable = [NSMutableDictionary new];
     
-    for (id<ABContactProt> abContact in abContacts) {
+    for (id<VeeContactProt> abContact in abContacts) {
         NSArray* abContactsForSectionIdentifier = [abContactsSectionedMutable objectForKey:[abContact sectionIdentifier]];
         if (abContactsForSectionIdentifier == nil) {
             [abContactsSectionedMutable setObject:[NSArray arrayWithObject:abContact] forKey:[abContact sectionIdentifier]];
@@ -281,7 +281,7 @@
     }
 
     //Load ACContact for this cell
-    id<ABContactProt> abContact;
+    id<VeeContactProt> abContact;
 
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:indexPath.section];
@@ -379,7 +379,7 @@
 
     [self dismissViewControllerAnimated:YES completion:^{
         //Both delegate and blocks
-        id<ABContactProt> abContact;
+        id<VeeContactProt> abContact;
 
         if (tableView == self.searchDisplayController.searchResultsTableView) {
             NSString* sectionIdentifier = [_abContactsSearchResultsSortedKeysForSections objectAtIndex:indexPath.section];
@@ -409,7 +409,7 @@
 
 #pragma mark - UIImage+Letters colors helper
 
-- (UIColor*)colorForABContact:(id<ABContactProt>)abContact
+- (UIColor*)colorForABContact:(id<VeeContactProt>)abContact
 {
     NSString* contactIdentifier = [abContact compositeName];
     if (contactIdentifier == nil){
@@ -465,7 +465,7 @@ unsigned long djb2StringToLong(unsigned char* str)
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate* resultPredicate = [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
-    _abContactsSearchResults = (NSArray<ABContactProt>*)[_abContactsCache filteredArrayUsingPredicate:resultPredicate];
+    _abContactsSearchResults = (NSArray<VeeContactProt>*)[_abContactsCache filteredArrayUsingPredicate:resultPredicate];
     _abContactsForSectionIdentifiersSearchResults = [self abContactsDictionaryWithSectionIdentifiers:_abContactsSearchResults];
     _abContactsSearchResultsSortedKeysForSections = [[_abContactsForSectionIdentifiersSearchResults allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }

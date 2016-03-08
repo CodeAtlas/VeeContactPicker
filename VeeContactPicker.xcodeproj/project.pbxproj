@@ -20,7 +20,7 @@
 		860C62AC1C28528E00876682 /* VeeContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860C62A71C28528E00876682 /* VeeContactPickerViewController.xib */; };
 		860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62A91C28528E00876682 /* VeeContactUITableViewCell.m */; };
 		860C62AE1C28528E00876682 /* VeeContactUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860C62AA1C28528E00876682 /* VeeContactUITableViewCell.xib */; };
-		860C62B61C2854CB00876682 /* VeeABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62B51C2854CB00876682 /* VeeABContact.m */; };
+		860C62B61C2854CB00876682 /* VeeContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62B51C2854CB00876682 /* VeeContact.m */; };
 		86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,7 @@
 		860C628C1C28521200876682 /* VeeContactPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeeContactPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		860C62901C28521200876682 /* VeeContactPickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerUITests.m; sourceTree = "<group>"; };
 		860C62921C28521200876682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		860C629F1C28525E00876682 /* ABContactProt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABContactProt.h; sourceTree = "<group>"; };
+		860C629F1C28525E00876682 /* VeeContactProt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeeContactProt.h; sourceTree = "<group>"; };
 		860C62A11C28527E00876682 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		860C62A21C28527E00876682 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerDelegate.h; sourceTree = "<group>"; };
@@ -68,8 +68,8 @@
 		860C62A81C28528E00876682 /* VeeContactUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactUITableViewCell.h; sourceTree = "<group>"; };
 		860C62A91C28528E00876682 /* VeeContactUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactUITableViewCell.m; sourceTree = "<group>"; };
 		860C62AA1C28528E00876682 /* VeeContactUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VeeContactUITableViewCell.xib; sourceTree = "<group>"; };
-		860C62B41C2854CB00876682 /* VeeABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeABContact.h; sourceTree = "<group>"; };
-		860C62B51C2854CB00876682 /* VeeABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeABContact.m; sourceTree = "<group>"; };
+		860C62B41C2854CB00876682 /* VeeContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContact.h; sourceTree = "<group>"; };
+		860C62B51C2854CB00876682 /* VeeContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContact.m; sourceTree = "<group>"; };
 		86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Boldify.h"; sourceTree = "<group>"; };
 		86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Boldify.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,9 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				860C62B11C2852AD00876682 /* ViewControllers */,
-				860C629F1C28525E00876682 /* ABContactProt.h */,
-				860C62B41C2854CB00876682 /* VeeABContact.h */,
-				860C62B51C2854CB00876682 /* VeeABContact.m */,
+				860C629F1C28525E00876682 /* VeeContactProt.h */,
+				860C62B41C2854CB00876682 /* VeeContact.h */,
+				860C62B51C2854CB00876682 /* VeeContact.m */,
 				860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */,
 			);
 			path = Classes;
@@ -359,7 +359,7 @@
 				860C62731C28521200876682 /* ViewController.m in Sources */,
 				860C62701C28521200876682 /* AppDelegate.m in Sources */,
 				860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */,
-				860C62B61C2854CB00876682 /* VeeABContact.m in Sources */,
+				860C62B61C2854CB00876682 /* VeeContact.m in Sources */,
 				860C62A31C28527F00876682 /* UIImageView+Letters.m in Sources */,
 				86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */,
 				860C626D1C28521200876682 /* main.m in Sources */,

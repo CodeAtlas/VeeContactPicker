@@ -6,9 +6,9 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeABContact.h"
+#import "VeeContact.h"
 
-@implementation VeeABContact
+@implementation VeeContact
 
 - (instancetype)initWithPerson:(ABRecordRef)person
 {
@@ -134,7 +134,7 @@
     return [self isEqualToABContactProt:other];
 }
 
-- (BOOL)isEqualToABContactProt:(id<ABContactProt>)abContactProt
+- (BOOL)isEqualToABContactProt:(id<VeeContactProt>)abContactProt
 {
     if (![abContactProt recordId]) {
         NSLog(@"Warning: VeeABContact %@ has a null record id", abContactProt);

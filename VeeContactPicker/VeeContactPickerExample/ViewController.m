@@ -54,7 +54,7 @@
 
 #pragma mark - VeeContactPickerDelegate
 
-- (void)didSelectABContact:(id<ABContactProt>)abContact
+- (void)didSelectABContact:(id<VeeContactProt>)abContact
 {
     NSLog(@"Selected %@", [abContact displayName]);
 }
