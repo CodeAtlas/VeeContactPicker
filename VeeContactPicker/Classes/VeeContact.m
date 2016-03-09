@@ -8,7 +8,7 @@
 
 #import "VeeContact.h"
 
-@interface VeeContact()
+@interface VeeContact ()
 
 @property (nonatomic, strong) NSMutableSet<NSNumber*>* recordIdsMutable;
 @property (nonatomic, strong) NSMutableArray<NSString*>* phoneNumbersMutable;
@@ -23,6 +23,7 @@
 {
     self = [super init];
     if (self) {
+        NSAssert(abRecord, @"abRecord must exist");
         [self createWithLinkedPeopleFromABRecord:abRecord];
     }
     return self;
@@ -30,7 +31,7 @@
 
 #pragma mark - Initalization utils
 
--(void)createWithLinkedPeopleFromABRecord:(ABRecordRef)abRecord
+- (void)createWithLinkedPeopleFromABRecord:(ABRecordRef)abRecord
 {
     NSArray* linkedPeople = (__bridge NSArray*)ABPersonCopyArrayOfAllLinkedPeople(abRecord);
     for (int i = 0; i < linkedPeople.count; i++) {
@@ -40,7 +41,7 @@
     [self updateSectionIdentifier];
 }
 
--(void)updateFromABRecord:(ABRecordRef)abRecord
+- (void)updateFromABRecord:(ABRecordRef)abRecord
 {
     [self addRecordIdFromABRecord:abRecord];
     [self updateDatesIfEmptyFromABRecord:abRecord];
@@ -50,34 +51,34 @@
     [self addEmailsFromABRecord:abRecord];
 }
 
--(void)addRecordIdFromABRecord:(ABRecordRef)abRecord
+- (void)addRecordIdFromABRecord:(ABRecordRef)abRecord
 {
     NSNumber* recordId = [NSNumber numberWithInt:ABRecordGetRecordID(abRecord)];
     [self addObject:recordId toMutableSet:_recordIdsMutable];
 }
 
--(void)updateDatesIfEmptyFromABRecord:(ABRecordRef)abRecord
+- (void)updateDatesIfEmptyFromABRecord:(ABRecordRef)abRecord
 {
     [self updateCreatedFromABRecordIfItsAfter:abRecord];
     [self updateModifiedFromABRecordRefIfItsAfter:abRecord];
 }
 
--(void)updateCreatedFromABRecordIfItsAfter:(ABRecordRef)abRecord
+- (void)updateCreatedFromABRecordIfItsAfter:(ABRecordRef)abRecord
 {
     if (!_createdAt) {
         _createdAt = (__bridge_transfer NSDate*)ABRecordCopyValue(abRecord, kABPersonCreationDateProperty);
         return;
     }
-    NSDate* abRecordCreatedAt = (__bridge_transfer NSDate*)ABRecordCopyValue(abRecord,kABPersonCreationDateProperty);
+    NSDate* abRecordCreatedAt = (__bridge_transfer NSDate*)ABRecordCopyValue(abRecord, kABPersonCreationDateProperty);
     BOOL abRecordIsCreatedAfterThanSelf = [_createdAt compare:abRecordCreatedAt] == NSOrderedAscending;
     if (abRecordIsCreatedAfterThanSelf) {
         _createdAt = abRecordCreatedAt;
     }
 }
 
--(void)updateModifiedFromABRecordRefIfItsAfter:(ABRecordRef)abRecord
+- (void)updateModifiedFromABRecordRefIfItsAfter:(ABRecordRef)abRecord
 {
-    if (!_modifiedAt){
+    if (!_modifiedAt) {
         _modifiedAt = (__bridge_transfer NSDate*)ABRecordCopyValue(abRecord, kABPersonModificationDateProperty);
     }
     NSDate* abRecordModifiedAt = (__bridge_transfer NSDate*)ABRecordCopyValue(abRecord, kABPersonModificationDateProperty);
@@ -87,7 +88,7 @@
     }
 }
 
--(void)updateNameComponentsIfEmptyFromABRecord:(ABRecordRef)abRecord
+- (void)updateNameComponentsIfEmptyFromABRecord:(ABRecordRef)abRecord
 {
     if (!_firstName) {
         _firstName = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonFirstNameProperty));
@@ -109,15 +110,15 @@
     }
 }
 
--(void)updateThumbnailImageIfEmptyFromABRecord:(ABRecordRef)abRecord
+- (void)updateThumbnailImageIfEmptyFromABRecord:(ABRecordRef)abRecord
 {
-    if (_thumbnailImage){
+    if (_thumbnailImage) {
         return;
     }
     [self updateThumbnailImageFromABRecord:abRecord];
 }
 
--(void)updateThumbnailImageFromABRecord:(ABRecordRef)abRecord
+- (void)updateThumbnailImageFromABRecord:(ABRecordRef)abRecord
 {
     if (ABPersonHasImageData(abRecord)) {
         NSData* imgData = CFBridgingRelease(ABPersonCopyImageDataWithFormat(abRecord, kABPersonImageFormatThumbnail));
@@ -125,7 +126,7 @@
     }
 }
 
--(void)addPhoneNumbersFromABRecord:(ABRecordRef)abRecord
+- (void)addPhoneNumbersFromABRecord:(ABRecordRef)abRecord
 {
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(abRecord, kABPersonPhoneProperty);
     CFIndex phoneNumbersCount = ABMultiValueGetCount(phoneNumbers);
@@ -138,7 +139,7 @@
     }
 }
 
--(void)addEmailsFromABRecord:(ABRecordRef)abRecord
+- (void)addEmailsFromABRecord:(ABRecordRef)abRecord
 {
     ABMultiValueRef emails = ABRecordCopyValue(abRecord, kABPersonEmailProperty);
     CFIndex emailsCount = ABMultiValueGetCount(emails);
@@ -151,7 +152,7 @@
     }
 }
 
--(void)updateSectionIdentifier
+- (void)updateSectionIdentifier
 {
     if (_firstName && _firstName.length > 0) {
         _sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
@@ -165,24 +166,24 @@
     else {
         _sectionIdentifier = @"#";
     }
-    if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO){
+    if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO) {
         _sectionIdentifier = @"#";
     }
 }
 
 #pragma mark - Collection utils
 
--(void)addObject:(id)object toMutableSet:(NSMutableSet*)mutableSet
+- (void)addObject:(id)object toMutableSet:(NSMutableSet*)mutableSet
 {
-    if (!mutableSet){
+    if (!mutableSet) {
         mutableSet = [NSMutableSet new];
     }
     [mutableSet addObject:object];
 }
 
--(void)addObject:(id)object toMutableArray:(NSMutableArray*)mutableArray
+- (void)addObject:(id)object toMutableArray:(NSMutableArray*)mutableArray
 {
-    if (!mutableArray){
+    if (!mutableArray) {
         mutableArray = [NSMutableArray new];
     }
     [mutableArray addObject:object];
@@ -216,17 +217,17 @@
     return @"";
 }
 
--(NSSet<NSNumber*>*)recordIds
+- (NSSet<NSNumber*>*)recordIds
 {
     return [NSSet setWithSet:_recordIdsMutable];
 }
 
--(NSArray<NSString*>*)phoneNumbers
+- (NSArray<NSString*>*)phoneNumbers
 {
     return [NSArray arrayWithArray:_phoneNumbersMutable];
 }
 
--(NSArray<NSString*>*)emails
+- (NSArray<NSString*>*)emails
 {
     return [NSArray arrayWithArray:_emailsMutable];
 }
@@ -235,10 +236,10 @@
 
 - (BOOL)isEqual:(id)other
 {
-    if (other == self){
+    if (other == self) {
         return YES;
     }
-    if (!other || ![other isKindOfClass:[self class]]){
+    if (!other || ![other isKindOfClass:[self class]]) {
         return NO;
     }
     return [self isEqualToABContactProt:other];
@@ -262,7 +263,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIdsMutable, [self firstName], [self lastName], [self compositeName], [self organizationName], [self displayName],_phoneNumbersMutable,_emailsMutable];
+    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIdsMutable, [self firstName], [self lastName], [self compositeName], [self organizationName], [self displayName], _phoneNumbersMutable, _emailsMutable];
 }
 
 @end
