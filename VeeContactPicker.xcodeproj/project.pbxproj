@@ -140,12 +140,13 @@
 		860C625F1C28521200876682 = {
 			isa = PBXGroup;
 			children = (
+				030E99DDB0909A27353EC124 /* Frameworks */,
+				7BA7218B336B8BB754184CB5 /* Pods */,
 				860C62691C28521200876682 /* Products */,
 				860C626A1C28521200876682 /* VeeContactPicker */,
+				860C629E1C28521C00876682 /* VeeContactPickerExample */,
 				860C62841C28521200876682 /* VeeContactPickerTests */,
 				860C628F1C28521200876682 /* VeeContactPickerUITests */,
-				7BA7218B336B8BB754184CB5 /* Pods */,
-				030E99DDB0909A27353EC124 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,7 +165,6 @@
 			children = (
 				860C62AF1C28529700876682 /* Classes */,
 				860C62A01C28526D00876682 /* Libs */,
-				860C629E1C28521C00876682 /* VeeContactPickerExample */,
 				860C62B21C2852BB00876682 /* Xibs */,
 			);
 			path = VeeContactPicker;
@@ -181,10 +181,9 @@
 		860C62841C28521200876682 /* VeeContactPickerTests */ = {
 			isa = PBXGroup;
 			children = (
-				861046C51C8F26AD00DFA690 /* Res */,
-				860C62871C28521200876682 /* Info.plist */,
+				86AB036F1C917AAD0054B7EC /* AddressBookForTesting */,
 				86AB036E1C917A9E0054B7EC /* Categories */,
-				86AB036F1C917AAD0054B7EC /* TestAddressBook */,
+				860C62871C28521200876682 /* Info.plist */,
 				861046C11C8F253F00DFA690 /* VeecontactTests.m */,
 			);
 			path = VeeContactPickerTests;
@@ -221,8 +220,7 @@
 				86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */,
 				86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */,
 			);
-			name = Libs;
-			path = Dependencies;
+			path = Libs;
 			sourceTree = "<group>";
 		};
 		860C62AF1C28529700876682 /* Classes */ = {
@@ -263,42 +261,35 @@
 			path = UITableViewCells;
 			sourceTree = "<group>";
 		};
-		861046C51C8F26AD00DFA690 /* Res */ = {
-			isa = PBXGroup;
-			children = (
-				86A1A2CD1C9074160019ABE4 /* vee_testing_ab.vcf */,
-			);
-			name = Res;
-			sourceTree = "<group>";
-		};
 		86AB036E1C917A9E0054B7EC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				86AB036B1C917A820054B7EC /* XCTest+VeeCommons.h */,
 				86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */,
 			);
-			name = Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
-		86AB036F1C917AAD0054B7EC /* TestAddressBook */ = {
+		86AB036F1C917AAD0054B7EC /* AddressBookForTesting */ = {
 			isa = PBXGroup;
 			children = (
 				861046C61C8F2E5F00DFA690 /* VeeAddressBookForTesting.h */,
 				861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */,
 				864AFE2F1C91913F002F4BF7 /* VeeAddressBookForTestingConstants.h */,
 				864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */,
+				86A1A2CD1C9074160019ABE4 /* vee_testing_ab.vcf */,
 			);
-			name = TestAddressBook;
+			path = AddressBookForTesting;
 			sourceTree = "<group>";
 		};
 		86D7F7901C8ED8A40060FA7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				860C629F1C28525E00876682 /* VeeContactProt.h */,
 				860C62B41C2854CB00876682 /* VeeContact.h */,
 				860C62B51C2854CB00876682 /* VeeContact.m */,
+				860C629F1C28525E00876682 /* VeeContactProt.h */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,7 +675,7 @@
 			baseConfigurationReference = 59BA9EF812E7CB1FDE543CC3 /* Pods-VeeContactPicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = VeeContactPicker/VeeContactPickerExample/Info.plist;
+				INFOPLIST_FILE = VeeContactPickerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPicker;
@@ -697,7 +688,7 @@
 			baseConfigurationReference = 3443D42DEDE8A03DD6D3BCD7 /* Pods-VeeContactPicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = VeeContactPicker/VeeContactPickerExample/Info.plist;
+				INFOPLIST_FILE = VeeContactPickerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPicker;
