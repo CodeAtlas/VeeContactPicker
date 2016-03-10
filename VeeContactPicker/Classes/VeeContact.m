@@ -11,8 +11,8 @@
 @interface VeeContact ()
 
 @property (nonatomic, strong) NSMutableSet<NSNumber*>* recordIdsMutable;
-@property (nonatomic, strong) NSMutableArray<NSString*>* phoneNumbersMutable;
-@property (nonatomic, strong) NSMutableArray<NSString*>* emailsMutable;
+@property (nonatomic, strong) NSMutableSet<NSString*>* phoneNumbersMutable;
+@property (nonatomic, strong) NSMutableSet<NSString*>* emailsMutable;
 @end
 
 @implementation VeeContact
@@ -54,7 +54,10 @@
 - (void)addRecordIdFromABRecord:(ABRecordRef)abRecord
 {
     NSNumber* recordId = [NSNumber numberWithInt:ABRecordGetRecordID(abRecord)];
-    [self addObject:recordId toMutableSet:_recordIdsMutable];
+    if (_recordIdsMutable == nil){
+        _recordIdsMutable = [NSMutableSet new];
+    }
+    [_recordIdsMutable addObject:recordId];
 }
 
 - (void)updateDatesIfEmptyFromABRecord:(ABRecordRef)abRecord
@@ -133,7 +136,10 @@
     if (phoneNumbersCount > 0) {
         for (CFIndex i = 0; i < phoneNumbersCount; i++) {
             NSString* phoneNumber = CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneNumbers, i));
-            [self addObject:phoneNumber toMutableArray:_phoneNumbersMutable];
+            if (_phoneNumbersMutable == nil){
+                _phoneNumbersMutable = [NSMutableSet new];
+            }
+            [_phoneNumbersMutable addObject:phoneNumber];
         }
         CFRelease(phoneNumbers);
     }
@@ -146,7 +152,10 @@
     if (emailsCount > 0) {
         for (CFIndex i = 0; i < emailsCount; i++) {
             NSString* email = CFBridgingRelease(ABMultiValueCopyValueAtIndex(emails, i));
-            [self addObject:email toMutableArray:_emailsMutable];
+            if (_emailsMutable == nil){
+                _emailsMutable = [NSMutableSet new];
+            }
+            [_emailsMutable addObject:email];
         }
         CFRelease(emails);
     }
@@ -169,24 +178,6 @@
     if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO) {
         _sectionIdentifier = @"#";
     }
-}
-
-#pragma mark - Collection utils
-
-- (void)addObject:(id)object toMutableSet:(NSMutableSet*)mutableSet
-{
-    if (!mutableSet) {
-        mutableSet = [NSMutableSet new];
-    }
-    [mutableSet addObject:object];
-}
-
-- (void)addObject:(id)object toMutableArray:(NSMutableArray*)mutableArray
-{
-    if (!mutableArray) {
-        mutableArray = [NSMutableArray new];
-    }
-    [mutableArray addObject:object];
 }
 
 #pragma mark - Getters
@@ -212,7 +203,7 @@
         return _nickname;
     }
     if ([_emailsMutable count] > 0) {
-        return [_emailsMutable firstObject];
+        return [[_emailsMutable allObjects] firstObject];
     }
     return @"";
 }
@@ -224,12 +215,12 @@
 
 - (NSArray<NSString*>*)phoneNumbers
 {
-    return [NSArray arrayWithArray:_phoneNumbersMutable];
+    return [NSArray arrayWithArray:[_phoneNumbersMutable allObjects]];
 }
 
 - (NSArray<NSString*>*)emails
 {
-    return [NSArray arrayWithArray:_emailsMutable];
+    return [NSArray arrayWithArray:[_emailsMutable allObjects]];
 }
 
 #pragma mark - NSObject

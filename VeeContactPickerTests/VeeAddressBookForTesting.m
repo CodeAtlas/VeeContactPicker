@@ -1,22 +1,17 @@
 //
-//  VeeTestAddressBook.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 08/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeMockAddressBook.h"
+#import "VeeAddressBookForTesting.h"
+#import "VeeAddressBookForTestingConstants.h"
 
-#define VCF_FILE_NAME @"vee_mock_ab"
-#define VEE_MOCK_CONTACT_SIGNATURE @"a8a8f8738b79cd660f519c1a342654a0"
-
-@interface VeeMockAddressBook()
+@interface VeeAddressBookForTesting()
 
 @property (nonatomic) ABAddressBookRef addressBook;
 @end
 
-@implementation VeeMockAddressBook
+@implementation VeeAddressBookForTesting
 
 #pragma mark - Init
 
@@ -35,25 +30,25 @@
 
 #pragma mark - Public methods
 
--(void)addVeeMockContactsToAddressBook
+-(void)addVeeTestingContactsToAddressBook
 {
-    NSURL* vcfURL = [[NSBundle bundleForClass:self.class] URLForResource:VCF_FILE_NAME withExtension:@"vcf"];
+    NSURL* vcfURL = [[NSBundle bundleForClass:self.class] URLForResource:kVCFFileName withExtension:@"vcf"];
     CFDataRef vcfDataRef = (CFDataRef)CFBridgingRetain([NSData dataWithContentsOfURL:vcfURL]);
-    NSAssert(vcfDataRef, @"%@ not found",VCF_FILE_NAME);
+    NSAssert(vcfDataRef, @"%@ not found",kVCFFileName);
     
     ABRecordRef defaultSource = ABAddressBookCopyDefaultSource(_addressBook);
     CFArrayRef vcfContactsInDefaultSource = ABPersonCreatePeopleInSourceWithVCardRepresentation(defaultSource, vcfDataRef);
     [self addABRecordsToAddressBook:vcfContactsInDefaultSource];
 }
 
--(void)deleteVeeMockContactsFromAddressBook
+-(void)deleteVeeTestingContactsFromAddressBook
 {
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
     NSInteger numberOfPeople = [allPeople count];
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef person = (__bridge ABRecordRef)allPeople[i];
         CFErrorRef *cfError = nil;
-        if ([self isVeeMockContact:person]){
+        if ([self isVeeTestingContact:person]){
             BOOL result = ABAddressBookRemoveRecord(_addressBook, person, cfError);
             if (cfError || !result){
                 NSLog(@"Error while adding record into test address book");
@@ -63,15 +58,25 @@
     [self saveABContext];
 }
 
--(ABRecordRef)veeMockSuperContact
+-(ABRecordRef)veeContactSuperRecord
+{
+    return [self veeTestingContactWithFirstName:kSuperVeeContactFirstName];
+}
+
+-(ABRecordRef)veeContactUnifiedRecord
+{
+    return [self veeTestingContactWithFirstName:kUnifiedVeecontactFirstName];
+}
+
+-(ABRecordRef)veeTestingContactWithFirstName:(NSString*)firstName
 {
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
     NSInteger numberOfPeople = [allPeople count];
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef abRecord = (__bridge ABRecordRef)allPeople[i];
-        if ([self isVeeMockContact:abRecord]){
+        if ([self isVeeTestingContact:abRecord]){
             NSString* abRecordFirstName = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonFirstNameProperty));
-            if ([abRecordFirstName isEqualToString:@"Super"]){
+            if ([abRecordFirstName isEqualToString:firstName]){
                 return abRecord;
             }
         }
@@ -81,22 +86,22 @@
 
 #pragma mark - Private utils
 
--(BOOL)isVeeMockContact:(ABRecordRef)abRecord
+-(BOOL)isVeeTestingContact:(ABRecordRef)abRecord
 {
     NSArray* linkedPeople = (__bridge NSArray*)ABPersonCopyArrayOfAllLinkedPeople(abRecord);
     for (int i = 0; i < linkedPeople.count; i++) {
         ABRecordRef linkedABRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedPeople), i);
-        if ([self containsVeeMockSignature:linkedABRecord]){
+        if ([self containsVeeTestingContactSignature:linkedABRecord]){
             return YES;
         }
     }
     return NO;
 }
 
--(BOOL)containsVeeMockSignature:(ABRecordRef)abRecord
+-(BOOL)containsVeeTestingContactSignature:(ABRecordRef)abRecord
 {
     NSString* abRecordNote = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonNoteProperty));
-    if ([abRecordNote containsString:VEE_MOCK_CONTACT_SIGNATURE]){
+    if ([abRecordNote containsString:kVeeTestingContactsSignature]){
         return YES;
     }
     return NO;

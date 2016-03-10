@@ -23,7 +23,7 @@
 @property (nonatomic, readonly, copy) NSString* middleName;
 @property (nonatomic, readonly, copy) NSString* nickname;
 @property (nonatomic, readonly, copy) NSString* organizationName;
-@property (nonatomic, readonly, copy) NSString* compositeName;
+@property (nonatomic, readonly, copy) NSString* compositeName; //The concatenated value of these properties: Prefix, Suffix, Organization, First name, and Last name.
 @property (nonatomic, readonly, copy) NSString* displayName;
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 
