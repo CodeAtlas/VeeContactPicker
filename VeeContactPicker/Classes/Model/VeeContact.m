@@ -208,9 +208,9 @@
     return @"";
 }
 
-- (NSSet<NSNumber*>*)recordIds
+- (NSArray<NSNumber*>*)recordIds
 {
-    return [NSSet setWithSet:_recordIdsMutable];
+    return [NSArray arrayWithArray:[_recordIdsMutable allObjects]];
 }
 
 - (NSArray<NSString*>*)phoneNumbers

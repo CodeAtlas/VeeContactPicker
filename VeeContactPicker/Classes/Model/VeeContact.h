@@ -15,7 +15,7 @@
 
 - (instancetype)initWithLinkedPeopleOfABRecord:(ABRecordRef)abRecordRef;
 
-@property (nonatomic, readonly, strong) NSSet<NSNumber*>* recordIds;
+@property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
 @property (nonatomic, readonly, strong) NSDate* modifiedAt;
 @property (nonatomic, readonly, strong) NSDate* createdAt;
 @property (nonatomic, readonly, copy) NSString* firstName;
