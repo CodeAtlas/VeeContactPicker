@@ -68,20 +68,18 @@
     return [self veeTestingContactWithFirstName:kUnifiedVeecontactFirstName];
 }
 
--(ABRecordRef)veeTestingContactWithFirstName:(NSString*)firstName
+-(NSArray*)recordRefsOfAddressBookForTesting
 {
+    NSMutableArray* testingRecordRefsMutable = [NSMutableArray new];
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
     NSInteger numberOfPeople = [allPeople count];
     for (NSInteger i = 0; i < numberOfPeople; i++) {
-        ABRecordRef abRecord = (__bridge ABRecordRef)allPeople[i];
-        if ([self isVeeTestingContact:abRecord]){
-            NSString* abRecordFirstName = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonFirstNameProperty));
-            if ([abRecordFirstName isEqualToString:firstName]){
-                return abRecord;
-            }
+        ABRecordRef recordRef = (__bridge ABRecordRef)allPeople[i];
+        if ([self isVeeTestingContact:recordRef]){
+            [testingRecordRefsMutable addObject:(__bridge id _Nonnull)(recordRef)];
         }
     }
-    return nil;
+    return [NSArray arrayWithArray:testingRecordRefsMutable];
 }
 
 #pragma mark - Private utils
@@ -105,6 +103,22 @@
         return YES;
     }
     return NO;
+}
+
+-(ABRecordRef)veeTestingContactWithFirstName:(NSString*)firstName
+{
+    NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
+    NSInteger numberOfPeople = [allPeople count];
+    for (NSInteger i = 0; i < numberOfPeople; i++) {
+        ABRecordRef abRecord = (__bridge ABRecordRef)allPeople[i];
+        if ([self isVeeTestingContact:abRecord]){
+            NSString* abRecordFirstName = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonFirstNameProperty));
+            if ([abRecordFirstName isEqualToString:firstName]){
+                return abRecord;
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark - AB Utils

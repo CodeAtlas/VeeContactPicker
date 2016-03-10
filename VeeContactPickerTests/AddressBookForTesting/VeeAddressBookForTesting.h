@@ -12,5 +12,6 @@
 -(void)deleteVeeTestingContactsFromAddressBook;
 -(ABRecordRef)veeContactSuperRecord;
 -(ABRecordRef)veeContactUnifiedRecord;
+-(NSArray*)recordRefsOfAddressBookForTesting;
 
 @end

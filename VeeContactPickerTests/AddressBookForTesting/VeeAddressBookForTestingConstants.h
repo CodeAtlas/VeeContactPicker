@@ -10,17 +10,18 @@
 
 @interface VeeAddressBookForTestingConstants : NSObject
 
-extern NSString* kVCFFileName;
-extern NSString* kVeeTestingContactsSignature;
+extern NSString* const kVCFFileName;
+extern NSString* const kVeeTestingContactsSignature;
 
-extern NSString* kSuperVeeContactFirstName;
-extern NSString* kSuperVeeContactMiddleName;
-extern NSString* kSuperVeeContactLastName;
-extern NSString* kSuperVeeContactNickname;
-extern NSString* kSuperVeeContactOrganizationName;
-extern NSString* kSuperVeeContactCompositeName;
-extern NSString* kSuperVeeContactDisplayName;
+extern NSInteger const kVeeTestingContactsNumber;
+extern NSString* const kSuperVeeContactFirstName;
+extern NSString* const kSuperVeeContactMiddleName;
+extern NSString* const kSuperVeeContactLastName;
+extern NSString* const kSuperVeeContactNickname;
+extern NSString* const kSuperVeeContactOrganizationName;
+extern NSString* const kSuperVeeContactCompositeName;
+extern NSString* const kSuperVeeContactDisplayName;
 
-extern NSString* kUnifiedVeecontactFirstName;
+extern NSString* const kUnifiedVeecontactFirstName;
 
 @end
