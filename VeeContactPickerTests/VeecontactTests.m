@@ -7,11 +7,11 @@
 //
 
 #import "VeeAddressBookForTesting.h"
-#import <OCMock/OCMock.h>
-#import <XCTest/XCTest.h>
+#import "VeeAddressBookForTestingConstants.h"
 #import "VeeContact.h"
 #import "XCTest+VeeCommons.h"
-#import "VeeAddressBookForTestingConstants.h"
+#import <OCMock/OCMock.h>
+#import <XCTest/XCTest.h>
 
 @interface VeecontactTests : XCTestCase
 
@@ -34,247 +34,255 @@
     [_veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
 }
 
-- (void)testSingleVeeContactCreation
+#pragma mark - Complete Veecontact
+
+- (void)testVeeContactCompleteCreation
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    NSAssert(veeContactSuper,@"VeeContact super creation failed");
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    NSAssert(veeContactComplete, @"VeeContact Complete creation failed");
 }
 
-- (void)testVeeContactsCreation
+- (void)testVeeContactCompleteFirstName
 {
-    NSArray* veeContacts = [self veeContactsFromAddressBookForTesting];
-    BOOL isVeeContactsCountCorrect = [veeContacts count] == kVeeTestingContactsNumber;
-    NSAssert(isVeeContactsCountCorrect,@"Loaded %zd contacts from abForTesting, but they should be %zd",[veeContacts count],kVeeTestingContactsNumber);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isFirstNameCorrect = [veeContactComplete.firstName isEqualToString:kCompleteVeeContactFirstName];
+    NSAssert(isFirstNameCorrect, @"VeeContact firstName is %@ but should be %@", veeContactComplete.firstName, kCompleteVeeContactFirstName);
 }
 
--(void)testVeeContactsRecordIdExist
+- (void)testVeeContactCompleteMiddleName
 {
-    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]){
-        BOOL hasAtLeastOneRecordId = [[veeContact recordIds] count] > 0;
-        NSAssert(hasAtLeastOneRecordId,@"VeeContact %@ has no recordIds",veeContact.displayName);
-    }
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isMiddleNameCorrect = [veeContactComplete.middleName isEqualToString:kCompleteVeeContactMiddleName];
+    NSAssert(isMiddleNameCorrect, @"VeeContact middleName is %@ but should be %@", veeContactComplete.middleName, kCompleteVeeContactMiddleName);
 }
 
-/*
- 
- TODO: unifiedContact is recognized as one contact from the vcf
- 
--(void)testUnifiedVeeContactRecordIds
+- (void)testVeeContactCompleteLastName
 {
-    VeeContact* veeContactUnified = [self veeContactUnified];
-    int aspectedNumberOfRecordIds = 3;
-    BOOL hasThreeRecordIds = [[veeContactUnified recordIds] count] == aspectedNumberOfRecordIds;
-    NSAssert(hasThreeRecordIds,@"VeeContact has %zd recordIds, but it should have %zd recordIds",[veeContactUnified.recordIds count],aspectedNumberOfRecordIds);
-}
-*/
-
--(void)testCreatedAtExist
-{
-    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]){
-        NSAssert(veeContact.createdAt,@"VeeContact unified has no createdAt date");
-    }
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isLastNameCorrect = [veeContactComplete.lastName isEqualToString:kCompleteVeeContactLastName];
+    NSAssert(isLastNameCorrect, @"VeeContact lastName is %@ but should be %@", veeContactComplete.lastName, kCompleteVeeContactLastName);
 }
 
--(void)testModifiedAtExist
+- (void)testVeeContactCompleteNickname
 {
-    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]){
-        NSAssert(veeContact.modifiedAt,@"VeeContact unified has no modifiedAt date");
-    }
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isNickNameCorrect = [veeContactComplete.nickname isEqualToString:kCompleteVeeContactNickname];
+    NSAssert(isNickNameCorrect, @"VeeContact nickname is %@ but should be %@", veeContactComplete.nickname, kCompleteVeeContactNickname);
 }
 
--(void)testCreatedAtCantBeAfterModifiedAt
+- (void)testVeeContactCompleteOrganizationName
 {
-    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]){
-        BOOL isVeeContactCreatedBeforeOrEqualeModifiedAt = [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedSame || [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedDescending;
-        NSAssert(isVeeContactCreatedBeforeOrEqualeModifiedAt, @"Veecontact %@ createdAt %@, that is after its modifiedAt: %@",veeContact.displayName,veeContact.createdAt,veeContact.modifiedAt);
-    }
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isveeContactCompleteOrganizationNameCorrect = [veeContactComplete.organizationName isEqualToString:kCompleteVeeContactOrganizationName];
+    NSAssert(isveeContactCompleteOrganizationNameCorrect, @"VeeContact organizationName is %@ but should be %@", veeContactComplete.organizationName, kCompleteVeeContactOrganizationName);
 }
 
--(void)testVeeContactSuperFirstName
-{
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isFirstNameCorrect = [veeContactSuper.firstName isEqualToString:kSuperVeeContactFirstName];
-    NSAssert(isFirstNameCorrect,@"VeeContact firstName is %@ but should be %@",veeContactSuper.firstName,kSuperVeeContactFirstName);
-}
-
--(void)testVeeContactSuperMiddleName
-{
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isMiddleNameCorrect = [veeContactSuper.middleName isEqualToString:kSuperVeeContactMiddleName];
-    NSAssert(isMiddleNameCorrect,@"VeeContact middleName is %@ but should be %@",veeContactSuper.middleName,kSuperVeeContactMiddleName);
-}
-
--(void)testVeeContactSuperLastName
-{
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isLastNameCorrect = [veeContactSuper.lastName isEqualToString:kSuperVeeContactLastName];
-    NSAssert(isLastNameCorrect,@"VeeContact lastName is %@ but should be %@",veeContactSuper.lastName,kSuperVeeContactLastName);
-}
-
--(void)testVeeContactSuperNickname
-{
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isNickNameCorrect = [veeContactSuper.nickname isEqualToString:kSuperVeeContactNickname];
-    NSAssert(isNickNameCorrect,@"VeeContact nickname is %@ but should be %@",veeContactSuper.nickname,kSuperVeeContactNickname);
-}
-
--(void)testVeeContactSuperOrganizationName
-{
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isveeContactSuperOrganizationNameCorrect = [veeContactSuper.organizationName isEqualToString:kSuperVeeContactOrganizationName];
-    NSAssert(isveeContactSuperOrganizationNameCorrect,@"VeeContact organizationName is %@ but should be %@",veeContactSuper.organizationName,kSuperVeeContactOrganizationName);
-}
-
--(void)testVeeContactSuperCompositeName
+- (void)testVeeContactCompleteCompositeName
 {
     /*
      Composite name: The concatenated value of these properties: Prefix, Suffix, Organization, First name, and Last name.
      */
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isCompositeNameCorrect = [veeContactSuper.compositeName isEqualToString:kSuperVeeContactCompositeName];
-    NSAssert(isCompositeNameCorrect,@"VeeContact compositeName is %@ but should be %@",veeContactSuper.compositeName,kSuperVeeContactCompositeName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isCompositeNameCorrect = [veeContactComplete.compositeName isEqualToString:kCompleteVeeContactCompositeName];
+    NSAssert(isCompositeNameCorrect, @"VeeContact compositeName is %@ but should be %@", veeContactComplete.compositeName, kCompleteVeeContactCompositeName);
 }
 
 /*
  Display name depends on which field is not nil, this is the order of preferences: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
  */
 
--(void)testVeeContactSuperDisplayName
+- (void)testVeeContactCompleteDisplayName
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:kSuperVeeContactDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,kSuperVeeContactDisplayName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:kCompleteVeeContactDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, kCompleteVeeContactDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutFirstName
+- (void)testVeeContactCompleteDisplayNameWithoutFirstName
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
 
-    NSString* aspectedDisplayName = veeContactSuper.organizationName;
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    NSString* aspectedDisplayName = veeContactComplete.organizationName;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutLastName
+- (void)testVeeContactCompleteDisplayNameWithoutLastName
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
 
-    NSString* aspectedDisplayName = veeContactSuper.organizationName;
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    NSString* aspectedDisplayName = veeContactComplete.organizationName;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutFirstNameAndOrganization
+- (void)testVeeContactCompleteDisplayNameWithoutFirstNameAndOrganization
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    
-    NSString* aspectedDisplayName = veeContactSuper.lastName;
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
+
+    NSString* aspectedDisplayName = veeContactComplete.lastName;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutLastNameAndOrganization
+- (void)testVeeContactCompleteDisplayNameWithoutLastNameAndOrganization
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    
-    NSString* aspectedDisplayName = veeContactSuper.firstName;
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
+
+    NSString* aspectedDisplayName = veeContactComplete.firstName;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutFirstNameLastNameAndOrganization
+- (void)testVeeContactCompleteDisplayNameWithoutFirstNameLastNameAndOrganization
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    
-    NSString* aspectedDisplayName = veeContactSuper.middleName;
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
+
+    NSString* aspectedDisplayName = veeContactComplete.middleName;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutFirstNameLastNameMiddleNameAndOrganization
+- (void)testVeeContactCompleteDisplayNameWithoutFirstNameLastNameMiddleNameAndOrganization
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"middleName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    
-    NSString* aspectedDisplayName = veeContactSuper.nickname;
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"middleName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
 
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+    NSString* aspectedDisplayName = veeContactComplete.nickname;
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeeContactSuperDisplayNameWithoutFirstNameLastNameMiddleNameNicknameAndOrganization
+- (void)testVeeContactCompleteDisplayNameWithoutFirstNameLastNameMiddleNameNicknameAndOrganization
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"middleName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"nickname" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    
-    BOOL isDisplayNameCorrect = [self isEmailAddress:veeContactSuper.displayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be an email address",veeContactSuper.displayName);
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"middleName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"nickname" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
+
+    BOOL isDisplayNameCorrect = [self isEmailAddress:veeContactComplete.displayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be an email address", veeContactComplete.displayName);
 }
 
--(void)testVeeContactSuperEmptyDisplayName
+- (void)testVeeContactCompleteEmptyDisplayName
 {
-    VeeContact* veeContactSuper = [self veeContactSuper];
-    [self nullifyIvarWithName:@"firstName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"lastName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"middleName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"nickname" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactSuper];
-    [self nullifyIvarWithName:@"emailsMutable" ofObject:veeContactSuper];
+    VeeContact* veeContactComplete = [self veeContactComplete];
+    [self nullifyIvarWithName:@"firstName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"middleName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"nickname" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:veeContactComplete];
+    [self nullifyIvarWithName:@"emailsMutable" ofObject:veeContactComplete];
 
     NSString* aspectedDisplayName = @"";
-    
-    BOOL isDisplayNameCorrect = [veeContactSuper.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect,@"VeeContact displayName is %@ but should be %@",veeContactSuper.displayName,aspectedDisplayName);
+
+    BOOL isDisplayNameCorrect = [veeContactComplete.displayName isEqualToString:aspectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", veeContactComplete.displayName, aspectedDisplayName);
+}
+
+#pragma mark - Unified Veecontact
+
+//TODO: ...
+
+#pragma mark - Veecontacts ABForTesting
+
+- (void)testVeeContactsCreationCount
+{
+    NSArray* veeContacts = [self veeContactsFromAddressBookForTesting];
+    BOOL isVeeContactsCountCorrect = [veeContacts count] == kVeeTestingContactsNumber;
+    NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [veeContacts count], kVeeTestingContactsNumber);
+}
+
+- (void)testVeeContactsRecordIdExist
+{
+    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]) {
+        BOOL hasAtLeastOneRecordId = [[veeContact recordIds] count] > 0;
+        NSAssert(hasAtLeastOneRecordId, @"VeeContact %@ has no recordIds", veeContact.displayName);
+    }
+}
+
+- (void)testVeecontactsCreatedAtExist
+{
+    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]) {
+        NSAssert(veeContact.createdAt, @"VeeContact unified has no createdAt date");
+    }
+}
+
+- (void)testVeecontactsModifiedAtExist
+{
+    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]) {
+        NSAssert(veeContact.modifiedAt, @"VeeContact unified has no modifiedAt date");
+    }
+}
+
+- (void)testVeecontactsCreatedAtCantBeAfterModifiedAt
+{
+    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]) {
+        BOOL isVeeContactCreatedBeforeOrEqualeModifiedAt = [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedSame || [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedAscending;
+        NSAssert(isVeeContactCreatedBeforeOrEqualeModifiedAt, @"Veecontact %@ createdAt %@, that is after its modifiedAt: %@", veeContact.displayName, veeContact.createdAt, veeContact.modifiedAt);
+    }
+}
+
+- (void)TODOtestVeecontactsImageCount
+{
+    NSUInteger veecontactsImageCount = 0;
+    for (VeeContact* veeContact in [self veeContactsFromAddressBookForTesting]) {
+        if (veeContact.thumbnailImage) {
+            veecontactsImageCount++;
+        }
+    }
+
+    BOOL isVeecontactsImageNumberCorrect = veecontactsImageCount == kVeeTestingContactsWithImage;
+    NSAssert(isVeecontactsImageNumberCorrect, @"Veecontacts with image are %ld, but they should be %ld", veecontactsImageCount, (long)kVeeTestingContactsWithImage);
 }
 
 #pragma mark - Private utils
 
--(VeeContact*)veeContactSuper
+- (VeeContact*)veeContactComplete
 {
-    VeeContact* veeContactSuper = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[_veeAddressBookForTesting veeContactSuperRecord]];
-    return veeContactSuper;
+    VeeContact* veeContactComplete = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[_veeAddressBookForTesting veeContactCompleteRecord]];
+    return veeContactComplete;
 }
 
--(VeeContact*)veeContactUnified
+- (VeeContact*)veeContactUnified
 {
     VeeContact* veeContactUnified = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[_veeAddressBookForTesting veeContactUnifiedRecord]];
     return veeContactUnified;
 }
 
--(NSArray*)veeContactsFromAddressBookForTesting
+- (NSArray*)veeContactsFromAddressBookForTesting
 {
-    NSMutableArray * veeContactsFromABForTestingMutable = [NSMutableArray new];
-    for (id abRecordRefBoxed in [_veeAddressBookForTesting recordRefsOfAddressBookForTesting]){
+    NSMutableArray* veeContactsFromABForTestingMutable = [NSMutableArray new];
+    for (id abRecordRefBoxed in [_veeAddressBookForTesting recordRefsOfAddressBookForTesting]) {
         VeeContact* veeContact = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:(__bridge ABRecordRef)(abRecordRefBoxed)];
         [veeContactsFromABForTestingMutable addObject:veeContact];
     }
     return [NSArray arrayWithArray:veeContactsFromABForTestingMutable];
 }
 
--(BOOL)isEmailAddress:(NSString*)canBeAnEmail
+- (BOOL)isEmailAddress:(NSString*)canBeAnEmail
 {
-    if ([canBeAnEmail containsString:@"@"]){
+    if ([canBeAnEmail containsString:@"@"]) {
         return YES;
     }
     return NO;

@@ -10,7 +10,7 @@
 
 -(void)addVeeTestingContactsToAddressBook;
 -(void)deleteVeeTestingContactsFromAddressBook;
--(ABRecordRef)veeContactSuperRecord;
+-(ABRecordRef)veeContactCompleteRecord;
 -(ABRecordRef)veeContactUnifiedRecord;
 -(NSArray*)recordRefsOfAddressBookForTesting;
 

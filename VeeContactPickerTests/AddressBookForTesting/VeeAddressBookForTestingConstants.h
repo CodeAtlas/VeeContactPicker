@@ -14,14 +14,18 @@ extern NSString* const kVCFFileName;
 extern NSString* const kVeeTestingContactsSignature;
 
 extern NSInteger const kVeeTestingContactsNumber;
-extern NSString* const kSuperVeeContactFirstName;
-extern NSString* const kSuperVeeContactMiddleName;
-extern NSString* const kSuperVeeContactLastName;
-extern NSString* const kSuperVeeContactNickname;
-extern NSString* const kSuperVeeContactOrganizationName;
-extern NSString* const kSuperVeeContactCompositeName;
-extern NSString* const kSuperVeeContactDisplayName;
+extern NSInteger const kVeeTestingContactsWithImage;
 
+#pragma mark - Complete contact
+extern NSString* const kCompleteVeeContactFirstName;
+extern NSString* const kCompleteVeeContactMiddleName;
+extern NSString* const kCompleteVeeContactLastName;
+extern NSString* const kCompleteVeeContactNickname;
+extern NSString* const kCompleteVeeContactOrganizationName;
+extern NSString* const kCompleteVeeContactCompositeName;
+extern NSString* const kCompleteVeeContactDisplayName;
+
+#pragma mark - Unified contact
 extern NSString* const kUnifiedVeecontactFirstName;
 
 @end

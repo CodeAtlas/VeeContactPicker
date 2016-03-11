@@ -58,9 +58,9 @@
     [self saveABContext];
 }
 
--(ABRecordRef)veeContactSuperRecord
+-(ABRecordRef)veeContactCompleteRecord
 {
-    return [self veeTestingContactWithFirstName:kSuperVeeContactFirstName];
+    return [self veeTestingContactWithFirstName:kCompleteVeeContactFirstName];
 }
 
 -(ABRecordRef)veeContactUnifiedRecord

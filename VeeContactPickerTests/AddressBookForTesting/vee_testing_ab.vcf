@@ -6,7 +6,7 @@ EMAIL;TYPE=INTERNET;TYPE=HOME:aiden.warner@gmail.com
 TEL;TYPE=CELL:+14155001235
 ADR;TYPE=HOME:;;Bay 1;San Francisco;;;
 URL;TYPE=HOME:www.warnercompany.com
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -16,7 +16,7 @@ EMAIL;TYPE=INTERNET;TYPE=HOME:alessandro.romano@gmail.com
 TEL;TYPE=CELL:+393340012345
 ADR;TYPE=HOME:;;Piazza San Pietro;Roma;;;
 URL;TYPE=HOME:www.alessandroromano.it
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -26,7 +26,7 @@ EMAIL;TYPE=INTERNET;TYPE=HOME:andreaderosa@gmail.com
 TEL;TYPE=HOME:+393340012346
 ADR;TYPE=HOME:;;Piazza Navona;Roma;;;Italia
 URL;TYPE=HOME:www.andreaderosa.blogspot.it
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -37,7 +37,7 @@ TEL;TYPE=CELL:+1 4155001236
 ADR;TYPE=HOME:;;4267 Little Robin Point\, Dillingham;;Montana;;
 item1.URL:www.herrickscompany.com
 item1.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -50,7 +50,7 @@ TEL;TYPE=WORK:+39 334 7501429
 ADR;TYPE=HOME:;;Via Cavour;Roma;;;Italia
 item1.URL:www.ariannamoretti.it
 item1.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -64,7 +64,7 @@ TEL;TYPE=HOME:+1 (415) 500-4200
 TEL;TYPE=WORK:+1 (415) 500-7855
 ADR;TYPE=HOME:;;9487 Dusty Horse Heath\, Ruff;;Ohio;;
 URL;TYPE=HOME:www.arielyoung.com
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -78,7 +78,7 @@ TEL;TYPE=CELL:+393340012348
 ADR;TYPE=HOME:;;Campo dei Fiori;Roma;;;Italia
 item1.URL:www.beatricemancini.it
 item1.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -92,7 +92,7 @@ item1.X-ABLabel:iCloud
 TEL;TYPE=HOME:+1 4155001238
 ADR;TYPE=HOME:;;4375 Merry Falls\, Swords;;New Jersey;;
 URL;TYPE=HOME:www.beatrixstewart.it
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -103,7 +103,7 @@ EMAIL;TYPE=INTERNET;TYPE=WORK:b.orsini@grupposrl.it
 TEL;TYPE=CELL:+393340012348
 ADR;TYPE=HOME:;;Corso Vittorio Emanuele 3;Milano;;;Italia
 URL;TYPE=WORK:www.orsini-gruppo.it
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -113,7 +113,7 @@ EMAIL;TYPE=INTERNET;TYPE=HOME:briennerumbley@gmail.com
 TEL;TYPE=CELL:+14155101239
 ADR;TYPE=HOME:;;4796 Quiet Manor\, Young;;Massachusetts;;America
 URL;TYPE=HOME:www.brumbley.com
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -136,7 +136,40 @@ item3.URL:www.aziendabianchi.it
 item3.X-ABLabel:_$!<HomePage>!$_
 URL;TYPE=WORK:sitosenzadominio
 URL;TYPE=HOME:unaltrosito.dominioinvalido
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Complete middle Contact
+N:Contact;Complete;middle;;
+NICKNAME:Supername
+EMAIL;TYPE=INTERNET;TYPE=HOME:complete@home.it
+EMAIL;TYPE=INTERNET;TYPE=WORK:complete@work.org
+item1.EMAIL;TYPE=INTERNET:complete@icloud.com
+item1.X-ABLabel:iCloud
+EMAIL;TYPE=INTERNET;TYPE=HOME:duplicate@gmail.com
+EMAIL;TYPE=INTERNET:duplicate@gmail.com
+item2.X-MSN:completemsn1
+item2.X-ABLabel:MSN
+TEL;TYPE=HOME:+39 02 9387441
+TEL;TYPE=WORK:+1 333 2458774
+TEL;TYPE=CELL:+33 333 2580089
+TEL;TYPE=CELL:+7 331 4458726
+TEL;TYPE=CELL:+49 331 4458726
+TEL;TYPE=MAIN:+39 331 4458726
+ADR;TYPE=HOME:;;Corso Sempione\,\n20020\nItalia;Milano;;;
+ADR;TYPE=WORK:;;Gramsci;Milano;Milano;20035;Italia
+ADR;TYPE=WORK:;;Dalle Scatole 19;Roma;;20054;Italia
+ADR:;;Via Duplicata;Milano;;;Italy
+ORG:Fake SRL
+item3.URL:http\://www.completeuser.it
+item3.X-ABLabel:_$!<HomePage>!$_
+URL;TYPE=HOME:www.complete.blog.it
+URL;TYPE=WORK:http\://www.completework.it
+URL:www.duplicate.com
+item4.URL:www.duplicate.com
+item4.X-ABLabel:_$!<HomePage>!$_
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -155,65 +188,32 @@ ADR;TYPE=HOME:;;8028 Pleasant Close\, Cashtown;;Nova Scotia;;
 ORG:Company SRL
 item2.URL:www.santiagocompany.com
 item2.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
 FN:Empty Contact
 N:Contact;Empty;;;
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
 FN:Lorenzo  Colombo
 N:Colombo;Lorenzo ;;;
 TEL;TYPE=HOME:+39 334 0012344
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
 FN:Matteo Sacchi
 N:Sacchi;Matteo;;;
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
 FN:Paolo Rossi
 N:Rossi;Paolo;;;
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
-END:VCARD
-BEGIN:VCARD
-VERSION:3.0
-FN:Super middle Contact
-N:Contact;Super;middle;;
-NICKNAME:Supername
-EMAIL;TYPE=INTERNET;TYPE=HOME:super@home.it
-EMAIL;TYPE=INTERNET;TYPE=WORK:super@work.org
-item1.EMAIL;TYPE=INTERNET:super@icloud.com
-item1.X-ABLabel:iCloud
-EMAIL;TYPE=INTERNET;TYPE=HOME:duplicate@gmail.com
-EMAIL;TYPE=INTERNET:duplicate@gmail.com
-item2.X-MSN:superfbmsn1
-item2.X-ABLabel:MSN
-TEL;TYPE=HOME:+39 02 9387441
-TEL;TYPE=WORK:+39 333 2458774
-TEL;TYPE=CELL:+39 333 2580089
-TEL;TYPE=CELL:+39 331 4458726
-TEL;TYPE=CELL:+39 331 4458726
-TEL;TYPE=MAIN:+39 331 4458726
-ADR;TYPE=HOME:;;Sempione;Arese;Milano;20020;Italia
-ADR;TYPE=WORK:;;Gramsci;Milano;Milano;20035;Italia
-ADR;TYPE=WORK:;;Dalle Scatole 19;Roma;;20054;Italia
-ADR:;;Via Duplicata;Milano;;;Italy
-ORG:Fake SRL
-item3.URL:http\://www.superuser.it
-item3.X-ABLabel:_$!<HomePage>!$_
-URL;TYPE=HOME:www.super.blog.it
-URL;TYPE=WORK:http\://www.superwork.it
-URL:www.duplicate.com
-item4.URL:www.duplicate.com
-item4.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -232,5 +232,5 @@ item1.URL:www.unified.it
 item1.X-ABLabel:_$!<HomePage>!$_
 item2.URL:www.unified2.com
 item2.X-ABLabel:_$!<HomePage>!$_
-NOTE:Added by Veer -  a8a8f8738b79cd660f519c1a342654a0
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
