@@ -13,8 +13,11 @@
 extern NSString* const kVCFFileName;
 extern NSString* const kVeeTestingContactsSignature;
 
+#pragma mark - Testing contacts
 extern NSInteger const kVeeTestingContactsNumber;
 extern NSInteger const kVeeTestingContactsWithImage;
+extern NSInteger const kVeeTestingContactsPhoneNumbersCount;
+extern NSInteger const kVeeTestingContactsEmailsCount;
 
 #pragma mark - Complete contact
 extern NSString* const kCompleteVeeContactFirstName;
@@ -24,6 +27,8 @@ extern NSString* const kCompleteVeeContactNickname;
 extern NSString* const kCompleteVeeContactOrganizationName;
 extern NSString* const kCompleteVeeContactCompositeName;
 extern NSString* const kCompleteVeeContactDisplayName;
+extern NSInteger const kCompleteVeeContactPhoneNumbersCount;
+extern NSInteger const kCompleteVeeContactEmailsCount;
 
 #pragma mark - Unified contact
 extern NSString* const kUnifiedVeecontactFirstName;

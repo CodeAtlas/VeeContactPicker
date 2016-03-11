@@ -98,6 +98,7 @@
 
 -(BOOL)containsVeeTestingContactSignature:(ABRecordRef)abRecord
 {
+    
     NSString* abRecordNote = CFBridgingRelease(ABRecordCopyValue(abRecord, kABPersonNoteProperty));
     if ([abRecordNote containsString:kVeeTestingContactsSignature]){
         return YES;
@@ -119,6 +120,18 @@
         }
     }
     return nil;
+}
+
+- (void)exportABtoVCF:(NSString*)vcfFileName
+{
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* filePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.vcf", vcfFileName]];
+    NSError* error;
+    [fileManager removeItemAtPath:filePath error:&error];
+    CFArrayRef peopleArray = ABAddressBookCopyArrayOfAllPeople(_addressBook);
+    NSData* vCardData = CFBridgingRelease(ABPersonCreateVCardRepresentationWithPeople(peopleArray));
+    [vCardData writeToFile:filePath atomically:YES];
 }
 
 #pragma mark - AB Utils
