@@ -92,16 +92,9 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testVeeContactCompleteCompositeName
 {
-    /*
-     Composite name: The concatenated value of these properties: Prefix, Suffix, Organization, First name, and Last name.
-     */
     BOOL isCompositeNameCorrect = [_veeContactComplete.compositeName isEqualToString:kCompleteVeeContactCompositeName];
     NSAssert(isCompositeNameCorrect, @"VeeContact compositeName is %@ but should be %@", _veeContactComplete.compositeName, kCompleteVeeContactCompositeName);
 }
-
-/*
- Display name depends on which field is not nil, this is the order of preferences: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
- */
 
 - (void)testVeeContactCompleteDisplayName
 {
