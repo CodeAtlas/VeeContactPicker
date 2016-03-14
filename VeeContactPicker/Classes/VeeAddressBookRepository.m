@@ -9,7 +9,7 @@
 @interface VeeAddressBookRepository ()
 
 @property (nonatomic, strong) NSArray<VeeContact*>* veeContacts;
-@property (nonatomic, strong) NSDictionary* veeContactsForRecordIds;
+@property (nonatomic, strong) NSDictionary<NSNumber*,VeeContact*>* veeContactsForRecordIds;
 
 @end
 
@@ -34,8 +34,8 @@
 {
     ABAddressBookRef addressBook = ABAddressBookCreate();
     VeeAddressBookRepositoryImporter* abRepositoryImporter = [VeeAddressBookRepositoryImporter new];
-    _veeContacts = [abRepositoryImporter importABRepositoryDataFromAddressBook:addressBook];
-    _veeContactsForRecordIds = [abRepositoryImporter abContactsForRecordIds];
+    _veeContacts = [abRepositoryImporter importVeeContactsFromAddressBook:addressBook];
+    _veeContactsForRecordIds = [self veeContactsForRecordIds:_veeContacts];
     if (addressBook){
         CFRelease(addressBook);
     }
@@ -44,8 +44,8 @@
 -(void)initializeABRepositoryDataWithAddressBook:(ABAddressBookRef)addressBook
 {
     VeeAddressBookRepositoryImporter* abRepositoryImporter = [VeeAddressBookRepositoryImporter new];
-    _veeContacts = [abRepositoryImporter importABRepositoryDataFromAddressBook:addressBook];
-    _veeContactsForRecordIds = [abRepositoryImporter abContactsForRecordIds];
+    _veeContacts = [abRepositoryImporter importVeeContactsFromAddressBook:addressBook];
+    _veeContactsForRecordIds = [self veeContactsForRecordIds:_veeContacts];
 }
 
 - (NSArray<VeeContact*>*)veeContacts;
@@ -61,6 +61,17 @@
 {
     [self initializeABRepositoryDataWithAddressBook:addressBook];
     return _veeContacts;
+}
+
+-(NSDictionary<NSNumber*,VeeContact*>*)veeContactsForRecordIds:(NSArray<VeeContact*>*)veeContacts
+{
+    NSMutableDictionary<NSNumber*,VeeContact*>*veeContactsForRecordIdsMutable = [NSMutableDictionary new];
+    for (VeeContact* veeContact in veeContacts){
+        for (NSNumber* recordId in veeContact.recordIds){
+            [veeContactsForRecordIdsMutable setObject:veeContact forKey:recordId];
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:veeContactsForRecordIdsMutable];
 }
 
 - (VeeContact*)veeContactForRecordId:(NSNumber*)recordId
