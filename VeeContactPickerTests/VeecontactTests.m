@@ -27,13 +27,14 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 #pragma mark - Class setup
 
-+(void)setUp
++ (void)setUp
 {
     veeAddressBookForTesting = [VeeAddressBookForTesting new];
+    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
     [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
 }
 
-+(void)tearDown
++ (void)tearDown
 {
     [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
 }
@@ -178,7 +179,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
 
     BOOL isDisplayNameCorrect = [self isEmailAddress:_veeContactComplete.displayName];
-    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be an email address",_veeContactComplete.displayName);
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be an email address", _veeContactComplete.displayName);
 }
 
 - (void)testVeeContactCompleteEmptyDisplayName
@@ -196,13 +197,13 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, aspectedDisplayName);
 }
 
--(void)testVeecontactCompletePhoneNumbersCount
+- (void)testVeecontactCompletePhoneNumbersCount
 {
     BOOL isPhoneNumbersCountCorrect = [_veeContactComplete.phoneNumbers count] == kCompleteVeeContactPhoneNumbersCount;
     NSAssert(isPhoneNumbersCountCorrect, @"VeeContact complete phone numbers count is %zd but should be %zd", [_veeContactComplete.phoneNumbers count], kCompleteVeeContactPhoneNumbersCount);
 }
 
--(void)testVeecontactCompleteEmailsCount
+- (void)testVeecontactCompleteEmailsCount
 {
     BOOL isEmailsCountCorrect = [_veeContactComplete.emails count] == kCompleteVeeContactEmailsCount;
     NSAssert(isEmailsCountCorrect, @"VeeContact complete emails count is %zd but should be %zd", [_veeContactComplete.emails count], kCompleteVeeContactEmailsCount);
@@ -269,7 +270,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     for (VeeContact* veeContact in _veecontactsForTesting) {
         phoneNumberCount += [[veeContact phoneNumbers] count];
     }
-    
+
     BOOL isPhoneNumberCountCorrect = phoneNumberCount == kVeeTestingContactsPhoneNumbersCount;
     NSAssert(isPhoneNumberCountCorrect, @"Veecontacts phone numbers are %ld, but they should be %ld", phoneNumberCount, kVeeTestingContactsPhoneNumbersCount);
 }
@@ -277,8 +278,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testVeecontactsPhoneNumberDuplicate
 {
     for (VeeContact* veeContact in _veecontactsForTesting) {
-        NSSet * phoneNumberSet = [NSSet setWithArray:veeContact.phoneNumbers];
-        NSAssert([phoneNumberSet count] == [veeContact.phoneNumbers count] , @"Veecontacts phone numbers contain duplicates!");
+        NSSet* phoneNumberSet = [NSSet setWithArray:veeContact.phoneNumbers];
+        NSAssert([phoneNumberSet count] == [veeContact.phoneNumbers count], @"Veecontacts phone numbers contain duplicates!");
     }
 }
 
@@ -288,7 +289,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     for (VeeContact* veeContact in _veecontactsForTesting) {
         emailsCount += [[veeContact emails] count];
     }
-    
+
     BOOL isEmailCountCorrect = emailsCount == kVeeTestingContactsEmailsCount;
     NSAssert(isEmailCountCorrect, @"Veecontacts phone numbers are %ld, but they should be %ld", emailsCount, kVeeTestingContactsEmailsCount);
 }
@@ -296,8 +297,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testVeecontactsEmailsNoDuplicate
 {
     for (VeeContact* veeContact in _veecontactsForTesting) {
-        NSSet * emailSet = [NSSet setWithArray:veeContact.emails];
-        NSAssert([emailSet count] == [veeContact.emails count] , @"Veecontacts emails contain duplicates!");
+        NSSet* emailSet = [NSSet setWithArray:veeContact.emails];
+        NSAssert([emailSet count] == [veeContact.emails count], @"Veecontacts emails contain duplicates!");
     }
 }
 

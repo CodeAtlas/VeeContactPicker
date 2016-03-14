@@ -14,10 +14,10 @@ NSString* const kVCFFileName = @"vee_testing_ab";
 NSString* const kVeeTestingContactsSignature = @"a8a8f8738b79cd660f519c1a342654a0";
 
 #pragma mark - Testing contacts
-NSInteger const kVeeTestingContactsNumber = 18;
+NSInteger const kVeeTestingContactsNumber = 21;
 NSInteger const kVeeTestingContactsWithImage = 11;
-NSInteger const kVeeTestingContactsPhoneNumbersCount = 31;
-NSInteger const kVeeTestingContactsEmailsCount = 33;
+NSInteger const kVeeTestingContactsPhoneNumbersCount = 32;
+NSInteger const kVeeTestingContactsEmailsCount = 34;
 
 #pragma mark - Complete contact
 NSString* const kCompleteVeeContactFirstName = @"Complete";

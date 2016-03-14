@@ -8,10 +8,9 @@
 
 @interface VeeAddressBookForTesting : NSObject
 
--(void)addVeeTestingContactsToAddressBook;
--(void)deleteVeeTestingContactsFromAddressBook;
--(ABRecordRef)veeContactCompleteRecord;
--(ABRecordRef)veeContactUnifiedRecord;
--(NSArray*)recordRefsOfAddressBookForTesting;
-
+- (void)addVeeTestingContactsToAddressBook;
+- (void)deleteVeeTestingContactsFromAddressBook;
+- (ABRecordRef)veeContactCompleteRecord;
+- (ABRecordRef)veeContactUnifiedRecord;
+- (NSArray*)recordRefsOfAddressBookForTesting;
 @end

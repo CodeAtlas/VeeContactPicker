@@ -2032,19 +2032,37 @@ VERSION:3.0
 PRODID:-//Apple Inc.//iOS 9.2//EN
 N:Contact;Unified;;;
 FN:Unified Contact
-ORG:Unified Company;
-EMAIL;type=INTERNET;type=HOME;type=pref:unified2@gmail.com
-EMAIL;type=INTERNET;type=HOME:unified1@gmail.com
-EMAIL;type=INTERNET;type=HOME:unified3@gmail.com
-TEL;type=HOME;type=VOICE;type=pref:(333) 412-3456
-TEL;type=HOME;type=VOICE:+39 331 0123456
-TEL;type=HOME;type=VOICE:029382111
-item1.ADR;type=HOME;type=pref:;;Via dell'Unificazione 2;Milano;;;Italy
-item2.ADR;type=HOME:;;Via Dell'Unificazione;Milano;;;Italy
-item3.URL;type=pref:www.unified.it
-item3.X-ABLabel:_$!<HomePage>!$_
-item4.URL:www.unified2.com
-item4.X-ABLabel:_$!<HomePage>!$_
+ORG:Unified Company 1;
+EMAIL;type=INTERNET;type=HOME;type=pref:unifiedcontact1@gmail.com
+TEL;type=HOME;type=VOICE;type=pref:+39 333 1234561
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iOS 9.2//EN
+N:Contact;Unified;;;
+FN:Unified Contact
+EMAIL;type=INTERNET;type=HOME;type=pref:unifiedcontact2@gmail.com
+TEL;type=HOME;type=VOICE;type=pref:+39 333 1234562
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iOS 9.2//EN
+N:;Unified Contact;;;
+FN:Unified Contact
+EMAIL;type=INTERNET;type=HOME;type=pref:unifiedcontact3@gmail.com
+TEL;type=HOME;type=VOICE;type=pref:+39 333 1234563
+NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iOS 9.2//EN
+N:Contact;Unified;Mid;;
+FN:Unified Mid Contact
+NICKNAME:Uny
+EMAIL;type=INTERNET;type=WORK;type=pref:unifiedcontact4@gmail.com
+TEL;type=HOME;type=VOICE;type=pref:+39 333 1234564
 NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD
