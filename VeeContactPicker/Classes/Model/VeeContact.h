@@ -16,6 +16,9 @@
 - (instancetype)initWithLinkedPeopleOfABRecord:(ABRecordRef)abRecordRef;
 
 @property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
+
+#pragma mark - Single value properties
+
 @property (nonatomic, readonly, strong) NSDate* modifiedAt;
 @property (nonatomic, readonly, strong) NSDate* createdAt;
 @property (nonatomic, readonly, copy) NSString* firstName;
@@ -27,9 +30,9 @@
 @property (nonatomic, readonly, copy) NSString* displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 
+#pragma mark - Multivalue properties
+
 @property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
-
-@property (nonatomic, readonly, copy) NSString* sectionIdentifier;
 
 @end

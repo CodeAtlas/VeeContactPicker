@@ -7,6 +7,7 @@
 //
 
 #import "VeeContact.h"
+#import "VeeContactPickerOptions.h"
 
 @interface VeeContact ()
 
@@ -38,7 +39,6 @@
         ABRecordRef linkedABRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedPeople), i);
         [self updateFromABRecord:linkedABRecord];
     }
-    [self updateSectionIdentifier];
 }
 
 - (void)updateFromABRecord:(ABRecordRef)abRecord
@@ -158,25 +158,6 @@
             [_emailsMutable addObject:email];
         }
         CFRelease(emails);
-    }
-}
-
-- (void)updateSectionIdentifier
-{
-    if (_firstName && _firstName.length > 0) {
-        _sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
-    }
-    else if (_lastName && _lastName.length > 0) {
-        _sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
-    }
-    else if ([self displayName] && [self displayName].length > 0) {
-        _sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
-    }
-    else {
-        _sectionIdentifier = @"#";
-    }
-    if ([[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] containsObject:_sectionIdentifier] == NO) {
-        _sectionIdentifier = @"#";
     }
 }
 

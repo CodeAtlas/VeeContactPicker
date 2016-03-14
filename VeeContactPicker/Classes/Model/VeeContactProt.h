@@ -26,7 +26,4 @@
 @property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
 
-@property (nonatomic, readonly, copy) NSString* sectionIdentifier;
-
-
 @end
