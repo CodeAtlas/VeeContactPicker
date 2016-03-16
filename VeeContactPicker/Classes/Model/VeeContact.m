@@ -166,6 +166,9 @@
 - (NSString*)displayName
 {
     if (_firstName && _lastName) {
+        if (_middleName){
+            return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@ %@",_middleName, _lastName]];
+        }
         return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@", _lastName]];
     }
     if (_organizationName) {
