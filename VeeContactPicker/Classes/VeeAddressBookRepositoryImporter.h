@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 @import AddressBook;
+@class VeeContact;
 
 @interface VeeAddressBookRepositoryImporter : NSObject
 

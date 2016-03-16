@@ -26,9 +26,13 @@ NSString* const kCompleteVeeContactLastName = @"Contact";
 NSString* const kCompleteVeeContactNickname = @"Supername";
 NSString* const kCompleteVeeContactOrganizationName = @"Fake SRL";
 NSString* const kCompleteVeeContactCompositeName = @"Complete middle Contact";
-NSString* const kCompleteVeeContactDisplayName = @"Complete Contact";
+NSString* const kCompleteVeeContactDisplayName = @"Complete middle Contact";
 NSInteger const kCompleteVeeContactPhoneNumbersCount = 5;
 NSInteger const kCompleteVeeContactEmailsCount = 4;
+NSString* const kCompleteVeeContactSectionIdentifier = @"C";
+NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier = @"C";
+NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier = @"C";
+NSString* const kCompleteVeeContactEmptyDisplayNameSectionIdentifier = @"#";
 
 #pragma mark - Unified contact
 NSString* const kUnifiedVeecontactFirstName = @"Unified";

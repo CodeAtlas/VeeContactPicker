@@ -29,6 +29,10 @@ extern NSString* const kCompleteVeeContactCompositeName;
 extern NSString* const kCompleteVeeContactDisplayName;
 extern NSInteger const kCompleteVeeContactPhoneNumbersCount;
 extern NSInteger const kCompleteVeeContactEmailsCount;
+extern NSString* const kCompleteVeeContactSectionIdentifier;
+extern NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier;
+extern NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier;
+extern NSString* const kCompleteVeeContactEmptyDisplayNameSectionIdentifier;
 
 #pragma mark - Unified contact
 extern NSString* const kUnifiedVeecontactFirstName;

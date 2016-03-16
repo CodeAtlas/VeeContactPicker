@@ -1,19 +1,16 @@
 //
-//  VeeContactColor.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 14/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactColor.h"
-@interface VeeContactColor ()
+#import "VeeContactColors.h"
+@interface VeeContactColors ()
 
 @property (nonatomic, strong) NSMutableDictionary<NSString*, UIColor*>* colorsCache;
 
 @end
 
-@implementation VeeContactColor
+@implementation VeeContactColors
 
 #pragma mark - UIImage+Letters colors helper
 
