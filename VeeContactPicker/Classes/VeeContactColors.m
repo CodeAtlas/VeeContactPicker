@@ -12,15 +12,29 @@
 
 @implementation VeeContactColors
 
-#pragma mark - UIImage+Letters colors helper
+-(instancetype)initWithVeeContactsDefaultColorPalette
+{
+    if (self = [super init]){
+        _veecontactColorsPalette = [self defaultColors];
+    }
+    return self;
+}
+
+- (instancetype)initWithVeeContactsColorPalette:(NSArray<UIColor*>*)colorPalette
+{
+    self = [super init];
+    if (self) {
+        _veecontactColorsPalette = colorPalette;
+    }
+    return self;
+}
+
+#pragma mark - Public methods
 
 - (UIColor*)colorForVeeContact:(id<VeeContactProt>)veeContact
 {
     NSString* contactIdentifier = [veeContact compositeName];
     if (contactIdentifier == nil){
-        return [UIColor lightGrayColor];
-    }
-    if (!_veecontactColorsPalette) {
         return [UIColor lightGrayColor];
     }
     if (!_colorsCache) {
@@ -36,6 +50,8 @@
     return color;
 }
 
+#pragma mark - Private methods
+
 /*http://www.cse.yorku.ca/~oz/hash.html djb2 algorithm to generate an unsigned long hash from a given string */
 unsigned long djb2StringToLong(unsigned char* str)
 {
@@ -46,6 +62,16 @@ unsigned long djb2StringToLong(unsigned char* str)
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
     
     return hash;
+}
+
+-(NSArray<UIColor*>*)defaultColors
+{
+    NSMutableArray<UIColor*>* defaultColors = [NSMutableArray array];
+    for (float hue = 0.0; hue < 1.0; hue += 0.05) {
+        UIColor *color = [UIColor colorWithHue:hue saturation:0.5 brightness:0.5 alpha:1.0];
+        [defaultColors addObject:color];
+    }
+    return defaultColors;
 }
 
 @end
