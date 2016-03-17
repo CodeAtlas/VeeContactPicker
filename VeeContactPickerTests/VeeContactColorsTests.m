@@ -73,6 +73,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     NSAssert(defaultPaletteHasMoreThanTenColors, @"VeeContactColors has %zd colors but it should have > 10 colors", [_veeContactColorsWithDefaultPalette.veecontactColorsPalette count]);
 }
 
+#pragma mark - Colors
+
 - (void)testDefaultPaletteColorForNilVeeContactShouldBeLightGray
 {
     UIColor* colorForNilVeecontact = [_veeContactColorsWithDefaultPalette colorForVeeContact:nil];
@@ -80,16 +82,12 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     NSAssert(isColorForNilVeecontactLightGray, @"Color for nil veeContact is not lightGrayColor");
 }
 
-#pragma mark - Custom palette
-
 - (void)testCustomPaletteColorForNilVeeContactShouldBeLightGray
 {
     UIColor* colorForNilVeecontact = [_veeContactColorsWithCustomPalette colorForVeeContact:nil];
     BOOL isColorForNilVeecontactLightGray = [colorForNilVeecontact isEqual:[UIColor lightGrayColor]];
     NSAssert(isColorForNilVeecontactLightGray, @"Color for nil veeContact is not lightGrayColor");
 }
-
-#pragma mark -
 
 - (void)testColorForSameVeecontactsShouldBeEqual
 {

@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerOptions;
 @property (nonatomic, strong) VeeContactColors* veeContactColors;
+@property (nonatomic, strong) VeeContactPickerStrings* veeContactPickerStrings;
 
 @property (nonatomic) ABAddressBookRef addressBookRef;
 
@@ -37,38 +38,41 @@
 
 #pragma mark - Initializers
 
--(instancetype)initWithDefaultOptions
+-(instancetype)initWithDefaultConfiguration
 {
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-        _veeContactColors = [VeeContactColors new];
+        _veeContactColors = [[VeeContactColors alloc] initWithVeeContactsDefaultColorPalette];
+        _veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithDefaultStrings];
+
     }
     return self;
 }
 
 - (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions
 {
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
-    if (self) {
+    self = [self initWithDefaultConfiguration];
+    if (self){
         _veeContactPickerOptions = veeContactPickerOptions;
-        if (!veeContactPickerOptions){
-            _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-            _veeContactColors = [VeeContactColors new];
-        }
     }
     return self;
 }
 
 - (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors
 {
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+    self = [self initWithOptions:veeContactPickerOptions];
     if (self) {
-        _veeContactPickerOptions = veeContactPickerOptions;
-        if (!veeContactPickerOptions){
-            _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-            _veeContactColors = veeContactColors;
-        }
+        _veeContactColors = veeContactColors;
+    }
+    return self;
+}
+
+- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors andStrings:(VeeContactPickerStrings*)veeContactPickerStrings
+{
+    self = [self initWithOptions:veeContactPickerOptions andColors:veeContactColors];
+    if (self) {
+        _veeContactPickerStrings = veeContactPickerStrings;
     }
     return self;
 }
@@ -96,8 +100,8 @@
 
 -(void)loadStrings
 {
-    _titleNavigationItem.title = [VeeContactPickerStrings localizedTitle];
-    _cancelBarButtonItem.title = [VeeContactPickerStrings localizedCancelButtonTitle];
+    _titleNavigationItem.title = [_veeContactPickerStrings navigationBarTitle];
+    _cancelBarButtonItem.title = [_veeContactPickerStrings cancelButtonTitle];
 }
 
 -(void)registerNibsForCellReuse

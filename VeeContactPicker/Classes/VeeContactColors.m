@@ -12,6 +12,11 @@
 
 @implementation VeeContactColors
 
+-(instancetype)init
+{
+    return [self initWithVeeContactsDefaultColorPalette];
+}
+
 -(instancetype)initWithVeeContactsDefaultColorPalette
 {
     if (self = [super init]){
