@@ -8,27 +8,39 @@
 
 #import "VeeContactPickerOptions.h"
 
+static VeeContactPickerOptions* defaultOptionsCache;
+
 @implementation VeeContactPickerOptions
 
--(instancetype)initWithDefaultOptions
+#pragma mark - Init
+
+- (instancetype)initWithDefaultOptions
 {
-    if (self = [super init]){
-        _sectionIdentifiers= [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+    if (self = [super init]) {
+        _sectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
         _sectionIdentifierWildcard = @"#";
-       
-        //Default options:
-        //_showContactDetailLabel = NO;
-        //_showFirstNameFirst = YES;
-        //_veeContactDetail = VeeContactDetailPhoneNumber;
-        //_showLettersWhenContactImageIsMissing = YES;
+        _showLettersWhenContactImageIsMissing = YES;
     }
     return self;
 }
 
-+(VeeContactPickerOptions*)defaultOptions
+- (instancetype)initWithSectionIdentifiers:(NSArray<NSString*>*)sectionIdentifiers andSectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard andShowLettersWhenContactImageIsMissing:(BOOL)showLettersWhenContactImageIsMissing andContactThumbnailImagePlaceholder:(UIImage*)contactThumbnailImagePlaceholder
 {
-    VeeContactPickerOptions* defaultOptions = [[self alloc] initWithDefaultOptions];
-    return defaultOptions;
+    if (self = [super init]) {
+        _sectionIdentifiers = sectionIdentifiers;
+        _sectionIdentifierWildcard = sectionIdentifierWildcard;
+        _showLettersWhenContactImageIsMissing = showLettersWhenContactImageIsMissing;
+        _contactThumbnailImagePlaceholder = contactThumbnailImagePlaceholder;
+    }
+    return self;
+}
+
++ (VeeContactPickerOptions*)defaultOptions
+{
+    if (!defaultOptionsCache) {
+        defaultOptionsCache = [[self alloc] initWithDefaultOptions];
+    }
+    return defaultOptionsCache;
 }
 
 @end
