@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-//Subclass it to override and chose your localized strings
-
 @interface VeeContactPickerStrings : NSObject
 
-+(NSString*)localizedTitle;
-+(NSString*)localizedCancelButtonTitle;
+- (instancetype)initWithDefaultStrings;
+- (instancetype)initWithNavigationBarTitle:(NSString*)navigationBarTitle andCancelButtonTitle:(NSString*)cancelButtonTitle;
+
+@property (nonatomic, strong) NSString* navigationBarTitle;
+@property (nonatomic, strong) NSString* cancelButtonTitle;
 
 @end

@@ -10,14 +10,32 @@
 
 @implementation VeeContactPickerStrings
 
-+(NSString*)localizedTitle
+- (instancetype)init
 {
-    return @"Choose a contact";
+    self = [super init];
+    if (self) {
+        self = [self initWithDefaultStrings];
+    }
+    return self;
 }
 
-+(NSString*)localizedCancelButtonTitle
+- (instancetype)initWithDefaultStrings
 {
-    return @"Cancel";
+    self = [super init];
+    if (self) {
+        _navigationBarTitle = @"Choose a contact";
+        _cancelButtonTitle = @"Cancel";
+    }
+    return self;
+}
+- (instancetype)initWithNavigationBarTitle:(NSString*)navigationBarTitle andCancelButtonTitle:(NSString*)cancelButtonTitle
+{
+    self = [super init];
+    if (self) {
+        _navigationBarTitle = navigationBarTitle;
+        _cancelButtonTitle = cancelButtonTitle;
+    }
+    return self;
 }
 
 @end
