@@ -1,3 +1,4 @@
+//
 //  Created by Andrea Cipriani on 16/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
@@ -6,13 +7,13 @@
 #import "VeeContact.h"
 #import "VeecontactsForTestingFactory.h"
 
-@interface VeecontactsForTestingFactory ()
+@interface VeeContactsForTestingFactory ()
 
 @property (nonatomic, strong) VeeAddressBookForTesting* veeAddressBookForTesting;
 
 @end
 
-@implementation VeecontactsForTestingFactory
+@implementation VeeContactsForTestingFactory
 
 - (instancetype)initWithAddressBookForTesting:(VeeAddressBookForTesting*)veeAddressBookForTesting
 {
