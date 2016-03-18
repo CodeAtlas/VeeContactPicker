@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 @class VeeAddressBookForTesting;
+@class VeeContact;
 
 @interface VeeContactsForTestingFactory : NSObject
 
@@ -12,6 +13,6 @@
 
 - (VeeContact*)veeContactComplete;
 - (VeeContact*)veeContactUnified;
-- (NSArray*)veeContactsFromAddressBookForTesting;
+- (NSArray<VeeContact*>*)veeContactsFromAddressBookForTesting;
 
 @end

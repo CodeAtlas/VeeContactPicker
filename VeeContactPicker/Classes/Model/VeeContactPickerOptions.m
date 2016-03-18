@@ -3,40 +3,40 @@
 //
 
 #import "VeeContactPickerOptions.h"
+#import "VeeContactColors.h"
+#import "VeeContactPickerStrings.h"
 
-static VeeContactPickerOptions* defaultOptionsCache;
+static VeeContactPickerOptions* defaultOptionsCached;
 
 @implementation VeeContactPickerOptions
 
 #pragma mark - Init
 
-- (instancetype)initWithDefaultOptions
+-(instancetype)init
 {
-    if (self = [super init]) {
-        _sectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
-        _sectionIdentifierWildcard = @"#";
-        _showLettersWhenContactImageIsMissing = YES;
-    }
+    self = [self initWithDefaultOptions];
     return self;
 }
 
-- (instancetype)initWithSectionIdentifiers:(NSArray<NSString*>*)sectionIdentifiers andSectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard andShowLettersWhenContactImageIsMissing:(BOOL)showLettersWhenContactImageIsMissing andContactThumbnailImagePlaceholder:(UIImage*)contactThumbnailImagePlaceholder
+- (instancetype)initWithDefaultOptions
 {
     if (self = [super init]) {
-        _sectionIdentifiers = sectionIdentifiers;
-        _sectionIdentifierWildcard = sectionIdentifierWildcard;
-        _showLettersWhenContactImageIsMissing = showLettersWhenContactImageIsMissing;
-        _contactThumbnailImagePlaceholder = contactThumbnailImagePlaceholder;
+        _veeContactColors = [VeeContactColors colorsWithDefaultPalette];
+        _veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
+        _sectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+        _sectionIdentifierWildcard = @"#";
+        _showLettersWhenContactImageIsMissing = YES;
+        _contactThumbnailImagePlaceholder = nil;
     }
     return self;
 }
 
 + (VeeContactPickerOptions*)defaultOptions
 {
-    if (!defaultOptionsCache) {
-        defaultOptionsCache = [[self alloc] initWithDefaultOptions];
+    if (!defaultOptionsCached) {
+        defaultOptionsCached = [[self alloc] initWithDefaultOptions];
     }
-    return defaultOptionsCache;
+    return defaultOptionsCached;
 }
 
 @end

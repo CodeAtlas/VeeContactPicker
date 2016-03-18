@@ -4,6 +4,8 @@
 
 #import <XCTest/XCTest.h>
 #import "VeeContactPickerOptions.h"
+#import "VeeContactColors.h"
+#import "VeeContactPickerStrings.h"
 
 @interface VeeContactPickerOptionsTests : XCTestCase
 
@@ -23,7 +25,28 @@
     [super tearDown];
 }
 
+#pragma mark - Init
+
+-(void)testInitShouldReturnDefaultOptions
+{
+    VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions new];
+    BOOL areDefaultOption = [veeContactPickerOptions isEqual:veeContactPickerOptions];
+    NSAssert(areDefaultOption, @"Init should return default options");
+}
+
 #pragma mark - Default options
+
+-(void)testDefaultOptionsColors
+{
+    BOOL colorsAreDefault = [[_veeContactPickerDefaultOptions veeContactColors] isEqual:[VeeContactColors colorsWithDefaultPalette]];
+    NSAssert(colorsAreDefault, @"Colors should be default");
+}
+
+-(void)testDefaultOptionsStrings
+{
+    BOOL stringsAreDefault = [[_veeContactPickerDefaultOptions veeContactPickerStrings] isEqual:[VeeContactPickerStrings defaultStrings]];
+    NSAssert(stringsAreDefault, @"Strings should be default");
+}
 
 -(void)testDefaultOptionsSectionIdentifiers
 {
@@ -45,31 +68,9 @@
     NSAssert(_veeContactPickerDefaultOptions.showLettersWhenContactImageIsMissing, @"Default options showLettersWhenContactImageIsMissing should be YES");
 }
 
-
 -(void)testDefaultOptionsContactThumbnailImagePlaceholderIsNil
 {
     NSAssert(_veeContactPickerDefaultOptions.contactThumbnailImagePlaceholder == nil, @"Default options testDefaultOptionsContactThumbnailImagePlaceholderIsNil should be nil");
-}
-
-#pragma mark - Custom options
-
--(void)testCustomOptionsAreSetProperly
-{
-    //Given
-    NSArray<NSString*>* customSectionIdentifiers = @[@"A",@"B",@"C"];
-    NSString* sectionIdentifierWildcard = @"$";
-    BOOL showLettersWhenContactImageIsMissing = NO;
-    
-    UIImage* contactThumbnailImagePlaceholder = [self codeAtasTestImage];
-    
-    VeeContactPickerOptions * customOptions =  [[VeeContactPickerOptions alloc] initWithSectionIdentifiers:customSectionIdentifiers andSectionIdentifierWildcard:sectionIdentifierWildcard andShowLettersWhenContactImageIsMissing:showLettersWhenContactImageIsMissing andContactThumbnailImagePlaceholder:contactThumbnailImagePlaceholder];
-    
-    //Then
-    NSAssert([customOptions.sectionIdentifiers isEqual:customSectionIdentifiers], @"sectionIdentifiers are not set properly");
-    NSAssert([customOptions.sectionIdentifierWildcard isEqualToString:sectionIdentifierWildcard], @"sectionIdentifierWildcard is not set properly ");
-    NSAssert(customOptions.showLettersWhenContactImageIsMissing == showLettersWhenContactImageIsMissing, @"showLettersWhenContactImageIsMissing is not set properly");
-    NSAssert(customOptions.contactThumbnailImagePlaceholder, @"contactThumbnailImagePlaceholder is not set properly");
-
 }
 
 #pragma mark - Private utils

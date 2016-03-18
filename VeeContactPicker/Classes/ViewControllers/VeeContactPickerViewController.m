@@ -19,8 +19,8 @@
 @interface VeeContactPickerViewController ()
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerOptions;
-@property (nonatomic, strong) VeeContactColors* veeContactColors;
-@property (nonatomic, strong) VeeContactPickerStrings* veeContactPickerStrings;
+@property (nonatomic, strong) VeeAddressBook* veeAddressBook;
+@property (nonatomic,strong) NSArray<id<VeeContactProt>>* veeContacts;
 
 @property (nonatomic) ABAddressBookRef addressBookRef;
 
@@ -40,30 +40,39 @@
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-        _veeContactColors = [VeeContactColors colorsWithDefaultPalette];
-        _veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
+        _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
     }
     return self;
 }
 
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors andStrings:(VeeContactPickerStrings*)veeContactPickerStrings
-{
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions{
+    self = [self initWithDefaultConfiguration];
     if (self) {
-        if (veeContactPickerOptions == nil){
-            veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
+        if (veeContactPickerOptions){
+            _veeContactPickerOptions = veeContactPickerOptions;
         }
-        _veeContactPickerOptions = veeContactPickerOptions;
-        
-        if (veeContactColors == nil){
-            veeContactColors = [VeeContactColors colorsWithDefaultPalette];
+    }
+    return self;
+}
+
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts
+{
+    self = [self initWithDefaultConfiguration];
+    if (self) {
+        if (veeContacts){
+            _veeContacts = veeContacts;
         }
-        _veeContactColors = veeContactColors;
-        
-        if (veeContactPickerStrings == nil){
-            veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
+    }
+    return self;
+}
+
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts
+{
+    self = [self initWithOptions:veeContactPickerOptions];
+    if (self) {
+        if (veeContacts){
+            _veeContacts = veeContacts;
         }
-        _veeContactPickerStrings = veeContactPickerStrings;
     }
     return self;
 }
@@ -76,10 +85,17 @@
 
     [self loadStrings];
     [self registerNibsForCellReuse];
-    [self askABPermissionsIfNeeded];
-    [self loadDataSource];
-    [self sortVeecontactsForAB];
-    [_contactsTableView reloadData];
+    
+    BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
+    if (shouldLoadVeecontactsFromAB){
+        BOOL hasABPermission = [self askABPermissionsIfNeededAndContinueAsyncIfGranted];
+        if (hasABPermission == NO){
+            [self loadDataSourceFromAddressBook];
+        }
+    }
+    else{
+        [self loadDataSourceFromCustomVeecontacts];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,8 +107,8 @@
 
 -(void)loadStrings
 {
-    _titleNavigationItem.title = [_veeContactPickerStrings navigationBarTitle];
-    _cancelBarButtonItem.title = [_veeContactPickerStrings cancelButtonTitle];
+    _titleNavigationItem.title = [_veeContactPickerOptions.veeContactPickerStrings navigationBarTitle];
+    _cancelBarButtonItem.title = [_veeContactPickerOptions.veeContactPickerStrings cancelButtonTitle];
 }
 
 -(void)registerNibsForCellReuse
@@ -100,20 +116,43 @@
     [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
 }
 
--(void)askABPermissionsIfNeeded
+-(BOOL)askABPermissionsIfNeededAndContinueAsyncIfGranted
 {
     _addressBookRef = ABAddressBookCreate();
-    [VeeAddressBook askABPermissionsIfNeeded:_addressBookRef];
+    return [_veeAddressBook askABPermissionsIfNeeded:_addressBookRef];
 }
 
--(void)loadDataSource
+-(void)loadDataSourceFromCustomVeecontacts
 {
-    BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
-    if (shouldLoadVeecontactsFromAB){
-        _veeContacts = (NSArray<VeeContactProt>*)[[VeeAddressBookRepository sharedInstance] veeContactsForAddressBook:_addressBookRef];
-    }
+    [self organizeDataSource];
+    [_contactsTableView reloadData];
+}
+
+-(void)loadDataSourceFromAddressBook
+{
+    _veeContacts = (NSArray<VeeContactProt>*)[[VeeAddressBookRepository sharedInstance] veeContactsForAddressBook:_addressBookRef];
+    [self organizeDataSource];
+    [_contactsTableView reloadData];
+}
+
+-(void)organizeDataSource
+{
     _veecontactsSectioned = [self veeContactsSectioned:_veeContacts];
     _veecontactsNonEmptySortedSectionIdentifiers = [self veeContactsNonEmptySortedSectionIdentifiers:_veecontactsSectioned];
+    [self sortVeecontactsForAB];
+}
+
+#pragma mark - VeeABDelegate
+
+-(void)abPermissionsGranted:(BOOL)granted
+{
+    if (granted){
+        [self performSelectorOnMainThread:@selector(loadDataSourceFromAddressBook) withObject:nil waitUntilDone:YES];
+    }
+    else{
+        NSLog(@"Warning - address book permissions not granted");
+        //TODO: show empty view
+    }
 }
 
 #pragma mark - Data source
@@ -338,7 +377,7 @@
     }
     else {
         if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing){
-            [veeContactUITableViewCell.contactImageView setImageWithString:[veeContact displayName] color:[_veeContactColors colorForVeeContact:veeContact]];
+            [veeContactUITableViewCell.contactImageView setImageWithString:[veeContact displayName] color:[_veeContactPickerOptions.veeContactColors colorForVeeContact:veeContact]];
         }
         else{
             [veeContactUITableViewCell.contactImageView setImage:_veeContactPickerOptions.contactThumbnailImagePlaceholder];

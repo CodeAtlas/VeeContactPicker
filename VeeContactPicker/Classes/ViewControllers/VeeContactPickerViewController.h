@@ -3,25 +3,25 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactProt.h"
-#import "VeeContactPickerDelegate.h"
 #import <UIKit/UIKit.h>
-#import "VeeContactPickerOptions.h"
 @import AddressBook;
+
+#import "VeeContactPickerDelegate.h"
+#import "VeeContactProt.h"
+#import "VeeABDelegate.h"
 @class VeeContactPickerOptions;
 @class VeeContactPickerStrings;
+@class VeeContactColors;
 
-@interface VeeContactPickerViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface VeeContactPickerViewController : UIViewController <VeeABDelegate,UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource>
 
 #pragma mark - Init
 
 - (instancetype)initWithDefaultConfiguration;
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors andStrings:(VeeContactPickerStrings*)veeContactPickerStrings;
-
-#pragma mark - Data source
-
-@property (nonatomic,strong) NSArray<VeeContactProt>* veeContacts //By default veeContacts are loaded from all records of the address book
-;
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
+//When veeContacts are not set they are loaded from all records of the address book
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 
 #pragma mark - Delegate and completion handler
 
