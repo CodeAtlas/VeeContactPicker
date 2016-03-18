@@ -12,10 +12,10 @@
 
 - (instancetype)initWithVeeContactsDefaultColorPalette;
 - (instancetype)initWithVeeContactsColorPalette:(NSArray<UIColor*>*)colorPalette;
++ (VeeContactColors*)colorsWithDefaultPalette;
 
 @property (nonatomic, strong) NSArray<UIColor*>* veecontactColorsPalette; //Change it to use your palette
 
-- (UIColor*)colorForVeeContact:(id<VeeContactProt>)veeContact;
-//The color will be chosen from the color palette by the djb2 algorithm, that is used to generate an unsigned long hash from a given string with the composite name of the veeContact
+- (UIColor*)colorForVeeContact:(id<VeeContactProt>)veeContact; //The color will be chosen from the color palette by the djb2 algorithm, that is used to generate an unsigned long hash from a given string with the composite name of the veeContact
 
 @end

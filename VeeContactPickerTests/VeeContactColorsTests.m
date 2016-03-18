@@ -1,7 +1,4 @@
 //
-//  VeeContactColorsTests.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 16/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
@@ -16,11 +13,10 @@
 
 @property (nonatomic, strong) VeeContactColors* veeContactColorsWithDefaultPalette;
 @property (nonatomic, strong) VeeContactColors* veeContactColorsWithCustomPalette;
-@property (nonatomic, strong) VeecontactsForTestingFactory* veecontactsForTestingFactory;
 
 @end
 
-static VeecontactsForTestingFactory* veecontactsForTestingFactory;
+static VeeContactsForTestingFactory* veeContactsForTestingFactory;
 static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 @implementation VeeContactColorsTests
@@ -30,7 +26,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 + (void)setUp
 {
     veeAddressBookForTesting = [VeeAddressBookForTesting new];
-    veecontactsForTestingFactory = [[VeecontactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
+    veeContactsForTestingFactory = [[VeeContactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
     [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
     [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
 }
@@ -91,8 +87,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testColorForSameVeecontactsShouldBeEqual
 {
-    VeeContact* v1 = [veecontactsForTestingFactory veeContactComplete];
-    VeeContact* v2 = [veecontactsForTestingFactory veeContactComplete];
+    VeeContact* v1 = [veeContactsForTestingFactory veeContactComplete];
+    VeeContact* v2 = [veeContactsForTestingFactory veeContactComplete];
     UIColor* colorForVeecontact1 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v1];
     UIColor* colorForVeecontact2 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v2];
     BOOL colorsAreEqual = [colorForVeecontact1 isEqual:colorForVeecontact2];
@@ -102,7 +98,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testColorsRandomnessDistribution
 {
     NSMutableArray<UIColor*>* colors = [NSMutableArray new];
-    for (VeeContact* veeContact in [veecontactsForTestingFactory veeContactsFromAddressBookForTesting]) {
+    for (VeeContact* veeContact in [veeContactsForTestingFactory veeContactsFromAddressBookForTesting]) {
         [colors addObject:[_veeContactColorsWithCustomPalette colorForVeeContact:veeContact]];
     }
 

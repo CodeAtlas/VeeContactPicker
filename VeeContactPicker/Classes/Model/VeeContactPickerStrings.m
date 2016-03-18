@@ -1,7 +1,4 @@
 //
-//  VeeContactPickerStrings.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 14/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
@@ -9,6 +6,8 @@
 #import "VeeContactPickerStrings.h"
 
 @implementation VeeContactPickerStrings
+
+static VeeContactPickerStrings* veeContactPickerDefaultStrings;
 
 - (instancetype)init
 {
@@ -28,6 +27,15 @@
     }
     return self;
 }
+
++ (VeeContactPickerStrings*)defaultStrings
+{
+    if (!veeContactPickerDefaultStrings) {
+        veeContactPickerDefaultStrings = [[VeeContactPickerStrings alloc] initWithDefaultStrings];
+    }
+    return veeContactPickerDefaultStrings;
+}
+
 - (instancetype)initWithNavigationBarTitle:(NSString*)navigationBarTitle andCancelButtonTitle:(NSString*)cancelButtonTitle
 {
     self = [super init];

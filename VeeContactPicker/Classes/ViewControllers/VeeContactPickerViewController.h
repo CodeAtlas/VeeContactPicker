@@ -1,3 +1,4 @@
+//
 //  Created by Andrea Cipriani on 14/12/15.
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
@@ -15,8 +16,6 @@
 #pragma mark - Init
 
 - (instancetype)initWithDefaultConfiguration;
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions;
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors;
 - (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors andStrings:(VeeContactPickerStrings*)veeContactPickerStrings;
 
 #pragma mark - Data source

@@ -1,7 +1,4 @@
 //
-//  VeeContactPicker.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 14/12/15.
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
@@ -43,35 +40,29 @@
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-        _veeContactColors = [[VeeContactColors alloc] initWithVeeContactsDefaultColorPalette];
-        _veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithDefaultStrings];
-
-    }
-    return self;
-}
-
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions
-{
-    self = [self initWithDefaultConfiguration];
-    if (self){
-        _veeContactPickerOptions = veeContactPickerOptions;
-    }
-    return self;
-}
-
-- (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors
-{
-    self = [self initWithOptions:veeContactPickerOptions];
-    if (self) {
-        _veeContactColors = veeContactColors;
+        _veeContactColors = [VeeContactColors colorsWithDefaultPalette];
+        _veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
     }
     return self;
 }
 
 - (instancetype)initWithOptions:(VeeContactPickerOptions *)veeContactPickerOptions andColors:(VeeContactColors*)veeContactColors andStrings:(VeeContactPickerStrings*)veeContactPickerStrings
 {
-    self = [self initWithOptions:veeContactPickerOptions andColors:veeContactColors];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
+        if (veeContactPickerOptions == nil){
+            veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
+        }
+        _veeContactPickerOptions = veeContactPickerOptions;
+        
+        if (veeContactColors == nil){
+            veeContactColors = [VeeContactColors colorsWithDefaultPalette];
+        }
+        _veeContactColors = veeContactColors;
+        
+        if (veeContactPickerStrings == nil){
+            veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
+        }
         _veeContactPickerStrings = veeContactPickerStrings;
     }
     return self;
