@@ -1,7 +1,4 @@
 //
-//  ViewController.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 21/12/15.
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
@@ -10,6 +7,8 @@
 #import "VeeContactPickerViewController.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *selectedContactLabel;
 
 @end
 
@@ -23,40 +22,19 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)showVeecontactPickerPressed:(id)sender {
-    
-     //With Completion Block
-    /*
-     VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithCompletionHandler:^(id<ABContact> abContact) {
-     if (abContact){
-     NSLog(@"Selected %@", [abContact displayName]);
-     }
-     }];
-     */
-    
-    //With delegation
-    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDelegate:self];
-    //veePickerVC.showContactDetailLabel = YES;
-    //veePickerVC.showFirstNameFirst = NO;
-    
-    //Generate colors for a palette
-    NSMutableArray *colors = [NSMutableArray array];
-    for (float hue = 0.0; hue < 1.0; hue += 0.05) {
-        UIColor *color = [UIColor colorWithHue:hue saturation:0.5 brightness:0.5 alpha:1.0];
-        [colors addObject:color];
-    }
-    veePickerVC.contactLettersColorPalette = colors;
-    //veePickerVC.showLettersWhenContactImageIsMissing = NO;
-    
-    //Present the VeePickerViewController
+- (IBAction)showVeecontactPickerPressed:(id)sender
+{
+    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+    veePickerVC.contactPickerDelegate = self;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 
 #pragma mark - VeeContactPickerDelegate
 
-- (void)didSelectABContact:(id<VeeContactProt>)abContact
+- (void)didSelectABContact:(id<VeeContactProt>)veeContact
 {
-    NSLog(@"Selected %@", [abContact displayName]);
+    NSLog(@"Selected %@", [veeContact displayName]);
+    _selectedContactLabel.text = [NSString stringWithFormat:@"Last selected contact: %@",veeContact.displayName];
 }
 
 @end

@@ -95,8 +95,8 @@
 		861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTesting.m; sourceTree = "<group>"; };
 		864194EC1C96CE60005DC2D6 /* VeeContactPickerOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerOptions.h; sourceTree = "<group>"; };
 		864194ED1C96CE60005DC2D6 /* VeeContactPickerOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerOptions.m; sourceTree = "<group>"; };
-		864194EF1C96D169005DC2D6 /* VeeContactPickerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VeeContactPickerConstants.h; path = ../ViewControllers/VeeContactPickerConstants.h; sourceTree = "<group>"; };
-		864194F01C96D169005DC2D6 /* VeeContactPickerConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VeeContactPickerConstants.m; path = ../ViewControllers/VeeContactPickerConstants.m; sourceTree = "<group>"; };
+		864194EF1C96D169005DC2D6 /* VeeContactPickerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerConstants.h; sourceTree = "<group>"; };
+		864194F01C96D169005DC2D6 /* VeeContactPickerConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerConstants.m; sourceTree = "<group>"; };
 		864194F21C96D4E4005DC2D6 /* NSObject+VeeIsEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+VeeIsEmpty.h"; sourceTree = "<group>"; };
 		864194F31C96D4E4005DC2D6 /* NSObject+VeeIsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VeeIsEmpty.m"; sourceTree = "<group>"; };
 		864194F61C96D7C0005DC2D6 /* VeeContactPickerStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerStrings.h; sourceTree = "<group>"; };
@@ -219,12 +219,12 @@
 		860C62841C28521200876682 /* VeeContactPickerTests */ = {
 			isa = PBXGroup;
 			children = (
-				860C62871C28521200876682 /* Info.plist */,
-				86A6A6FF1C9AF56A004F66E2 /* Res */,
 				86AB036E1C917A9E0054B7EC /* Categories */,
-				86C6E7DB1C9C13180031CC23 /* Utils */,
-				86C6E7DA1C9C130C0031CC23 /* Model */,
 				86C6E7DC1C9C13280031CC23 /* Controller */,
+				86C6E7DA1C9C130C0031CC23 /* Model */,
+				86A6A6FF1C9AF56A004F66E2 /* Res */,
+				86C6E7DB1C9C13180031CC23 /* Utils */,
+				860C62871C28521200876682 /* Info.plist */,
 			);
 			path = VeeContactPickerTests;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				864194F51C96D4E9005DC2D6 /* Categories */,
-				86D7F7901C8ED8A40060FA7A /* Model */,
 				86DCEEFA1C96DB2900EC7FD6 /* Controller */,
+				86D7F7901C8ED8A40060FA7A /* Model */,
 				860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */,
 			);
 			path = Classes;
@@ -281,8 +281,7 @@
 				860C62A51C28528E00876682 /* VeeContactPickerViewController.h */,
 				860C62A61C28528E00876682 /* VeeContactPickerViewController.m */,
 			);
-			name = ViewController;
-			path = ViewControllers;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		860C62B21C2852BB00876682 /* Xibs */ = {
@@ -309,7 +308,7 @@
 				864194F21C96D4E4005DC2D6 /* NSObject+VeeIsEmpty.h */,
 				864194F31C96D4E4005DC2D6 /* NSObject+VeeIsEmpty.m */,
 			);
-			name = Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		86A6A6FF1C9AF56A004F66E2 /* Res */ = {
@@ -317,7 +316,7 @@
 			children = (
 				86A6A7001C9AF572004F66E2 /* codeatlas.png */,
 			);
-			name = Res;
+			path = Res;
 			sourceTree = "<group>";
 		};
 		86AB036E1C917A9E0054B7EC /* Categories */ = {
@@ -344,12 +343,12 @@
 		86C6E7DA1C9C130C0031CC23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				861046C11C8F253F00DFA690 /* VeeContactTests.m */,
 				86B8A6C01C99A4E600F48CBD /* VeeContactColorsTests.m */,
-				86B8A6BE1C99A4D200F48CBD /* VeeContactPickerStringsTests.m */,
 				86B8A6BC1C99A49600F48CBD /* VeeContactPickerOptionsTests.m */,
+				86B8A6BE1C99A4D200F48CBD /* VeeContactPickerStringsTests.m */,
+				861046C11C8F253F00DFA690 /* VeeContactTests.m */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		86C6E7DB1C9C13180031CC23 /* Utils */ = {
@@ -359,7 +358,7 @@
 				86B8A6C21C99AB6C00F48CBD /* VeeContactsForTestingFactory.h */,
 				86B8A6C31C99AB6C00F48CBD /* VeeContactsForTestingFactory.m */,
 			);
-			name = Utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		86C6E7DC1C9C13280031CC23 /* Controller */ = {
@@ -367,7 +366,7 @@
 			children = (
 				86C6E7DD1C9C132D0031CC23 /* View Controller */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		86C6E7DD1C9C132D0031CC23 /* View Controller */ = {
@@ -375,21 +374,23 @@
 			children = (
 				86B8A6BA1C9977C100F48CBD /* VeeContactPickerViewControllerTests.m */,
 			);
-			name = "View Controller";
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		86D7F7901C8ED8A40060FA7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				860C629F1C28525E00876682 /* VeeContactProt.h */,
 				860C62B41C2854CB00876682 /* VeeContact.h */,
 				860C62B51C2854CB00876682 /* VeeContact.m */,
+				86DCEEFE1C96DD4900EC7FD6 /* VeeContactColors.h */,
+				86DCEEFF1C96DD4900EC7FD6 /* VeeContactColors.m */,
+				864194EF1C96D169005DC2D6 /* VeeContactPickerConstants.h */,
+				864194F01C96D169005DC2D6 /* VeeContactPickerConstants.m */,
 				864194EC1C96CE60005DC2D6 /* VeeContactPickerOptions.h */,
 				864194ED1C96CE60005DC2D6 /* VeeContactPickerOptions.m */,
 				864194F61C96D7C0005DC2D6 /* VeeContactPickerStrings.h */,
 				864194F71C96D7C0005DC2D6 /* VeeContactPickerStrings.m */,
-				864194EF1C96D169005DC2D6 /* VeeContactPickerConstants.h */,
-				864194F01C96D169005DC2D6 /* VeeContactPickerConstants.m */,
+				860C629F1C28525E00876682 /* VeeContactProt.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,11 +399,9 @@
 			isa = PBXGroup;
 			children = (
 				86DCEF011C96E08600EC7FD6 /* Address Book */,
-				86DCEEFE1C96DD4900EC7FD6 /* VeeContactColors.h */,
-				86DCEEFF1C96DD4900EC7FD6 /* VeeContactColors.m */,
 				860C62B11C2852AD00876682 /* ViewController */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		86DCEF011C96E08600EC7FD6 /* Address Book */ = {
@@ -416,7 +415,7 @@
 				86DCEF041C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.h */,
 				86DCEF051C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m */,
 			);
-			name = "Address Book";
+			path = "Address Book";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

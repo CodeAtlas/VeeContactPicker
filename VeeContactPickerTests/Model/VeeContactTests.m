@@ -12,16 +12,18 @@
 #import "XCTest+VeeCommons.h"
 #import <OCMock/OCMock.h>
 #import <XCTest/XCTest.h>
+#import "VeecontactsForTestingFactory.h"
 
 @interface VeeContactTests : XCTestCase
 
 @property (nonatomic, strong) VeeContact* veeContactComplete;
 @property (nonatomic, strong) VeeContact* veeContactUnified;
-@property (nonatomic, strong) NSArray* veecontactsForTesting;
+@property (nonatomic, strong) NSArray* veeContactsForTesting;
 
 @end
 
 static VeeAddressBookForTesting* veeAddressBookForTesting;
+static VeeContactsForTestingFactory* veeContactsForTestingFactory;
 
 @implementation VeeContactTests
 
@@ -30,6 +32,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 + (void)setUp
 {
     veeAddressBookForTesting = [VeeAddressBookForTesting new];
+    veeContactsForTestingFactory = [[VeeContactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
     [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
     [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
 }
@@ -44,9 +47,9 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)setUp
 {
     [super setUp];
-    _veeContactComplete = [self veeContactComplete];
-    _veeContactUnified = [self veeContactUnified];
-    _veecontactsForTesting = [self veeContactsFromAddressBookForTesting];
+    _veeContactComplete = [veeContactsForTestingFactory veeContactComplete];
+    _veeContactUnified = [veeContactsForTestingFactory veeContactUnified];
+    _veeContactsForTesting = [veeContactsForTestingFactory veeContactsFromAddressBookForTesting];
 }
 
 - (void)tearDown
@@ -211,19 +214,19 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 #pragma mark - Unified Veecontact
 
-//TODO: ...
+//TODO: ... Can't test unified contacts because I can't reproduce them (linked records) in the address book programmatically, see http://stackoverflow.com/questions/24224929/is-there-a-way-to-programmatically-create-linked-contact
 
 #pragma mark - VeecontactsForTesting tests
 
 - (void)testVeeContactsCreationCount
 {
-    BOOL isVeeContactsCountCorrect = [_veecontactsForTesting count] == kVeeTestingContactsNumber;
-    NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [_veecontactsForTesting count], kVeeTestingContactsNumber);
+    BOOL isVeeContactsCountCorrect = [_veeContactsForTesting count] == kVeeTestingContactsNumber;
+    NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [_veeContactsForTesting count], kVeeTestingContactsNumber);
 }
 
 - (void)testVeeContactsRecordIdExist
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         BOOL hasAtLeastOneRecordId = [[veeContact recordIds] count] > 0;
         NSAssert(hasAtLeastOneRecordId, @"VeeContact %@ has no recordIds", veeContact.displayName);
     }
@@ -231,21 +234,21 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testVeecontactsCreatedAtExist
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         NSAssert(veeContact.createdAt, @"VeeContact unified has no createdAt date");
     }
 }
 
 - (void)testVeecontactsModifiedAtExist
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         NSAssert(veeContact.modifiedAt, @"VeeContact unified has no modifiedAt date");
     }
 }
 
 - (void)testVeecontactsCreatedAtCantBeAfterModifiedAt
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         BOOL isVeeContactCreatedBeforeOrEqualeModifiedAt = [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedSame || [veeContact.createdAt compare:veeContact.modifiedAt] == NSOrderedAscending;
         NSAssert(isVeeContactCreatedBeforeOrEqualeModifiedAt, @"Veecontact %@ createdAt %@, that is after its modifiedAt: %@", veeContact.displayName, veeContact.createdAt, veeContact.modifiedAt);
     }
@@ -254,7 +257,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testVeecontactsImageCount
 {
     NSUInteger veecontactsImageCount = 0;
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         if (veeContact.thumbnailImage) {
             veecontactsImageCount++;
         }
@@ -267,7 +270,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testVeecontactsPhoneNumbersCount
 {
     NSUInteger phoneNumberCount = 0;
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         phoneNumberCount += [[veeContact phoneNumbers] count];
     }
 
@@ -277,7 +280,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testVeecontactsPhoneNumberDuplicate
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         NSSet* phoneNumberSet = [NSSet setWithArray:veeContact.phoneNumbers];
         NSAssert([phoneNumberSet count] == [veeContact.phoneNumbers count], @"Veecontacts phone numbers contain duplicates!");
     }
@@ -286,7 +289,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testVeecontactsEmailsCount
 {
     NSUInteger emailsCount = 0;
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         emailsCount += [[veeContact emails] count];
     }
 
@@ -296,35 +299,13 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testVeecontactsEmailsNoDuplicate
 {
-    for (VeeContact* veeContact in _veecontactsForTesting) {
+    for (VeeContact* veeContact in _veeContactsForTesting) {
         NSSet* emailSet = [NSSet setWithArray:veeContact.emails];
-        NSAssert([emailSet count] == [veeContact.emails count], @"Veecontacts emails contain duplicates!");
+        NSAssert([emailSet count] == [veeContact.emails count], @"VeeContacts emails contain duplicates!");
     }
 }
 
 #pragma mark - Private utils
-
-- (VeeContact*)veeContactComplete
-{
-    VeeContact* veeContactComplete = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting veeContactCompleteRecord]];
-    return veeContactComplete;
-}
-
-- (VeeContact*)veeContactUnified
-{
-    VeeContact* veeContactUnified = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting veeContactUnifiedRecord]];
-    return veeContactUnified;
-}
-
-- (NSArray*)veeContactsFromAddressBookForTesting
-{
-    NSMutableArray* veeContactsFromABForTestingMutable = [NSMutableArray new];
-    for (id abRecordRefBoxed in [veeAddressBookForTesting recordRefsOfAddressBookForTesting]) {
-        VeeContact* veeContact = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:(__bridge ABRecordRef)(abRecordRefBoxed)];
-        [veeContactsFromABForTestingMutable addObject:veeContact];
-    }
-    return [NSArray arrayWithArray:veeContactsFromABForTestingMutable];
-}
 
 - (BOOL)isEmailAddress:(NSString*)canBeAnEmail
 {
