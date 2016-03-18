@@ -36,10 +36,6 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NzL-9t-n6C">
                     <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="nIt-Xi-Gtb"/>
-                        <outlet property="delegate" destination="-1" id="whY-xm-kRP"/>
-                    </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxQ-cp-jGd">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>

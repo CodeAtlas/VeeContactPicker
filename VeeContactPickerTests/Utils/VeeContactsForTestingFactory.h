@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VeeContactProt.h"
 @class VeeAddressBookForTesting;
 @class VeeContact;
 
@@ -13,6 +14,6 @@
 
 - (VeeContact*)veeContactComplete;
 - (VeeContact*)veeContactUnified;
-- (NSArray<VeeContact*>*)veeContactsFromAddressBookForTesting;
+- (NSArray<id<VeeContactProt>>*)veeContactsFromAddressBookForTesting;
 
 @end

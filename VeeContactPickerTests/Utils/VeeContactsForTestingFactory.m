@@ -38,7 +38,7 @@
     return veeContactUnified;
 }
 
-- (NSArray<VeeContact*>*)veeContactsFromAddressBookForTesting
+- (NSArray<id<VeeContactProt>>*)veeContactsFromAddressBookForTesting
 {
     NSMutableArray* veeContactsFromABForTestingMutable = [NSMutableArray new];
     for (id abRecordRefBoxed in [_veeAddressBookForTesting recordRefsOfAddressBookForTesting]) {

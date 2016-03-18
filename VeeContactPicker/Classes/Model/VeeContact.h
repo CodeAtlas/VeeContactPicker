@@ -6,6 +6,7 @@
 #import "VeeContactProt.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "VeeSectionable.h"
 @import AddressBook;
 
 @interface VeeContact : NSObject <VeeContactProt>
@@ -26,6 +27,8 @@
 @property (nonatomic, readonly, copy) NSString* compositeName; //The concatenated value of these properties: Prefix, Suffix, Organization, First name, and Last name.
 @property (nonatomic, readonly, copy) NSString* displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
+
+-(NSString*)sectionIdentifier;
 
 #pragma mark - Multivalue properties
 

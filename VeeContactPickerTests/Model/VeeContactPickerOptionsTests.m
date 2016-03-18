@@ -73,15 +73,4 @@
     NSAssert(_veeContactPickerDefaultOptions.contactThumbnailImagePlaceholder == nil, @"Default options testDefaultOptionsContactThumbnailImagePlaceholderIsNil should be nil");
 }
 
-#pragma mark - Private utils
-
--(UIImage*)codeAtasTestImage
-{
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *imagePath = [bundle pathForResource:@"codeatlas" ofType:@"png"];
-    UIImage *codeAtlasImage = [UIImage imageWithContentsOfFile:imagePath];
-    NSAssert(codeAtlasImage, @"codeatlas image not found");
-    return codeAtlasImage;
-}
-
 @end

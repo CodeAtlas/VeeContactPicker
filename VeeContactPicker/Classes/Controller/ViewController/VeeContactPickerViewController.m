@@ -14,6 +14,7 @@
 #import "VeeContactPickerStrings.h"
 #import "VeeAddressBook.h"
 #import "VeeAddressBookRepository.h"
+#import "VeeSectionedArrayDataSource.h"
 #import "VeeContactColors.h"
 
 @interface VeeContactPickerViewController ()
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerOptions;
 @property (nonatomic, strong) VeeAddressBook* veeAddressBook;
 @property (nonatomic,strong) NSArray<id<VeeContactProt>>* veeContacts;
+@property (nonatomic,strong) VeeSectionedArrayDataSource* veeSectionedArrayDataSource;
 
 @property (nonatomic) ABAddressBookRef addressBookRef;
 
@@ -84,17 +86,16 @@
     [super viewDidLoad];
 
     [self loadStrings];
-    [self registerNibsForCellReuse];
     
     BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
     if (shouldLoadVeecontactsFromAB){
         BOOL hasABPermission = [self askABPermissionsIfNeededAndContinueAsyncIfGranted];
         if (hasABPermission == NO){
-            [self loadDataSourceFromAddressBook];
+            [self loadVeeContactsFromAddressBook];
         }
     }
     else{
-        [self loadDataSourceFromCustomVeecontacts];
+        [self loadCustomVeecontacts];
     }
 }
 
@@ -111,35 +112,57 @@
     _cancelBarButtonItem.title = [_veeContactPickerOptions.veeContactPickerStrings cancelButtonTitle];
 }
 
--(void)registerNibsForCellReuse
-{
-    [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
-}
-
 -(BOOL)askABPermissionsIfNeededAndContinueAsyncIfGranted
 {
     _addressBookRef = ABAddressBookCreate();
     return [_veeAddressBook askABPermissionsIfNeeded:_addressBookRef];
 }
 
--(void)loadDataSourceFromCustomVeecontacts
+-(void)loadCustomVeecontacts
 {
-    [self organizeDataSource];
-    [_contactsTableView reloadData];
+    if (!_veeContacts){
+        [self showEmptyView];
+    }
+    else{
+        [self sortVeecontactsForAB];
+        [self setupTableView];
+    }
 }
 
--(void)loadDataSourceFromAddressBook
+-(void)loadVeeContactsFromAddressBook
 {
     _veeContacts = (NSArray<VeeContactProt>*)[[VeeAddressBookRepository sharedInstance] veeContactsForAddressBook:_addressBookRef];
-    [self organizeDataSource];
-    [_contactsTableView reloadData];
+    [self sortVeecontactsForAB];
+    [self setupTableView];
 }
 
--(void)organizeDataSource
+- (void)setupTableView
 {
-    _veecontactsSectioned = [self veeContactsSectioned:_veeContacts];
-    _veecontactsNonEmptySortedSectionIdentifiers = [self veeContactsNonEmptySortedSectionIdentifiers:_veecontactsSectioned];
-    [self sortVeecontactsForAB];
+    [self registerNibsForCellReuse];
+    
+    ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell *cell, VeeContact *veeContact) {
+        [self coinfigureCell:cell forVeeContact:veeContact];
+    };
+    
+    _veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:kVeeContactCellIdentifier allowedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
+
+    _contactsTableView.dataSource = _veeSectionedArrayDataSource;
+    _contactsTableView.delegate = self;
+    [_contactsTableView reloadData];
+    
+    [self setupSearchTableView];
+}
+
+-(void)setupSearchTableView
+{
+    self.searchDisplayController.searchResultsTableView.dataSource = _veeSectionedArrayDataSource;
+    self.searchDisplayController.searchResultsTableView.delegate = self;
+}
+
+-(void)registerNibsForCellReuse
+{
+    [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
@@ -147,72 +170,19 @@
 -(void)abPermissionsGranted:(BOOL)granted
 {
     if (granted){
-        [self performSelectorOnMainThread:@selector(loadDataSourceFromAddressBook) withObject:nil waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(loadVeeContactsFromAddressBook) withObject:nil waitUntilDone:YES];
     }
     else{
         NSLog(@"Warning - address book permissions not granted");
-        //TODO: show empty view
+        [self showEmptyView];
     }
 }
 
-#pragma mark - Data source
+#pragma mark - UI
 
-- (NSDictionary<NSString*,NSArray<VeeContact*>*>*)veeContactsSectioned:(NSArray<VeeContact*>*)veeContacts
+-(void)showEmptyView
 {
-    NSMutableDictionary<NSString*,NSArray<VeeContact*>*>* veeContactsSectionedMutable = [NSMutableDictionary new];
-    for (id<VeeContactProt> veeContact in veeContacts) {
-        NSString* veeContactSectionIdentifier = [self sectionIdentifierForVeeContact:veeContact];
-        NSArray* veeContactsForSectionIdentifier = [veeContactsSectionedMutable objectForKey:veeContactSectionIdentifier];
-        if (veeContactsForSectionIdentifier == nil) {
-            [veeContactsSectionedMutable setObject:[NSArray arrayWithObject:veeContact] forKey:veeContactSectionIdentifier];
-        }
-        else {
-            [veeContactsSectionedMutable setObject:[veeContactsForSectionIdentifier arrayByAddingObject:veeContact] forKey:veeContactSectionIdentifier];
-        }
-    }
-    return [NSDictionary dictionaryWithDictionary:veeContactsSectionedMutable];
-}
-
--(NSString*)sectionIdentifierForVeeContact:(VeeContact*)veecontact
-{
-    NSString* sectionIdentifierForVeecontact;
-    
-    if ([veecontact.firstName veeIsEmpty] == NO) {
-        sectionIdentifierForVeecontact = [[veecontact.firstName substringToIndex:1] uppercaseString];
-    }
-    else if ([veecontact.lastName veeIsEmpty] == NO) {
-        sectionIdentifierForVeecontact = [[veecontact.lastName substringToIndex:1] uppercaseString];
-    }
-    else if ([veecontact.displayName veeIsEmpty] == NO) {
-        sectionIdentifierForVeecontact = [[veecontact.displayName substringToIndex:1] uppercaseString];
-    }
-    else {
-        sectionIdentifierForVeecontact = [_veeContactPickerOptions sectionIdentifierWildcard];
-    }
-    if ([[_veeContactPickerOptions sectionIdentifiers] containsObject:sectionIdentifierForVeecontact] == NO) {
-        sectionIdentifierForVeecontact = [_veeContactPickerOptions sectionIdentifierWildcard];
-    }
-    return sectionIdentifierForVeecontact;
-}
-
--(NSArray<NSString*>*)veeContactsNonEmptySortedSectionIdentifiers:(NSDictionary<NSString*,NSArray<VeeContact*>*>*)veecontactsSectioned
-{
-    return [self sortedSectionIdentifiers:[veecontactsSectioned allKeys]];
-}
-
--(NSArray<NSString*>*)sortedSectionIdentifiers:(NSArray*)sectionIdentifiers
-{
-    return [sectionIdentifiers sortedArrayUsingComparator:^NSComparisonResult(NSString* firstKey, NSString* secondKey) {
-        if ([firstKey isEqualToString:[_veeContactPickerOptions sectionIdentifierWildcard]]) {
-            return NSOrderedDescending;
-        }
-        else if ([secondKey isEqualToString:[_veeContactPickerOptions sectionIdentifierWildcard]]) {
-            return NSOrderedAscending;
-        }
-        else {
-            return [firstKey caseInsensitiveCompare:secondKey];
-        }
-    }];
+    //TODO:
 }
 
 #pragma mark - VeeContacts sorting
@@ -252,104 +222,16 @@
     return [veeContact valueForKey:firstProperty];
 }
 
-#pragma mark - TableView data source
+#pragma mark - TableView cell configuration
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+-(void)coinfigureCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [[_veecontactsSearchResultsSectioned allKeys] count];
-    }
-    return [[_veecontactsSectioned allKeys] count];
+    [self configureCellInitialValues:veeContactUITableViewCell];
+    [self configureCellLabels:veeContactUITableViewCell forVeeContact:veeContact];
+    [self configureCellImage:veeContactUITableViewCell forVeeContact:veeContact];
 }
 
-- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
-{
-    BOOL isSearchTableView = tableView == self.searchDisplayController.searchResultsTableView;
-    return [[self veeContactsForSection:section inSearchTableView:isSearchTableView] count];
-}
-
-- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
-{
-    BOOL isSearchTableView = tableView == self.searchDisplayController.searchResultsTableView;
-    return [self sectionIdentifierFromSection:section inSearchTableView:isSearchTableView];
-}
-
-- (NSArray<NSString*>*)sectionIndexTitlesForTableView:(UITableView*)tableView
-{
-    return [_veeContactPickerOptions sectionIdentifiers];
-}
-
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    VeeContactUITableViewCell* veeContactUITableViewCell = [tableView dequeueReusableCellWithIdentifier:kVeeContactCellIdentifier];
-    if (!veeContactUITableViewCell) {
-        veeContactUITableViewCell = [[[NSBundle mainBundle] loadNibNamed:kVeeContactCellNibName owner:self options:nil] objectAtIndex:0];
-    }
-
-    BOOL isSearchTableView = tableView == self.searchDisplayController.searchResultsTableView;
-    id<VeeContactProt> veeContact = [self veeContactForIndexPath:indexPath inSearchTableView:isSearchTableView];
-    [self customizeTableViewCell:veeContactUITableViewCell forVeeContact:veeContact];
-    return veeContactUITableViewCell;
-}
-
-- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    BOOL isSearchTableView = tableView == self.searchDisplayController.searchResultsTableView;
-    id<VeeContactProt> veeContact = [self veeContactForIndexPath:indexPath inSearchTableView:isSearchTableView];
-    
-    if (_contactPickerDelegate) {
-        [_contactPickerDelegate didSelectABContact:veeContact];
-    }
-    if (_completionHandler) {
-        _completionHandler(veeContact);
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - TableView data source utils
-
--(NSArray<VeeContact*>*)veeContactsForSection:(NSInteger)section inSearchTableView:(BOOL)isSearchTableView
-{
-    if (isSearchTableView){
-        return [_veecontactsSearchResultsSectioned objectForKey:[self sectionIdentifierFromSection:section inSearchTableView:isSearchTableView]];
-    }
-    else{
-        return [_veecontactsSectioned objectForKey:[self sectionIdentifierFromSection:section inSearchTableView:isSearchTableView]];
-    }
-}
-
--(NSString*)sectionIdentifierFromSection:(NSInteger)section inSearchTableView:(BOOL)isSearchTableView
-{
-    if (isSearchTableView){
-        return [_veecontactsNonEmptySortedSectionIdentifiersSearchResults objectAtIndex:section];
-    }
-    return [_veecontactsNonEmptySortedSectionIdentifiers objectAtIndex:section];
-}
-
--(id<VeeContactProt>)veeContactForIndexPath:(NSIndexPath*)indexPath inSearchTableView:(BOOL)isSearchTableView
-{
-    id<VeeContactProt> veeContact;
-    NSString* sectionIdentifier = [self sectionIdentifierFromSection:indexPath.section inSearchTableView:isSearchTableView];
-    if (isSearchTableView) {
-        veeContact = [[_veecontactsSearchResultsSectioned objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
-    }
-    else {
-        veeContact = [[_veecontactsSectioned objectForKey:sectionIdentifier] objectAtIndex:indexPath.row];
-    }
-    return veeContact;
-}
-
--(void)customizeTableViewCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
-{
-    [self loadTableViewCellInitialValues:veeContactUITableViewCell];
-    [self loadTableViewCellLabels:veeContactUITableViewCell forVeeContact:veeContact];
-    [self loadTableViewCellImage:veeContactUITableViewCell forVeeContact:veeContact];
-}
-
--(void)loadTableViewCellInitialValues:(VeeContactUITableViewCell*)veeContactUITableViewCell
+-(void)configureCellInitialValues:(VeeContactUITableViewCell*)veeContactUITableViewCell
 {
     veeContactUITableViewCell.primaryLabelCenterYAlignmentConstraint.constant = 0;
     veeContactUITableViewCell.secondaryLabel.hidden = YES;
@@ -358,7 +240,7 @@
     veeContactUITableViewCell.contactImageView.image = nil;
 }
 
--(void)loadTableViewCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
+-(void)configureCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
     veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
     NSArray* nameComponentes = [[veeContact displayName] componentsSeparatedByString:@" "];
@@ -370,7 +252,7 @@
     }
 }
 
--(void)loadTableViewCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
+-(void)configureCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
     if ([veeContact thumbnailImage]) {
         veeContactUITableViewCell.contactImageView.image = [veeContact thumbnailImage];
@@ -392,6 +274,22 @@
     return kVeeContactCellHeight;
 }
 
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    id<VeeContactProt> veeContact = [_veeSectionedArrayDataSource tableView:tableView itemAtIndexPath:indexPath];
+    
+    if (_contactPickerDelegate) {
+        [_contactPickerDelegate didSelectABContact:veeContact];
+    }
+    if (_completionHandler) {
+        _completionHandler(veeContact);
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)cancelBarButtonItemPressed:(id)sender
@@ -407,16 +305,21 @@
     return YES;
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
 {
-    _veecontactsSearchResultsSectioned = [self veeContactsSectioned:[self searchResultsForText:searchText]];
+    [_veeSectionedArrayDataSource setSearchResults:nil forSearchTableView:self.searchDisplayController.searchResultsTableView];
 }
 
--(NSArray<VeeContact*>*)searchResultsForText:(NSString*)searchText
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [_veeSectionedArrayDataSource setSearchResults:[self searchResultsForText:searchText] forSearchTableView:self.searchDisplayController.searchResultsTableView];
+}
+
+-(NSArray<id<VeeContactProt>>*)searchResultsForText:(NSString*)searchText
 {
     NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
     ;
-    NSArray<VeeContact*>* veeContactsSearchResult = [_veeContacts filteredArrayUsingPredicate:searchPredicate];
+    NSArray<id<VeeContactProt>>* veeContactsSearchResult = [_veeContacts filteredArrayUsingPredicate:searchPredicate];
     return veeContactsSearchResult;
 }
 

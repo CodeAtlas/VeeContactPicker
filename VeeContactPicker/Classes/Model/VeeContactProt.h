@@ -5,8 +5,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "VeeSectionable.h"
 
-@protocol VeeContactProt <NSObject>
+@protocol VeeContactProt <NSObject,VeeSectionable>
 
 @property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
 @property (nonatomic, readonly, strong) NSDate* modifiedAt;
@@ -22,5 +23,7 @@
 
 @property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
+
+-(NSString*)sectionIdentifier;
 
 @end

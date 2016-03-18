@@ -13,7 +13,7 @@
 @class VeeContactPickerStrings;
 @class VeeContactColors;
 
-@interface VeeContactPickerViewController : UIViewController <VeeABDelegate,UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface VeeContactPickerViewController : UIViewController <VeeABDelegate,UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate>
 
 #pragma mark - Init
 

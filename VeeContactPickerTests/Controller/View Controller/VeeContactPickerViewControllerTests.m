@@ -9,31 +9,60 @@
 #import "VeeContactColors.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeABDelegate.h"
+#import "VeeContactsForTestingFactory.h"
+#import "VeeAddressBookForTesting.h"
 
 @interface VeeContactPickerViewControllerTests : XCTestCase
 
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithDefaultOptions;
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithNilOptions;
+@property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithCustomOptions;
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithNilVeeContacts;
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithCustomVeeContacts;
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithCustomVeeContactsAndCustomOptions;
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerDefaultOptions;
+@property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerCustomOptions;
+@property (nonatomic, strong) NSArray<id<VeeContactProt>>* customVeeContacts;
 
 @end
 
+static VeeContactsForTestingFactory* veeContactsForTestingFactory;
+static VeeAddressBookForTesting* veeAddressBookForTesting;
+
 @implementation VeeContactPickerViewControllerTests
+
+#pragma mark - Class setup
+
++ (void)setUp
+{
+    veeAddressBookForTesting = [VeeAddressBookForTesting new];
+    veeContactsForTestingFactory = [[VeeContactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
+    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
+    [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
+}
+
++ (void)tearDown
+{
+    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
+}
+
+#pragma mark - Methods setup
 
 - (void)setUp
 {
     [super setUp];
-    _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
-    _veeContactPickerVCWithNilOptions = [[VeeContactPickerViewController alloc] initWithOptions:nil];
-    _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
-    _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil]; //TODO:
-    _veeContactPickerVCWithCustomVeeContactsAndCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:nil andVeeContacts:nil]; //TODO:
     
     _veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
+    _veeContactPickerCustomOptions = [self veeContactPickerCustomOptions];
+    _customVeeContacts = [veeContactsForTestingFactory veeContactsFromAddressBookForTesting];
+    
+    _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
+    _veeContactPickerVCWithNilOptions = [[VeeContactPickerViewController alloc] initWithOptions:nil];
+    _veeContactPickerVCWithCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:_veeContactPickerCustomOptions];
+    _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
+    _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:_customVeeContacts];
+    _veeContactPickerVCWithCustomVeeContactsAndCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:_veeContactPickerCustomOptions andVeeContacts:_customVeeContacts];
 }
 
 - (void)tearDown
@@ -74,6 +103,13 @@
 {
     BOOL veeContactsAreNil = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] == nil;
     NSAssert(veeContactsAreNil, @"Init with nil VeeContacts should have nil veeContactss");
+}
+
+-(void)testInitWithNilVeeContactsShouldUseABContactsAfterLoading
+{
+    [_veeContactPickerVCWithNilVeeContacts view];
+    NSUInteger unifiedABRecordsCount; // TODO:
+    [[_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] count] == unifiedABRecordsCount;
 }
 
 #pragma mark - Outlets
@@ -123,6 +159,23 @@
     NSAssert(conformsToVeeABDelegate, @"Picker should conforms to VeeABDelegate protocol ");
 }
 
+#pragma mark - Table View
+
+-(void)testTableViewIsNotNil
+{
+    
+}
+
+-(void)testTableViewDataSourceIsNotNil
+{
+    
+}
+
+-(void)testTableViewDelegateIsNotNil
+{
+    
+}
+
 #pragma mark - Private utils
 
 -(VeeContactPickerViewController*)veeContactPickerWithDefaultConfAndViewLoaded
@@ -130,6 +183,29 @@
     VeeContactPickerViewController *veeContactPickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
     [veeContactPickerVC view];
     return veeContactPickerVC;
+}
+
+-(VeeContactPickerOptions*)veeContactPickerCustomOptions
+{
+    if(!_veeContactPickerCustomOptions){
+        _veeContactPickerCustomOptions = [VeeContactPickerOptions new];
+    _veeContactPickerCustomOptions.veeContactColors = [[VeeContactColors alloc] initWithVeeContactsColorPalette:@[[UIColor purpleColor]]];
+    _veeContactPickerCustomOptions.veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:@"foo" andCancelButtonTitle:@"bar"];
+    _veeContactPickerCustomOptions.sectionIdentifiers = @[@"A",@"B",@"C"];
+    _veeContactPickerCustomOptions.sectionIdentifierWildcard = @"$";
+    _veeContactPickerCustomOptions.showLettersWhenContactImageIsMissing = NO;
+    _veeContactPickerCustomOptions.contactThumbnailImagePlaceholder = [self codeAtasTestImage];
+    }
+    return _veeContactPickerCustomOptions;
+}
+
+-(UIImage*)codeAtasTestImage
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:@"codeatlas" ofType:@"png"];
+    UIImage *codeAtlasImage = [UIImage imageWithContentsOfFile:imagePath];
+    NSAssert(codeAtlasImage, @"codeatlas image not found");
+    return codeAtlasImage;
 }
 
 //testContactsAreLoadedFromABIfNil

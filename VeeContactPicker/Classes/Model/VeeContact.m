@@ -5,6 +5,7 @@
 
 #import "VeeContact.h"
 #import "VeeContactPickerOptions.h"
+#import "NSObject+VeeIsEmpty.h"
 
 @interface VeeContact ()
 
@@ -202,6 +203,22 @@
 - (NSArray<NSString*>*)emails
 {
     return [NSArray arrayWithArray:[_emailsMutable allObjects]];
+}
+
+-(NSString*)sectionIdentifier
+{
+    NSString* sectionIdentifierForVeecontact;
+    
+    if ([_firstName veeIsEmpty] == NO) {
+        sectionIdentifierForVeecontact = [[_firstName substringToIndex:1] uppercaseString];
+    }
+    else if ([_lastName veeIsEmpty] == NO) {
+        sectionIdentifierForVeecontact = [[_lastName substringToIndex:1] uppercaseString];
+    }
+    else if ([[self displayName] veeIsEmpty] == NO) {
+        sectionIdentifierForVeecontact = [[[self displayName] substringToIndex:1] uppercaseString];
+    }
+    return sectionIdentifierForVeecontact;
 }
 
 #pragma mark - NSObject
