@@ -7,6 +7,15 @@
 
 @implementation VeeAddressBook
 
+- (instancetype)initWithVeeABDelegate:(id<VeeABDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        _delegate = delegate;
+    }
+    return self;
+}
+
 + (BOOL)hasABPermissions
 {
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
@@ -15,24 +24,21 @@
     return NO;
 }
 
-+ (void)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef
+- (BOOL)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef
 {
     CFErrorRef error = NULL;
     if (error) {
         NSLog(@"Warning - ABAddressBookCreateWithOptions error: %@", CFBridgingRelease(error));
     }
 
-    if ([self hasABPermissions] == NO) {
+    if ([VeeAddressBook hasABPermissions] == NO) {
         ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-            if (!granted) {
-                NSLog(@"Warning - ABAddressBookRequestAccessWithCompletion not granted");
-                //TODO: empty view
-            }
-            else {
-                [self performSelectorOnMainThread:@selector(loadDataSource) withObject:nil waitUntilDone:YES];
-            TODO: complection come parametro?
-            }
+            [_delegate abPermissionsGranted:granted];
         });
+        return YES;
+    }
+    else{
+        return NO;
     }
 }
 

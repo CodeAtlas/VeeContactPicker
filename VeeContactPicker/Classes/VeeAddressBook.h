@@ -4,11 +4,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VeeABDelegate.h"
 @import AddressBook;
 
 @interface VeeAddressBook : NSObject
 
-+ (BOOL)hasABPermissions;
-+ (void)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef;
+@property (nonatomic,strong) id<VeeABDelegate> delegate;
+
+- (instancetype)initWithVeeABDelegate:(id<VeeABDelegate>)delegate;
+- (BOOL)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef;
 
 @end
