@@ -23,12 +23,9 @@
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerDefaultOptions;
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerCustomOptions;
-@property (nonatomic, strong) NSArray<id<VeeContactProt>>* customVeeContacts;
-
 @end
 
-static VeeContactsForTestingFactory* veeContactsForTestingFactory;
-static VeeAddressBookForTesting* veeAddressBookForTesting;
+static NSArray<id<VeeContactProt>>* customVeeContacts;
 
 @implementation VeeContactPickerViewControllerTests
 
@@ -36,15 +33,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 + (void)setUp
 {
-    veeAddressBookForTesting = [VeeAddressBookForTesting new];
-    veeContactsForTestingFactory = [[VeeContactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
-    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
-    [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
-}
-
-+ (void)tearDown
-{
-    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
+    customVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
 }
 
 #pragma mark - Methods setup
@@ -55,14 +44,13 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     
     _veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
     _veeContactPickerCustomOptions = [self veeContactPickerCustomOptions];
-    _customVeeContacts = [veeContactsForTestingFactory veeContactsFromAddressBookForTesting];
     
     _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
     _veeContactPickerVCWithNilOptions = [[VeeContactPickerViewController alloc] initWithOptions:nil];
     _veeContactPickerVCWithCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:_veeContactPickerCustomOptions];
     _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
-    _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:_customVeeContacts];
-    _veeContactPickerVCWithCustomVeeContactsAndCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:_veeContactPickerCustomOptions andVeeContacts:_customVeeContacts];
+    _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:customVeeContacts];
+    _veeContactPickerVCWithCustomVeeContactsAndCustomOptions = [[VeeContactPickerViewController alloc] initWithOptions:_veeContactPickerCustomOptions andVeeContacts:customVeeContacts];
 }
 
 - (void)tearDown
