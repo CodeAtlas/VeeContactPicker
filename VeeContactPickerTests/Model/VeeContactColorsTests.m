@@ -13,11 +13,9 @@
 
 @property (nonatomic, strong) VeeContactColors* veeContactColorsWithDefaultPalette;
 @property (nonatomic, strong) VeeContactColors* veeContactColorsWithCustomPalette;
-
 @end
 
-static VeeContactsForTestingFactory* veeContactsForTestingFactory;
-static VeeAddressBookForTesting* veeAddressBookForTesting;
+static NSArray<id<VeeContactProt>>* randomVeeContacts;
 
 @implementation VeeContactColorsTests
 
@@ -25,15 +23,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 + (void)setUp
 {
-    veeAddressBookForTesting = [VeeAddressBookForTesting new];
-    veeContactsForTestingFactory = [[VeeContactsForTestingFactory alloc] initWithAddressBookForTesting:veeAddressBookForTesting];
-    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
-    [veeAddressBookForTesting addVeeTestingContactsToAddressBook];
-}
-
-+ (void)tearDown
-{
-    [veeAddressBookForTesting deleteVeeTestingContactsFromAddressBook];
+    randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:50];
 }
 
 - (void)setUp
@@ -87,8 +77,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testColorForSameVeecontactsShouldBeEqual
 {
-    VeeContact* v1 = [veeContactsForTestingFactory veeContactComplete];
-    VeeContact* v2 = [veeContactsForTestingFactory veeContactComplete];
+    VeeContact* v1 = [randomVeeContacts firstObject];
+    VeeContact* v2 = [randomVeeContacts firstObject]; //TODO: should be a copy
     UIColor* colorForVeecontact1 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v1];
     UIColor* colorForVeecontact2 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v2];
     BOOL colorsAreEqual = [colorForVeecontact1 isEqual:colorForVeecontact2];
@@ -98,14 +88,14 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testColorsRandomnessDistribution
 {
     NSMutableArray<UIColor*>* colors = [NSMutableArray new];
-    for (VeeContact* veeContact in [veeContactsForTestingFactory veeContactsFromAddressBookForTesting]) {
+    for (VeeContact* veeContact in randomVeeContacts) {
         [colors addObject:[_veeContactColorsWithCustomPalette colorForVeeContact:veeContact]];
     }
 
     NSSet* colorsWithoutDuplicates = [NSSet setWithArray:colors];
     NSUInteger duplicateColors = [colors count] - [colorsWithoutDuplicates count];
-    BOOL areDuplicateColorsLessThanOneThird = duplicateColors < ([colors count] / 3);
-    NSAssert(areDuplicateColorsLessThanOneThird, @"Too many duplicate colors");
+    BOOL areDuplicateColorsLessThanHalf = duplicateColors < ([colors count] / 2);
+    NSAssert(areDuplicateColorsLessThanHalf, @"Too many duplicate colors");
 }
 
 #pragma mark - Private utils
@@ -113,7 +103,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (NSArray<UIColor*>*)customColors
 {
     NSMutableArray<UIColor*>* customColors = [NSMutableArray array];
-    for (float hue = 0.0; hue < 1.0; hue += 0.01) {
+    for (float hue = 0.0; hue < 1.0; hue += 0.02) {
         UIColor* color = [UIColor colorWithHue:hue saturation:0.5 brightness:0.5 alpha:1.0];
         [customColors addObject:color];
     }
