@@ -72,7 +72,6 @@
         NSMutableSet* emails = [NSMutableSet setWithObjects:[self randomGmail], [self randomGmail],[self randomGmail], nil];
         [veeContact setValue:emails forKey:@"emailsMutable"];
         [randomVeeContactsMutable addObject:veeContact];
-        NSLog(@"Generated %@",veeContact);
     }
     
     return [[NSArray alloc] initWithArray:randomVeeContactsMutable];

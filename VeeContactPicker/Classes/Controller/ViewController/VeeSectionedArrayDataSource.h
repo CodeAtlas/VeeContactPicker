@@ -3,20 +3,30 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "VeeSectionable.h"
+#import <Foundation/Foundation.h>
 @import UIKit;
 
 @interface VeeSectionedArrayDataSource : NSObject <UITableViewDataSource>
 
 typedef void (^ConfigureCellBlock)(id cell, id item);
 
--(instancetype)initWithItems:(NSArray<id<VeeSectionable>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSectionIdentifiers:(NSArray<NSString*>*)allowedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
+- (instancetype)initWithItems:(NSArray<id<VeeSectionable> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSectionIdentifiers:(NSArray<NSString*>*)allowedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
 
--(void)setSearchResults:(NSArray<id<VeeSectionable>>*)searchResults forSearchTableView:(UITableView*)searchTableView;
+#pragma mark - UITableViewDataSource
 
-#pragma mark - Public items
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView;
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section;
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section;
+- (NSArray<NSString*>*)sectionIndexTitlesForTableView:(UITableView*)tableView;
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath;
 
--(id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
+#pragma mark - Public methods
+
+- (id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
+
+-(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item;
+
+- (void)setSearchResults:(NSArray<id<VeeSectionable> >*)searchResults forSearchTableView:(UITableView*)searchTableView;
 
 @end
