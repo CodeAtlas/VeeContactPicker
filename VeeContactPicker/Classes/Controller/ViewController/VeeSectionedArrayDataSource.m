@@ -55,6 +55,15 @@
     }
 }
 
+-(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item
+{
+    NSString* sectionIdenfier = [item sectionIdentifier];
+    if (sectionIdenfier == nil || [[self allowedSectionIdentifiers] containsObject:sectionIdenfier] == NO){
+        return _sectionIdentifierWildcard;
+    }
+    return sectionIdenfier;
+}
+
 #pragma mark - Model utils
 
 - (NSDictionary<NSString*,NSArray<id<VeeSectionable>>*>*)sectionedItems:(NSArray<id<VeeSectionable>>*)items
@@ -88,7 +97,7 @@
     }];
 }
 
-#pragma mark - TableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -133,15 +142,6 @@
         return [_sectionedSearchedItems objectForKey:sectionIdentifier];
     }
     return [_sectionedItems objectForKey:sectionIdentifier];
-}
-
--(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item
-{
-    NSString* sectionIdenfier = [item sectionIdentifier];
-    if (sectionIdenfier == nil){
-        return _sectionIdentifierWildcard;
-    }
-    return sectionIdenfier;
 }
 
 -(NSString*)sectionIdentifierFromSection:(NSUInteger)section isSearchTableView:(BOOL)isSearchTableView
