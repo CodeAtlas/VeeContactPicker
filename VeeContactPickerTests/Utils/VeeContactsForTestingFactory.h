@@ -15,5 +15,6 @@
 - (VeeContact*)veeContactComplete;
 - (VeeContact*)veeContactUnified;
 - (NSArray<id<VeeContactProt>>*)veeContactsFromAddressBookForTesting;
++ (NSArray<id<VeeContactProt>>*)createRandomVeeContacts:(NSUInteger)numberOfVeeContacts;
 
 @end
