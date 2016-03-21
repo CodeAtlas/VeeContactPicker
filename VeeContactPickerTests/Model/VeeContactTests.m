@@ -9,10 +9,10 @@
 #import "VeeAddressBookForTesting.h"
 #import "VeeAddressBookForTestingConstants.h"
 #import "VeeContact.h"
+#import "VeecontactsForTestingFactory.h"
 #import "XCTest+VeeCommons.h"
 #import <OCMock/OCMock.h>
 #import <XCTest/XCTest.h>
-#import "VeecontactsForTestingFactory.h"
 
 @interface VeeContactTests : XCTestCase
 
@@ -303,6 +303,55 @@ static VeeContactsForTestingFactory* veeContactsForTestingFactory;
         NSSet* emailSet = [NSSet setWithArray:veeContact.emails];
         NSAssert([emailSet count] == [veeContact.emails count], @"VeeContacts emails contain duplicates!");
     }
+}
+
+#pragma mark - Section identifier
+
+- (void)testVeecontactsSectionIdentifierShouldBeOneCharacter
+{
+    for (VeeContact* veeContact in _veeContactsForTesting) {
+        NSString* veeContactSectionIdentifier = [veeContact sectionIdentifier];
+        NSAssert(veeContactSectionIdentifier, @"VeeContact %@ has no section identifier", veeContact.displayName);
+        BOOL isSectionIdentiferOneCharacter = [veeContactSectionIdentifier length] == 1;
+        NSAssert(isSectionIdentiferOneCharacter, @"VeeContact %@ has a section identifier with length != 1: %@", veeContact.displayName, veeContactSectionIdentifier);
+    }
+}
+
+- (void)testVeecontactCompleteSectionIdentifier
+{
+    BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactSectionIdentifier];
+    NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@", _veeContactComplete.sectionIdentifier, kCompleteVeeContactSectionIdentifier);
+}
+
+- (void)testVeecontactCompleteSectionIdentifierWithoutFirstName
+{
+    [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
+    BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactWithoutFirstNameSectionIdentifier];
+
+    NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@", _veeContactComplete.sectionIdentifier, kCompleteVeeContactWithoutFirstNameSectionIdentifier);
+}
+
+- (void)testVeecontactCompleteSectionIdentifierWithoutFirstNameAndLastName
+{
+    [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
+    BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier];
+
+    NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@", _veeContactComplete.sectionIdentifier, kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier);
+}
+
+- (void)testVeecontactCompleteSectionIdentifierEmptyDisplayNameShouldBeNil
+{
+    [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"middleName" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"nickname" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
+    [self nullifyIvarWithName:@"emailsMutable" ofObject:_veeContactComplete];
+
+    NSString* aspectedSectionIdentifier = _veeContactComplete.sectionIdentifier;
+    
+    NSAssert(aspectedSectionIdentifier == nil, @"VeeContact complete sectionIdentifier is %@ but should be nil", _veeContactComplete.sectionIdentifier);
 }
 
 #pragma mark - Private utils
