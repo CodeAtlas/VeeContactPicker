@@ -31,7 +31,7 @@ NSInteger const kCompleteVeeContactPhoneNumbersCount = 5;
 NSInteger const kCompleteVeeContactEmailsCount = 4;
 NSString* const kCompleteVeeContactSectionIdentifier = @"C";
 NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier = @"C";
-NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier = @"C";
+NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier = @"F";
 NSString* const kCompleteVeeContactEmptyDisplayNameSectionIdentifier = @"#";
 
 #pragma mark - Unified contact
