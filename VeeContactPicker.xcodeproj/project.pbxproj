@@ -364,9 +364,9 @@
 		86C6E7DB1C9C13180031CC23 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				86AB036F1C917AAD0054B7EC /* AddressBookForTesting */,
 				867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */,
 				867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */,
-				86AB036F1C917AAD0054B7EC /* AddressBookForTesting */,
 				86B8A6C21C99AB6C00F48CBD /* VeeContactsForTestingFactory.h */,
 				86B8A6C31C99AB6C00F48CBD /* VeeContactsForTestingFactory.m */,
 			);

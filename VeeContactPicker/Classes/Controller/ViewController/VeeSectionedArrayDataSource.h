@@ -25,6 +25,9 @@ typedef void (^ConfigureCellBlock)(id cell, id item);
 
 - (id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
 -(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item;
+
+#pragma mark - SearchTableView
+
 - (void)setSearchResults:(NSArray<id<VeeSectionable> >*)searchResults forSearchTableView:(UITableView*)searchTableView;
 
 @end

@@ -6,7 +6,7 @@
 #import "VeeContactProt.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VeeSectionable.h"
+
 @import AddressBook;
 
 @interface VeeContact : NSObject <VeeContactProt>
@@ -28,7 +28,7 @@
 @property (nonatomic, readonly, copy) NSString* displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 
--(NSString*)sectionIdentifier;
+-(NSString*)sectionIdentifier; //In which section should the contact be? This is the title of that section
 
 #pragma mark - Multivalue properties
 
