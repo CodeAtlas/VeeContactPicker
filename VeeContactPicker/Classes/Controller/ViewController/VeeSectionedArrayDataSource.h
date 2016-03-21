@@ -11,7 +11,7 @@
 
 typedef void (^ConfigureCellBlock)(id cell, id item);
 
-- (instancetype)initWithItems:(NSArray<id<VeeSectionable> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSectionIdentifiers:(NSArray<NSString*>*)allowedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
+- (instancetype)initWithItems:(NSArray<id<VeeSectionable> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
 
 #pragma mark - UITableViewDataSource
 

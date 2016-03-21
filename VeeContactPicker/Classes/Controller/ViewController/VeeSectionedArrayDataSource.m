@@ -11,7 +11,7 @@
 @property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionable>>*>* sectionedSearchedItems;
 @property (nonatomic, strong) NSArray<NSString*>* sortedNonEmptySectionIdentifiers;
 @property (nonatomic, strong) NSArray<NSString*>* sortedSearchedNonEmptySectionIdentifiers;
-@property (nonatomic, strong) NSArray<NSString*>* allowedSectionIdentifiers;
+@property (nonatomic, strong) NSArray<NSString*>* allowedSortedSectionIdentifiers;
 @property (nonatomic, copy) NSString* cellIdentifier;
 @property (nonatomic, copy) NSString* sectionIdentifierWildcard;
 @property (nonatomic, copy) ConfigureCellBlock configureCellBlock;
@@ -23,14 +23,14 @@
 
 #pragma mark - Initializers
 
--(instancetype)initWithItems:(NSArray<id<VeeSectionable>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSectionIdentifiers:(NSArray<NSString*>*)allowedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)configureCellBlock
+-(instancetype)initWithItems:(NSArray<id<VeeSectionable>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)configureCellBlock
 {
     self = [super init];
     if (self) {
-        _allowedSectionIdentifiers = allowedSectionIdentifiers;
+        _allowedSortedSectionIdentifiers = allowedSortedSectionIdentifiers;
         _sectionIdentifierWildcard = sectionIdentifierWildcard;
         _sectionedItems = [self sectionedItems:items];
-        _sortedNonEmptySectionIdentifiers = [self caseInsensitiveSortedSectionIdentifiers:[_sectionedItems allKeys]];
+        _sortedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:[_sectionedItems allKeys]];
         _cellIdentifier = cellIdentifier;
         _configureCellBlock = configureCellBlock;
     }
@@ -51,14 +51,14 @@
     _searchTableView = searchTableView;
     if (searchResults){
         _sectionedSearchedItems = [self sectionedItems:searchResults];
-        _sortedSearchedNonEmptySectionIdentifiers = [self caseInsensitiveSortedSectionIdentifiers:[_sectionedSearchedItems allKeys]];
+        _sortedSearchedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:[_sectionedSearchedItems allKeys]];
     }
 }
 
 -(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item
 {
     NSString* sectionIdenfier = [item sectionIdentifier];
-    if (sectionIdenfier == nil || [[self allowedSectionIdentifiers] containsObject:sectionIdenfier] == NO){
+    if (sectionIdenfier == nil || [[self allowedSortedSectionIdentifiers] containsObject:sectionIdenfier] == NO){
         return _sectionIdentifierWildcard;
     }
     return sectionIdenfier;
@@ -82,19 +82,16 @@
     return [NSDictionary dictionaryWithDictionary:sectionedItemsMutable];
 }
 
--(NSArray<NSString*>*)caseInsensitiveSortedSectionIdentifiers:(NSArray*)sectionIdentifiers
+-(NSArray<NSString*>*)nonEmptySortedSectionIdentifiers:(NSArray<NSString*>*)sectionIdentifiers
 {
-    return [sectionIdentifiers sortedArrayUsingComparator:^NSComparisonResult(NSString* firstKey, NSString* secondKey) {
-        if ([firstKey isEqualToString:_sectionIdentifierWildcard]) {
-            return NSOrderedDescending;
+    NSMutableArray* sortedNonEmptySectionIdentifiers = [NSMutableArray arrayWithArray:_allowedSortedSectionIdentifiers];
+    
+    for (NSString* sectionIdentifier in _allowedSortedSectionIdentifiers) {
+        if ([sectionIdentifiers containsObject:sectionIdentifier] == NO){
+            [sortedNonEmptySectionIdentifiers removeObject:sectionIdentifier];
         }
-        else if ([secondKey isEqualToString:_sectionIdentifierWildcard]) {
-            return NSOrderedAscending;
-        }
-        else {
-            return [firstKey caseInsensitiveCompare:secondKey];
-        }
-    }];
+    }
+    return [NSArray arrayWithArray:sortedNonEmptySectionIdentifiers];
 }
 
 #pragma mark - UITableViewDataSource
@@ -122,7 +119,7 @@
 
 - (NSArray<NSString*>*)sectionIndexTitlesForTableView:(UITableView*)tableView
 {
-    return _allowedSectionIdentifiers;
+    return _allowedSortedSectionIdentifiers;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
