@@ -9,5 +9,6 @@
 @interface VeeSectionableForTesting : NSObject <VeeSectionable>
 
 @property (nonatomic,copy) NSString* sectionIdentifier;
+@property (nonatomic,copy) NSString* id;
 
 @end

@@ -32,7 +32,13 @@
         _sectionedItems = [self sectionedItems:items];
         _sortedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:[_sectionedItems allKeys]];
         _cellIdentifier = cellIdentifier;
-        _configureCellBlock = configureCellBlock;
+        if (configureCellBlock){
+            _configureCellBlock = configureCellBlock;
+        }
+        else{
+            ConfigureCellBlock doNothingBlock = ^(UITableViewCell* cell, id item) {};
+            _configureCellBlock = doNothingBlock;
+        }
     }
     return self;
 }

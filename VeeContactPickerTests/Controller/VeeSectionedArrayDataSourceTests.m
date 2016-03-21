@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSDictionary* sectionedRandomObjects;
 @property (nonatomic, strong) NSArray* nonEmptyRandomObjectsSectionIdentifiers;
 
+@property (nonatomic, strong) NSIndexPath* indexPathForTestCell;
+@property (nonatomic, strong) UITableViewCell* testCell;
+@property (nonatomic, strong) id mockedTableViewWithTestCellIdentifier;
+
 @end
 
 static NSArray<id<VeeSectionable> >* randomVeesectionableObjects;
@@ -40,6 +44,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     _veeSectionedArrayDataSource = [VeeSectionedArrayDataSourceTests veeSectionedArrayDataSourceWithVeeSectionables:randomVeesectionableObjects andConfigurationCellBlock:nil];
     _sectionedRandomObjects = [self sectionedObjects:randomVeesectionableObjects];
     _nonEmptyRandomObjectsSectionIdentifiers = [self nonEmptySortedSectionIdentifiers:_sectionedRandomObjects];
+    _indexPathForTestCell = [NSIndexPath indexPathForRow:0 inSection:0];
+    _mockedTableViewWithTestCellIdentifier = [self mockedTableViewWithTestCellIdentifier];
 }
 
 - (void)tearDown
@@ -103,10 +109,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 - (void)testNumberOfRowsInSectionsWithRandomObjs
 {
-    id mockedTableView = OCMClassMock([UITableView class]);
-    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:mockedTableView]; section++) {
-
-        NSUInteger numberOfRowsInSection = [_veeSectionedArrayDataSource tableView:mockedTableView numberOfRowsInSection:section];
+    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
+        NSUInteger numberOfRowsInSection = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier numberOfRowsInSection:section];
         NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
         NSUInteger numberOfObjsForThisSection = [[_sectionedRandomObjects objectForKey:sectionIdenfierOfSection] count];
         BOOL isNumberOfRowsCorrect = numberOfRowsInSection == numberOfObjsForThisSection;
@@ -117,18 +121,16 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 - (void)testNumberOfRowsInSectionWithOneObjectShouldBeOne
 {
     VeeSectionedArrayDataSource* veeSectionedArrayDataSourceWithOneObject = [VeeSectionedArrayDataSourceTests veeSectionedArrayDataSourceWithVeeSectionables:[VeeSectionedArrayDataSourceTests randomVeeSectionableObjects:1] andConfigurationCellBlock:nil];
-    id mockedTableView = OCMClassMock([UITableView class]);
-    NSUInteger numberOfRows = [veeSectionedArrayDataSourceWithOneObject tableView:mockedTableView numberOfRowsInSection:0];
+    NSUInteger numberOfRows = [veeSectionedArrayDataSourceWithOneObject tableView:_mockedTableViewWithTestCellIdentifier numberOfRowsInSection:0];
     BOOL isNumberOfRowCorrect = 1 == numberOfRows;
     NSAssert(isNumberOfRowCorrect, @"Section 0 should have une row but it has %zd", numberOfRows);
 }
 
 -(void)testTitleForHeaderInSections
 {
-    id mockedTableView = OCMClassMock([UITableView class]);
-    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:mockedTableView]; section++) {
+    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
         NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
-        NSString* titleForHeaderInSection = [_veeSectionedArrayDataSource tableView:mockedTableView titleForHeaderInSection:section];
+        NSString* titleForHeaderInSection = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier titleForHeaderInSection:section];
         BOOL isTitleForSectionCorrect = [titleForHeaderInSection isEqualToString:sectionIdenfierOfSection];
         NSAssert(isTitleForSectionCorrect, @"Title for header in section %zd is %@ but should be %@", section, titleForHeaderInSection, sectionIdenfierOfSection);
     }
@@ -136,47 +138,85 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 -(void)testSectionIndexTitlesCount
 {
-    id mockedTableView = OCMClassMock([UITableView class]);
-    NSUInteger sectionIndexTitlesCount = [[_veeSectionedArrayDataSource sectionIndexTitlesForTableView:mockedTableView] count];
+    NSUInteger sectionIndexTitlesCount = [[_veeSectionedArrayDataSource sectionIndexTitlesForTableView:_mockedTableViewWithTestCellIdentifier] count];
     BOOL isSectionIndexTitlesCountCorrect = sectionIndexTitlesCount == [allowedSectionIdentifiers count];
     NSAssert(isSectionIndexTitlesCountCorrect, @"Section index titles are %zd but they should be %zd",sectionIndexTitlesCount,[allowedSectionIdentifiers count]);
 }
 
 -(void)testCellReuseIdentifier
 {
-    id mockedTableView = OCMClassMock([UITableView class]);
-    UITableViewCell *mockCell = [UITableViewCell new];
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    OCMStub([mockedTableView dequeueReusableCellWithIdentifier:TEST_CELL_IDENTIFIER forIndexPath:indexPath]).andReturn(mockCell);
-    UITableViewCell *cellAtIndexPath = [_veeSectionedArrayDataSource tableView:mockedTableView cellForRowAtIndexPath:indexPath];
-    BOOL shouldReturnMockCell = [cellAtIndexPath isEqual:mockCell];
+    UITableViewCell *cellAtIndexPath = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier cellForRowAtIndexPath:_indexPathForTestCell];
+    BOOL shouldReturnMockCell = [cellAtIndexPath isEqual:_testCell];
     NSAssert(shouldReturnMockCell, @"Returned cell is not the mocked one");
 }
 
 -(void)testCellConfigurationBlock
 {
+    __block UITableViewCell *configuredCell;
+    NSString* customText = @"foo";
     ConfigureCellBlock configureCellBlock = ^(UITableViewCell* cell, id item) {
-        cell.textLabel.text = @"Foo";
+        configuredCell = cell;
+        cell.textLabel.text = customText;
     };
     
     VeeSectionedArrayDataSource * veeSectionedArrayDataSource = [VeeSectionedArrayDataSourceTests veeSectionedArrayDataSourceWithVeeSectionables:randomVeesectionableObjects andConfigurationCellBlock:configureCellBlock];
     
-    id mockedTableView = OCMClassMock([UITableView class]);
-    UITableViewCell *mockCell = [UITableViewCell new];
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    OCMStub([mockedTableView dequeueReusableCellWithIdentifier:TEST_CELL_IDENTIFIER forIndexPath:indexPath]).andReturn(mockCell);
-    UITableViewCell *cellAtIndexPath = [veeSectionedArrayDataSource tableView:mockedTableView cellForRowAtIndexPath:indexPath];
-    BOOL configureBlockHasWorked = [cellAtIndexPath.textLabel.text isEqualToString:@"Foo"];
+    UITableViewCell *cellAtIndexPath = [veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier cellForRowAtIndexPath:_indexPathForTestCell];
+    NSAssert([configuredCell isEqual:_testCell], @"Configured block hasn't passed the cell arg properly");
+    BOOL configureBlockHasWorked = [cellAtIndexPath.textLabel.text isEqualToString:customText];
     NSAssert(configureBlockHasWorked, @"Configured block has had no effect");
 }
 
-/*
- id result = [dataSource tableView:mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
- STAssertEquals(configuredCell, cell, @"This should have been passed to the block.");
- STAssertEqualObjects(configuredObject, @"a", @"This should have been passed to the block.");
- */
-
 #pragma mark - Public methods
+
+-(void)testItemAtIndexPath
+{
+    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
+        for (int row = 0; row < [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier numberOfRowsInSection:section]; row++){
+            id itemAtIndexPath = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier itemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+            NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
+            NSMutableArray* objsForSection = [_sectionedRandomObjects objectForKey:sectionIdenfierOfSection];
+            id obj = objsForSection[row];
+            BOOL isItemCorrect = [itemAtIndexPath isEqual:obj];
+            NSAssert(isItemCorrect, @"Item at section %zd row %zd is %@ but should be %@",section,row,itemAtIndexPath,obj);
+        }
+    }
+}
+
+-(void)testSectionIdentifierForItemNilShouldBeWildcard
+{
+    NSString* sectionIdentifierForNil = [_veeSectionedArrayDataSource sectionIdentifierForItem:nil];
+    BOOL isWildcard = [sectionIdentifierForNil isEqualToString:[_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"]];
+    NSAssert(isWildcard, @"Section identifier for nil item should be wildcard but is %@",sectionIdentifierForNil);
+}
+
+-(void)testSectionIdentifierNotAllowedShouldBeWildcard
+{
+    VeeSectionableForTesting * veeSectionable = [VeeSectionableForTesting new];
+    NSString* notAllowedSectionIdentifier = @"ò";
+    NSAssert([[_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"] containsObject:notAllowedSectionIdentifier] == NO,@"%@ is allowed",notAllowedSectionIdentifier);
+    [veeSectionable setSectionIdentifier:notAllowedSectionIdentifier];
+    NSString* sectionIdentifierNotAllowed = [_veeSectionedArrayDataSource sectionIdentifierForItem:veeSectionable];
+    BOOL isWildcard = [sectionIdentifierNotAllowed isEqualToString:[_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"]];
+    NSAssert(isWildcard, @"Section identifier for not allowed item should be wildcard but is %@",sectionIdentifierNotAllowed);
+}
+
+-(void)testSectionIdentifier
+{
+    VeeSectionableForTesting * veeSectionable = [VeeSectionableForTesting new];
+    NSArray* allowedSectionIdentifiers = [_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"];
+    for (int numberOfTests = 0; numberOfTests < 10; numberOfTests++){
+        NSString* randomSectionIdentifier = [allowedSectionIdentifiers objectAtIndex:(arc4random() % [allowedSectionIdentifiers count])];
+        [veeSectionable setSectionIdentifier:randomSectionIdentifier];
+        NSString* sectionIdentifierForItem = [_veeSectionedArrayDataSource sectionIdentifierForItem:veeSectionable];
+        BOOL isSectionIdentifierCorrect = [sectionIdentifierForItem isEqualToString:randomSectionIdentifier];
+        NSAssert(isSectionIdentifierCorrect,@"Section identifier for %@ is %@ but should be %@",veeSectionable,sectionIdentifierForItem,randomSectionIdentifier);
+    }
+}
+
+#pragma mark - Search table view
+
+//TODO: test data source while searching
 
 #pragma mark - Private utils
 
@@ -225,6 +265,14 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     
     VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable cellIdentifier:TEST_CELL_IDENTIFIER allowedSortedSectionIdentifiers:[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] sectionIdentifierWildcard:@"#" configurationCellBlock:configurationCellBlock];
     return veeSectionedArrayDataSource;
+}
+
+-(id)mockedTableViewWithTestCellIdentifier
+{
+    id mockedTableView = OCMClassMock([UITableView class]);
+    _testCell = [UITableViewCell new];
+    OCMStub([mockedTableView dequeueReusableCellWithIdentifier:TEST_CELL_IDENTIFIER forIndexPath:_indexPathForTestCell]).andReturn(_testCell);
+    return mockedTableView;
 }
 
 @end

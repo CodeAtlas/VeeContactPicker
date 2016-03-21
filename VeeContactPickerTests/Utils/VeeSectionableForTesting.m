@@ -7,4 +7,18 @@
 
 @implementation VeeSectionableForTesting
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _id = [[NSProcessInfo processInfo] globallyUniqueString];
+    }
+    return self;
+}
+
+-(NSString*)description
+{
+    return [NSString stringWithFormat:@"VeeSectionableForTesting id: %@ sectionIdentifier: %@",_id,_sectionIdentifier];
+}
+
 @end
