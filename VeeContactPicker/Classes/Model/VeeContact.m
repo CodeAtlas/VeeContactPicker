@@ -5,7 +5,7 @@
 
 #import "VeeContact.h"
 #import "VeeContactPickerOptions.h"
-#import "NSObject+VeeIsEmpty.h"
+#import "VeeIsEmpty.h"
 
 @interface VeeContact ()
 
@@ -209,13 +209,13 @@
 {
     NSString* sectionIdentifierForVeecontact;
     
-    if ([_firstName veeIsEmpty] == NO) {
+    if ([VeeIsEmpty isEmpty:_firstName] == NO) {
         sectionIdentifierForVeecontact = [[_firstName substringToIndex:1] uppercaseString];
     }
-    else if ([_lastName veeIsEmpty] == NO) {
+    else if ([VeeIsEmpty isEmpty:_lastName] == NO) {
         sectionIdentifierForVeecontact = [[_lastName substringToIndex:1] uppercaseString];
     }
-    else if ([[self displayName] veeIsEmpty] == NO) {
+    else if ([VeeIsEmpty isEmpty:[self displayName]] == NO) {
         sectionIdentifierForVeecontact = [[[self displayName] substringToIndex:1] uppercaseString];
     }
     return sectionIdentifierForVeecontact;

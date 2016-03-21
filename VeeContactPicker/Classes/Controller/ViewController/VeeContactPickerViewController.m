@@ -10,12 +10,12 @@
 #import "UILabel+Boldify.h"
 #import "VeeContactPickerConstants.h"
 #import "VeeContactPickerOptions.h"
-#import "NSObject+VeeIsEmpty.h"
 #import "VeeContactPickerStrings.h"
 #import "VeeAddressBook.h"
 #import "VeeAddressBookRepository.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeContactColors.h"
+#import "VeeIsEmpty.h"
 
 @interface VeeContactPickerViewController ()
 
@@ -213,8 +213,8 @@
         return [veeContact displayName];
     }
     
-    if ([[veeContact valueForKey:firstProperty] veeIsEmpty]){
-        if ([[veeContact valueForKey:secondProperty] veeIsEmpty]){
+    if ([VeeIsEmpty isEmpty:[veeContact valueForKey:firstProperty]]){
+        if ([VeeIsEmpty isEmpty:[veeContact valueForKey:secondProperty]]){
             return [veeContact displayName];
         }
         return [veeContact valueForKey:secondProperty];

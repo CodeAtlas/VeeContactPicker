@@ -72,7 +72,7 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     NSAssert(pickerOptionsAreDefault, @"VeeContactPickerOptions are not default one");
 }
 
--(void)testInitShouldSetVeeAddressBook
+-(void)testInitsShouldSetVeeAddressBook
 {
     BOOL isVeeABSetForInitWithDefaultConfiguration = [_veeContactPickerVCWithDefaultOptions valueForKey:@"veeAddressBook"];
     BOOL isVeeABBookSetForInitWithNilOptions = [_veeContactPickerVCWithNilOptions valueForKey:@"veeAddressBook"];
@@ -87,13 +87,13 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     NSAssert(isVeeABBookSetForInitWithCustomVeeContactsAndOptions, @"VeeAddressBook should be set in init with custom veecontacts and custom options");
 }
 
--(void)testInitWithNilVeecontacts
+-(void)testInitWithNilVeeContactsShouldHaveNilVeeContactsBeforeLoadingView
 {
     BOOL veeContactsAreNil = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] == nil;
     NSAssert(veeContactsAreNil, @"Init with nil VeeContacts should have nil veeContactss");
 }
 
--(void)testInitWithNilVeeContactsShouldUseABContactsAfterLoading
+-(void)testInitWithNilVeeContactsShouldUseVeeContactsFromAB
 {
     [_veeContactPickerVCWithNilVeeContacts view];
     NSUInteger unifiedABRecordsCount; // TODO:
@@ -202,54 +202,5 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 //testContactsAreShown
 //testSearch
 //testPicking
-
-/*
- -(void)testVeecontactsSectionIdentifier
- {
- for (VeeContact* veeContact in _veecontactsForTesting) {
- NSString* veeContactSectionIdentifier = [veeContact sectionIdentifier];
- NSAssert(veeContactSectionIdentifier, @"VeeContact %@ has no section identifier",veeContact.displayName);
- BOOL isSectionIdentiferOneCharacter = [veeContactSectionIdentifier length] == 1;
- NSAssert(isSectionIdentiferOneCharacter, @"VeeContact %@ has a section identifier with length != 1: %@",veeContact.displayName,veeContactSectionIdentifier);
- }
- }
- 
- -(void)testVeecontactCompleteSectionIdentifier
- {
- BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactSectionIdentifier];
- NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@",_veeContactComplete.sectionIdentifier,kCompleteVeeContactSectionIdentifier);
- 
- }
- 
- -(void)testVeecontactCompleteSectionIdentifierWithoutFirstName
- {
- BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactWithoutFirstNameSectionIdentifier];
- [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
- NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@",_veeContactComplete.sectionIdentifier,kCompleteVeeContactWithoutFirstNameSectionIdentifier);
- }
- 
- -(void)testVeecontactCompleteSectionIdentifierWithoutFirstNameAndLastName
- {
- BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier];
- [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
- NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@",_veeContactComplete.sectionIdentifier,kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier);
- }
- 
- -(void)testVeecontactCompleteSectionIdentifierEmptyDisplayName
- {
- BOOL isSectionIdentifierCorrect = [_veeContactComplete.sectionIdentifier isEqualToString:kCompleteVeeContactEmptyDisplayNameSectionIdentifier];
- [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"middleName" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"nickname" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
- [self nullifyIvarWithName:@"emailsMutable" ofObject:_veeContactComplete];
- 
- NSString* aspectedSectionIdentifier = _veeContactComplete.sectionIdentifier;
- 
- NSAssert(isSectionIdentifierCorrect, @"VeeContact complete sectionIdentifier is %@ but should be %@",_veeContactComplete.sectionIdentifier,kCompleteVeeContactEmptyDisplayNameSectionIdentifier);
- }
- */
 
 @end
