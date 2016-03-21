@@ -149,19 +149,16 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 
 #pragma mark - Table View
 
--(void)testTableViewIsNotNil
-{
-    
-}
-
 -(void)testTableViewDataSourceIsNotNil
 {
-    
+    BOOL isDataSourceSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.dataSource;
+    NSAssert(isDataSourceSet, @"Table view has no data source");
 }
 
 -(void)testTableViewDelegateIsNotNil
 {
-    
+    BOOL isDelegateSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.delegate;
+    NSAssert(isDelegateSet, @"Table view has no delegates");
 }
 
 #pragma mark - Private utils
@@ -197,10 +194,9 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 }
 
 //testContactsAreLoadedFromABIfNil
-//testABPermissions?
 //testEmptyView
 //testContactsAreShown
 //testSearch
-//testPicking
+//test delegate
 
 @end

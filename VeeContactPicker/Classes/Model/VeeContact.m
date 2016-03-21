@@ -221,6 +221,40 @@
     return sectionIdentifierForVeecontact;
 }
 
+#pragma mark - Sort
+
+- (NSComparisonResult)compare:(VeeContact *)otherVeeContact
+{
+    NSString* firstSortProperty = @"firstName";
+    NSString* secondSortProperty = @"lastName";
+    
+    NSString* firstContactSortProperty = [self sortPropertyOfVeeContact:self withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
+    NSString* secondContactSortProperty = [self sortPropertyOfVeeContact:otherVeeContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
+    NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+    if (result == NSOrderedSame) {
+        return [[self displayName] compare:otherVeeContact.displayName options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+    }
+    else {
+        return result;
+    }
+}
+
+-(NSString*)sortPropertyOfVeeContact:(id)veeContact withFirstOption:(NSString*)firstProperty andSecondOption:(NSString*)secondProperty
+{
+    if ([veeContact respondsToSelector:NSSelectorFromString(firstProperty)] == NO || [veeContact respondsToSelector:NSSelectorFromString(secondProperty)] == NO){
+        NSLog(@"VeeContact doesn't respond to one of this selectors %@ %@",firstProperty,secondProperty);
+        return [veeContact displayName];
+    }
+    
+    if ([VeeIsEmpty isEmpty:[veeContact valueForKey:firstProperty]]){
+        if ([VeeIsEmpty isEmpty:[veeContact valueForKey:secondProperty]]){
+            return [veeContact displayName];
+        }
+        return [veeContact valueForKey:secondProperty];
+    }
+    return [veeContact valueForKey:firstProperty];
+}
+
 #pragma mark - NSObject
 
 - (BOOL)isEqual:(id)other

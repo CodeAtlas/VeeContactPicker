@@ -354,6 +354,97 @@ static VeeContactsForTestingFactory* veeContactsForTestingFactory;
     NSAssert(aspectedSectionIdentifier == nil, @"VeeContact complete sectionIdentifier is %@ but should be nil", _veeContactComplete.sectionIdentifier);
 }
 
+#pragma mark - Sorting
+
+-(void)testVeeContactAreSortedByFirstName
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    
+    VeeContact* bob = veeContacts[0];
+    [bob setValue:@"Bob" forKey:@"firstName"];
+    [bob setValue:@"ALastName" forKey:@"lastName"];
+    
+    VeeContact* alice = veeContacts[1];
+    [alice setValue:@"Alice" forKey:@"firstName"];
+    [alice setValue:@"ALastName" forKey:@"lastName"];
+    
+    VeeContact* andrea = veeContacts[2];
+    [andrea setValue:@"Andrea" forKey:@"firstName"];
+    [self nullifyIvarWithName:@"lastName" ofObject:andrea];
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    
+    BOOL areSorted = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:bob];
+    NSAssert(areSorted, @"Alice ALastName, Andrea and Bob ALastName are not sorted properly");
+}
+
+-(void)testVeeContactWithSameFirstNameAreSortedByDisplayName
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    
+    VeeContact* aliceC = veeContacts[0];
+    [aliceC setValue:@"Alice" forKey:@"firstName"];
+    [aliceC setValue:@"C" forKey:@"lastName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:aliceC];
+
+    VeeContact* aliceA = veeContacts[1];
+    [aliceA setValue:@"Alice" forKey:@"firstName"];
+    [aliceA setValue:@"A" forKey:@"lastName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:aliceA];
+    
+    VeeContact* aliceB = veeContacts[2];
+    [aliceB setValue:@"Alice" forKey:@"firstName"];
+    [aliceB setValue:@"B" forKey:@"middleName"];
+    [aliceC setValue:@"D" forKey:@"lastName"]; //Ignored because middle name has the priority
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    
+    BOOL areSorted = [[veeContacts firstObject] isEqual:aliceA] && [[veeContacts lastObject] isEqual:aliceC];
+    NSAssert(areSorted, @"Alice A, Alice B and Alice C are not sorted properly");
+}
+
+-(void)testVeeContactWithNoLastNameSorting
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:2];
+    
+    VeeContact* aliceWithNoLastName = veeContacts[1];
+    [aliceWithNoLastName setValue:@"Alice" forKey:@"firstName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:aliceWithNoLastName];
+    [self nullifyIvarWithName:@"lastName" ofObject:aliceWithNoLastName];
+    
+    VeeContact* alice = veeContacts[0];
+    [alice setValue:@"Alice" forKey:@"firstName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:alice];
+    [alice setValue:@"ALastName" forKey:@"lastName"];
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    
+    BOOL areSorted = [[veeContacts firstObject] isEqual:alice];
+    NSAssert(areSorted, @"Alice ALastName and Bob ALastName are not sorted properly");
+}
+
+-(void)testVeeContactCompanySorting
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    
+    VeeContact* companyVeeContact = veeContacts[0];
+    [self nullifyIvarWithName:@"firstName" ofObject:companyVeeContact];
+    [self nullifyIvarWithName:@"lastName" ofObject:companyVeeContact];
+    [companyVeeContact setValue:@"Company" forKey:@"organizationName"];
+    
+    VeeContact* alice = veeContacts[2];
+    [alice setValue:@"Alice" forKey:@"firstName"];
+    [alice setValue:@"ALastName" forKey:@"lastName"];
+ 
+    VeeContact* dan = veeContacts[1];
+    [dan setValue:@"Dan" forKey:@"firstName"];
+    [dan setValue:@"DLastName" forKey:@"lastName"];
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    BOOL areSorted = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:dan];
+    NSAssert(areSorted, @"Alice ALastName and Company are not sorted properly");
+}
+
 #pragma mark - Private utils
 
 - (BOOL)isEmailAddress:(NSString*)canBeAnEmail

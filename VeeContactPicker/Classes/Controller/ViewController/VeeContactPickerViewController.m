@@ -124,7 +124,7 @@
         [self showEmptyView];
     }
     else{
-        [self sortVeecontactsForAB];
+        _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
         [self setupTableView];
     }
 }
@@ -132,7 +132,7 @@
 -(void)loadVeeContactsFromAddressBook
 {
     _veeContacts = (NSArray<VeeContactProt>*)[[VeeAddressBookRepository sharedInstance] veeContactsForAddressBook:_addressBookRef];
-    [self sortVeecontactsForAB];
+    _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
     [self setupTableView];
 }
 
@@ -183,43 +183,6 @@
 -(void)showEmptyView
 {
     //TODO:
-}
-
-#pragma mark - VeeContacts sorting
-
--(void)sortVeecontactsForAB
-{
-    NSString* firstSortProperty = @"firstName";
-    NSString* secondSortProperty = @"lastName";
-    
-    _veeContacts = (NSArray<VeeContactProt>*)[_veeContacts sortedArrayUsingComparator:^NSComparisonResult(id<VeeContactProt> firstContact, id<VeeContactProt> secondContact) {
-        
-        NSString* firstContactSortProperty = [self sortPropertyOfVeeContact:firstContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
-        NSString* secondContactSortProperty = [self sortPropertyOfVeeContact:secondContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
-        NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
-        if (result == NSOrderedSame) {
-            return [firstContact.displayName compare:secondContact.displayName options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
-        }
-        else {
-            return result;
-        }
-    }];
-}
-
--(NSString*)sortPropertyOfVeeContact:(id)veeContact withFirstOption:(NSString*)firstProperty andSecondOption:(NSString*)secondProperty
-{
-    if ([veeContact respondsToSelector:NSSelectorFromString(firstProperty)] == NO || [veeContact respondsToSelector:NSSelectorFromString(secondProperty)] == NO){
-        NSLog(@"VeeContact doesn't respond to one of this selectors %@ %@",firstProperty,secondProperty);
-        return [veeContact displayName];
-    }
-    
-    if ([VeeIsEmpty isEmpty:[veeContact valueForKey:firstProperty]]){
-        if ([VeeIsEmpty isEmpty:[veeContact valueForKey:secondProperty]]){
-            return [veeContact displayName];
-        }
-        return [veeContact valueForKey:secondProperty];
-    }
-    return [veeContact valueForKey:firstProperty];
 }
 
 #pragma mark - TableView cell configuration
