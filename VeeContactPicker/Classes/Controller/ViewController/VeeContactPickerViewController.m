@@ -3,19 +3,25 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContact.h"
-#import "UIImageView+Letters.h"
 #import "VeeContactPickerViewController.h"
-#import "VeeContactUITableViewCell.h"
-#import "UILabel+Boldify.h"
+
 #import "VeeContactPickerConstants.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
-#import "VeeAddressBook.h"
-#import "VeeAddressBookRepository.h"
-#import "VeeSectionedArrayDataSource.h"
 #import "VeeContactColors.h"
+
+#import "VeeContact.h"
+
+#import "UIImageView+Letters.h"
+#import "UILabel+Boldify.h"
 #import "VeeIsEmpty.h"
+
+#import "VeeAddressBook.h"
+
+#import "VeeSectionedArrayDataSource.h"
+#import "VeeContactUITableViewCell.h"
+#import "VeeContactFactory.h"
+
 
 @interface VeeContactPickerViewController ()
 
@@ -131,7 +137,7 @@
 
 -(void)loadVeeContactsFromAddressBook
 {
-    _veeContacts = (NSArray<VeeContactProt>*)[[VeeAddressBookRepository sharedInstance] veeContactsForAddressBook:_addressBookRef];
+    _veeContacts = [VeeContactFactory veeContactsFromAddressBook:_addressBookRef];
     _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
     [self setupTableView];
 }

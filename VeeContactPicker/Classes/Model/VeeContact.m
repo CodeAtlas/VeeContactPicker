@@ -5,8 +5,42 @@
 
 #import "VeeContact.h"
 #import "VeeIsEmpty.h"
+#import "VeeABRecordAdapter.h"
 
 @implementation VeeContact
+
+#pragma mark - Init
+
+-(instancetype)initWithVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter
+{
+    self = [super init];
+    if (self) {
+        _recordIds = [veeABRecordAdapter recordIds];
+        _firstName = [veeABRecordAdapter firstName];
+        _lastName = [veeABRecordAdapter lastName];
+        _middleName = [veeABRecordAdapter middleName];
+        _compositeName = [veeABRecordAdapter compositeName];
+        _thumbnailImage = [veeABRecordAdapter thumbnailImage];
+        _phoneNumbers = [veeABRecordAdapter phoneNumbers];
+        _emails = [veeABRecordAdapter emails];
+    }
+    return self;
+}
+
+-(instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails
+{
+    self = [super init];
+    if (self) {
+        _firstName = firstName;
+        _lastName = lastName;
+        _middleName = middleName;
+        _compositeName = compositeName;
+        _thumbnailImage = thumbnailImage;
+        _phoneNumbers = phoneNumbers;
+        _emails = emails;
+    }
+    return self;
+}
 
 #pragma mark - Getters
 
@@ -120,7 +154,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIds, _firstName, _lastName, _compositeName, _organizationName, _displayName, _phoneNumbers, _emails];
+    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIds, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails];
 }
 
 @end

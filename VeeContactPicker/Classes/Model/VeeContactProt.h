@@ -9,21 +9,22 @@
 
 @protocol VeeContactProt <NSObject, VeeSectionable>
 
-@property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
-@property (nonatomic, strong) NSDate* modifiedAt;
-@property (nonatomic, strong) NSDate* createdAt;
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
 @property (nonatomic, copy) NSString* middleName;
 @property (nonatomic, copy) NSString* nickname;
 @property (nonatomic, copy) NSString* organizationName;
 @property (nonatomic, copy) NSString* compositeName;
-@property (nonatomic, copy) NSString* displayName;
 @property (nonatomic, strong) UIImage* thumbnailImage;
 
 @property (nonatomic, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, strong) NSArray<NSString*>* emails;
 
+- (NSString*)displayName;
 - (NSString*)sectionIdentifier;
+
+@optional
+
+@property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
 
 @end

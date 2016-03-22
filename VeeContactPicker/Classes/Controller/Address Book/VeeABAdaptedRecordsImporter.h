@@ -6,12 +6,12 @@
 
 #import <Foundation/Foundation.h>
 @import AddressBook;
-@class VeeContact;
+@class VeeABRecordAdapter;
 
-@interface VeeAddressBookRepositoryImporter : NSObject
+@interface VeeABAdaptedRecordsImporter : NSObject
 
 #pragma mark - Public methods
 
-- (NSArray<VeeContact*>*)importVeeContactsFromAddressBook:(ABAddressBookRef)addressBook;
+- (NSArray<VeeABRecordAdapter*>*)importVeeABAdaptedRecordsFromAddressBook:(ABAddressBookRef)addressBook;
 
 @end
