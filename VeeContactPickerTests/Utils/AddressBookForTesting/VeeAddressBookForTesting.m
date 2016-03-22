@@ -58,17 +58,17 @@
     [self saveABContext];
 }
 
-- (ABRecordRef)veeContactCompleteRecord
+- (ABRecordRef)abRecordRefOfCompleteContact
 {
     return [self veeTestingContactWithFirstName:kCompleteVeeContactFirstName];
 }
 
-- (ABRecordRef)veeContactUnifiedRecord
+- (ABRecordRef)abRecordRefOfUnifiedContact
 {
     return [self veeTestingContactWithFirstName:kUnifiedVeecontactFirstName];
 }
 
-- (NSArray*)recordRefsOfAddressBookForTesting
+- (NSArray*)abRecordRefsOfTestingContacts
 {
     NSMutableArray* testingRecordRefsMutable = [NSMutableArray new];
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
