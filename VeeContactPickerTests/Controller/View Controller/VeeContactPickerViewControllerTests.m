@@ -11,6 +11,11 @@
 #import "VeeABDelegate.h"
 #import "VeeContactsForTestingFactory.h"
 #import "VeeAddressBookForTesting.h"
+#import "OCMock.h"
+#import "VeeAddressBook.h"
+#import "VeeContactFactory.h"
+
+#define NUMBER_OF_RANDOM_VEECONTACTS 100
 
 @interface VeeContactPickerViewControllerTests : XCTestCase
 
@@ -33,7 +38,7 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 
 + (void)setUp
 {
-    customVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
+    customVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:NUMBER_OF_RANDOM_VEECONTACTS];
 }
 
 #pragma mark - Methods setup
@@ -95,9 +100,25 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 
 -(void)testInitWithNilVeeContactsShouldUseVeeContactsFromAB
 {
+    id veeAB = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAB askABPermissionsIfNeeded:[OCMArg anyPointer]]).andReturn(YES);
+    
+    id veeContactFactoryMock = OCMClassMock([VeeContactFactory class]);
+    OCMStub([veeContactFactoryMock veeContactsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);
+   
     [_veeContactPickerVCWithNilVeeContacts view];
-    NSUInteger unifiedABRecordsCount; // TODO:
-    [[_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] count] == unifiedABRecordsCount;
+    
+    NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] count];
+    BOOL isNumberOfVeeContactsCorrect = numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
+    NSAssert(isNumberOfVeeContactsCorrect, @"There are %zd veeContacts in the Address Book but there are %zd veecontacts laded",NUMBER_OF_RANDOM_VEECONTACTS,numberOfVeeContactsLoaded);
+}
+
+-(void)testInitWithCustomVeecontacts
+{
+    [_veeContactPickerVCWithCustomVeeContacts view];
+    NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeContacts"] count];
+    BOOL isNumberOfCustomVeeContactsCorrect =  numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
+    NSAssert(isNumberOfCustomVeeContactsCorrect, @"Init with %zd custom veecontacts but there are %zd veecontacts loaded",NUMBER_OF_RANDOM_VEECONTACTS,numberOfVeeContactsLoaded);
 }
 
 #pragma mark - Outlets
