@@ -12,6 +12,7 @@
 @property (nonatomic,strong) id<VeeABDelegate> delegate;
 
 - (instancetype)initWithVeeABDelegate:(id<VeeABDelegate>)delegate;
-- (BOOL)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef;
++ (BOOL)hasABPermissions;
+- (void)askABPermissionsWithDelegateCallback:(ABAddressBookRef)addressBookRef;
 
 @end

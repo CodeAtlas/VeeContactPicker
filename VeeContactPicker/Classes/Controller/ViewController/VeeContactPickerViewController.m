@@ -92,17 +92,7 @@
     [super viewDidLoad];
 
     [self loadStrings];
-    
-    BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
-    if (shouldLoadVeecontactsFromAB){
-        BOOL hasABPermission = [self askABPermissionsIfNeededAndContinueAsyncIfGranted];
-        if (hasABPermission == NO){
-            [self loadVeeContactsFromAddressBook];
-        }
-    }
-    else{
-        [self loadCustomVeecontacts];
-    }
+    [self loadVeeContacts];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,10 +108,27 @@
     _cancelBarButtonItem.title = [_veeContactPickerOptions.veeContactPickerStrings cancelButtonTitle];
 }
 
--(BOOL)askABPermissionsIfNeededAndContinueAsyncIfGranted
+-(void)loadVeeContacts
+{
+    BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
+    if (shouldLoadVeecontactsFromAB){
+        BOOL hasAlreadyABPermission = [VeeAddressBook hasABPermissions];
+        if (hasAlreadyABPermission){
+            [self loadVeeContactsFromAddressBook];
+        }
+        else{
+            [self askABPermissionsWithDelegateCallback];
+        }
+    }
+    else{
+        [self loadCustomVeecontacts];
+    }
+}
+
+-(void)askABPermissionsWithDelegateCallback
 {
     _addressBookRef = ABAddressBookCreate();
-    return [_veeAddressBook askABPermissionsIfNeeded:_addressBookRef];
+    [_veeAddressBook askABPermissionsWithDelegateCallback:_addressBookRef];
 }
 
 -(void)loadCustomVeecontacts

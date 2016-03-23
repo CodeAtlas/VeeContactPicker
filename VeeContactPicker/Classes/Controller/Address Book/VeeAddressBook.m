@@ -24,22 +24,11 @@
     return NO;
 }
 
-- (BOOL)askABPermissionsIfNeeded:(ABAddressBookRef)addressBookRef
+- (void)askABPermissionsWithDelegateCallback:(ABAddressBookRef)addressBookRef
 {
-    CFErrorRef error = NULL;
-    if (error) {
-        NSLog(@"Warning - ABAddressBookCreateWithOptions error: %@", CFBridgingRelease(error));
-    }
-
-    if ([VeeAddressBook hasABPermissions] == NO) {
-        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+    ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
             [_delegate abPermissionsGranted:granted];
-        });
-        return YES;
-    }
-    else{
-        return NO;
-    }
+    });
 }
 
 @end

@@ -219,5 +219,6 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 //testContactsAreShown
 //testSearch
 //test delegate
+//testConfigureCell
 
 @end
