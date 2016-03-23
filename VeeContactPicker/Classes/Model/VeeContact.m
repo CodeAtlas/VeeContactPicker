@@ -20,6 +20,8 @@
         _lastName = [veeABRecordAdapter lastName];
         _middleName = [veeABRecordAdapter middleName];
         _compositeName = [veeABRecordAdapter compositeName];
+        _nickname = [veeABRecordAdapter nickname];
+        _organizationName = [veeABRecordAdapter organizationName];
         _thumbnailImage = [veeABRecordAdapter thumbnailImage];
         _phoneNumbers = [veeABRecordAdapter phoneNumbers];
         _emails = [veeABRecordAdapter emails];
@@ -27,14 +29,16 @@
     return self;
 }
 
--(instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails
+-(instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickname organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails
 {
     self = [super init];
     if (self) {
         _firstName = firstName;
-        _lastName = lastName;
         _middleName = middleName;
+        _lastName = lastName;
         _compositeName = compositeName;
+        _organizationName = organizationName;
+        _nickname = nickname;
         _thumbnailImage = thumbnailImage;
         _phoneNumbers = phoneNumbers;
         _emails = emails;
@@ -133,10 +137,10 @@
     if (!other || ![other isKindOfClass:[self class]]) {
         return NO;
     }
-    return [self isEqualToABContactProt:other];
+    return [self isEqualToVeeContactProt:other];
 }
 
-- (BOOL)isEqualToABContactProt:(id<VeeContactProt>)veecontact
+- (BOOL)isEqualToVeeContactProt:(id<VeeContactProt>)veecontact
 {
     if (self == veecontact) {
         return YES;
