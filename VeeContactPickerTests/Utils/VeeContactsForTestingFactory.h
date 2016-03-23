@@ -5,16 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import "VeeContactProt.h"
-@class VeeAddressBookForTesting;
 @class VeeContact;
 
 @interface VeeContactsForTestingFactory : NSObject
 
-- (instancetype)initWithAddressBookForTesting:(VeeAddressBookForTesting*)veeAddressBookForTesting;
-
-- (VeeContact*)veeContactComplete;
-- (VeeContact*)veeContactUnified;
-- (NSArray<id<VeeContactProt>>*)veeContactsFromAddressBookForTesting;
++ (VeeContact*)veeContactComplete;
 + (NSArray<id<VeeContactProt>>*)createRandomVeeContacts:(NSUInteger)numberOfVeeContacts;
 
 @end

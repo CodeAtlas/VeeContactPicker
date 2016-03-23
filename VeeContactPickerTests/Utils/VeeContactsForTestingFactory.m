@@ -3,115 +3,91 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeAddressBookForTesting.h"
 #import "VeeContact.h"
 #import "VeecontactsForTestingFactory.h"
-
-@interface VeeContactsForTestingFactory ()
-
-@property (nonatomic, strong) VeeAddressBookForTesting* veeAddressBookForTesting;
-
-@end
+#import "VeeAddressBookForTestingConstants.h"
 
 @implementation VeeContactsForTestingFactory
 
-- (instancetype)initWithAddressBookForTesting:(VeeAddressBookForTesting*)veeAddressBookForTesting
-{
-    self = [super init];
-    if (self) {
-        _veeAddressBookForTesting = veeAddressBookForTesting;
-    }
-    return self;
-}
+#pragma mark - Public method
 
-#pragma mark - Public methods
-
-- (VeeContact*)veeContactComplete
++ (VeeContact*)veeContactComplete
 {
-    VeeContact* veeContactComplete = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[_veeAddressBookForTesting veeContactCompleteRecord]];
+    NSArray* kCompleteVeeContactEmails = @[@"complete@home.it",@"complete@work.org",@"complete@icloud.com",@"duplicate@gmail.com"];
+    NSArray* kCompleteVeeContactPhoneNumbers = @[@"+39 02 9387441",@"+1 333 2458774",@"+33 333 2580089",@"+7 331 4458726",@"+39 02 9387441"];
+    VeeContact* veeContactComplete = [[VeeContact alloc] initWithFirstName:kCompleteVeeContactFirstName middleName:kCompleteVeeContactMiddleName lastName:kCompleteVeeContactLastName nickName:kCompleteVeeContactNickname organizationName:kCompleteVeeContactOrganizationName compositeName:kCompleteVeeContactCompositeName thubnailImage:nil phoneNumbers:kCompleteVeeContactPhoneNumbers emails:kCompleteVeeContactEmails];
+    
     return veeContactComplete;
-}
-
-- (VeeContact*)veeContactUnified
-{
-    VeeContact* veeContactUnified = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:[_veeAddressBookForTesting veeContactUnifiedRecord]];
-    return veeContactUnified;
-}
-
-- (NSArray<id<VeeContactProt>>*)veeContactsFromAddressBookForTesting
-{
-    NSMutableArray* veeContactsFromABForTestingMutable = [NSMutableArray new];
-    for (id abRecordRefBoxed in [_veeAddressBookForTesting recordRefsOfAddressBookForTesting]) {
-        VeeContact* veeContact = [[VeeContact alloc] initWithLinkedPeopleOfABRecord:(__bridge ABRecordRef)(abRecordRefBoxed)];
-        [veeContactsFromABForTestingMutable addObject:veeContact];
-    }
-    return [NSArray arrayWithArray:veeContactsFromABForTestingMutable];
 }
 
 + (NSArray<id<VeeContactProt>>*)createRandomVeeContacts:(NSUInteger)numberOfVeeContacts
 {
     NSMutableArray* randomVeeContactsMutable = [NSMutableArray new];
     for (int i = 0; i < numberOfVeeContacts; i++){
-        VeeContact* veeContact = [VeeContact new];
-        NSMutableSet* recordIds = [[NSMutableSet alloc] initWithObjects:[NSNumber numberWithInt:1000+i],nil];
-        [veeContact setValue:recordIds forKey:@"recordIdsMutable"];
-        NSDate* now = [NSDate date];
-        [veeContact setValue:now forKey:@"createdAt"];
-        [veeContact setValue:now forKey:@"modifiedAt"];
-        NSString* randomFirstName = [self randomString];
-        NSString* randomLastName = [self randomString];
-        [veeContact setValue:randomFirstName forKey:@"firstName"];
-        [veeContact setValue:randomLastName forKey:@"lastName"];
-        [veeContact setValue:[self randomString] forKey:@"middleName"];
-        [veeContact setValue:[self randomString] forKey:@"nickname"];
-        [veeContact setValue:[self randomString] forKey:@"organizationName"];
-        [veeContact setValue:[NSString stringWithFormat:@"%@ %@",randomFirstName,randomLastName] forKey:@"compositeName"];
-        //No image
-        NSMutableSet* phoneNumbers = [NSMutableSet setWithObjects:[self randomItalianPhoneNumber], [self randomItalianPhoneNumber],[self randomItalianPhoneNumber], nil];
-        [veeContact setValue:phoneNumbers forKey:@"phoneNumbersMutable"];
-        NSMutableSet* emails = [NSMutableSet setWithObjects:[self randomGmail], [self randomGmail],[self randomGmail], nil];
-        [veeContact setValue:emails forKey:@"emailsMutable"];
-        [randomVeeContactsMutable addObject:veeContact];
+        VeeContact* randomVeeContact;
+        NSString* randomFirstName = [self randomFirstName];
+        NSString* randomLastName = [self randomLastName];
+        NSString* randomMiddleName = [self randomMiddleName];
+        NSString* randomCompositeName = [NSString stringWithFormat:@"%@ %@ %@",randomFirstName,randomMiddleName,randomLastName];
+        NSArray* randomPhoneNumbers = @[[self randomPhoneNumber],[self randomPhoneNumber],[self randomPhoneNumber]];
+        NSArray* randomEmails = @[[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName]];
+        randomVeeContact = [[VeeContact alloc] initWithFirstName:randomFirstName middleName:randomMiddleName lastName:randomLastName nickName:[self randomNickname] organizationName:[self randomOrganizationName] compositeName:randomCompositeName thubnailImage:nil phoneNumbers:randomPhoneNumbers emails:randomEmails];
+        [randomVeeContactsMutable addObject:randomVeeContact];
     }
-    
     return [[NSArray alloc] initWithArray:randomVeeContactsMutable];
 }
 
-+(NSString*)randomString
++(NSString*)randomFirstName
 {
-    NSString *alphabet  = @"abcdefghijklmnopqrstuvwxyz";
-    NSUInteger alphabetLength = alphabet.length;
-    NSUInteger randomStringLength = (arc4random() % 10) +1;
-    NSMutableString *mutableString = [NSMutableString stringWithCapacity:randomStringLength];
-    for (NSUInteger i = 0U; i < randomStringLength; i++) {
-        u_int32_t r = arc4random() % alphabetLength;
-        unichar c = [alphabet characterAtIndex:r];
-        [mutableString appendFormat:@"%C", c];
+    return [self randomEntryInTxtFileNamed:@"FirstNames"];
+}
+
++(NSString*)randomMiddleName
+{
+    return [self randomEntryInTxtFileNamed:@"MiddleNames"];
+}
+
++(NSString*)randomLastName
+{
+    return [self randomEntryInTxtFileNamed:@"LastNames"];
+}
+
++(NSString*)randomEmailWithFirstName:(NSString*)firstName andLastName:(NSString*)lastName
+{
+    NSString* randomEmailDomain= [self randomEntryInTxtFileNamed:@"EmailDomains"];
+    return [NSString stringWithFormat:@"%@.%@@%@",firstName,lastName,randomEmailDomain];
+}
+
++(NSString*)randomPhoneNumber
+{
+    return [self randomEntryInTxtFileNamed:@"FakePhoneNumbers"];
+}
+
++(NSString*)randomNickname
+{
+    return [self randomEntryInTxtFileNamed:@"Nicknames"];
+}
+
++(NSString*)randomOrganizationName
+{
+   return [self randomEntryInTxtFileNamed:@"OrganizationNames"];
+}
+
++(NSString*)randomEntryInTxtFileNamed:(NSString*)fileName
+{
+    NSArray* randomEntries = [self linesOfTxtFileName:fileName];
+    return randomEntries[arc4random() % [randomEntries count]];
+}
+
++(NSArray<NSString*>*)linesOfTxtFileName:(NSString*)fileName
+{
+    NSString* filePath = [[NSBundle bundleForClass:self.class] pathForResource:fileName ofType:@"txt"];
+    NSError *error;
+    NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    if (error){
+        NSLog(@"Error reading file: %@", error.localizedDescription);
     }
-    return [NSString stringWithString:mutableString];
-}
-
-+(NSString*)randomGmail
-{
-    return [NSString stringWithFormat:@"%@@gmail.com",[self randomString]];
-}
-
-+(NSString*)randomItalianPhoneNumber
-{
-    return [NSString stringWithFormat:@"+39333%@",[self sevenNumberRandomString]];
-}
-
-+(NSString*)sevenNumberRandomString
-{
-    NSString *alphabet  = @"0123456789";
-    NSUInteger alphabetLength = alphabet.length;
-    NSMutableString *mutableString = [NSMutableString stringWithCapacity:7];
-    for (NSUInteger i = 0U; i < 7; i++) {
-        u_int32_t r = arc4random() % alphabetLength;
-        unichar c = [alphabet characterAtIndex:r];
-        [mutableString appendFormat:@"%C", c];
-    }
-    return [NSString stringWithString:mutableString];
+    return [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 }
 
 @end

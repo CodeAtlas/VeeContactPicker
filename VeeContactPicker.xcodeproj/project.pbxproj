@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860696931CA15BC500997F09 /* MiddleNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696921CA15BC500997F09 /* MiddleNames.txt */; };
+		860696951CA15DDB00997F09 /* Nicknames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696941CA15DDB00997F09 /* Nicknames.txt */; };
+		860696971CA15DE500997F09 /* OrganizationNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696961CA15DE500997F09 /* OrganizationNames.txt */; };
+		860696981CA1609E00997F09 /* VeeContactsForTestingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B8A6C31C99AB6C00F48CBD /* VeeContactsForTestingFactory.m */; };
+		860696991CA160BC00997F09 /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */; };
+		8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8606969B1CA1618F00997F09 /* VeeContactFactory.m */; };
 		860C626D1C28521200876682 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626C1C28521200876682 /* main.m */; };
 		860C62701C28521200876682 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626F1C28521200876682 /* AppDelegate.m */; };
 		860C62731C28521200876682 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62721C28521200876682 /* ViewController.m */; };
@@ -43,11 +49,10 @@
 		86C08D171CA1520900319B5A /* FirstNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D161CA1520900319B5A /* FirstNames.txt */; };
 		86C08D191CA1523400319B5A /* LastNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D181CA1523400319B5A /* LastNames.txt */; };
 		86C08D1B1CA152D800319B5A /* EmailDomains.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D1A1CA152D800319B5A /* EmailDomains.txt */; };
-		86C08D1D1CA1530F00319B5A /* FakePhoneNumbers in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D1C1CA1530F00319B5A /* FakePhoneNumbers */; };
+		86C08D1D1CA1530F00319B5A /* FakePhoneNumbers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */; };
 		86DCEEFD1C96DB4400EC7FD6 /* VeeAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DCEEFC1C96DB4400EC7FD6 /* VeeAddressBook.m */; };
 		86DCEF001C96DD4900EC7FD6 /* VeeContactColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DCEEFF1C96DD4900EC7FD6 /* VeeContactColors.m */; };
-		86DCEF061C96E0A700EC7FD6 /* VeeAddressBookRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DCEF031C96E0A700EC7FD6 /* VeeAddressBookRepository.m */; };
-		86DCEF071C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DCEF051C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m */; };
+		86DCEF071C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DCEF051C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m */; };
 		86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */; };
 		CF12D0A2F6931717F59A339E /* libPods-VeeContactPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2A2743CC4B67C17435DFFC /* libPods-VeeContactPicker.a */; };
 		F1B9BEB846BF9235FB2EABBB /* libPods-VeeContactPickerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608D41F3D9A815CA32DBA796 /* libPods-VeeContactPickerTests.a */; };
@@ -75,6 +80,11 @@
 		3443D42DEDE8A03DD6D3BCD7 /* Pods-VeeContactPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker/Pods-VeeContactPicker.release.xcconfig"; sourceTree = "<group>"; };
 		59BA9EF812E7CB1FDE543CC3 /* Pods-VeeContactPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker/Pods-VeeContactPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		608D41F3D9A815CA32DBA796 /* libPods-VeeContactPickerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPickerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		860696921CA15BC500997F09 /* MiddleNames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MiddleNames.txt; sourceTree = "<group>"; };
+		860696941CA15DDB00997F09 /* Nicknames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nicknames.txt; sourceTree = "<group>"; };
+		860696961CA15DE500997F09 /* OrganizationNames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OrganizationNames.txt; sourceTree = "<group>"; };
+		8606969A1CA1618F00997F09 /* VeeContactFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactFactory.h; sourceTree = "<group>"; };
+		8606969B1CA1618F00997F09 /* VeeContactFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactFactory.m; sourceTree = "<group>"; };
 		860C62681C28521200876682 /* VeeContactPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeeContactPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		860C626C1C28521200876682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		860C626E1C28521200876682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,7 +127,7 @@
 		864194F71C96D7C0005DC2D6 /* VeeContactPickerStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerStrings.m; sourceTree = "<group>"; };
 		864AFE2F1C91913F002F4BF7 /* VeeAddressBookForTestingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBookForTestingConstants.h; sourceTree = "<group>"; };
 		864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTestingConstants.m; sourceTree = "<group>"; };
-		8676C5901C93151100054446 /* vee_testing_ab.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vee_testing_ab.vcf; sourceTree = "<group>"; };
+		8676C5901C93151100054446 /* vee_testing_ab.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vee_testing_ab.vcf; path = ../Utils/AddressBookForTesting/vee_testing_ab.vcf; sourceTree = "<group>"; };
 		867AD86D1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSourceTests.m; sourceTree = "<group>"; };
 		867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionableForTesting.h; sourceTree = "<group>"; };
 		867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionableForTesting.m; sourceTree = "<group>"; };
@@ -136,16 +146,14 @@
 		86C08D161CA1520900319B5A /* FirstNames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstNames.txt; sourceTree = "<group>"; };
 		86C08D181CA1523400319B5A /* LastNames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LastNames.txt; sourceTree = "<group>"; };
 		86C08D1A1CA152D800319B5A /* EmailDomains.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmailDomains.txt; sourceTree = "<group>"; };
-		86C08D1C1CA1530F00319B5A /* FakePhoneNumbers */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FakePhoneNumbers; sourceTree = "<group>"; };
+		86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FakePhoneNumbers.txt; sourceTree = "<group>"; };
 		86C6E7D91C9C11EC0031CC23 /* VeeABDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeABDelegate.h; sourceTree = "<group>"; };
 		86DCEEFB1C96DB4400EC7FD6 /* VeeAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBook.h; sourceTree = "<group>"; };
 		86DCEEFC1C96DB4400EC7FD6 /* VeeAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBook.m; sourceTree = "<group>"; };
 		86DCEEFE1C96DD4900EC7FD6 /* VeeContactColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactColors.h; sourceTree = "<group>"; };
 		86DCEEFF1C96DD4900EC7FD6 /* VeeContactColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactColors.m; sourceTree = "<group>"; };
-		86DCEF021C96E0A700EC7FD6 /* VeeAddressBookRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBookRepository.h; sourceTree = "<group>"; };
-		86DCEF031C96E0A700EC7FD6 /* VeeAddressBookRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookRepository.m; sourceTree = "<group>"; };
-		86DCEF041C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBookRepositoryImporter.h; sourceTree = "<group>"; };
-		86DCEF051C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookRepositoryImporter.m; sourceTree = "<group>"; };
+		86DCEF041C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeABAdaptedRecordsImporter.h; sourceTree = "<group>"; };
+		86DCEF051C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeABAdaptedRecordsImporter.m; sourceTree = "<group>"; };
 		86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+Boldify.h"; path = "../../Libs/UILabel+Boldify.h"; sourceTree = "<group>"; };
 		86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Boldify.m"; path = "../../Libs/UILabel+Boldify.m"; sourceTree = "<group>"; };
 		8D4D941FFF54A1E63B5134C6 /* Pods-VeeContactPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPickerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPickerTests/Pods-VeeContactPickerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -361,11 +369,15 @@
 		86A6A6FF1C9AF56A004F66E2 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				8676C5901C93151100054446 /* vee_testing_ab.vcf */,
 				86A6A7001C9AF572004F66E2 /* codeatlas.png */,
 				86C08D161CA1520900319B5A /* FirstNames.txt */,
+				860696921CA15BC500997F09 /* MiddleNames.txt */,
 				86C08D181CA1523400319B5A /* LastNames.txt */,
 				86C08D1A1CA152D800319B5A /* EmailDomains.txt */,
-				86C08D1C1CA1530F00319B5A /* FakePhoneNumbers */,
+				860696941CA15DDB00997F09 /* Nicknames.txt */,
+				860696961CA15DE500997F09 /* OrganizationNames.txt */,
+				86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -377,7 +389,6 @@
 				861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */,
 				864AFE2F1C91913F002F4BF7 /* VeeAddressBookForTestingConstants.h */,
 				864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */,
-				8676C5901C93151100054446 /* vee_testing_ab.vcf */,
 			);
 			path = AddressBookForTesting;
 			sourceTree = "<group>";
@@ -398,10 +409,10 @@
 				86AB036B1C917A820054B7EC /* XCTest+VeeCommons.h */,
 				86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */,
 				86AB036F1C917AAD0054B7EC /* AddressBookForTesting */,
-				867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */,
-				867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */,
 				86B8A6C21C99AB6C00F48CBD /* VeeContactsForTestingFactory.h */,
 				86B8A6C31C99AB6C00F48CBD /* VeeContactsForTestingFactory.m */,
+				867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */,
+				867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -432,6 +443,8 @@
 				860C629F1C28525E00876682 /* VeeContactProt.h */,
 				860C62B41C2854CB00876682 /* VeeContact.h */,
 				860C62B51C2854CB00876682 /* VeeContact.m */,
+				8606969A1CA1618F00997F09 /* VeeContactFactory.h */,
+				8606969B1CA1618F00997F09 /* VeeContactFactory.m */,
 				862F859C1CA141BD004EF57F /* ContactPicker */,
 			);
 			name = Model;
@@ -457,10 +470,8 @@
 				86C6E7D91C9C11EC0031CC23 /* VeeABDelegate.h */,
 				86DCEEFB1C96DB4400EC7FD6 /* VeeAddressBook.h */,
 				86DCEEFC1C96DB4400EC7FD6 /* VeeAddressBook.m */,
-				86DCEF021C96E0A700EC7FD6 /* VeeAddressBookRepository.h */,
-				86DCEF031C96E0A700EC7FD6 /* VeeAddressBookRepository.m */,
-				86DCEF041C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.h */,
-				86DCEF051C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m */,
+				86DCEF041C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.h */,
+				86DCEF051C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m */,
 			);
 			path = "Address Book";
 			sourceTree = "<group>";
@@ -588,7 +599,10 @@
 			files = (
 				86A6A7011C9AF572004F66E2 /* codeatlas.png in Resources */,
 				86C08D171CA1520900319B5A /* FirstNames.txt in Resources */,
-				86C08D1D1CA1530F00319B5A /* FakePhoneNumbers in Resources */,
+				860696971CA15DE500997F09 /* OrganizationNames.txt in Resources */,
+				86C08D1D1CA1530F00319B5A /* FakePhoneNumbers.txt in Resources */,
+				860696931CA15BC500997F09 /* MiddleNames.txt in Resources */,
+				860696951CA15DDB00997F09 /* Nicknames.txt in Resources */,
 				8676C5911C93151100054446 /* vee_testing_ab.vcf in Resources */,
 				86C08D191CA1523400319B5A /* LastNames.txt in Resources */,
 				86C08D1B1CA152D800319B5A /* EmailDomains.txt in Resources */,
@@ -703,18 +717,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				862BB67B1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m in Sources */,
+				860696991CA160BC00997F09 /* VeeAddressBookForTestingConstants.m in Sources */,
 				860C62AB1C28528E00876682 /* VeeContactPickerViewController.m in Sources */,
 				867AD8771CA04300009A26A2 /* VeeIsEmpty.m in Sources */,
 				860C62731C28521200876682 /* ViewController.m in Sources */,
 				86DCEF001C96DD4900EC7FD6 /* VeeContactColors.m in Sources */,
 				862F859F1CA14435004EF57F /* VeeABRecordAdapter.m in Sources */,
 				864194EE1C96CE60005DC2D6 /* VeeContactPickerOptions.m in Sources */,
-				86DCEF061C96E0A700EC7FD6 /* VeeAddressBookRepository.m in Sources */,
-				86DCEF071C96E0A700EC7FD6 /* VeeAddressBookRepositoryImporter.m in Sources */,
+				86DCEF071C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m in Sources */,
 				864194F81C96D7C0005DC2D6 /* VeeContactPickerStrings.m in Sources */,
 				860C62701C28521200876682 /* AppDelegate.m in Sources */,
 				860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */,
 				864194F11C96D169005DC2D6 /* VeeContactPickerConstants.m in Sources */,
+				8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */,
+				860696981CA1609E00997F09 /* VeeContactsForTestingFactory.m in Sources */,
 				86DCEEFD1C96DB4400EC7FD6 /* VeeAddressBook.m in Sources */,
 				860C62B61C2854CB00876682 /* VeeContact.m in Sources */,
 				86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */,
