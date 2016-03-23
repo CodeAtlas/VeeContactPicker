@@ -4,8 +4,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "VeeAddressBookForTesting.h"
 #import "VeeABRecordAdapter.h"
+#import "VeeAddressBookForTesting.h"
 #import "VeeAddressBookForTestingConstants.h"
 
 @interface VeeABRecordAdapterTests : XCTestCase

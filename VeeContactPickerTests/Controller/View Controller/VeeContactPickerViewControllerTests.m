@@ -5,12 +5,13 @@
 
 #import <XCTest/XCTest.h>
 #import "VeeContactPickerViewController.h"
+
 #import "VeeContactPickerStrings.h"
 #import "VeeContactColors.h"
 #import "VeeContactPickerOptions.h"
+
 #import "VeeABDelegate.h"
 #import "VeeContactsForTestingFactory.h"
-#import "VeeAddressBookForTesting.h"
 #import "OCMock.h"
 #import "VeeAddressBook.h"
 #import "VeeContactFactory.h"
@@ -71,10 +72,10 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     NSAssert(optionsAreDefault, @"VeeContactPickerOptions are not default one");
 }
 
--(void)testInitWithNilOptionsShouldUseDefaults
+-(void)testInitWithNilOptionsShouldUseDefaultOptions
 {
-    BOOL pickerOptionsAreDefault = [[_veeContactPickerVCWithNilOptions valueForKey:@"veeContactPickerOptions"] isEqual:_veeContactPickerDefaultOptions];
-    NSAssert(pickerOptionsAreDefault, @"VeeContactPickerOptions are not default one");
+    BOOL optionsAreDefault = [[_veeContactPickerVCWithNilOptions valueForKey:@"veeContactPickerOptions"] isEqual:_veeContactPickerDefaultOptions];
+    NSAssert(optionsAreDefault, @"VeeContactPickerOptions are not default one");
 }
 
 -(void)testInitsShouldSetVeeAddressBook
@@ -214,7 +215,6 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     return codeAtlasImage;
 }
 
-//testContactsAreLoadedFromABIfNil
 //testEmptyView
 //testContactsAreShown
 //testSearch
