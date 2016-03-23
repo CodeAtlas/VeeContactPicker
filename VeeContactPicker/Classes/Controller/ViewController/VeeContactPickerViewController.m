@@ -92,6 +92,7 @@
     [super viewDidLoad];
 
     [self loadStrings];
+    _addressBookRef = ABAddressBookCreate();
     [self loadVeeContacts];
 }
 
@@ -127,7 +128,6 @@
 
 -(void)askABPermissionsWithDelegateCallback
 {
-    _addressBookRef = ABAddressBookCreate();
     [_veeAddressBook askABPermissionsWithDelegateCallback:_addressBookRef];
 }
 

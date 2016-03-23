@@ -101,7 +101,7 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
 -(void)testInitWithNilVeeContactsShouldUseVeeContactsFromAB
 {
     id veeAB = OCMClassMock([VeeAddressBook class]);
-    OCMStub([veeAB askABPermissionsIfNeeded:[OCMArg anyPointer]]).andReturn(YES);
+    OCMStub([veeAB askABPermissionsWithDelegateCallback:[OCMArg anyPointer]]).andReturn(YES);
     
     id veeContactFactoryMock = OCMClassMock([VeeContactFactory class]);
     OCMStub([veeContactFactoryMock veeContactsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);

@@ -26,13 +26,20 @@
 
 - (IBAction)showVeecontactPickerPressed:(id)sender
 {
-    NSArray<id<VeeContactProt>>* randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
-    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithVeeContacts:randomVeeContacts];
-    //VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
-    
+    VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
     veePickerVC.contactPickerDelegate = self;
-    
     [self presentViewController:veePickerVC animated:YES completion:nil];
+}
+
+-(VeeContactPickerViewController*)pickerWithAddressBookContacts
+{
+    return [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+}
+
+-(VeeContactPickerViewController*)pickerWithRandomVeeContacts
+{
+    NSArray<id<VeeContactProt>>* randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
+    return [[VeeContactPickerViewController alloc] initWithVeeContacts:randomVeeContacts];
 }
 
 #pragma mark - VeeContactPickerDelegate

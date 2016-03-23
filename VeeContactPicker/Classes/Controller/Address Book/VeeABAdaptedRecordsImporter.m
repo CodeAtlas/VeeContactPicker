@@ -17,6 +17,7 @@
         return @[];
     }
 
+    NSParameterAssert(addressBook);
     NSArray* allSources = (__bridge_transfer NSArray*)(ABAddressBookCopyArrayOfAllSources(addressBook));
     NSMutableSet<VeeABRecordAdapter*>* adaptedRecords = [NSMutableSet new];
 
