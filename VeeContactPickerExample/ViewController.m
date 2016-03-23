@@ -5,6 +5,8 @@
 
 #import "ViewController.h"
 #import "VeeContactPickerViewController.h"
+#import "VeeContact.h"
+#import "VeeContactsForTestingFactory.h"
 
 @interface ViewController ()
 
@@ -24,8 +26,12 @@
 
 - (IBAction)showVeecontactPickerPressed:(id)sender
 {
-    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+    NSArray<id<VeeContactProt>>* randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
+    VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithVeeContacts:randomVeeContacts];
+    //VeeContactPickerViewController* veePickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+    
     veePickerVC.contactPickerDelegate = self;
+    
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 
@@ -33,7 +39,7 @@
 
 - (void)didSelectABContact:(id<VeeContactProt>)veeContact
 {
-    NSLog(@"Selected %@", [veeContact displayName]);
+    NSLog(@"Selected %@",veeContact);
     _selectedContactLabel.text = [NSString stringWithFormat:@"Last selected contact: %@",veeContact.displayName];
 }
 

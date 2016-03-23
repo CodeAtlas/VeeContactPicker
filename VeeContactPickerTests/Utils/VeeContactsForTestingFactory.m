@@ -30,8 +30,13 @@
         NSString* randomMiddleName = [self randomMiddleName];
         NSString* randomCompositeName = [NSString stringWithFormat:@"%@ %@ %@",randomFirstName,randomMiddleName,randomLastName];
         NSArray* randomPhoneNumbers = @[[self randomPhoneNumber],[self randomPhoneNumber],[self randomPhoneNumber]];
+        UIImage* thumbnailImage;
+        NSUInteger setImageEveryNVeeContacts = 10;
+        if (arc4random() % setImageEveryNVeeContacts == 0){
+            thumbnailImage = [self randomPortraitImage];
+        }
         NSArray* randomEmails = @[[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName]];
-        randomVeeContact = [[VeeContact alloc] initWithFirstName:randomFirstName middleName:randomMiddleName lastName:randomLastName nickName:[self randomNickname] organizationName:[self randomOrganizationName] compositeName:randomCompositeName thubnailImage:nil phoneNumbers:randomPhoneNumbers emails:randomEmails];
+        randomVeeContact = [[VeeContact alloc] initWithFirstName:randomFirstName middleName:randomMiddleName lastName:randomLastName nickName:[self randomNickname] organizationName:[self randomOrganizationName] compositeName:randomCompositeName thubnailImage:thumbnailImage phoneNumbers:randomPhoneNumbers emails:randomEmails];
         [randomVeeContactsMutable addObject:randomVeeContact];
     }
     return [[NSArray alloc] initWithArray:randomVeeContactsMutable];
@@ -75,19 +80,37 @@
 
 +(NSString*)randomEntryInTxtFileNamed:(NSString*)fileName
 {
-    NSArray* randomEntries = [self linesOfTxtFileName:fileName];
+    NSArray* randomEntries = [self linesOfTxtFileNamed:fileName];
     return randomEntries[arc4random() % [randomEntries count]];
 }
 
-+(NSArray<NSString*>*)linesOfTxtFileName:(NSString*)fileName
++(UIImage*)randomPortraitImage
 {
-    NSString* filePath = [[NSBundle bundleForClass:self.class] pathForResource:fileName ofType:@"txt"];
+    NSUInteger numberOfPossiblePortraits = 9;
+    NSUInteger randomInteger = arc4random() % numberOfPossiblePortraits;
+    NSString* imageName = [NSString stringWithFormat:@"portrait_%zd.jpg",randomInteger];
+    return [UIImage imageNamed:imageName];
+}
+
++(NSArray<NSString*>*)linesOfTxtFileNamed:(NSString*)fileName
+{
+
     NSError *error;
-    NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSString *fileContents = [NSString stringWithContentsOfFile:[self filePathForFileName:fileName withType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
     if (error){
         NSLog(@"Error reading file: %@", error.localizedDescription);
     }
     return [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 }
 
++(NSString*)filePathForFileName:(NSString*)fileName withType:(NSString*)fileType
+{
+    NSString* filePath;
+#ifdef TESTING
+    filePath = [[NSBundle bundleForClass:self.class] pathForResource:fileName ofType:fileType];
+#else
+    filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:fileType];;
+#endif
+    return filePath;
+}
 @end

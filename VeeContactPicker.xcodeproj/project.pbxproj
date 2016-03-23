@@ -39,6 +39,31 @@
 		867AD8711C9DA79D009A26A2 /* VeeSectionableForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */; };
 		867AD8771CA04300009A26A2 /* VeeIsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8761CA04300009A26A2 /* VeeIsEmpty.m */; };
 		867AD8791CA0436B009A26A2 /* VeeIsEmptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8781CA0436B009A26A2 /* VeeIsEmptyTests.m */; };
+		868BAB6F1CA2BFAB00B0B0A4 /* FirstNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D161CA1520900319B5A /* FirstNames.txt */; };
+		868BAB701CA2BFAD00B0B0A4 /* MiddleNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696921CA15BC500997F09 /* MiddleNames.txt */; };
+		868BAB711CA2BFB000B0B0A4 /* LastNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D181CA1523400319B5A /* LastNames.txt */; };
+		868BAB721CA2BFB300B0B0A4 /* EmailDomains.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D1A1CA152D800319B5A /* EmailDomains.txt */; };
+		868BAB731CA2BFB600B0B0A4 /* Nicknames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696941CA15DDB00997F09 /* Nicknames.txt */; };
+		868BAB741CA2BFB900B0B0A4 /* OrganizationNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696961CA15DE500997F09 /* OrganizationNames.txt */; };
+		868BAB751CA2BFBB00B0B0A4 /* FakePhoneNumbers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */; };
+		868BAB801CA2C14400B0B0A4 /* portrait_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB771CA2C14400B0B0A4 /* portrait_1.jpg */; };
+		868BAB811CA2C14400B0B0A4 /* portrait_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB771CA2C14400B0B0A4 /* portrait_1.jpg */; };
+		868BAB821CA2C14400B0B0A4 /* portrait_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB781CA2C14400B0B0A4 /* portrait_2.jpg */; };
+		868BAB831CA2C14400B0B0A4 /* portrait_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB781CA2C14400B0B0A4 /* portrait_2.jpg */; };
+		868BAB841CA2C14400B0B0A4 /* portrait_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB791CA2C14400B0B0A4 /* portrait_3.jpg */; };
+		868BAB851CA2C14400B0B0A4 /* portrait_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB791CA2C14400B0B0A4 /* portrait_3.jpg */; };
+		868BAB861CA2C14400B0B0A4 /* portrait_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7A1CA2C14400B0B0A4 /* portrait_4.jpg */; };
+		868BAB871CA2C14400B0B0A4 /* portrait_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7A1CA2C14400B0B0A4 /* portrait_4.jpg */; };
+		868BAB881CA2C14400B0B0A4 /* portrait_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7B1CA2C14400B0B0A4 /* portrait_5.jpg */; };
+		868BAB891CA2C14400B0B0A4 /* portrait_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7B1CA2C14400B0B0A4 /* portrait_5.jpg */; };
+		868BAB8A1CA2C14400B0B0A4 /* portrait_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7C1CA2C14400B0B0A4 /* portrait_6.jpg */; };
+		868BAB8B1CA2C14400B0B0A4 /* portrait_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7C1CA2C14400B0B0A4 /* portrait_6.jpg */; };
+		868BAB8C1CA2C14400B0B0A4 /* portrait_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7D1CA2C14400B0B0A4 /* portrait_7.jpg */; };
+		868BAB8D1CA2C14400B0B0A4 /* portrait_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7D1CA2C14400B0B0A4 /* portrait_7.jpg */; };
+		868BAB8E1CA2C14400B0B0A4 /* portrait_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7E1CA2C14400B0B0A4 /* portrait_8.jpg */; };
+		868BAB8F1CA2C14400B0B0A4 /* portrait_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7E1CA2C14400B0B0A4 /* portrait_8.jpg */; };
+		868BAB901CA2C14400B0B0A4 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */; };
+		868BAB911CA2C14400B0B0A4 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */; };
 		86A6A7011C9AF572004F66E2 /* codeatlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 86A6A7001C9AF572004F66E2 /* codeatlas.png */; };
 		86AB036D1C917A820054B7EC /* XCTest+VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */; };
 		86B8A6BB1C9977C100F48CBD /* VeeContactPickerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B8A6BA1C9977C100F48CBD /* VeeContactPickerViewControllerTests.m */; };
@@ -101,7 +126,7 @@
 		860C62901C28521200876682 /* VeeContactPickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerUITests.m; sourceTree = "<group>"; };
 		860C62921C28521200876682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		860C629F1C28525E00876682 /* VeeContactProt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeeContactProt.h; sourceTree = "<group>"; };
-		860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerDelegate.h; sourceTree = "<group>"; };
+		860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VeeContactPickerDelegate.h; path = ../../VeeContactPickerDelegate.h; sourceTree = "<group>"; };
 		860C62A51C28528E00876682 /* VeeContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerViewController.h; sourceTree = "<group>"; };
 		860C62A61C28528E00876682 /* VeeContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerViewController.m; sourceTree = "<group>"; };
 		860C62A71C28528E00876682 /* VeeContactPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VeeContactPickerViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +159,15 @@
 		867AD8751CA04300009A26A2 /* VeeIsEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeIsEmpty.h; sourceTree = "<group>"; };
 		867AD8761CA04300009A26A2 /* VeeIsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeIsEmpty.m; sourceTree = "<group>"; };
 		867AD8781CA0436B009A26A2 /* VeeIsEmptyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VeeIsEmptyTests.m; path = Model/VeeIsEmptyTests.m; sourceTree = "<group>"; };
+		868BAB771CA2C14400B0B0A4 /* portrait_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_1.jpg; sourceTree = "<group>"; };
+		868BAB781CA2C14400B0B0A4 /* portrait_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_2.jpg; sourceTree = "<group>"; };
+		868BAB791CA2C14400B0B0A4 /* portrait_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_3.jpg; sourceTree = "<group>"; };
+		868BAB7A1CA2C14400B0B0A4 /* portrait_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_4.jpg; sourceTree = "<group>"; };
+		868BAB7B1CA2C14400B0B0A4 /* portrait_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_5.jpg; sourceTree = "<group>"; };
+		868BAB7C1CA2C14400B0B0A4 /* portrait_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_6.jpg; sourceTree = "<group>"; };
+		868BAB7D1CA2C14400B0B0A4 /* portrait_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_7.jpg; sourceTree = "<group>"; };
+		868BAB7E1CA2C14400B0B0A4 /* portrait_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_8.jpg; sourceTree = "<group>"; };
+		868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_9.jpg; sourceTree = "<group>"; };
 		86A6A7001C9AF572004F66E2 /* codeatlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeatlas.png; sourceTree = "<group>"; };
 		86AB036B1C917A820054B7EC /* XCTest+VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTest+VeeCommons.h"; path = "../Categories/XCTest+VeeCommons.h"; sourceTree = "<group>"; };
 		86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTest+VeeCommons.m"; path = "../Categories/XCTest+VeeCommons.m"; sourceTree = "<group>"; };
@@ -289,7 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				86DCEEFA1C96DB2900EC7FD6 /* Controller */,
-				860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -298,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				860C62B31C2852DA00876682 /* UITableViewCells */,
+				860C62A41C28528E00876682 /* VeeContactPickerDelegate.h */,
 				860C62A51C28528E00876682 /* VeeContactPickerViewController.h */,
 				860C62A61C28528E00876682 /* VeeContactPickerViewController.m */,
 			);
@@ -366,10 +400,27 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		868BAB761CA2C13600B0B0A4 /* Portraits */ = {
+			isa = PBXGroup;
+			children = (
+				868BAB771CA2C14400B0B0A4 /* portrait_1.jpg */,
+				868BAB781CA2C14400B0B0A4 /* portrait_2.jpg */,
+				868BAB791CA2C14400B0B0A4 /* portrait_3.jpg */,
+				868BAB7A1CA2C14400B0B0A4 /* portrait_4.jpg */,
+				868BAB7B1CA2C14400B0B0A4 /* portrait_5.jpg */,
+				868BAB7C1CA2C14400B0B0A4 /* portrait_6.jpg */,
+				868BAB7D1CA2C14400B0B0A4 /* portrait_7.jpg */,
+				868BAB7E1CA2C14400B0B0A4 /* portrait_8.jpg */,
+				868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */,
+			);
+			name = Portraits;
+			sourceTree = "<group>";
+		};
 		86A6A6FF1C9AF56A004F66E2 /* Res */ = {
 			isa = PBXGroup;
 			children = (
 				8676C5901C93151100054446 /* vee_testing_ab.vcf */,
+				868BAB761CA2C13600B0B0A4 /* Portraits */,
 				86A6A7001C9AF572004F66E2 /* codeatlas.png */,
 				86C08D161CA1520900319B5A /* FirstNames.txt */,
 				860696921CA15BC500997F09 /* MiddleNames.txt */,
@@ -586,10 +637,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				860C62AC1C28528E00876682 /* VeeContactPickerViewController.xib in Resources */,
+				868BAB741CA2BFB900B0B0A4 /* OrganizationNames.txt in Resources */,
+				868BAB841CA2C14400B0B0A4 /* portrait_3.jpg in Resources */,
+				868BAB721CA2BFB300B0B0A4 /* EmailDomains.txt in Resources */,
 				860C627B1C28521200876682 /* LaunchScreen.storyboard in Resources */,
+				868BAB861CA2C14400B0B0A4 /* portrait_4.jpg in Resources */,
 				860C62AE1C28528E00876682 /* VeeContactUITableViewCell.xib in Resources */,
+				868BAB711CA2BFB000B0B0A4 /* LastNames.txt in Resources */,
+				868BAB701CA2BFAD00B0B0A4 /* MiddleNames.txt in Resources */,
+				868BAB731CA2BFB600B0B0A4 /* Nicknames.txt in Resources */,
 				860C62781C28521200876682 /* Assets.xcassets in Resources */,
+				868BAB901CA2C14400B0B0A4 /* portrait_9.jpg in Resources */,
+				868BAB6F1CA2BFAB00B0B0A4 /* FirstNames.txt in Resources */,
+				868BAB801CA2C14400B0B0A4 /* portrait_1.jpg in Resources */,
+				868BAB821CA2C14400B0B0A4 /* portrait_2.jpg in Resources */,
+				868BAB8C1CA2C14400B0B0A4 /* portrait_7.jpg in Resources */,
+				868BAB881CA2C14400B0B0A4 /* portrait_5.jpg in Resources */,
 				860C62761C28521200876682 /* Main.storyboard in Resources */,
+				868BAB8E1CA2C14400B0B0A4 /* portrait_8.jpg in Resources */,
+				868BAB751CA2BFBB00B0B0A4 /* FakePhoneNumbers.txt in Resources */,
+				868BAB8A1CA2C14400B0B0A4 /* portrait_6.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,10 +666,19 @@
 			files = (
 				86A6A7011C9AF572004F66E2 /* codeatlas.png in Resources */,
 				86C08D171CA1520900319B5A /* FirstNames.txt in Resources */,
+				868BAB8B1CA2C14400B0B0A4 /* portrait_6.jpg in Resources */,
+				868BAB811CA2C14400B0B0A4 /* portrait_1.jpg in Resources */,
+				868BAB871CA2C14400B0B0A4 /* portrait_4.jpg in Resources */,
+				868BAB831CA2C14400B0B0A4 /* portrait_2.jpg in Resources */,
+				868BAB8F1CA2C14400B0B0A4 /* portrait_8.jpg in Resources */,
 				860696971CA15DE500997F09 /* OrganizationNames.txt in Resources */,
+				868BAB891CA2C14400B0B0A4 /* portrait_5.jpg in Resources */,
+				868BAB8D1CA2C14400B0B0A4 /* portrait_7.jpg in Resources */,
 				86C08D1D1CA1530F00319B5A /* FakePhoneNumbers.txt in Resources */,
 				860696931CA15BC500997F09 /* MiddleNames.txt in Resources */,
 				860696951CA15DDB00997F09 /* Nicknames.txt in Resources */,
+				868BAB851CA2C14400B0B0A4 /* portrait_3.jpg in Resources */,
+				868BAB911CA2C14400B0B0A4 /* portrait_9.jpg in Resources */,
 				8676C5911C93151100054446 /* vee_testing_ab.vcf in Resources */,
 				86C08D191CA1523400319B5A /* LastNames.txt in Resources */,
 				86C08D1B1CA152D800319B5A /* EmailDomains.txt in Resources */,
@@ -914,6 +990,11 @@
 			baseConfigurationReference = DE67451A3E6A212CE03F629A /* Pods-VeeContactPickerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"TESTING=1",
+				);
 				INFOPLIST_FILE = VeeContactPickerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.codeatlas.ios.VeeContactPickerTests;
