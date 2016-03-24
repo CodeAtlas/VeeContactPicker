@@ -12,7 +12,7 @@
 
 @implementation VeeIsEmptyTests
 
-- (void)testExample
+- (void)testIsEmpty
 {
     NSAssert([VeeIsEmpty isEmpty:nil] == YES, @"nil should be empty");
     NSAssert([VeeIsEmpty isEmpty:@""] == YES, @"an empty string should be empty");

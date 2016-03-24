@@ -25,8 +25,6 @@
 
 #pragma mark - Outlets
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButtonItem;
-@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIView *statusBarCoverView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

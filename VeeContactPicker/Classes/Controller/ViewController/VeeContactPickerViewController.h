@@ -31,6 +31,8 @@
 #pragma mark - Outlets
 
 @property (nonatomic, strong) IBOutlet UITableView* contactsTableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButtonItem;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 
 #pragma mark - IBActions
 
