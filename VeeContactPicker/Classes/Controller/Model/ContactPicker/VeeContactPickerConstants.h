@@ -4,11 +4,22 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface VeeContactPickerConstants : NSObject
 
-extern NSString* const kVeeContactCellNibName;
-extern NSString* const kVeeContactCellIdentifier;
-extern NSInteger const kVeeContactCellHeight;
++(instancetype)sharedInstance;
+
+@property (nonatomic,copy) NSString* veeContactCellNibName;
+@property (nonatomic,copy) NSString* veeContactCellIdentifier;
+@property (nonatomic,assign) NSUInteger veeContactCellHeight;
+
+#pragma mark - VeeContactTableViewCell GUI Constants
+
+@property (nonatomic,strong) NSNumber* veeContactCellImageDiameter;
+@property (nonatomic,strong) UIFont* veeContactCellPrimaryLabelFont;
+@property (nonatomic,strong) UIFont* veeContactCellSecondaryLabelFont;
+@property (nonatomic,strong) UIColor* veeContactCellBackgroundColor;
+@property (nonatomic,strong) UIColor* veeContactCellBackgroundColorWhenSelected;
 
 @end

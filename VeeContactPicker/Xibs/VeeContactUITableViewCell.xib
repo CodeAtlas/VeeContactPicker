@@ -74,6 +74,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contactImageView" destination="Caj-0K-P7x" id="AS5-oy-hYn"/>
+                <outlet property="contactImageViewHeightConstraint" destination="C00-ye-Tgs" id="b7S-il-Vf5"/>
+                <outlet property="contactImageViewWidthConstraint" destination="TWZ-1d-qos" id="2de-yR-A1g"/>
                 <outlet property="primaryLabel" destination="O1J-uh-sxD" id="zsc-Gx-UhT"/>
                 <outlet property="primaryLabelCenterYAlignmentConstraint" destination="HJJ-qJ-lTC" id="6bd-xo-noF"/>
                 <outlet property="secondaryLabel" destination="dB7-1h-VBe" id="KnJ-hs-J2R"/>

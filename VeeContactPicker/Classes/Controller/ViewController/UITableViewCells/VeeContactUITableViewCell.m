@@ -1,24 +1,30 @@
 //
-//  VeeContactUITableViewCell.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 14/12/15.
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
 #import "VeeContactUITableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "VeeContactPickerConstants.h"
+
+@interface VeeContactUITableViewCell()
+
+@end
 
 @implementation VeeContactUITableViewCell
 
 - (void)awakeFromNib
 {
-    [self setCircularCornerRadius:_contactImageView];
-}
+    _contactImageViewWidthConstraint.constant = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue];
+    _contactImageViewHeightConstraint.constant = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue];
+    _contactImageView.layer.cornerRadius = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue] / 2;
+    _primaryLabel.font = [[VeeContactPickerConstants sharedInstance] veeContactCellPrimaryLabelFont];
+    _secondaryLabel.font = [[VeeContactPickerConstants sharedInstance] veeContactCellSecondaryLabelFont];
+    self.backgroundColor = [[VeeContactPickerConstants sharedInstance] veeContactCellBackgroundColor];
 
--(void)setCircularCornerRadius:(UIView*)view
-{
-    view.layer.cornerRadius = view.frame.size.height / 2;
+    UIView* backgroundView = [UIView new];
+    backgroundView.backgroundColor = [[VeeContactPickerConstants sharedInstance] veeContactCellBackgroundColorWhenSelected];
+    self.selectedBackgroundView = backgroundView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

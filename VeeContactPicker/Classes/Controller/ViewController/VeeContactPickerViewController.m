@@ -156,7 +156,8 @@
         [self configureCell:cell forVeeContact:veeContact];
     };
 
-    _veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:kVeeContactCellIdentifier allowedSortedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
+    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    _veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:cellIdentifier allowedSortedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
 
     _contactsTableView.dataSource = _veeSectionedArrayDataSource;
     _contactsTableView.delegate = self;
@@ -173,8 +174,11 @@
 
 - (void)registerNibsForCellReuse
 {
-    [_contactsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:kVeeContactCellNibName bundle:nil] forCellReuseIdentifier:kVeeContactCellIdentifier];
+    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    NSString* cellNibName =  [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
+    
+    [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
@@ -246,7 +250,7 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return kVeeContactCellHeight;
+    return  [[VeeContactPickerConstants sharedInstance] veeContactCellHeight];
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
