@@ -9,7 +9,10 @@
             <connections>
                 <outlet property="cancelBarButtonItem" destination="xsp-I1-qeu" id="Phf-dh-77O"/>
                 <outlet property="contactsTableView" destination="NzL-9t-n6C" id="JqC-Ov-YUZ"/>
+                <outlet property="navigationBar" destination="IxQ-cp-jGd" id="NCQ-CB-Hae"/>
+                <outlet property="searchBar" destination="Bxf-DJ-a7d" id="Vt9-n9-kD4"/>
                 <outlet property="searchDisplayController" destination="nVF-SD-Cbm" id="je8-VG-jbu"/>
+                <outlet property="statusBarCoverView" destination="rfY-xf-Uux" id="qFy-CI-jkY"/>
                 <outlet property="titleNavigationItem" destination="vBl-Xv-Isn" id="ndq-2m-JOy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lzU-0Z-sk2"/>
             </connections>
@@ -19,6 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfY-xf-Uux" userLabel="StatusBarCoverView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="ppo-kc-tg9"/>
+                    </constraints>
+                </view>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bxf-DJ-a7d">
                     <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                     <textInputTraits key="textInputTraits"/>
@@ -33,14 +43,14 @@
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxQ-cp-jGd">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="barTintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </textAttributes>
                     <items>
                         <navigationItem title="Choose a contact" id="vBl-Xv-Isn">
                             <barButtonItem key="leftBarButtonItem" title="Cancel" id="xsp-I1-qeu">
-                                <color key="tintColor" red="0.090196080509999998" green="0.52156865600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.090196080505847931" green="0.5215686559677124" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="cancelBarButtonItemPressed:" destination="-1" id="cds-JE-b2u"/>
                                 </connections>
@@ -54,6 +64,7 @@
                 <constraint firstItem="NzL-9t-n6C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="20H-oN-1hj"/>
                 <constraint firstAttribute="trailing" secondItem="Bxf-DJ-a7d" secondAttribute="trailing" id="271-Na-Nzt"/>
                 <constraint firstItem="IxQ-cp-jGd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2ge-ZW-ti5"/>
+                <constraint firstItem="rfY-xf-Uux" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4dh-3d-plb"/>
                 <constraint firstItem="IxQ-cp-jGd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="6fo-2F-Spo"/>
                 <constraint firstItem="IxQ-cp-jGd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8VL-6L-JsP"/>
                 <constraint firstAttribute="trailing" secondItem="IxQ-cp-jGd" secondAttribute="trailing" id="98p-BK-Lu3"/>
@@ -63,8 +74,10 @@
                 <constraint firstItem="Bxf-DJ-a7d" firstAttribute="top" secondItem="IxQ-cp-jGd" secondAttribute="bottom" id="VaP-yS-JFf"/>
                 <constraint firstItem="NzL-9t-n6C" firstAttribute="top" secondItem="Bxf-DJ-a7d" secondAttribute="bottom" id="XXH-d7-917"/>
                 <constraint firstAttribute="bottom" secondItem="NzL-9t-n6C" secondAttribute="bottom" id="dpU-la-FgM"/>
+                <constraint firstItem="rfY-xf-Uux" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hxe-Mw-VDu"/>
                 <constraint firstItem="NzL-9t-n6C" firstAttribute="top" secondItem="IxQ-cp-jGd" secondAttribute="bottom" id="kel-NL-jD5"/>
                 <constraint firstAttribute="bottom" secondItem="NzL-9t-n6C" secondAttribute="bottom" id="lZC-Yj-xZX"/>
+                <constraint firstAttribute="trailing" secondItem="rfY-xf-Uux" secondAttribute="trailing" id="uDY-xq-BgK"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">

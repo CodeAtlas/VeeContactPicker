@@ -23,17 +23,24 @@
 
 @interface VeeContactPickerViewController ()
 
+#pragma mark - Outlets
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButtonItem;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIView *statusBarCoverView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+#pragma mark - Dependencies
+
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerOptions;
+@property (nonatomic) ABAddressBookRef addressBookRef;
 @property (nonatomic, strong) VeeAddressBook* veeAddressBook;
+
+#pragma mark - Model
+
 @property (nonatomic, strong) NSArray<id<VeeContactProt> >* veeContacts;
 @property (nonatomic, strong) VeeSectionedArrayDataSource* veeSectionedArrayDataSource;
-
-@property (nonatomic) ABAddressBookRef addressBookRef;
-
-@property (nonatomic, strong) NSDictionary<NSString*, NSArray<VeeContact*>*>* veecontactsSectioned;
-@property (nonatomic, strong) NSDictionary<NSString*, NSArray<VeeContact*>*>* veecontactsSearchResultsSectioned;
-@property (nonatomic, strong) NSArray<NSString*>* veecontactsNonEmptySortedSectionIdentifiers;
-@property (nonatomic, strong) NSArray<NSString*>* veecontactsNonEmptySortedSectionIdentifiersSearchResults;
 
 @end
 
@@ -91,6 +98,7 @@
     [super viewDidLoad];
 
     [self loadStrings];
+    [self loadPickerAppearance];
     _addressBookRef = ABAddressBookCreate();
     [self loadVeeContacts];
 }
@@ -106,6 +114,15 @@
 {
     _titleNavigationItem.title = [_veeContactPickerOptions.veeContactPickerStrings navigationBarTitle];
     _cancelBarButtonItem.title = [_veeContactPickerOptions.veeContactPickerStrings cancelButtonTitle];
+}
+
+-(void)loadPickerAppearance
+{
+    _cancelBarButtonItem.tintColor = [[VeeContactPickerConstants sharedInstance] cancelBarButtonItemTintColor];
+    _navigationBar.tintColor = [[VeeContactPickerConstants sharedInstance] navigationBarTintColor];
+    _navigationBar.barTintColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
+    _navigationBar.translucent = [[VeeContactPickerConstants sharedInstance] navigationBarTranslucent];
+    _statusBarCoverView.backgroundColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
 }
 
 - (void)loadVeeContacts
@@ -191,6 +208,7 @@
     else {
         NSLog(@"Warning - address book permissions not granted");
         [self showEmptyView];
+        //TODO: call delegate with fail
     }
 }
 
