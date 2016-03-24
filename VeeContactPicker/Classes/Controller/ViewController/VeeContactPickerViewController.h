@@ -19,14 +19,14 @@
 
 - (instancetype)initWithDefaultConfiguration;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
-//When veeContacts are not set they are loaded from all records of the address book
+//When veeContacts are not set they are loaded from the address book
 - (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 
 #pragma mark - Delegate and completion handler
 
 @property (nonatomic, strong) id<VeeContactPickerDelegate> contactPickerDelegate;
-@property (nonatomic, strong) void (^completionHandler)(id<VeeContactProt>);
+@property (nonatomic, strong) void (^contactSelectionHandler)(id<VeeContactProt>);
 
 #pragma mark - Outlets
 

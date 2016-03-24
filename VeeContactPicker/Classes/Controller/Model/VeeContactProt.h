@@ -23,6 +23,8 @@
 - (NSString*)displayName;
 - (NSString*)sectionIdentifier;
 
++ (NSPredicate*)searchPredicateForText:(NSString*)searchText;
+
 @optional
 
 @property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;

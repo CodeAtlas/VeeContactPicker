@@ -127,6 +127,13 @@
     return [veeContact valueForKey:firstProperty];
 }
 
+#pragma mark - Search predicate
+
++(NSPredicate*)searchPredicateForText:(NSString*)searchText
+{
+    return [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
+}
+
 #pragma mark - NSObject
 
 - (BOOL)isEqual:(id)other

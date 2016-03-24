@@ -39,4 +39,9 @@
 - (NSString*)displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
 - (NSString*)sectionIdentifier; //In which section should the contact be? This is the title of that section
 
+#pragma mark - Search predicate
+
++(NSPredicate*)searchPredicateForText:(NSString*)searchText; //Default is @"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
+;
+
 @end

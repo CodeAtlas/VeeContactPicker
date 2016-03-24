@@ -501,12 +501,12 @@
 			children = (
 				862F859D1CA14435004EF57F /* VeeABRecordAdapter.h */,
 				862F859E1CA14435004EF57F /* VeeABRecordAdapter.m */,
+				862BB67C1C9C458500A71ED6 /* VeeSectionable.h */,
+				860C629F1C28525E00876682 /* VeeContactProt.h */,
 				860C62B41C2854CB00876682 /* VeeContact.h */,
 				860C62B51C2854CB00876682 /* VeeContact.m */,
 				8606969A1CA1618F00997F09 /* VeeContactFactory.h */,
 				8606969B1CA1618F00997F09 /* VeeContactFactory.m */,
-				860C629F1C28525E00876682 /* VeeContactProt.h */,
-				862BB67C1C9C458500A71ED6 /* VeeSectionable.h */,
 				862F859C1CA141BD004EF57F /* ContactPicker */,
 			);
 			path = Model;
