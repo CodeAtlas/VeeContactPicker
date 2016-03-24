@@ -15,6 +15,8 @@
 #import "OCMock.h"
 #import "VeeAddressBook.h"
 #import "VeeContactFactory.h"
+#import "VeeContactPickerDelegate.h"
+#import "VeeContactPickerConstants.h"
 
 #define NUMBER_OF_RANDOM_VEECONTACTS 100
 
@@ -183,6 +185,41 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     NSAssert(isDelegateSet, @"Table view has no delegates");
 }
 
+#pragma mark - Empty view
+
+//TODO:
+
+#pragma mark - VeeContactPickerDelegate
+
+-(void)testContactPickerDelegateIsCalled
+{
+    id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
+    VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
+    veeContactPicker.contactPickerDelegate = mockContactDelegate;
+    [veeContactPicker view];
+    id mockedTableView = OCMClassMock([UITableView class]);
+    [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    OCMVerify([mockContactDelegate didSelectABContact:[OCMArg any]]);
+}
+
+#pragma mark - Completion handler
+
+-(void)testContactSelectionHandlerIsCalled
+{
+    VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
+    __block BOOL isBlockInvoked = NO;
+    veeContactPicker.contactSelectionHandler = ^void(id<VeeContactProt> selectedVeeContact) {
+        isBlockInvoked = YES;
+    };
+    
+    [veeContactPicker view];
+    id mockedTableView = OCMClassMock([UITableView class]);
+    [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    NSAssert(isBlockInvoked, @"Contact selection handler should be invoked");
+}
+
 #pragma mark - Private utils
 
 -(VeeContactPickerViewController*)veeContactPickerWithDefaultConfAndViewLoaded
@@ -215,10 +252,7 @@ static NSArray<id<VeeContactProt>>* customVeeContacts;
     return codeAtlasImage;
 }
 
-//testEmptyView
-//testContactsAreShown
-//testSearch
-//test delegate
-//testConfigureCell
+//test Custom Options ?
+//test Search ?
 
 @end
