@@ -9,11 +9,12 @@
 #import "VeeContactPickerDelegate.h"
 #import "VeeContactProt.h"
 #import "VeeABDelegate.h"
+#import "VeeSearchResultsDelegate.h"
 @class VeeContactPickerOptions;
 @class VeeContactPickerStrings;
 @class VeeContactColors;
 
-@interface VeeContactPickerViewController : UIViewController <VeeABDelegate,UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDelegate>
+@interface VeeContactPickerViewController : UIViewController <VeeABDelegate, VeeSearchResultsDelegate, UITableViewDelegate>
 
 #pragma mark - Init
 

@@ -129,9 +129,9 @@
 
 #pragma mark - Search predicate
 
-+(NSPredicate*)searchPredicateForText:(NSString*)searchText
++(NSPredicate*)searchPredicateForSearchString
 {
-    return [NSPredicate predicateWithFormat:@"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
+    return [NSPredicate predicateWithFormat:@"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"];
 }
 
 #pragma mark - NSObject

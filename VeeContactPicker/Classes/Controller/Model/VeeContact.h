@@ -41,7 +41,7 @@
 
 #pragma mark - Search predicate
 
-+(NSPredicate*)searchPredicateForText:(NSString*)searchText; //Default is @"displayName contains[c] %@ || ANY emails contains[c] %@ || ANY phoneNumbers contains[c] %@", searchText, searchText, searchText];
++(NSPredicate*)searchPredicateForSearchString; //$searchString will be used for substitution. Default predicate is: @"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"
 ;
 
 @end

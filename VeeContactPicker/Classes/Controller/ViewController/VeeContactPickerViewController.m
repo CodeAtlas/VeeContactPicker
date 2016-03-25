@@ -20,6 +20,7 @@
 
 #import "VeeContactUITableViewCell.h"
 #import "VeeSectionedArrayDataSource.h"
+#import "VeeTableViewSearchDelegate.h"
 
 @interface VeeContactPickerViewController ()
 
@@ -39,6 +40,10 @@
 
 @property (nonatomic, strong) NSArray<id<VeeContactProt> >* veeContacts;
 @property (nonatomic, strong) VeeSectionedArrayDataSource* veeSectionedArrayDataSource;
+
+#pragma mark - Search
+
+@property (nonatomic, strong) VeeTableViewSearchDelegate* veeTableViewSearchDelegate;
 
 @end
 
@@ -177,8 +182,25 @@
     _contactsTableView.dataSource = _veeSectionedArrayDataSource;
     _contactsTableView.delegate = self;
     [_contactsTableView reloadData];
+    
+    [self setupSearchDisplayController];
+}
 
+-(void)setupSearchDisplayController
+{
+    _veeTableViewSearchDelegate = [[VeeTableViewSearchDelegate alloc] initWithSearchDisplayController:self.searchDisplayController dataToFiler:_veeContacts withPredicate:[self predicateToFilterVeeContactProt] andSearchResultsDelegate:self];
+    
+    [self.searchDisplayController setDelegate:_veeTableViewSearchDelegate];
     [self setupSearchTableView];
+}
+
+-(NSPredicate*)predicateToFilterVeeContactProt
+{
+    if ([_veeContacts count] > 0 == NO){
+        return nil;
+    }
+    NSPredicate* searchPredicate = [[[_veeContacts firstObject] class] searchPredicateForSearchString];
+    return searchPredicate;
 }
 
 - (void)setupSearchTableView
@@ -285,39 +307,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - VeeSearchResultDelegate
+
+-(void)handleSearchResults:(NSArray*)searchResults forSearchTableView:(UITableView*)searchTableView
+{
+    [_veeSectionedArrayDataSource setSearchResults:searchResults forSearchTableView:searchTableView];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)cancelBarButtonItemPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - Search
-
-- (BOOL)searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchString:(NSString*)searchString
-{
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    return YES;
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller
-{
-    [_veeSectionedArrayDataSource setSearchResults:nil forSearchTableView:self.searchDisplayController.searchResultsTableView];
-}
-
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-    [_veeSectionedArrayDataSource setSearchResults:[self searchResultsForText:searchText] forSearchTableView:self.searchDisplayController.searchResultsTableView];
-}
-
-- (NSArray<id<VeeContactProt>>*)searchResultsForText:(NSString*)searchText
-{
-    if ([_veeContacts count] > 0 == NO){
-        return nil;
-    }
-    NSPredicate* searchPredicate = [[[_veeContacts firstObject] class] searchPredicateForText:searchText];
-    NSArray<id<VeeContactProt> >* veeContactsSearchResult = [_veeContacts filteredArrayUsingPredicate:searchPredicate];
-    return veeContactsSearchResult;
 }
 
 @end

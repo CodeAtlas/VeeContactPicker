@@ -23,7 +23,7 @@
 - (NSString*)displayName;
 - (NSString*)sectionIdentifier;
 
-+ (NSPredicate*)searchPredicateForText:(NSString*)searchText;
++ (NSPredicate*)searchPredicateForSearchString;
 
 @optional
 
