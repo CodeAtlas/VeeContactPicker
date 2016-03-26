@@ -7,6 +7,16 @@
 
 @implementation VeeSectionableForTesting
 
+-(instancetype)initWithSectionIdentifier:(NSString*)sectionIdentifier
+{
+    self = [super init];
+    if (self) {
+        _id = [[NSProcessInfo processInfo] globallyUniqueString];
+        _sectionIdentifier = sectionIdentifier;
+    }
+    return self;
+}
+
 - (instancetype)init
 {
     self = [super init];
