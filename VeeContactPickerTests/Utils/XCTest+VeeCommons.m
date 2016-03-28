@@ -1,7 +1,4 @@
 //
-//  XCTest+VeeCommons.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 10/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
@@ -21,6 +18,15 @@
     SEL selector = NSSelectorFromString(selectorName);
     BOOL objectRespondToSelector = [object respondsToSelector:selector];
     NSAssert(objectRespondToSelector,@"%@ doesn't respond to selector %@",[object class],selectorName);
+}
+
+-(UIImage*)codeAtasTestImage
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:@"codeatlas" ofType:@"png"];
+    UIImage *codeAtlasImage = [UIImage imageWithContentsOfFile:imagePath];
+    NSAssert(codeAtlasImage, @"codeatlas image not found");
+    return codeAtlasImage;
 }
 
 @end
