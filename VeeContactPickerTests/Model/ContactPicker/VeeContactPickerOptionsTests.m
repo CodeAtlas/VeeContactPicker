@@ -38,13 +38,13 @@
 
 -(void)testDefaultOptionsColors
 {
-    BOOL colorsAreDefault = [[_veeContactPickerDefaultOptions veeContactColors] isEqual:[VeeContactColors colorsWithDefaultPalette]];
+    BOOL colorsAreDefault = [[[_veeContactPickerDefaultOptions veeContactColors] veecontactColorsPalette] isEqual:[[VeeContactColors colorsWithDefaultPalette] valueForKey:@"defaultColors"]];
     NSAssert(colorsAreDefault, @"Colors should be default");
 }
 
 -(void)testDefaultOptionsStrings
 {
-    BOOL stringsAreDefault = [[_veeContactPickerDefaultOptions veeContactPickerStrings] isEqual:[VeeContactPickerStrings defaultStrings]];
+    BOOL stringsAreDefault = [[[_veeContactPickerDefaultOptions veeContactPickerStrings] navigationBarTitle] isEqualToString:[[VeeContactPickerStrings defaultStrings] navigationBarTitle]];
     NSAssert(stringsAreDefault, @"Strings should be default");
 }
 

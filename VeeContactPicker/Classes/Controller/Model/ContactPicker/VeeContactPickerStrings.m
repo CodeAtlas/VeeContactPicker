@@ -7,8 +7,6 @@
 
 @implementation VeeContactPickerStrings
 
-static VeeContactPickerStrings* veeContactPickerDefaultStrings;
-
 - (instancetype)init
 {
     self = [super init];
@@ -30,9 +28,7 @@ static VeeContactPickerStrings* veeContactPickerDefaultStrings;
 
 + (VeeContactPickerStrings*)defaultStrings
 {
-    if (!veeContactPickerDefaultStrings) {
-        veeContactPickerDefaultStrings = [[VeeContactPickerStrings alloc] initWithDefaultStrings];
-    }
+    VeeContactPickerStrings *veeContactPickerDefaultStrings = [[VeeContactPickerStrings alloc] initWithDefaultStrings];
     return veeContactPickerDefaultStrings;
 }
 

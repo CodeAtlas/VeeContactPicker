@@ -10,8 +10,6 @@
 
 @end
 
-static VeeContactColors* veeContactColorsWithDefaultPalette;
-
 @implementation VeeContactColors
 
 -(instancetype)init
@@ -38,9 +36,7 @@ static VeeContactColors* veeContactColorsWithDefaultPalette;
 
 +(VeeContactColors*)colorsWithDefaultPalette
 {
-    if (!veeContactColorsWithDefaultPalette){
-        veeContactColorsWithDefaultPalette = [[VeeContactColors alloc] initWithVeeContactsDefaultColorPalette];
-    }
+    VeeContactColors *veeContactColorsWithDefaultPalette = [[VeeContactColors alloc] initWithVeeContactsDefaultColorPalette];
     return veeContactColorsWithDefaultPalette;
 }
 

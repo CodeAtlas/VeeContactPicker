@@ -3,17 +3,15 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactPickerOptions.h"
 #import "VeeContactColors.h"
+#import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
-
-static VeeContactPickerOptions* defaultOptionsCached;
 
 @implementation VeeContactPickerOptions
 
 #pragma mark - Init
 
--(instancetype)init
+- (instancetype)init
 {
     self = [self initWithDefaultOptions];
     return self;
@@ -34,10 +32,8 @@ static VeeContactPickerOptions* defaultOptionsCached;
 
 + (VeeContactPickerOptions*)defaultOptions
 {
-    if (!defaultOptionsCached) {
-        defaultOptionsCached = [[self alloc] initWithDefaultOptions];
-    }
-    return defaultOptionsCached;
+    VeeContactPickerOptions* veeContactPickerOptions = [[self alloc] initWithDefaultOptions];
+    return veeContactPickerOptions;
 }
 
 @end
