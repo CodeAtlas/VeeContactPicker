@@ -50,9 +50,14 @@
 
 - (NSArray*)searchResultsForText:(NSString*)searchText
 {
-    if ([_dataToFilter count] > 0 == NO){
-        return nil;
+    BOOL dataToFilterIsEmpty = ([_dataToFilter count] > 0 == NO);
+    if (dataToFilterIsEmpty){
+        return @[];
     }
+    if ([searchText isEqualToString:@""]){
+        return _dataToFilter;
+    }
+    
     NSDictionary *substitutionVariables = [NSDictionary dictionaryWithObject:searchText forKey:@"searchString"];
     NSPredicate* predicateWithSubstitution = [_filterPredicate predicateWithSubstitutionVariables:substitutionVariables];
     return [_dataToFilter filteredArrayUsingPredicate:predicateWithSubstitution];

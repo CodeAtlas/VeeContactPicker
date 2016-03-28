@@ -35,6 +35,7 @@
 		864194F81C96D7C0005DC2D6 /* VeeContactPickerStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 864194F71C96D7C0005DC2D6 /* VeeContactPickerStrings.m */; };
 		864405521CA568730003B355 /* VeeTableViewSearchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 864405511CA568730003B355 /* VeeTableViewSearchDelegate.m */; };
 		864405571CA58A030003B355 /* VeeTableViewSearchDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 864405561CA58A030003B355 /* VeeTableViewSearchDelegateTests.m */; };
+		8644055A1CA965E80003B355 /* VeeSearchResultsDelegateForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 864405591CA965E80003B355 /* VeeSearchResultsDelegateForTesting.m */; };
 		864AFE311C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */; };
 		8676C5911C93151100054446 /* vee_testing_ab.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 8676C5901C93151100054446 /* vee_testing_ab.vcf */; };
 		867AD86E1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD86D1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m */; };
@@ -157,6 +158,8 @@
 		864405511CA568730003B355 /* VeeTableViewSearchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeTableViewSearchDelegate.m; sourceTree = "<group>"; };
 		864405531CA56A070003B355 /* VeeSearchResultsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSearchResultsDelegate.h; sourceTree = "<group>"; };
 		864405561CA58A030003B355 /* VeeTableViewSearchDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeTableViewSearchDelegateTests.m; sourceTree = "<group>"; };
+		864405581CA965E80003B355 /* VeeSearchResultsDelegateForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSearchResultsDelegateForTesting.h; sourceTree = "<group>"; };
+		864405591CA965E80003B355 /* VeeSearchResultsDelegateForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSearchResultsDelegateForTesting.m; sourceTree = "<group>"; };
 		864AFE2F1C91913F002F4BF7 /* VeeAddressBookForTestingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBookForTestingConstants.h; sourceTree = "<group>"; };
 		864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTestingConstants.m; sourceTree = "<group>"; };
 		8676C5901C93151100054446 /* vee_testing_ab.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vee_testing_ab.vcf; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				86B8A6C31C99AB6C00F48CBD /* VeeContactsForTestingFactory.m */,
 				867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */,
 				867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */,
+				864405581CA965E80003B355 /* VeeSearchResultsDelegateForTesting.h */,
+				864405591CA965E80003B355 /* VeeSearchResultsDelegateForTesting.m */,
 				86AB036B1C917A820054B7EC /* XCTest+VeeCommons.h */,
 				86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */,
 			);
@@ -858,6 +863,7 @@
 				86B8A6BF1C99A4D200F48CBD /* VeeContactPickerStringsTests.m in Sources */,
 				867AD8711C9DA79D009A26A2 /* VeeSectionableForTesting.m in Sources */,
 				861046C21C8F253F00DFA690 /* VeeContactTests.m in Sources */,
+				8644055A1CA965E80003B355 /* VeeSearchResultsDelegateForTesting.m in Sources */,
 				867AD8791CA0436B009A26A2 /* VeeIsEmptyTests.m in Sources */,
 				868BAB971CA2DDB000B0B0A4 /* VeeABAdaptedRecordsImporterTests.m in Sources */,
 				864405571CA58A030003B355 /* VeeTableViewSearchDelegateTests.m in Sources */,

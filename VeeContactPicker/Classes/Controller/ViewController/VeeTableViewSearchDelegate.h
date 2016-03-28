@@ -14,7 +14,7 @@
 #pragma mark - UISearchDisplayDelegate
 
 - (BOOL)searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchString:(NSString*)searchString;
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller;
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller;
 
 @end
