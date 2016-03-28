@@ -165,7 +165,14 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIds, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails];
+    NSString* hasImage;
+    if (_thumbnailImage){
+        hasImage = @"Has thumbnailImage";
+    }
+    else{
+        hasImage = @"Hasn't thumbnailImage";
+    }
+    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIds, hasImage, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails];
 }
 
 @end
