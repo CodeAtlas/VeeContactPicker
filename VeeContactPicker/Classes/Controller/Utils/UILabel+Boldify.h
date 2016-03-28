@@ -1,7 +1,4 @@
 //
-//  UILabel+Boldify.h
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 05/01/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //

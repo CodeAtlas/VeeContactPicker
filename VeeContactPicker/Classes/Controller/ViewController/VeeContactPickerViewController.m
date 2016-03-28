@@ -10,8 +10,6 @@
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 
-#import "UIImageView+Letters.h"
-#import "UILabel+Boldify.h"
 #import "VeeAddressBook.h"
 #import "VeeIsEmpty.h"
 
@@ -19,6 +17,7 @@
 #import "VeeContactFactory.h"
 
 #import "VeeContactUITableViewCell.h"
+#import "VeeContactCellConfiguration.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
 
@@ -45,6 +44,10 @@
 
 @property (nonatomic, strong) VeeTableViewSearchDelegate* veeTableViewSearchDelegate;
 
+#pragma mark - Style
+
+@property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfiguration;
+
 @end
 
 @implementation VeeContactPickerViewController
@@ -57,6 +60,7 @@
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
         _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
+        _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
     }
     return self;
 }
@@ -173,7 +177,7 @@
     [self registerNibsForCellReuse];
 
     ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, VeeContact* veeContact) {
-        [self configureCell:cell forVeeContact:veeContact];
+        [_veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
 
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
@@ -237,51 +241,6 @@
 - (void)showEmptyView
 {
     //TODO:
-}
-
-#pragma mark - TableView cell configuration
-
-- (void)configureCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
-{
-    [self configureCellInitialValues:veeContactUITableViewCell];
-    [self configureCellLabels:veeContactUITableViewCell forVeeContact:veeContact];
-    [self configureCellImage:veeContactUITableViewCell forVeeContact:veeContact];
-}
-
-- (void)configureCellInitialValues:(VeeContactUITableViewCell*)veeContactUITableViewCell
-{
-    veeContactUITableViewCell.primaryLabelCenterYAlignmentConstraint.constant = 0;
-    veeContactUITableViewCell.secondaryLabel.hidden = YES;
-    veeContactUITableViewCell.primaryLabel.text = @"";
-    veeContactUITableViewCell.secondaryLabel.text = @"";
-    veeContactUITableViewCell.contactImageView.image = nil;
-}
-
-- (void)configureCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
-{
-    veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
-    NSArray* nameComponentes = [[veeContact displayName] componentsSeparatedByString:@" "];
-    if ([nameComponentes count] > 0) {
-        [veeContactUITableViewCell.primaryLabel boldSubstring:[nameComponentes firstObject]];
-    }
-    else {
-        [veeContactUITableViewCell.primaryLabel boldSubstring:[veeContact displayName]];
-    }
-}
-
-- (void)configureCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
-{
-    if ([veeContact thumbnailImage]) {
-        veeContactUITableViewCell.contactImageView.image = [veeContact thumbnailImage];
-    }
-    else {
-        if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing) {
-            [veeContactUITableViewCell.contactImageView setImageWithString:[veeContact displayName] color:[_veeContactPickerOptions.veeContactColors colorForVeeContact:veeContact]];
-        }
-        else {
-            [veeContactUITableViewCell.contactImageView setImage:_veeContactPickerOptions.contactThumbnailImagePlaceholder];
-        }
-    }
 }
 
 #pragma mark - TableView delegate
