@@ -6,6 +6,7 @@
 @import Foundation;
 @import UIKit;
 #import "VeeContactProt.h"
+#import "VeePostalAddressProt.h"
 @class VeeABRecordAdapter;
 
 @interface VeeContact : NSObject <VeeContactProt>
@@ -33,6 +34,9 @@
 
 @property (nonatomic, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, strong) NSArray<NSString*>* emails;
+@property (nonatomic, strong) NSArray<id<VeePostalAddressProt>>* postalAddresses;
+@property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
+@property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
 
 #pragma mark - Getters
 

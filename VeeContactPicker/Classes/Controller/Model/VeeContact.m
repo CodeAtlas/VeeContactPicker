@@ -6,6 +6,7 @@
 #import "VeeContact.h"
 #import "VeeIsEmpty.h"
 #import "VeeABRecordAdapter.h"
+#import "VeePostalAddress.h"
 
 @implementation VeeContact
 
@@ -25,6 +26,9 @@
         _thumbnailImage = [veeABRecordAdapter thumbnailImage];
         _phoneNumbers = [veeABRecordAdapter phoneNumbers];
         _emails = [veeABRecordAdapter emails];
+        _postalAddresses = [self postalAddressesFromVeeABRecordAdapter:veeABRecordAdapter];
+        _twitterAccounts = [veeABRecordAdapter twitterAccounts];
+        _facebookAccounts = [veeABRecordAdapter facebookAccounts];
     }
     return self;
 }
@@ -44,6 +48,18 @@
         _emails = emails;
     }
     return self;
+}
+
+#pragma mark - Private utils
+
+-(NSArray<id<VeePostalAddressProt>>*)postalAddressesFromVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter
+{
+    NSMutableArray* veePostalAddressesMutable = [NSMutableArray new];
+    for (NSDictionary* postalDict in veeABRecordAdapter.postalAddresses){
+        VeePostalAddress* veePostalAddress = [[VeePostalAddress alloc] initWithStreet:postalDict[@"street"] city:postalDict[@"city"] state:postalDict[@"state"] postal:postalDict[@"postal"] country:postalDict[@"country"]];
+        [veePostalAddressesMutable addObject:veePostalAddress];
+    }
+    return [NSArray arrayWithArray:veePostalAddressesMutable];
 }
 
 #pragma mark - Getters
@@ -172,7 +188,7 @@
     else{
         hasImage = @"Hasn't thumbnailImage";
     }
-    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@]", NSStringFromClass([self class]), _recordIds, hasImage, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails];
+    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@ postalAddresses: %@ twitterAccounts: %@, facebookAccounts: %@]", NSStringFromClass([self class]), _recordIds, hasImage, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails,_postalAddresses,_twitterAccounts,_facebookAccounts];
 }
 
 @end

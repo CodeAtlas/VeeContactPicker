@@ -6,6 +6,7 @@
 #import "VeeSectionable.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "VeePostalAddressProt.h"
 
 @protocol VeeContactProt <NSObject, VeeSectionable>
 
@@ -28,5 +29,8 @@
 @optional
 
 @property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
+@property (nonatomic, strong) NSArray<id<VeePostalAddressProt>>* postalAddresses;
+@property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
+@property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
 
 @end
