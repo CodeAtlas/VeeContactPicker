@@ -2682,20 +2682,17 @@ TEL;type=CELL;type=VOICE:+33 333 2580089
 TEL;type=CELL;type=VOICE:+7 331 4458726
 TEL;type=CELL;type=VOICE:+49 331 4458726
 TEL;type=MAIN:+39 02 9387441
-item2.ADR;type=HOME;type=pref:;;Corso Sempione\,\n20020\nItalia;Milano;;;
-item3.ADR;type=WORK:;;Gramsci;Milano;Milano;20035;Italia
-item4.ADR;type=WORK:;;Dalle Scatole 19;Roma;;20054;Italia
-item5.ADR;type=WORK:;;Via Duplicata;Milano;;;Italy
-item6.URL;type=pref:http://www.completeuser.it
-item6.X-ABLabel:_$!<HomePage>!$_
+item2.ADR;type=HOME:;;Corso Sempione;Milano;Lombardia;20035;Italia
+item3.URL;type=pref:http://www.completeuser.it
+item3.X-ABLabel:_$!<HomePage>!$_
 URL;type=HOME:www.complete.blog.it
 URL;type=WORK:http://www.completework.it
-item7.URL:www.duplicate.com
-item7.X-ABLabel:_$!<HomePage>!$_
-item8.X-MSN;type=pref:completemsn1
-item8.X-ABLabel:MSN
-item9.IMPP;X-SERVICE-TYPE=MSN;type=pref:msnim:completemsn1
-item9.X-ABLabel:MSN
+item4.URL:www.duplicate.com
+item4.X-ABLabel:_$!<HomePage>!$_
+item5.X-MSN;type=pref:completemsn1
+item5.X-ABLabel:MSN
+item6.IMPP;X-SERVICE-TYPE=MSN;type=pref:msnim:completemsn1
+item6.X-ABLabel:MSN
 NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD

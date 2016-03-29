@@ -11,6 +11,7 @@
 @implementation VeeAddressBookForTestingConstants
 
 NSString* const kVCFFileName = @"vee_testing_ab";
+
 NSString* const kVeeTestingContactsSignature = @"a8a8f8738b79cd660f519c1a342654a0";
 
 #pragma mark - Testing contacts
@@ -29,6 +30,13 @@ NSString* const kCompleteVeeContactCompositeName = @"Complete middle Contact";
 NSString* const kCompleteVeeContactDisplayName = @"Complete middle Contact";
 NSInteger const kCompleteVeeContactPhoneNumbersCount = 5;
 NSInteger const kCompleteVeeContactEmailsCount = 4;
+NSInteger const kCompleteVeeContactPostalAddressesCount = 1;
+NSString* const kCompleteVeeContactPostalCorsoSempioneStreet = @"Corso Sempione";
+NSString* const kCompleteVeeContactPostalCorsoSempioneCity = @"Milano";
+NSString* const kCompleteVeeContactPostalCorsoSempioneState = @"Lombardia";
+NSString* const kCompleteVeeContactPostalCorsoSempionePostal = @"20035";
+NSString* const kCompleteVeeContactPostalCorsoSempioneCountry = @"Italia";
+NSInteger const kCompleteVeeContactWebsitesCount = 4;
 NSString* const kCompleteVeeContactSectionIdentifier = @"C";
 NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier = @"C";
 NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier = @"F";

@@ -23,5 +23,9 @@
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
 @property (nonatomic, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, strong) NSArray<NSString*>* emails;
+@property (nonatomic, strong) NSArray<NSDictionary*>* postalAddresses;
+@property (nonatomic, strong) NSArray<NSString*>* websites;
+@property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
+@property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
 
 @end

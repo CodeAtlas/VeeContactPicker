@@ -10,6 +10,10 @@
 @property (nonatomic, strong) NSMutableSet<NSNumber*>* recordIdsMutable;
 @property (nonatomic, strong) NSMutableSet<NSString*>* phoneNumbersMutable;
 @property (nonatomic, strong) NSMutableSet<NSString*>* emailsMutable;
+@property (nonatomic, strong) NSMutableSet<NSDictionary*>* postalAddressesMutable;
+@property (nonatomic, strong) NSMutableSet<NSString*>* websitesMutable;
+@property (nonatomic, strong) NSMutableSet<NSString*>* twitterAccountsMutable;
+@property (nonatomic, strong) NSMutableSet<NSString*>* facebookAccountsMutable;
 
 @end
 
@@ -46,6 +50,9 @@
     [self updateThumbnailImageIfEmptyFromABRecord:abRecord];
     [self addPhoneNumbersFromABRecord:abRecord];
     [self addEmailsFromABRecord:abRecord];
+    [self addPostalAddressesFromABRecord:abRecord];
+    [self addWebsitesFromABRecord:abRecord];
+    [self addSocialAccountsFromPerson:abRecord];
 }
 
 - (void)addRecordIdFromABRecord:(ABRecordRef)abRecord
@@ -158,6 +165,89 @@
     }
 }
 
+-(void)addPostalAddressesFromABRecord:(ABRecordRef)abRecord
+{
+    ABMultiValueRef postalAddresses = ABRecordCopyValue(abRecord, kABPersonAddressProperty);
+    for (CFIndex i = 0; i < ABMultiValueGetCount(postalAddresses); i++) {
+        NSDictionary* postalDict = [self postalDictFromPostalDictRef:ABMultiValueCopyValueAtIndex(postalAddresses, i)];
+        if (_postalAddressesMutable == nil){
+            _postalAddressesMutable = [NSMutableSet new];
+        }
+        [_postalAddressesMutable addObject:postalDict];
+        if (postalAddresses) {
+            CFRelease(postalAddresses);
+        }
+    }
+}
+
+- (NSDictionary*)postalDictFromPostalDictRef:(CFDictionaryRef)postalDictRef
+{
+    NSString* street = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressStreetKey);
+    NSString* city = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressCityKey);
+    NSString* state = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressStateKey);
+    NSString* postal = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressZIPKey);
+    NSString* country = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressCountryKey);
+    
+    NSMutableDictionary* postalDictMutable = [NSMutableDictionary new];
+    if (street) {
+        [postalDictMutable setObject:street forKey:@"street"];
+    }
+    if (city) {
+        [postalDictMutable setObject:city forKey:@"city"];
+    }
+    if (state) {
+        [postalDictMutable setObject:state forKey:@"state"];
+    }
+    if (postal) {
+        [postalDictMutable setObject:postal forKey:@"postal"];
+    }
+    if (country) {
+        [postalDictMutable setObject:country forKey:@"country"];
+    }
+    
+    return [NSDictionary dictionaryWithDictionary:postalDictMutable];
+}
+
+-(void)addWebsitesFromABRecord:(ABRecordRef)abRecord
+{
+    ABMultiValueRef websites = ABRecordCopyValue(abRecord, kABPersonURLProperty);
+    for (CFIndex i = 0; i < ABMultiValueGetCount(websites); i++) {
+        NSString* website = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(websites, i);
+        if (_websitesMutable == nil){
+            _websitesMutable = [NSMutableSet new];
+        }
+        [_websitesMutable addObject:website];
+    }
+    if (websites) {
+        CFRelease(websites);
+    }
+}
+
+- (void)addSocialAccountsFromPerson:(ABRecordRef)person
+{
+    ABMultiValueRef socialAccounts = ABRecordCopyValue(person, kABPersonSocialProfileProperty);
+    for (CFIndex i = 0; i < ABMultiValueGetCount(socialAccounts); i++) {
+        NSDictionary* socialDict = (__bridge_transfer NSDictionary*)ABMultiValueCopyValueAtIndex(socialAccounts, i);
+        if (socialDict) {
+            NSString* service = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
+            NSString* username = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
+            
+            if ([service isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceTwitter]) {
+                if (_twitterAccountsMutable == nil){
+                    _twitterAccountsMutable = [NSMutableSet new];
+                }
+                [_twitterAccountsMutable addObject:username];
+            }
+            else if ([service isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
+                if (_facebookAccountsMutable == nil){
+                    _facebookAccountsMutable = [NSMutableSet new];
+                }
+                [_facebookAccountsMutable addObject:username];
+            }
+        }
+    }
+}
+
 #pragma mark - Getters
 
 - (NSArray<NSNumber*>*)recordIds
@@ -173,6 +263,26 @@
 - (NSArray<NSString*>*)emails
 {
     return [NSArray arrayWithArray:[_emailsMutable allObjects]];
+}
+
+- (NSArray<NSDictionary*>*)postalAddresses
+{
+    return [NSArray arrayWithArray:[_postalAddressesMutable allObjects]];
+}
+
+- (NSArray<NSString*>*)websites
+{
+    return [NSArray arrayWithArray:[_websitesMutable allObjects]];
+}
+
+- (NSArray<NSString*>*)twitterAccounts
+{
+    return [NSArray arrayWithArray:[_twitterAccountsMutable allObjects]];
+}
+
+- (NSArray<NSString*>*)facebookAccounts
+{
+    return [NSArray arrayWithArray:[_facebookAccountsMutable allObjects]];
 }
 
 @end

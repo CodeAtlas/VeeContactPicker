@@ -103,6 +103,62 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     NSAssert(isEmailsCountCorrect, @"Contact complete emails count is %zd but should be %zd", [_veeABRecordComplete.emails count], kCompleteVeeContactEmailsCount);
 }
 
+-(void)testCompleteContactPostalAddresses
+{
+    BOOL isPostalAddressesCountCorrect = [_veeABRecordComplete.postalAddresses count] == kCompleteVeeContactPostalAddressesCount;
+    NSAssert(isPostalAddressesCountCorrect, @"Contact complete postals count is %zd but should be %zd", [_veeABRecordComplete.postalAddresses count], kCompleteVeeContactPostalAddressesCount);
+}
+
+-(void)testCompleteContactPostalAddressMilanoCorsoSempione
+{
+    NSDictionary* corsoSempioneDict;
+    for (NSDictionary* postalAddressDict in _veeABRecordComplete.postalAddresses){
+        if ([postalAddressDict[@"street"] isEqualToString:@"Corso Sempione"]){
+            corsoSempioneDict = postalAddressDict;
+        }
+    }
+    
+    NSAssert(corsoSempioneDict,@"Corso Sempione address not found");
+
+    BOOL isStreetCorrect = [corsoSempioneDict[@"street"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneStreet];
+    BOOL isCityCorrect = [corsoSempioneDict[@"city"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCity];
+    BOOL isStateCorrect = [corsoSempioneDict[@"state"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneState];
+    BOOL isPostalCorrect = [corsoSempioneDict[@"postal"] isEqualToString:kCompleteVeeContactPostalCorsoSempionePostal];
+    BOOL isCountryCorrect = [corsoSempioneDict[@"country"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCountry];
+
+    NSAssert(isStreetCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"street"], kCompleteVeeContactPostalCorsoSempioneStreet);
+    NSAssert(isCityCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"city"], kCompleteVeeContactPostalCorsoSempioneCity);
+    NSAssert(isStateCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"state"], kCompleteVeeContactPostalCorsoSempioneState);
+    NSAssert(isPostalCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"postal"], kCompleteVeeContactPostalCorsoSempionePostal);
+    NSAssert(isCountryCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"country"], kCompleteVeeContactPostalCorsoSempioneCountry);
+}
+
+-(void)testCompleteContactWebsitesCount
+{
+    BOOL isWebsitesCountCorrect = [_veeABRecordComplete.websites count] == kCompleteVeeContactWebsitesCount;
+    NSAssert(isWebsitesCountCorrect, @"Contact websites count is %zd but should be %zd", [_veeABRecordComplete.websites count], kCompleteVeeContactWebsitesCount);
+}
+
+-(void)testCompleteContactWebsites
+{
+    NSArray* expectedWebsites = @[@"www.duplicate.com",@"http://www.completework.it",@"www.complete.blog.it",@"http://www.completeuser.it"];
+    expectedWebsites = [expectedWebsites sortedArrayUsingSelector:@selector(compare:)];
+    NSArray* completContactSortedWebistes = [_veeABRecordComplete.websites sortedArrayUsingSelector:@selector(compare:)];
+    BOOL websitesAreCorrect = [completContactSortedWebistes isEqualToArray:expectedWebsites];
+    NSAssert(websitesAreCorrect, @"Contact websites are %@ but they should be ",_veeABRecordComplete.websites, expectedWebsites);
+}
+
+-(void)testCompleteContactTwitterAccounts
+{
+    //TODO:
+}
+
+-(void)testCompleteContactFacebookAccounts
+{
+    //TODO:
+}
+
+
 #pragma mark - Unified Veecontact
 
 //TODO: ... Can't test unified contacts because I can't reproduce linked records in the address book programmatically, see http://stackoverflow.com/questions/24224929/is-there-a-way-to-programmatically-create-linked-contact

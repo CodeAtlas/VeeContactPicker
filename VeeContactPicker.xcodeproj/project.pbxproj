@@ -303,8 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				862F85A31CA147AB004EF57F /* Categories */,
-				86C6E7DC1C9C13280031CC23 /* Controller */,
 				86C6E7DA1C9C130C0031CC23 /* Model */,
+				86C6E7DC1C9C13280031CC23 /* Controller */,
 				86A6A6FF1C9AF56A004F66E2 /* Res */,
 				86C6E7DB1C9C13180031CC23 /* Utils */,
 				860C62871C28521200876682 /* Info.plist */,
