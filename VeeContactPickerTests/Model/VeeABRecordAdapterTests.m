@@ -150,13 +150,17 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 -(void)testCompleteContactTwitterAccounts
 {
-    //TODO:
+    BOOL isTwitterCorrect = [[_veeABRecordComplete twitterAccounts] containsObject:kCompleteVeeContactTwitterAccount];
+    NSAssert(isTwitterCorrect,@"Complete contact should have a Twitter account: %@, but Twitter accounts are: %@",kCompleteVeeContactTwitterAccount,[_veeABRecordComplete twitterAccounts]);
 }
 
 -(void)testCompleteContactFacebookAccounts
 {
-    //TODO:
+    BOOL isFacebookAccountCorrect = [[_veeABRecordComplete facebookAccounts] containsObject:kCompleteVeeContactFacebookAccount];
+    NSAssert(isFacebookAccountCorrect,@"Complete contact should have a Facebook account: %@, but Facebook accounts are: %@",kCompleteVeeContactFacebookAccount,[_veeABRecordComplete facebookAccounts]);
 }
+
+//Test multiple postal addresses
 
 
 #pragma mark - Unified Veecontact

@@ -2682,7 +2682,8 @@ TEL;type=CELL;type=VOICE:+33 333 2580089
 TEL;type=CELL;type=VOICE:+7 331 4458726
 TEL;type=CELL;type=VOICE:+49 331 4458726
 TEL;type=MAIN:+39 02 9387441
-item2.ADR;type=HOME:;;Corso Sempione;Milano;Lombardia;20035;Italia
+item2.ADR;type=HOME;type=pref:;;Corso Sempione;Milano;Lombardia;20035;Italia
+item2.X-ABADR:it
 item3.URL;type=pref:http://www.completeuser.it
 item3.X-ABLabel:_$!<HomePage>!$_
 URL;type=HOME:www.complete.blog.it
@@ -2693,6 +2694,8 @@ item5.X-MSN;type=pref:completemsn1
 item5.X-ABLabel:MSN
 item6.IMPP;X-SERVICE-TYPE=MSN;type=pref:msnim:completemsn1
 item6.X-ABLabel:MSN
+X-SOCIALPROFILE;type=twitter;x-user=CompleteTwitter:http://twitter.com/CompleteTwitter
+X-SOCIALPROFILE;type=facebook;x-user=CompleteFacebook:http://www.facebook.com/CompleteFacebook
 NOTE:Veer note\: a8a8f8738b79cd660f519c1a342654a0
 END:VCARD
 BEGIN:VCARD

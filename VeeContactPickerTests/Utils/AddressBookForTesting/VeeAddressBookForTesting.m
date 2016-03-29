@@ -133,7 +133,7 @@
     NSData* vCardData = CFBridgingRelease(ABPersonCreateVCardRepresentationWithPeople(peopleArray));
     [vCardData writeToFile:filePath atomically:YES];
 }
-*/
+ */
 
 #pragma mark - AB Utils
 

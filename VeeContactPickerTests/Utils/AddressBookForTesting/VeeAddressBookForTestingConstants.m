@@ -41,6 +41,8 @@ NSString* const kCompleteVeeContactSectionIdentifier = @"C";
 NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier = @"C";
 NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier = @"F";
 NSString* const kCompleteVeeContactEmptyDisplayNameSectionIdentifier = @"#";
+NSString* const kCompleteVeeContactTwitterAccount = @"CompleteTwitter";
+NSString* const kCompleteVeeContactFacebookAccount = @"CompleteFacebook";
 
 #pragma mark - Unified contact
 NSString* const kUnifiedVeecontactFirstName = @"Unified";

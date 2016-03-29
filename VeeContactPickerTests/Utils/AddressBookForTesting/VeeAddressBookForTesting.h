@@ -13,5 +13,6 @@
 - (ABRecordRef)abRecordRefOfCompleteContact;
 - (ABRecordRef)abRecordRefOfUnifiedContact;
 - (NSArray*)abRecordRefsOfTestingContacts;
+//- (void)exportABtoVCF:(NSString*)vcfFileName;
 
 @end

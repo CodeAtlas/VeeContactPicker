@@ -460,13 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				868BAB761CA2C13600B0B0A4 /* Portraits */,
-				86C08D1A1CA152D800319B5A /* EmailDomains.txt */,
-				86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */,
-				86C08D161CA1520900319B5A /* FirstNames.txt */,
-				86C08D181CA1523400319B5A /* LastNames.txt */,
-				860696921CA15BC500997F09 /* MiddleNames.txt */,
-				860696941CA15DDB00997F09 /* Nicknames.txt */,
-				860696961CA15DE500997F09 /* OrganizationNames.txt */,
+				86B756AA1CAAD97B0033D286 /* Fake contact entries */,
 				86A6A7001C9AF572004F66E2 /* codeatlas.png */,
 				8676C5901C93151100054446 /* vee_testing_ab.vcf */,
 			);
@@ -490,6 +484,20 @@
 				86B756A81CAA8C200033D286 /* UILabelBolfidyTests.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		86B756AA1CAAD97B0033D286 /* Fake contact entries */ = {
+			isa = PBXGroup;
+			children = (
+				86C08D1A1CA152D800319B5A /* EmailDomains.txt */,
+				86C08D1C1CA1530F00319B5A /* FakePhoneNumbers.txt */,
+				86C08D161CA1520900319B5A /* FirstNames.txt */,
+				86C08D181CA1523400319B5A /* LastNames.txt */,
+				860696921CA15BC500997F09 /* MiddleNames.txt */,
+				860696941CA15DDB00997F09 /* Nicknames.txt */,
+				860696961CA15DE500997F09 /* OrganizationNames.txt */,
+			);
+			name = "Fake contact entries";
 			sourceTree = "<group>";
 		};
 		86C6E7DA1C9C130C0031CC23 /* Model */ = {

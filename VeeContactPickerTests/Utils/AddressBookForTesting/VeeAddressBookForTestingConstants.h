@@ -40,6 +40,8 @@ extern NSString* const kCompleteVeeContactSectionIdentifier;
 extern NSString* const kCompleteVeeContactWithoutFirstNameSectionIdentifier;
 extern NSString* const kCompleteVeeContactWithoutFirstNameAndLastNameSectionIdentifier;
 extern NSString* const kCompleteVeeContactEmptyDisplayNameSectionIdentifier;
+extern NSString* const kCompleteVeeContactTwitterAccount;
+extern NSString* const kCompleteVeeContactFacebookAccount;
 
 #pragma mark - Unified contact
 extern NSString* const kUnifiedVeecontactFirstName;
