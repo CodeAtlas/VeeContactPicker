@@ -7,6 +7,7 @@
 #import "VeeIsEmpty.h"
 #import "VeeABRecordAdapter.h"
 #import "VeePostalAddress.h"
+#import "NSObject+VeeCommons.h"
 
 @implementation VeeContact
 
@@ -188,7 +189,8 @@
     else{
         hasImage = @"Hasn't thumbnailImage";
     }
-    return [NSString stringWithFormat:@"[%@ - Record Ids: %@, %@, First name: %@, Last name: %@, Composite name: %@, Organization name: %@, Display name: %@, Phone numbers: %@, Email addresses: %@ postalAddresses: %@ twitterAccounts: %@, facebookAccounts: %@]", NSStringFromClass([self class]), _recordIds, hasImage, _firstName, _lastName, _compositeName, _organizationName, [self displayName], _phoneNumbers, _emails,_postalAddresses,_twitterAccounts,_facebookAccounts];
+    return [NSString stringWithFormat:@"\n[%@:\n Composite Name: %@\n Record Ids: %@\n %@\n First name: %@\n Last name: %@\n Organization name: %@\n Display name: %@\n Phone numbers: %@\n Email addresses: %@\n postalAddresses: %@\n twitterAccounts: %@\n facebookAccounts: %@\n]", NSStringFromClass([self class]),_compositeName, [self formattedDescriptionOfArray:_recordIds], hasImage, _firstName, _lastName, _organizationName, [self displayName], [self formattedDescriptionOfArray:_phoneNumbers], [self formattedDescriptionOfArray:_emails],[self formattedDescriptionOfArray:_postalAddresses],[self formattedDescriptionOfArray:_twitterAccounts],[self formattedDescriptionOfArray:_facebookAccounts]];
 }
+
 
 @end
