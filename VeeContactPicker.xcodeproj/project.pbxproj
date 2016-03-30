@@ -27,6 +27,7 @@
 		860C62B61C2854CB00876682 /* VeeContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62B51C2854CB00876682 /* VeeContact.m */; };
 		861046C21C8F253F00DFA690 /* VeeContactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 861046C11C8F253F00DFA690 /* VeeContactTests.m */; };
 		861046C81C8F2E5F00DFA690 /* VeeAddressBookForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */; };
+		8622C3451CABDD6A009EB7A1 /* NSObject+VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */; };
 		862BB67B1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 862BB67A1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m */; };
 		862F859F1CA14435004EF57F /* VeeABRecordAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 862F859E1CA14435004EF57F /* VeeABRecordAdapter.m */; };
 		862F85A11CA1473C004EF57F /* VeeABRecordAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 862F85A01CA1473C004EF57F /* VeeABRecordAdapterTests.m */; };
@@ -147,6 +148,8 @@
 		861046C11C8F253F00DFA690 /* VeeContactTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactTests.m; sourceTree = "<group>"; };
 		861046C61C8F2E5F00DFA690 /* VeeAddressBookForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeAddressBookForTesting.h; sourceTree = "<group>"; };
 		861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTesting.m; sourceTree = "<group>"; };
+		8622C3431CABDD6A009EB7A1 /* NSObject+VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+VeeCommons.h"; sourceTree = "<group>"; };
+		8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VeeCommons.m"; sourceTree = "<group>"; };
 		862BB6791C9C42A900A71ED6 /* VeeSectionedArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionedArrayDataSource.h; sourceTree = "<group>"; };
 		862BB67A1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSource.m; sourceTree = "<group>"; };
 		862BB67C1C9C458500A71ED6 /* VeeSectionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionable.h; sourceTree = "<group>"; };
@@ -427,6 +430,8 @@
 				86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */,
 				867AD8751CA04300009A26A2 /* VeeIsEmpty.h */,
 				867AD8761CA04300009A26A2 /* VeeIsEmpty.m */,
+				8622C3431CABDD6A009EB7A1 /* NSObject+VeeCommons.h */,
+				8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -876,6 +881,7 @@
 				86DCEF071C96E0A700EC7FD6 /* VeeABAdaptedRecordsImporter.m in Sources */,
 				864194F81C96D7C0005DC2D6 /* VeeContactPickerStrings.m in Sources */,
 				860C62701C28521200876682 /* AppDelegate.m in Sources */,
+				8622C3451CABDD6A009EB7A1 /* NSObject+VeeCommons.m in Sources */,
 				860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */,
 				864194F11C96D169005DC2D6 /* VeeContactPickerConstants.m in Sources */,
 				8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */,
