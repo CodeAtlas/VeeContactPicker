@@ -11,7 +11,7 @@
 
 typedef void (^ConfigureCellBlock)(id cell, id item);
 
-- (instancetype)initWithItems:(NSArray<id<VeeSectionable> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
+- (instancetype)initWithItems:(NSArray<id<VeeSectionableProt> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block;
 
 #pragma mark - UITableViewDataSource
 
@@ -24,10 +24,10 @@ typedef void (^ConfigureCellBlock)(id cell, id item);
 #pragma mark - Public methods
 
 - (id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
--(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item;
+-(NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item;
 
 #pragma mark - SearchTableView
 
-- (void)setSearchResults:(NSArray<id<VeeSectionable> >*)searchResults forSearchTableView:(UITableView*)searchTableView;
+- (void)setSearchResults:(NSArray<id<VeeSectionableProt> >*)searchResults forSearchTableView:(UITableView*)searchTableView;
 
 @end

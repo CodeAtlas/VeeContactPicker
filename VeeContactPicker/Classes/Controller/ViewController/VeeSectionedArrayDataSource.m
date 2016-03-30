@@ -7,8 +7,8 @@
 
 @interface VeeSectionedArrayDataSource()
 
-@property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionable>>*>* sectionedItems;
-@property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionable>>*>* sectionedSearchedItems;
+@property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedItems;
+@property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedSearchedItems;
 @property (nonatomic, strong) NSArray<NSString*>* sortedNonEmptySectionIdentifiers;
 @property (nonatomic, strong) NSArray<NSString*>* sortedSearchedNonEmptySectionIdentifiers;
 @property (nonatomic, strong) NSArray<NSString*>* allowedSortedSectionIdentifiers;
@@ -23,7 +23,7 @@
 
 #pragma mark - Initializers
 
--(instancetype)initWithItems:(NSArray<id<VeeSectionable>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)configureCellBlock
+-(instancetype)initWithItems:(NSArray<id<VeeSectionableProt>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)configureCellBlock
 {
     self = [super init];
     if (self) {
@@ -48,11 +48,11 @@
 -(id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath
 {
     BOOL isSearchTableView = [self isSearchTableView:tableView];
-    NSArray<id<VeeSectionable>>* itemsForSection = [self itemsForSection:indexPath.section isSearchTableView:isSearchTableView];
+    NSArray<id<VeeSectionableProt>>* itemsForSection = [self itemsForSection:indexPath.section isSearchTableView:isSearchTableView];
     return [itemsForSection objectAtIndex:indexPath.row];
 }
 
--(void)setSearchResults:(NSArray<id<VeeSectionable>>*)searchResults forSearchTableView:(UITableView*)searchTableView
+-(void)setSearchResults:(NSArray<id<VeeSectionableProt>>*)searchResults forSearchTableView:(UITableView*)searchTableView
 {
     _searchTableView = searchTableView;
     if (searchResults){
@@ -61,7 +61,7 @@
     }
 }
 
--(NSString*)sectionIdentifierForItem:(id<VeeSectionable>)item
+-(NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item
 {
     NSString* sectionIdenfier = [item sectionIdentifier];
     if (sectionIdenfier == nil || [[self allowedSortedSectionIdentifiers] containsObject:sectionIdenfier] == NO){
@@ -72,9 +72,9 @@
 
 #pragma mark - Model utils
 
-- (NSDictionary<NSString*,NSArray<id<VeeSectionable>>*>*)sectionedItems:(NSArray<id<VeeSectionable>>*)items
+- (NSDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>*)sectionedItems:(NSArray<id<VeeSectionableProt>>*)items
 {
-    NSMutableDictionary<NSString*,NSArray<id<VeeSectionable>>*>* sectionedItemsMutable = [NSMutableDictionary new];
+    NSMutableDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedItemsMutable = [NSMutableDictionary new];
     for (id item in items) {
         NSString* itemSectionIdentifier = [self sectionIdentifierForItem:item];
         NSArray* itemsForThisSectionIdentifier = [sectionedItemsMutable objectForKey:itemSectionIdentifier];
@@ -138,7 +138,7 @@
 
 #pragma mark - Data source utils
 
-- (NSArray<id<VeeSectionable>>*)itemsForSection:(NSUInteger)section isSearchTableView:(BOOL)isSearchTableView
+- (NSArray<id<VeeSectionableProt>>*)itemsForSection:(NSUInteger)section isSearchTableView:(BOOL)isSearchTableView
 {
     NSString* sectionIdentifier = [self sectionIdentifierFromSection:section isSearchTableView:isSearchTableView];
     if (isSearchTableView){

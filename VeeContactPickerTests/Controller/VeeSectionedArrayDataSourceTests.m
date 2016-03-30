@@ -75,7 +75,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 - (void)testNumberOfSectionsInTableView
 {
     NSMutableSet* sectionIdentifiers = [NSMutableSet new];
-    for (id<VeeSectionable> veeSectionable in randomVeesectionableObjects) {
+    for (id<VeeSectionableProt> veeSectionable in randomVeesectionableObjects) {
         [sectionIdentifiers addObject:[veeSectionable sectionIdentifier]];
     }
     id mockedTableView = OCMClassMock([UITableView class]);
@@ -237,7 +237,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     for (NSString* sectionIdentifer in allowedSectionIdentifiers) {
         [objsForSectionIdentifiers setObject:[NSMutableArray new] forKey:sectionIdentifer];
     }
-    for (id<VeeSectionable> veeSectionable in veeSectionableObjs) {
+    for (id<VeeSectionableProt> veeSectionable in veeSectionableObjs) {
         NSMutableArray* objsForThisSection = [objsForSectionIdentifiers objectForKey:[veeSectionable sectionIdentifier]];
         [objsForThisSection addObject:veeSectionable];
         [objsForSectionIdentifiers setObject:objsForThisSection forKey:[veeSectionable sectionIdentifier]];

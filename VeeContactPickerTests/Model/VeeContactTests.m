@@ -1,7 +1,4 @@
 //
-//  VeecontactTests.m
-//  VeeContactPicker
-//
 //  Created by Andrea Cipriani on 08/03/16.
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
@@ -18,7 +15,6 @@
 @property (nonatomic, strong) NSArray* randomVeeContacts;
 
 @end
-
 
 @implementation VeeContactTests
 

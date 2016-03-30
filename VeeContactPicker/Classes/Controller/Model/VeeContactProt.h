@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "VeePostalAddressProt.h"
 
-@protocol VeeContactProt <NSObject, VeeSectionable>
+@protocol VeeContactProt <NSObject, VeeSectionableProt>
 
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
