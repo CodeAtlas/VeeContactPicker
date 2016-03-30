@@ -28,6 +28,7 @@
 		861046C21C8F253F00DFA690 /* VeeContactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 861046C11C8F253F00DFA690 /* VeeContactTests.m */; };
 		861046C81C8F2E5F00DFA690 /* VeeAddressBookForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */; };
 		8622C3451CABDD6A009EB7A1 /* NSObject+VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */; };
+		8622C34C1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8622C34B1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.m */; };
 		862BB67B1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 862BB67A1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m */; };
 		862F859F1CA14435004EF57F /* VeeABRecordAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 862F859E1CA14435004EF57F /* VeeABRecordAdapter.m */; };
 		862F85A11CA1473C004EF57F /* VeeABRecordAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 862F85A01CA1473C004EF57F /* VeeABRecordAdapterTests.m */; };
@@ -150,6 +151,9 @@
 		861046C71C8F2E5F00DFA690 /* VeeAddressBookForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTesting.m; sourceTree = "<group>"; };
 		8622C3431CABDD6A009EB7A1 /* NSObject+VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+VeeCommons.h"; sourceTree = "<group>"; };
 		8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VeeCommons.m"; sourceTree = "<group>"; };
+		8622C3491CABE592009EB7A1 /* VeeContactFactoryProt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactFactoryProt.h; sourceTree = "<group>"; };
+		8622C34A1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactProtFactoryProducer.h; sourceTree = "<group>"; };
+		8622C34B1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactProtFactoryProducer.m; sourceTree = "<group>"; };
 		862BB6791C9C42A900A71ED6 /* VeeSectionedArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionedArrayDataSource.h; sourceTree = "<group>"; };
 		862BB67A1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSource.m; sourceTree = "<group>"; };
 		862BB67C1C9C458500A71ED6 /* VeeSectionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionable.h; sourceTree = "<group>"; };
@@ -390,6 +394,18 @@
 			path = UITableViewCells;
 			sourceTree = "<group>";
 		};
+		8622C34D1CABE7CF009EB7A1 /* VeeContact Abstract Factory */ = {
+			isa = PBXGroup;
+			children = (
+				8622C34A1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.h */,
+				8622C34B1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.m */,
+				8622C3491CABE592009EB7A1 /* VeeContactFactoryProt.h */,
+				8606969A1CA1618F00997F09 /* VeeContactFactory.h */,
+				8606969B1CA1618F00997F09 /* VeeContactFactory.m */,
+			);
+			name = "VeeContact Abstract Factory";
+			sourceTree = "<group>";
+		};
 		862F859C1CA141BD004EF57F /* ContactPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,8 +588,7 @@
 				86B756AB1CAAE10C0033D286 /* VeePostalAddressProt.h */,
 				86B756AC1CAAE14C0033D286 /* VeePostalAddress.h */,
 				86B756AD1CAAE14C0033D286 /* VeePostalAddress.m */,
-				8606969A1CA1618F00997F09 /* VeeContactFactory.h */,
-				8606969B1CA1618F00997F09 /* VeeContactFactory.m */,
+				8622C34D1CABE7CF009EB7A1 /* VeeContact Abstract Factory */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -889,6 +904,7 @@
 				86DCEEFD1C96DB4400EC7FD6 /* VeeAddressBook.m in Sources */,
 				860C62B61C2854CB00876682 /* VeeContact.m in Sources */,
 				86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */,
+				8622C34C1CABE7C8009EB7A1 /* VeeContactProtFactoryProducer.m in Sources */,
 				860C626D1C28521200876682 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

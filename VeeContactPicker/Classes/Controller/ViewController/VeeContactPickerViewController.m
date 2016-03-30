@@ -13,13 +13,13 @@
 #import "VeeAddressBook.h"
 #import "VeeIsEmpty.h"
 
-#import "VeeContact.h"
-#import "VeeContactFactory.h"
+#import "VeeContactProtFactoryProducer.h"
 
 #import "VeeContactUITableViewCell.h"
 #import "VeeContactCellConfiguration.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
+#import "VeeContactProtFactoryProducer.h"
 
 @interface VeeContactPickerViewController ()
 
@@ -167,7 +167,8 @@
 
 - (void)loadVeeContactsFromAddressBook
 {
-    _veeContacts = [VeeContactFactory veeContactsFromAddressBook:_addressBookRef];
+    id<VeeContactFactoryProt> veeContactFactoryProt = [VeeContactProtFactoryProducer veeContactProtFactory];
+    _veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
     _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
     [self setupTableView];
 }
@@ -176,7 +177,7 @@
 {
     [self registerNibsForCellReuse];
 
-    ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, VeeContact* veeContact) {
+    ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, id<VeeContactProt> veeContact) {
         [_veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
 

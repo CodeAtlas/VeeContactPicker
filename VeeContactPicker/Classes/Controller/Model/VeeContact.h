@@ -13,8 +13,8 @@
 
 #pragma mark - Init
 
--(instancetype)initWithVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter;
--(instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails;
+- (instancetype)initWithVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter;
+- (instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails;
 
 #pragma mark - Readonly
 
@@ -34,7 +34,7 @@
 
 @property (nonatomic, strong) NSArray<NSString*>* phoneNumbers;
 @property (nonatomic, strong) NSArray<NSString*>* emails;
-@property (nonatomic, strong) NSArray<id<VeePostalAddressProt>>* postalAddresses;
+@property (nonatomic, strong) NSArray<id<VeePostalAddressProt> >* postalAddresses;
 @property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
 @property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
 
@@ -45,7 +45,7 @@
 
 #pragma mark - Search predicate
 
-+(NSPredicate*)searchPredicateForSearchString; //$searchString will be used for substitution. Default predicate is: @"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"
++ (NSPredicate*)searchPredicateForSearchString; //$searchString will be used for substitution. Default predicate is: @"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"
 ;
 
 @end

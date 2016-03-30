@@ -9,7 +9,7 @@
 
 @implementation VeeContactFactory
 
-+(NSArray<id<VeeContactProt>>*)veeContactsFromAddressBook:(ABAddressBookRef)addressBook
++(NSArray<id<VeeContactProt>>*)veeContactProtsFromAddressBook:(ABAddressBookRef)addressBook
 {
     VeeABAdaptedRecordsImporter* abRepositoryImporter = [VeeABAdaptedRecordsImporter new];
     NSArray<VeeABRecordAdapter*>* adaptedABRecords = [abRepositoryImporter importVeeABAdaptedRecordsFromAddressBook:addressBook];
