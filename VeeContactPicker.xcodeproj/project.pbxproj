@@ -439,7 +439,7 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		867AD8741CA042EC009A26A2 /* Utils */ = {
+		867AD8741CA042EC009A26A2 /* Utils and categories */ = {
 			isa = PBXGroup;
 			children = (
 				86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */,
@@ -449,6 +449,7 @@
 				8622C3431CABDD6A009EB7A1 /* NSObject+VeeCommons.h */,
 				8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */,
 			);
+			name = "Utils and categories";
 			path = Utils;
 			sourceTree = "<group>";
 		};
@@ -474,13 +475,6 @@
 				868BAB961CA2DDB000B0B0A4 /* VeeABAdaptedRecordsImporterTests.m */,
 			);
 			path = "Address Book";
-			sourceTree = "<group>";
-		};
-		868BAB981CA41BF500B0B0A4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		86A6A6FF1C9AF56A004F66E2 /* Res */ = {
@@ -578,17 +572,17 @@
 		86D7F7901C8ED8A40060FA7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				862F859C1CA141BD004EF57F /* ContactPicker */,
 				862F859D1CA14435004EF57F /* VeeABRecordAdapter.h */,
 				862F859E1CA14435004EF57F /* VeeABRecordAdapter.m */,
+				86B756AB1CAAE10C0033D286 /* VeePostalAddressProt.h */,
+				86B756AC1CAAE14C0033D286 /* VeePostalAddress.h */,
+				86B756AD1CAAE14C0033D286 /* VeePostalAddress.m */,
 				862BB67C1C9C458500A71ED6 /* VeeSectionable.h */,
 				860C629F1C28525E00876682 /* VeeContactProt.h */,
 				860C62B41C2854CB00876682 /* VeeContact.h */,
 				860C62B51C2854CB00876682 /* VeeContact.m */,
-				86B756AB1CAAE10C0033D286 /* VeePostalAddressProt.h */,
-				86B756AC1CAAE14C0033D286 /* VeePostalAddress.h */,
-				86B756AD1CAAE14C0033D286 /* VeePostalAddress.m */,
 				8622C34D1CABE7CF009EB7A1 /* VeeContact Abstract Factory */,
+				862F859C1CA141BD004EF57F /* ContactPicker */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,10 +590,9 @@
 		86DCEEFA1C96DB2900EC7FD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				867AD8741CA042EC009A26A2 /* Utils and categories */,
 				86DCEF011C96E08600EC7FD6 /* Address Book */,
 				86D7F7901C8ED8A40060FA7A /* Model */,
-				867AD8741CA042EC009A26A2 /* Utils */,
-				868BAB981CA41BF500B0B0A4 /* View */,
 				860C62B11C2852AD00876682 /* ViewController */,
 			);
 			path = Controller;

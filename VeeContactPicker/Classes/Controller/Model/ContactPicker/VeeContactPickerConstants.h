@@ -22,6 +22,8 @@
 @property (nonatomic,strong) UIColor* navigationBarTintColor;
 @property (nonatomic,strong) UIColor* navigationBarBarTintColor;
 @property (nonatomic,assign) BOOL navigationBarTranslucent;
+@property (nonatomic,strong) UIFont* veeContactEmptyViewLabelFont;
+@property (nonatomic,strong) UIColor* veeContactEmptyViewLabelTextColor;
 
 #pragma mark - VeeContactTableViewCell Appearance Constants
 

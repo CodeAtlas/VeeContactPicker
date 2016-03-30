@@ -22,7 +22,7 @@
 - (instancetype)initWithDefaultConstants
 {
     if (self) {
-        [self loadVeeContactPickerDefautlConstants];
+        [self loadVeeContactPickerDefaultConstants];
         [self loadTableViewDefaultConstants];
         [self loadVeeContactTableViewCellDefaultConstants];
     }
@@ -36,12 +36,14 @@
     _veeContactCellHeight = 60.0;
 }
 
--(void)loadVeeContactPickerDefautlConstants
+-(void)loadVeeContactPickerDefaultConstants
 {
     _cancelBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
     _navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
     _navigationBarBarTintColor = [self iOS7DefaultNavigationBarColor];
     _navigationBarTranslucent = NO;
+    _veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
+    _veeContactEmptyViewLabelTextColor = [UIColor blackColor];
 }
 
 - (void)loadVeeContactTableViewCellDefaultConstants

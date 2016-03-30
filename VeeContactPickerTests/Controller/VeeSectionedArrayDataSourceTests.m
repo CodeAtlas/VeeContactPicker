@@ -23,7 +23,7 @@
 
 @end
 
-static NSArray<id<VeeSectionable> >* randomVeesectionableObjects;
+static NSArray<id<VeeSectionableProt> >* randomVeesectionableObjects;
 static NSArray<NSString*>* allowedSectionIdentifiers;
 
 @implementation VeeSectionedArrayDataSourceTests
@@ -220,7 +220,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 #pragma mark - Private utils
 
-+ (NSArray<id<VeeSectionable> >*)randomVeeSectionableObjects:(NSUInteger)numberOfObjects
++ (NSArray<id<VeeSectionableProt> >*)randomVeeSectionableObjects:(NSUInteger)numberOfObjects
 {
     NSMutableArray* veeSectionableObjectsMutable = [NSMutableArray new];
     for (int i = 0; i < numberOfObjects; i++) {
@@ -231,7 +231,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     return [NSArray arrayWithArray:veeSectionableObjectsMutable];
 }
 
-- (NSDictionary*)sectionedObjects:(NSArray<id<VeeSectionable> >*)veeSectionableObjs
+- (NSDictionary*)sectionedObjects:(NSArray<id<VeeSectionableProt> >*)veeSectionableObjs
 {
     NSMutableDictionary* objsForSectionIdentifiers = [NSMutableDictionary new];
     for (NSString* sectionIdentifer in allowedSectionIdentifiers) {
@@ -256,7 +256,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     return [NSArray arrayWithArray:nonEmptySortedSectionIdentifiersMutable];
 }
 
-+ (VeeSectionedArrayDataSource*)veeSectionedArrayDataSourceWithVeeSectionables:(NSArray<id<VeeSectionable> >*)veeSectionable andConfigurationCellBlock:(ConfigureCellBlock)configurationCellBlock
++ (VeeSectionedArrayDataSource*)veeSectionedArrayDataSourceWithVeeSectionables:(NSArray<id<VeeSectionableProt> >*)veeSectionable andConfigurationCellBlock:(ConfigureCellBlock)configurationCellBlock
 {
     if (configurationCellBlock == nil){
         configurationCellBlock = ^(UITableViewCell* cell, id item) {

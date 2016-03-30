@@ -86,7 +86,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     OCMStub([veeAB askABPermissionsWithDelegateCallback:[OCMArg anyPointer]]).andReturn(YES);
 
     id veeContactFactoryMock = OCMClassMock([VeeContactFactory class]);
-    OCMStub([veeContactFactoryMock veeContactsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);
+    OCMStub([veeContactFactoryMock veeContactProtsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);
 
     [_veeContactPickerVCWithNilVeeContacts view];
 
@@ -166,7 +166,30 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 #pragma mark - Empty view
 
-//TODO:
+-(void)testEmptyViewIsNotShownWhenThereAreContacts
+{
+    VeeContactPickerViewController* defaultPickerViewController = [self veeContactPickerWithDefaultConfAndViewLoaded];
+    BOOL tableViewShouldNotBeHidden = [defaultPickerViewController contactsTableView].hidden == NO;
+    UISearchBar* searchBar = (UISearchBar*) [defaultPickerViewController valueForKey:@"searchBar"];
+    BOOL searchBarShouldBeHidden = searchBar.hidden == NO;
+    UILabel* emptyViewLabel = (UILabel*) [defaultPickerViewController valueForKey:@"emptyViewLabel"];
+    BOOL emptyViewLabelShouldBeHidden = emptyViewLabel.hidden == YES;
+
+    NSAssert(tableViewShouldNotBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldBeHidden, @"Empty view should not be shown if there are contacts!");
+}
+
+-(void)testEmptyViewIsShownForNoContacts
+{
+    VeeContactPickerViewController* veeContactPickerWithNoVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:@[]];
+    [veeContactPickerWithNoVeeContacts view];
+    BOOL tableViewShouldBeHidden = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == YES;
+    UISearchBar* searchBar = (UISearchBar*) [veeContactPickerWithNoVeeContacts valueForKey:@"searchBar"];
+    BOOL searchBarShouldBeHidden = searchBar.hidden == YES;
+    UILabel* emptyViewLabel = (UILabel*) [veeContactPickerWithNoVeeContacts valueForKey:@"emptyViewLabel"];
+    BOOL emptyViewLabelShouldNotBeHidden = emptyViewLabel.hidden == NO;
+    
+    NSAssert(tableViewShouldBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldNotBeHidden, @"Empty view should be shown if there are no contacts!");
+}
 
 #pragma mark - VeeContactPickerDelegate
 
@@ -213,7 +236,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     if (!_veeContactPickerCustomOptions) {
         _veeContactPickerCustomOptions = [VeeContactPickerOptions new];
         _veeContactPickerCustomOptions.veeContactColors = [[VeeContactColors alloc] initWithVeeContactsColorPalette:@[ [UIColor purpleColor] ]];
-        _veeContactPickerCustomOptions.veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:@"foo" andCancelButtonTitle:@"bar"];
+        _veeContactPickerCustomOptions.veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:@"foo" cancelButtonTitle:@"bar" emptyViewLabelText:@"empty"];
         _veeContactPickerCustomOptions.sectionIdentifiers = @[ @"A", @"B", @"C" ];
         _veeContactPickerCustomOptions.sectionIdentifierWildcard = @"$";
         _veeContactPickerCustomOptions.showLettersWhenContactImageIsMissing = NO;

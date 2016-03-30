@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VeeContactPickerViewController">
             <connections>
                 <outlet property="cancelBarButtonItem" destination="xsp-I1-qeu" id="Phf-dh-77O"/>
                 <outlet property="contactsTableView" destination="NzL-9t-n6C" id="JqC-Ov-YUZ"/>
+                <outlet property="emptyViewLabel" destination="nbe-Id-pC7" id="A3S-Ec-z2Q"/>
                 <outlet property="navigationBar" destination="IxQ-cp-jGd" id="NCQ-CB-Hae"/>
                 <outlet property="searchBar" destination="Bxf-DJ-a7d" id="Vt9-n9-kD4"/>
                 <outlet property="searchDisplayController" destination="nVF-SD-Cbm" id="je8-VG-jbu"/>
@@ -29,6 +30,12 @@
                         <constraint firstAttribute="height" constant="20" id="ppo-kc-tg9"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no contacts to display" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbe-Id-pC7">
+                    <rect key="frame" x="64" y="323" width="246" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bxf-DJ-a7d">
                     <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                     <textInputTraits key="textInputTraits"/>
@@ -69,6 +76,8 @@
                 <constraint firstItem="IxQ-cp-jGd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8VL-6L-JsP"/>
                 <constraint firstAttribute="trailing" secondItem="IxQ-cp-jGd" secondAttribute="trailing" id="98p-BK-Lu3"/>
                 <constraint firstItem="Bxf-DJ-a7d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IMt-qx-a2y"/>
+                <constraint firstItem="nbe-Id-pC7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="N6V-ND-9H0"/>
+                <constraint firstItem="nbe-Id-pC7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QER-do-0yr"/>
                 <constraint firstItem="NzL-9t-n6C" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5d-Oi-ebf"/>
                 <constraint firstAttribute="trailing" secondItem="NzL-9t-n6C" secondAttribute="trailing" id="RcM-6s-oM4"/>
                 <constraint firstItem="Bxf-DJ-a7d" firstAttribute="top" secondItem="IxQ-cp-jGd" secondAttribute="bottom" id="VaP-yS-JFf"/>

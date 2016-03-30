@@ -38,14 +38,23 @@
     NSAssert([_veeContactPickerDefaultStrings cancelButtonTitle], @"CancelButtonTitle should not be nil");
 }
 
--(void)testCustomStrings
+- (void)testDefaultEmptyViewTextShouldNotBeNil
+{
+    NSAssert([_veeContactPickerDefaultStrings emptyViewLabelText], @"EmptyViewLabelText should not be nil");
+}
+
+-(void)testCustomStringsAreSet
 {
     NSString* navigationBarTitle = @"foo";
     NSString* cancelButtonTitle = @"bar";
-    VeeContactPickerStrings* veeContactPickerCustomStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:navigationBarTitle andCancelButtonTitle:cancelButtonTitle];
+    NSString* emptyViewTitle = @"lol";
+
+    VeeContactPickerStrings* veeContactPickerCustomStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:navigationBarTitle cancelButtonTitle:cancelButtonTitle emptyViewLabelText:emptyViewTitle];
     BOOL isNavigationBarTitleCorrect = [veeContactPickerCustomStrings.navigationBarTitle isEqualToString:navigationBarTitle];
     BOOL isCancelButtonTitleCorrect = [veeContactPickerCustomStrings.cancelButtonTitle isEqualToString:cancelButtonTitle];
-    NSAssert(isNavigationBarTitleCorrect && isCancelButtonTitleCorrect, @"Custom strings are not set properly");
+    BOOL isEmptyViewTitleCorrect = [veeContactPickerCustomStrings.emptyViewLabelText isEqualToString:emptyViewTitle];
+
+    NSAssert(isNavigationBarTitleCorrect && isCancelButtonTitleCorrect && isEmptyViewTitleCorrect, @"Custom strings are not set properly");
 }
 
 @end

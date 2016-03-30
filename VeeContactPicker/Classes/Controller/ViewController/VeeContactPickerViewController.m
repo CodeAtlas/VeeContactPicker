@@ -15,19 +15,19 @@
 
 #import "VeeContactProtFactoryProducer.h"
 
-#import "VeeContactUITableViewCell.h"
 #import "VeeContactCellConfiguration.h"
+#import "VeeContactProtFactoryProducer.h"
+#import "VeeContactUITableViewCell.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
-#import "VeeContactProtFactoryProducer.h"
 
 @interface VeeContactPickerViewController ()
 
 #pragma mark - Outlets
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (weak, nonatomic) IBOutlet UIView *statusBarCoverView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UINavigationBar* navigationBar;
+@property (weak, nonatomic) IBOutlet UIView* statusBarCoverView;
+@property (weak, nonatomic) IBOutlet UISearchBar* searchBar;
 
 #pragma mark - Dependencies
 
@@ -123,13 +123,14 @@
     _cancelBarButtonItem.title = [_veeContactPickerOptions.veeContactPickerStrings cancelButtonTitle];
 }
 
--(void)loadPickerAppearance
+- (void)loadPickerAppearance
 {
     _cancelBarButtonItem.tintColor = [[VeeContactPickerConstants sharedInstance] cancelBarButtonItemTintColor];
     _navigationBar.tintColor = [[VeeContactPickerConstants sharedInstance] navigationBarTintColor];
     _navigationBar.barTintColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
     _navigationBar.translucent = [[VeeContactPickerConstants sharedInstance] navigationBarTranslucent];
     _statusBarCoverView.backgroundColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
+    [self showEmptyView:NO];
 }
 
 - (void)loadVeeContacts
@@ -156,8 +157,8 @@
 
 - (void)loadCustomVeecontacts
 {
-    if (!_veeContacts) {
-        [self showEmptyView];
+    if ([VeeIsEmpty isEmpty:_veeContacts]) {
+        [self showEmptyView:YES];
     }
     else {
         _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
@@ -187,21 +188,21 @@
     _contactsTableView.dataSource = _veeSectionedArrayDataSource;
     _contactsTableView.delegate = self;
     [_contactsTableView reloadData];
-    
+
     [self setupSearchDisplayController];
 }
 
--(void)setupSearchDisplayController
+- (void)setupSearchDisplayController
 {
     _veeTableViewSearchDelegate = [[VeeTableViewSearchDelegate alloc] initWithSearchDisplayController:self.searchDisplayController dataToFiler:_veeContacts withPredicate:[self predicateToFilterVeeContactProt] andSearchResultsDelegate:self];
-    
+
     [self.searchDisplayController setDelegate:_veeTableViewSearchDelegate];
     [self setupSearchTableView];
 }
 
--(NSPredicate*)predicateToFilterVeeContactProt
+- (NSPredicate*)predicateToFilterVeeContactProt
 {
-    if ([_veeContacts count] > 0 == NO){
+    if ([_veeContacts count] > 0 == NO) {
         return nil;
     }
     NSPredicate* searchPredicate = [[[_veeContacts firstObject] class] searchPredicateForSearchString];
@@ -217,8 +218,8 @@
 - (void)registerNibsForCellReuse
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
-    NSString* cellNibName =  [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
-    
+    NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
+
     [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
     [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
 }
@@ -232,23 +233,32 @@
     }
     else {
         NSLog(@"Warning - address book permissions not granted");
-        [self showEmptyView];
+        [self showEmptyView:YES];
         //TODO: call delegate with fail
     }
 }
 
 #pragma mark - UI
 
-- (void)showEmptyView
+- (void)showEmptyView:(BOOL)show
 {
-    //TODO:
+    if (show){
+        _emptyViewLabel.hidden = NO;
+        _contactsTableView.hidden = YES;
+        _searchBar.hidden = YES;
+    }
+    else{
+        _emptyViewLabel.hidden = YES;
+        _contactsTableView.hidden = NO;
+        _searchBar.hidden = NO;
+    }
 }
 
 #pragma mark - TableView delegate
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return  [[VeeContactPickerConstants sharedInstance] veeContactCellHeight];
+    return [[VeeContactPickerConstants sharedInstance] veeContactCellHeight];
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
@@ -269,7 +279,7 @@
 
 #pragma mark - VeeSearchResultDelegate
 
--(void)handleSearchResults:(NSArray*)searchResults forSearchTableView:(UITableView*)searchTableView
+- (void)handleSearchResults:(NSArray*)searchResults forSearchTableView:(UITableView*)searchTableView
 {
     [_veeSectionedArrayDataSource setSearchResults:searchResults forSearchTableView:searchTableView];
 }

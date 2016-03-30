@@ -34,6 +34,7 @@
 @property (nonatomic, strong) IBOutlet UITableView* contactsTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButtonItem;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
+@property (weak, nonatomic) IBOutlet UILabel *emptyViewLabel;
 
 #pragma mark - IBActions
 
