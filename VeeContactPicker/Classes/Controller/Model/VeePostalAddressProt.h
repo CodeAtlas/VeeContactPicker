@@ -7,11 +7,11 @@
 
 @protocol VeePostalAddressProt <NSObject>
 
--(NSString*)street;
--(NSString*)city;
--(NSString*)state;
--(NSString*)postal;
--(NSString*)country;
--(NSString*)unifiedAddress;
+- (NSString*)street;
+- (NSString*)city;
+- (NSString*)state;
+- (NSString*)postal;
+- (NSString*)country;
+- (NSString*)unifiedAddress;
 
 @end
