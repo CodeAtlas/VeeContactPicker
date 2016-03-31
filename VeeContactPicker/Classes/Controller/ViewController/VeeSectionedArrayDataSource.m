@@ -54,7 +54,9 @@
 
 -(void)setSearchResults:(NSArray<id<VeeSectionableProt>>*)searchResults forSearchTableView:(UITableView*)searchTableView
 {
-    _searchTableView = searchTableView;
+    if (searchTableView){
+        _searchTableView = searchTableView;
+    }
     if (searchResults){
         _sectionedSearchedItems = [self sectionedItems:searchResults];
         _sortedSearchedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:[_sectionedSearchedItems allKeys]];

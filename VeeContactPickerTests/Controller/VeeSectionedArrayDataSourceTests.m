@@ -10,6 +10,8 @@
 #import <XCTest/XCTest.h>
 
 #define TEST_CELL_IDENTIFIER @"FakeCellIdentifier"
+#define RANDOM_OBJECTS_COUNT 100
+#define SEARCH_RESULTS_RANDOM_OBJECTS_COUNT 5
 
 @interface VeeSectionedArrayDataSourceTests : XCTestCase
 
@@ -33,7 +35,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 + (void)setUp
 {
     allowedSectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
-    randomVeesectionableObjects = [self randomVeeSectionableObjects:100];
+    randomVeesectionableObjects = [self randomVeeSectionableObjects:RANDOM_OBJECTS_COUNT];
 }
 
 #pragma mark -
@@ -216,7 +218,28 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 #pragma mark - Search table view
 
-//TODO: test data source while searching
+-(void)testShouldNotUseSearchTableViewIfSearchResultIsNil
+{
+    [_veeSectionedArrayDataSource setSearchResults:nil forSearchTableView:nil];
+    BOOL isNotUsingSearchTableView = [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier] > 0;
+    NSAssert(isNotUsingSearchTableView, @"When search results are nil, should not use search table view");
+}
+
+-(void)testSearchTableViewRowsCount
+{
+    UITableView* searchTableViewMock = [self mockedTableViewWithTestCellIdentifier];
+    
+    [_veeSectionedArrayDataSource setSearchResults:[VeeSectionedArrayDataSourceTests randomVeeSectionableObjects:SEARCH_RESULTS_RANDOM_OBJECTS_COUNT] forSearchTableView:searchTableViewMock];
+    
+    NSUInteger totalNumberOfRows = 0;
+    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:searchTableViewMock]; section++) {
+        NSUInteger numberOfRowsInSection = [_veeSectionedArrayDataSource tableView:searchTableViewMock numberOfRowsInSection:section];
+        totalNumberOfRows += numberOfRowsInSection;
+    }
+    
+    BOOL isNumberOfRowsCorrect = SEARCH_RESULTS_RANDOM_OBJECTS_COUNT == totalNumberOfRows;
+    NSAssert(isNumberOfRowsCorrect, @"Number of rows in search table view is %zd but should be %zd", totalNumberOfRows, SEARCH_RESULTS_RANDOM_OBJECTS_COUNT);
+}
 
 #pragma mark - Private utils
 
