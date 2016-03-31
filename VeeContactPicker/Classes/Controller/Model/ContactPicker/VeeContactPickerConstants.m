@@ -44,6 +44,7 @@
     _navigationBarTranslucent = NO;
     _veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
     _veeContactEmptyViewLabelTextColor = [UIColor blackColor];
+    _veeContactPickerTableViewBottomMargin = 0;
 }
 
 - (void)loadVeeContactTableViewCellDefaultConstants

@@ -29,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIView* statusBarCoverView;
 @property (weak, nonatomic) IBOutlet UISearchBar* searchBar;
 
+#pragma mark - Constraints
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomMarginConstraint;
+
 #pragma mark - Dependencies
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerOptions;
@@ -130,6 +134,7 @@
     _navigationBar.barTintColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
     _navigationBar.translucent = [[VeeContactPickerConstants sharedInstance] navigationBarTranslucent];
     _statusBarCoverView.backgroundColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
+    _tableViewBottomMarginConstraint.constant = [[VeeContactPickerConstants sharedInstance] veeContactPickerTableViewBottomMargin];
     [self showEmptyView:NO];
 }
 

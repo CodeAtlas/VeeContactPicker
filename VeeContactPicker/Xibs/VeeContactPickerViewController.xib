@@ -14,6 +14,7 @@
                 <outlet property="searchBar" destination="Bxf-DJ-a7d" id="Vt9-n9-kD4"/>
                 <outlet property="searchDisplayController" destination="nVF-SD-Cbm" id="je8-VG-jbu"/>
                 <outlet property="statusBarCoverView" destination="rfY-xf-Uux" id="qFy-CI-jkY"/>
+                <outlet property="tableViewBottomMarginConstraint" destination="dpU-la-FgM" id="Ysb-0R-naz"/>
                 <outlet property="titleNavigationItem" destination="vBl-Xv-Isn" id="ndq-2m-JOy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lzU-0Z-sk2"/>
             </connections>
