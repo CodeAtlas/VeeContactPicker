@@ -22,7 +22,7 @@
     [super tearDown];
 }
 
-- (void)testCompleteUnifiedAddres
+- (void)testCompleteUnifiedAddress
 {
     VeePostalAddress * veePostalAddress = [[VeePostalAddress alloc] initWithStreet:@"Campo dei Fiori" city:@"Roma" state:@"Lazio" postal:@"20123" country:@"Italy"];
     NSString* expectedUnifiedAddress = @"Campo dei Fiori, Roma, Lazio, 20123, Italy";
@@ -30,7 +30,7 @@
     NSAssert(isUnifiedAddressCorrect, @"Unified address is %@ but should be %@",[veePostalAddress unifiedAddress], expectedUnifiedAddress);
 }
 
-- (void)testUnifiedAddresWithOnlyCity
+- (void)testUnifiedAddressWithOnlyCity
 {
     VeePostalAddress * veePostalAddress = [[VeePostalAddress alloc] initWithStreet:nil city:@"Roma" state:nil postal:nil country:nil];
     NSString* expectedUnifiedAddress = @"Roma";
@@ -38,7 +38,7 @@
     NSAssert(isUnifiedAddressCorrect, @"Unified address is %@ but should be %@",[veePostalAddress unifiedAddress], expectedUnifiedAddress);
 }
 
-- (void)testUnifiedAddresWithoutParametersShouldBeEmpty
+- (void)testUnifiedAddressWithoutParametersShouldBeEmpty
 {
     VeePostalAddress * veePostalAddress = [[VeePostalAddress alloc] initWithStreet:nil city:nil state:nil postal:nil country:nil];
     NSString* expectedUnifiedAddress = @"";

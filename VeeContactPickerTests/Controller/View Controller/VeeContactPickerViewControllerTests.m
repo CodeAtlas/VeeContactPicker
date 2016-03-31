@@ -47,10 +47,8 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (void)setUp
 {
     [super setUp];
-
     _veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
     _veeContactPickerCustomOptions = [self veeContactPickerCustomOptions];
-
     _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
     _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
     _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:customVeeContacts];
@@ -244,7 +242,5 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     }
     return _veeContactPickerCustomOptions;
 }
-
-//test Custom Options ?
 
 @end

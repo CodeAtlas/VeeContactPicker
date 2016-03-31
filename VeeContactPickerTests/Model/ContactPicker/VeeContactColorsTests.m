@@ -75,10 +75,11 @@ static NSArray<id<VeeContactProt>>* randomVeeContacts;
     NSAssert(isColorForNilVeecontactLightGray, @"Color for nil veeContact is not lightGrayColor");
 }
 
-- (void)testColorForSameVeecontactsShouldBeEqual
+- (void)testColorForVeecontactsWithSameCompositeNameShouldBeEqual
 {
     VeeContact* v1 = [randomVeeContacts firstObject];
-    VeeContact* v2 = [randomVeeContacts firstObject]; //TODO: should be a copy
+    VeeContact* v2 = [randomVeeContacts lastObject];
+    [v2 setCompositeName:v1.compositeName];
     UIColor* colorForVeecontact1 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v1];
     UIColor* colorForVeecontact2 = [_veeContactColorsWithDefaultPalette colorForVeeContact:v2];
     BOOL colorsAreEqual = [colorForVeecontact1 isEqual:colorForVeecontact2];

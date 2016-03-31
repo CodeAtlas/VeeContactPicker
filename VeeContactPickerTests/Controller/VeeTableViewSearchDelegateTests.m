@@ -75,7 +75,7 @@
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be %@ for search ar",[_searchResultDelegateForTesting searchResults],_filteredDataForAr);
 }
 
--(void)testFilterContentForVattelapescaShuoldBeEmpty
+-(void)testFilterContentForVattelapescaShouldBeEmpty
 {
     NSString* searchForVattelapesca = @"Vattelapesca";
     [_veeTableViewSearchDelegate filterContentForSearchText:searchForVattelapesca scope:nil];
