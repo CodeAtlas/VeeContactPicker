@@ -3,19 +3,19 @@
 //
 
 #import "VeeContactFactory.h"
-#import "VeeABAdaptedRecordsImporter.h"
-#import "VeeABRecordAdapter.h"
+#import "VeeABRecordsImporter.h"
+#import "VeeABRecord.h"
 #import "VeeContact.h"
 
 @implementation VeeContactFactory
 
 +(NSArray<id<VeeContactProt>>*)veeContactProtsFromAddressBook:(ABAddressBookRef)addressBook
 {
-    VeeABAdaptedRecordsImporter* abRepositoryImporter = [VeeABAdaptedRecordsImporter new];
-    NSArray<VeeABRecordAdapter*>* adaptedABRecords = [abRepositoryImporter importVeeABAdaptedRecordsFromAddressBook:addressBook];
+    VeeABRecordsImporter* abRepositoryImporter = [VeeABRecordsImporter new];
+    NSArray<VeeABRecord*>* veeABRecords = [abRepositoryImporter importVeeABRecordsFromAddressBook:addressBook];
     NSMutableArray* veeContacts = [NSMutableArray new];
-    for (VeeABRecordAdapter* abAdaptedRecord in adaptedABRecords){
-        id<VeeContactProt> veeContact = [[VeeContact alloc] initWithVeeABRecordAdapter:abAdaptedRecord];
+    for (VeeABRecord* veeABRecord in veeABRecords){
+        id<VeeContactProt> veeContact = [[VeeContact alloc] initWithVeeABRecord:veeABRecord];
         [veeContacts addObject:veeContact];
     }
     return [NSArray arrayWithArray:veeContacts];

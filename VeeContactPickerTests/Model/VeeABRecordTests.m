@@ -4,21 +4,21 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "VeeABRecordAdapter.h"
+#import "VeeABRecord.h"
 #import "VeeAddressBookForTesting.h"
 #import "VeeAddressBookForTestingConstants.h"
 
-@interface VeeABRecordAdapterTests : XCTestCase
+@interface VeeABRecordTests : XCTestCase
 
-@property (nonatomic,strong) VeeABRecordAdapter* veeABRecordComplete;
-@property (nonatomic,strong) VeeABRecordAdapter* veeABRecordUnified;
-@property (nonatomic,strong) NSArray<VeeABRecordAdapter*>* veeABAdaptedRecordsForTesting;
+@property (nonatomic,strong) VeeABRecord* veeABRecordComplete;
+@property (nonatomic,strong) VeeABRecord* veeABRecordUnified;
+@property (nonatomic,strong) NSArray<VeeABRecord*>* veeABRecordsForTesting;
 
 @end
 
 static VeeAddressBookForTesting* veeAddressBookForTesting;
 
-@implementation VeeABRecordAdapterTests
+@implementation VeeABRecordTests
 
 #pragma mark - Class setup
 
@@ -38,9 +38,9 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 -(void)setUp
 {
-    _veeABRecordComplete = [[VeeABRecordAdapter alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting abRecordRefOfCompleteContact]];
-    _veeABRecordUnified = [[VeeABRecordAdapter alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting abRecordRefOfUnifiedContact]];
-    _veeABAdaptedRecordsForTesting = [self veeABAdaptedRecordsFromAddressBookForTesting];
+    _veeABRecordComplete = [[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting abRecordRefOfCompleteContact]];
+    _veeABRecordUnified = [[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:[veeAddressBookForTesting abRecordRefOfUnifiedContact]];
+    _veeABRecordsForTesting = [self veeABRecordsFromAddressBookForTesting];
 }
 
 -(void)tearDown
@@ -171,45 +171,45 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testTestingRecordsCreationCount
 {
-    BOOL isVeeContactsCountCorrect = [_veeABAdaptedRecordsForTesting count] == kVeeTestingContactsNumber;
-    NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [_veeABAdaptedRecordsForTesting count], kVeeTestingContactsNumber);
+    BOOL isVeeContactsCountCorrect = [_veeABRecordsForTesting count] == kVeeTestingContactsNumber;
+    NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [_veeABRecordsForTesting count], kVeeTestingContactsNumber);
 }
 
 - (void)testRecordIdExist
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        BOOL hasAtLeastOneRecordId = [[veeABAdaptedRecord recordIds] count] > 0;
-        NSAssert(hasAtLeastOneRecordId, @"Contact %@ has no recordIds", veeABAdaptedRecord.compositeName);
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        BOOL hasAtLeastOneRecordId = [[veeABRecord recordIds] count] > 0;
+        NSAssert(hasAtLeastOneRecordId, @"Contact %@ has no recordIds", veeABRecord.compositeName);
     }
 }
 
 - (void)testCreatedAtExist
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        NSAssert(veeABAdaptedRecord.createdAt, @"Contact unified has no createdAt date");
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        NSAssert(veeABRecord.createdAt, @"Contact unified has no createdAt date");
     }
 }
 
 - (void)testModifiedAtExist
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        NSAssert(veeABAdaptedRecord.modifiedAt, @"Contact unified has no modifiedAt date");
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        NSAssert(veeABRecord.modifiedAt, @"Contact unified has no modifiedAt date");
     }
 }
 
 - (void)testCreatedAtCantBeAfterModifiedAt
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        BOOL isCreatedAtBeforeOrEqualeModifiedAt = [veeABAdaptedRecord.createdAt compare:veeABAdaptedRecord.modifiedAt] == NSOrderedSame || [veeABAdaptedRecord.createdAt compare:veeABAdaptedRecord.modifiedAt] == NSOrderedAscending;
-        NSAssert(isCreatedAtBeforeOrEqualeModifiedAt, @"%@ createdAt %@, that is after its modifiedAt: %@", veeABAdaptedRecord.compositeName, veeABAdaptedRecord.createdAt, veeABAdaptedRecord.modifiedAt);
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        BOOL isCreatedAtBeforeOrEqualeModifiedAt = [veeABRecord.createdAt compare:veeABRecord.modifiedAt] == NSOrderedSame || [veeABRecord.createdAt compare:veeABRecord.modifiedAt] == NSOrderedAscending;
+        NSAssert(isCreatedAtBeforeOrEqualeModifiedAt, @"%@ createdAt %@, that is after its modifiedAt: %@", veeABRecord.compositeName, veeABRecord.createdAt, veeABRecord.modifiedAt);
     }
 }
 
 - (void)testImageCount
 {
     NSUInteger imageCount = 0;
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        if (veeABAdaptedRecord.thumbnailImage) {
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        if (veeABRecord.thumbnailImage) {
             imageCount++;
         }
     }
@@ -221,8 +221,8 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 - (void)testPhoneNumbersCount
 {
     NSUInteger phoneNumbersCount = 0;
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        phoneNumbersCount += [[veeABAdaptedRecord phoneNumbers] count];
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        phoneNumbersCount += [[veeABRecord phoneNumbers] count];
     }
     
     BOOL isPhoneNumberCountCorrect = phoneNumbersCount == kVeeTestingContactsPhoneNumbersCount;
@@ -231,17 +231,17 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testPhoneNumberDuplicates
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        NSSet* phoneNumberSet = [NSSet setWithArray:veeABAdaptedRecord.phoneNumbers];
-        NSAssert([phoneNumberSet count] == [veeABAdaptedRecord.phoneNumbers count], @"Phone numbers contain duplicates!");
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        NSSet* phoneNumberSet = [NSSet setWithArray:veeABRecord.phoneNumbers];
+        NSAssert([phoneNumberSet count] == [veeABRecord.phoneNumbers count], @"Phone numbers contain duplicates!");
     }
 }
 
 - (void)testEmailsCount
 {
     NSUInteger emailsCount = 0;
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        emailsCount += [[veeABAdaptedRecord emails] count];
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        emailsCount += [[veeABRecord emails] count];
     }
     
     BOOL isEmailCountCorrect = emailsCount == kVeeTestingContactsEmailsCount;
@@ -250,19 +250,19 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testEmailsNoDuplicate
 {
-    for (VeeABRecordAdapter* veeABAdaptedRecord in _veeABAdaptedRecordsForTesting) {
-        NSSet* emailSet = [NSSet setWithArray:veeABAdaptedRecord.emails];
-        NSAssert([emailSet count] == [veeABAdaptedRecord.emails count], @"Emails contain duplicates!");
+    for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
+        NSSet* emailSet = [NSSet setWithArray:veeABRecord.emails];
+        NSAssert([emailSet count] == [veeABRecord.emails count], @"Emails contain duplicates!");
     }
 }
 
 #pragma mark - Private utils
 
--(NSArray*)veeABAdaptedRecordsFromAddressBookForTesting
+-(NSArray*)veeABRecordsFromAddressBookForTesting
 {
     NSMutableArray* veeABRecordsMutable = [NSMutableArray new];
     for (id abRecordRefBoxed in [veeAddressBookForTesting abRecordRefsOfTestingContacts]){
-        [veeABRecordsMutable addObject:[[VeeABRecordAdapter alloc] initWithLinkedPeopleOfABRecord:(__bridge ABRecordRef)(abRecordRefBoxed)]];
+        [veeABRecordsMutable addObject:[[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:(__bridge ABRecordRef)(abRecordRefBoxed)]];
     }
     return [NSArray arrayWithArray:veeABRecordsMutable];
 }

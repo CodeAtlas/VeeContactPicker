@@ -3,14 +3,14 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeABAdaptedRecordsImporter.h"
-#import "VeeABRecordAdapter.h"
+#import "VeeABRecordsImporter.h"
+#import "VeeABRecord.h"
 
-@implementation VeeABAdaptedRecordsImporter
+@implementation VeeABRecordsImporter
 
 #pragma mark - Public methods
 
-- (NSArray<VeeABRecordAdapter*>*)importVeeABAdaptedRecordsFromAddressBook:(ABAddressBookRef)addressBook
+- (NSArray<VeeABRecord*>*)importVeeABRecordsFromAddressBook:(ABAddressBookRef)addressBook
 {
     if (ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusAuthorized){
         NSLog(@"Can't import ABRepositoryData because ABAuthStatus is not authorized");
@@ -19,23 +19,23 @@
 
     NSParameterAssert(addressBook);
     NSArray* allSources = (__bridge_transfer NSArray*)(ABAddressBookCopyArrayOfAllSources(addressBook));
-    NSMutableSet<VeeABRecordAdapter*>* adaptedRecords = [NSMutableSet new];
+    NSMutableSet<VeeABRecord*>* veeABRecords = [NSMutableSet new];
 
     for (int s = 0; s < allSources.count; s++) {
         ABRecordRef source = (__bridge ABRecordRef)(allSources[s]);
-        [adaptedRecords addObjectsFromArray:[self importVeeABRecordsFromSingleSource:source ofAddressBook:addressBook]];
+        [veeABRecords addObjectsFromArray:[self importVeeABRecordsFromSingleSource:source ofAddressBook:addressBook]];
     }
-    return [NSArray arrayWithArray:[adaptedRecords allObjects]];
+    return [NSArray arrayWithArray:[veeABRecords allObjects]];
 }
 
-- (NSArray<VeeABRecordAdapter*>*)importVeeABRecordsFromSingleSource:(ABRecordRef)source ofAddressBook:(ABAddressBookRef)addressBook
+- (NSArray<VeeABRecord*>*)importVeeABRecordsFromSingleSource:(ABRecordRef)source ofAddressBook:(ABAddressBookRef)addressBook
 {
     NSMutableArray* abRepositoryOfSingleSourceData = [NSMutableArray new];
     NSArray* peopleInSource = (__bridge NSArray*)ABAddressBookCopyArrayOfAllPeopleInSource(addressBook, source);
     for (int i = 0; i < peopleInSource.count; i++) {
         ABRecordRef abRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(peopleInSource), i);
-        VeeABRecordAdapter* veeAdaptedRecord = [[VeeABRecordAdapter alloc] initWithLinkedPeopleOfABRecord:abRecord];
-        [abRepositoryOfSingleSourceData addObject:veeAdaptedRecord];
+        VeeABRecord* veeRecord = [[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:abRecord];
+        [abRepositoryOfSingleSourceData addObject:veeRecord];
     }
     return [NSArray arrayWithArray:abRepositoryOfSingleSourceData];
 }

@@ -4,17 +4,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "VeeABAdaptedRecordsImporter.h"
+#import "VeeABRecordsImporter.h"
 @import AddressBook;
 
-@interface VeeABAdaptedRecordsImporterTests : XCTestCase
+@interface VeeABRecordsImporterTests : XCTestCase
 
 @property (nonatomic) ABAddressBookRef addressBook;
 @property (nonatomic,assign) NSUInteger numberOfRecordsInAddressBook;
 
 @end
 
-@implementation VeeABAdaptedRecordsImporterTests
+@implementation VeeABRecordsImporterTests
 
 #pragma mark - Methods setup
 
@@ -32,8 +32,8 @@
 
 - (void)testNumberOfImportedRecords
 {
-    VeeABAdaptedRecordsImporter* veeABAdaptedRecordsImporter = [VeeABAdaptedRecordsImporter new];
-    NSUInteger numberOfImportedRecords = [[veeABAdaptedRecordsImporter importVeeABAdaptedRecordsFromAddressBook:_addressBook] count];
+    VeeABRecordsImporter* veeABRecordsImporter = [VeeABRecordsImporter new];
+    NSUInteger numberOfImportedRecords = [[veeABRecordsImporter importVeeABRecordsFromAddressBook:_addressBook] count];
     BOOL isNumberOfImportedRecordsCorrect = _numberOfRecordsInAddressBook == numberOfImportedRecords;
     NSAssert(isNumberOfImportedRecordsCorrect, @"Number of imported records is %zd but should be %zd",numberOfImportedRecords,_numberOfRecordsInAddressBook);
 }

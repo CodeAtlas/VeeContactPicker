@@ -5,7 +5,7 @@
 
 #import "VeeContact.h"
 #import "VeeIsEmpty.h"
-#import "VeeABRecordAdapter.h"
+#import "VeeABRecord.h"
 #import "VeePostalAddress.h"
 #import "NSObject+VeeCommons.h"
 
@@ -13,23 +13,23 @@
 
 #pragma mark - Init
 
--(instancetype)initWithVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter
+-(instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord
 {
     self = [super init];
     if (self) {
-        _recordIds = [veeABRecordAdapter recordIds];
-        _firstName = [veeABRecordAdapter firstName];
-        _lastName = [veeABRecordAdapter lastName];
-        _middleName = [veeABRecordAdapter middleName];
-        _compositeName = [veeABRecordAdapter compositeName];
-        _nickname = [veeABRecordAdapter nickname];
-        _organizationName = [veeABRecordAdapter organizationName];
-        _thumbnailImage = [veeABRecordAdapter thumbnailImage];
-        _phoneNumbers = [veeABRecordAdapter phoneNumbers];
-        _emails = [veeABRecordAdapter emails];
-        _postalAddresses = [self postalAddressesFromVeeABRecordAdapter:veeABRecordAdapter];
-        _twitterAccounts = [veeABRecordAdapter twitterAccounts];
-        _facebookAccounts = [veeABRecordAdapter facebookAccounts];
+        _recordIds = [veeABRecord recordIds];
+        _firstName = [veeABRecord firstName];
+        _lastName = [veeABRecord lastName];
+        _middleName = [veeABRecord middleName];
+        _compositeName = [veeABRecord compositeName];
+        _nickname = [veeABRecord nickname];
+        _organizationName = [veeABRecord organizationName];
+        _thumbnailImage = [veeABRecord thumbnailImage];
+        _phoneNumbers = [veeABRecord phoneNumbers];
+        _emails = [veeABRecord emails];
+        _postalAddresses = [self postalAddressesFromVeeABRecord:veeABRecord];
+        _twitterAccounts = [veeABRecord twitterAccounts];
+        _facebookAccounts = [veeABRecord facebookAccounts];
     }
     return self;
 }
@@ -53,10 +53,10 @@
 
 #pragma mark - Private utils
 
--(NSArray<id<VeePostalAddressProt>>*)postalAddressesFromVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter
+-(NSArray<id<VeePostalAddressProt>>*)postalAddressesFromVeeABRecord:(VeeABRecord*)veeABRecord
 {
     NSMutableArray* veePostalAddressesMutable = [NSMutableArray new];
-    for (NSDictionary* postalDict in veeABRecordAdapter.postalAddresses){
+    for (NSDictionary* postalDict in veeABRecord.postalAddresses){
         VeePostalAddress* veePostalAddress = [[VeePostalAddress alloc] initWithStreet:postalDict[@"street"] city:postalDict[@"city"] state:postalDict[@"state"] postal:postalDict[@"postal"] country:postalDict[@"country"]];
         [veePostalAddressesMutable addObject:veePostalAddress];
     }

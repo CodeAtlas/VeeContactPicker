@@ -7,7 +7,7 @@
 @import UIKit;
 @import Foundation;
 
-@interface VeeABRecordAdapter : NSObject
+@interface VeeABRecord : NSObject
 
 - (instancetype)initWithLinkedPeopleOfABRecord:(ABRecordRef)abRecordRef;
 

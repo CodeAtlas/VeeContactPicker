@@ -7,13 +7,13 @@
 @import UIKit;
 #import "VeeContactProt.h"
 #import "VeePostalAddressProt.h"
-@class VeeABRecordAdapter;
+@class VeeABRecord;
 
 @interface VeeContact : NSObject <VeeContactProt>
 
 #pragma mark - Init
 
-- (instancetype)initWithVeeABRecordAdapter:(VeeABRecordAdapter*)veeABRecordAdapter;
+- (instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord;
 - (instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails;
 
 #pragma mark - Readonly

@@ -3,9 +3,9 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeABRecordAdapter.h"
+#import "VeeABRecord.h"
 
-@interface VeeABRecordAdapter()
+@interface VeeABRecord()
 
 @property (nonatomic, strong) NSMutableSet<NSNumber*>* recordIdsMutable;
 @property (nonatomic, strong) NSMutableSet<NSString*>* phoneNumbersMutable;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation VeeABRecordAdapter
+@implementation VeeABRecord
 
 #pragma mark - Init
 
