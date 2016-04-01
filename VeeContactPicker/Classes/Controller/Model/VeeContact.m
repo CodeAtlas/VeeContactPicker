@@ -8,6 +8,7 @@
 #import "VeeABRecord.h"
 #import "VeePostalAddress.h"
 #import "NSObject+VeeCommons.h"
+#import "VeeAddressBook.h"
 
 @implementation VeeContact
 
@@ -67,12 +68,38 @@
 
 - (NSString*)displayName
 {
+    if ([VeeAddressBook isABSortOrderingByFirstName]){
+        return [self displayNameOrederedByFirstName];
+    }
+    else{
+        return [self displayNameOrederedByLastName];
+    }
+}
+
+-(NSString*)displayNameOrederedByFirstName
+{
     if (_firstName && _lastName) {
         if (_middleName) {
             return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _lastName]];
         }
         return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@", _lastName]];
     }
+    return [self displayNameForNonCompleteCompositeName];
+}
+
+-(NSString*)displayNameOrederedByLastName
+{
+    if (_firstName && _lastName) {
+        if (_middleName) {
+            return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _firstName]];
+        }
+        return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@", _firstName]];
+    }
+    return [self displayNameForNonCompleteCompositeName];
+}
+
+-(NSString*)displayNameForNonCompleteCompositeName
+{
     if (_organizationName) {
         return _organizationName;
     }
@@ -114,14 +141,23 @@
 
 - (NSComparisonResult)compare:(VeeContact*)otherVeeContact
 {
-    NSString* firstSortProperty = @"firstName";
-    NSString* secondSortProperty = @"lastName";
+    NSString* firstSortProperty;
+    NSString* secondSortProperty;
+    
+    if ([VeeAddressBook isABSortOrderingByFirstName]){
+        firstSortProperty = @"firstName";
+        secondSortProperty = @"lastName";
+    }
+    else{
+        firstSortProperty = @"lastName";
+        secondSortProperty = @"firstName";
+    }
 
     NSString* firstContactSortProperty = [self sortPropertyOfVeeContact:self withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
     NSString* secondContactSortProperty = [self sortPropertyOfVeeContact:otherVeeContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
     NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
     if (result == NSOrderedSame) {
-        return [[self displayName] compare:otherVeeContact.displayName options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+        return [[self displayName] compare:[otherVeeContact displayName] options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
     }
     else {
         return result;

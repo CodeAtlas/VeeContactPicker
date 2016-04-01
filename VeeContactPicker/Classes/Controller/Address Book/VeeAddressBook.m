@@ -31,4 +31,9 @@
     });
 }
 
++(BOOL)isABSortOrderingByFirstName
+{
+    return ABPersonGetSortOrdering() == kABPersonSortByFirstName;
+}
+
 @end

@@ -8,6 +8,9 @@
 #import "VeeAddressBookForTestingConstants.h"
 #import "XCTest+VeeCommons.h"
 #import <XCTest/XCTest.h>
+#import "OCMock.h"
+#import "VeeAddressBook.h"
+@import AddressBook;
 
 @interface VeeContactTests : XCTestCase
 
@@ -34,25 +37,43 @@
 
 #pragma mark - Display name
 
-- (void)testVeeContactCompleteDisplayName
+- (void)testVeeContactCompleteDisplayNameForOrderingByFirstName
 {
-    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:kCompleteVeeContactDisplayName];
-    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, kCompleteVeeContactDisplayName);
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(YES);
+    
+    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:kCompleteVeeContactDisplayNameFirstNameFirst];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, kCompleteVeeContactDisplayNameFirstNameFirst);
+}
+
+- (void)testVeeContactCompleteDisplayNameForOrderingByLastName
+{
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(NO);
+    
+    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:kCompleteVeeContactDisplayNameLastNameFirst];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, kCompleteVeeContactDisplayNameLastNameFirst);
 }
 
 - (void)testVeeContactCompleteDisplayNameWithoutFirstName
 {
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(YES);
+    
     [self nullifyIvarWithName:@"firstName" ofObject:_veeContactComplete];
     
-    NSString* aspectedDisplayName = _veeContactComplete.organizationName;
+    NSString* expectedDisplayName = _veeContactComplete.organizationName;
     
-    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:aspectedDisplayName];
-    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, aspectedDisplayName);
+    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:expectedDisplayName];
+    NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, expectedDisplayName);
 }
 
 
 - (void)testVeeContactCompleteDisplayNameWithoutLastName
 {
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(NO);
+    
     [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
     
     NSString* aspectedDisplayName = _veeContactComplete.organizationName;
@@ -186,9 +207,11 @@
 
 #pragma mark - Sorting
 
--(void)testVeeContactAreSortedByFirstName
+-(void)testVeeContactSortingByFirstName
 {
     NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(YES);
     
     VeeContact* bob = veeContacts[0];
     [bob setValue:@"Bob" forKey:@"firstName"];
@@ -204,14 +227,41 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSorted = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:bob];
-    NSAssert(areSorted, @"Alice ALastName, Andrea and Bob ALastName are not sorted properly");
+    BOOL areSortedByFirstName = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:bob];
+    NSAssert(areSortedByFirstName, @"Contacts are not sorted properly by first name");
+}
+
+-(void)testVeeContactSortingByLastName
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(NO);
+    
+    VeeContact* carl = veeContacts[0];
+    [carl setValue:@"Carl" forKey:@"lastName"];
+    [self nullifyIvarWithName:@"firstName" ofObject:carl];
+    
+    VeeContact* bob = veeContacts[1];
+    [bob setValue:@"AFirstName" forKey:@"firstName"];
+    [bob setValue:@"Bob" forKey:@"lastName"];
+    
+    VeeContact* alice = veeContacts[2];
+    [alice setValue:@"AFirstName" forKey:@"firstName"];
+    [alice setValue:@"Alice" forKey:@"lastName"];
+
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    
+    BOOL areSortedByLastName = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:carl];
+    NSAssert(areSortedByLastName, @"Contacts are not sorted properly by last name");
 }
 
 -(void)testVeeContactWithSameFirstNameAreSortedByDisplayName
 {
     NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
-    
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(YES);
     VeeContact* aliceC = veeContacts[0];
     [aliceC setValue:@"Alice" forKey:@"firstName"];
     [aliceC setValue:@"C" forKey:@"lastName"];
@@ -225,12 +275,39 @@
     VeeContact* aliceB = veeContacts[2];
     [aliceB setValue:@"Alice" forKey:@"firstName"];
     [aliceB setValue:@"B" forKey:@"middleName"];
-    [aliceC setValue:@"D" forKey:@"lastName"]; //Ignored because middle name has the priority
+    [aliceB setValue:@"D" forKey:@"lastName"]; //Ignored because middle name has the priority
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
     BOOL areSorted = [[veeContacts firstObject] isEqual:aliceA] && [[veeContacts lastObject] isEqual:aliceC];
-    NSAssert(areSorted, @"Alice A, Alice B and Alice C are not sorted properly");
+    NSAssert(areSorted, @"Contacts with same firstName are not sorted properly");
+}
+
+-(void)testVeeContactWithSameLastNameAreSortedByDisplayName
+{
+    NSArray* veeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:3];
+    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
+    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(YES);
+    
+    VeeContact* aliceC = veeContacts[0];
+    [aliceC setValue:@"C" forKey:@"firstName"];
+    [aliceC setValue:@"Surname" forKey:@"lastName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:aliceC];
+    
+    VeeContact* aliceA = veeContacts[1];
+    [aliceA setValue:@"A" forKey:@"firstName"];
+    [aliceA setValue:@"Surname" forKey:@"lastName"];
+    [self nullifyIvarWithName:@"middleName" ofObject:aliceA];
+    
+    VeeContact* aliceB = veeContacts[2];
+    [aliceB setValue:@"B" forKey:@"firstName"];
+    [aliceB setValue:@"D" forKey:@"middleName"]; //Ignored because first name has the priority
+    [aliceB setValue:@"Surname" forKey:@"lastName"];
+    
+    veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
+    
+    BOOL areSorted = [[veeContacts firstObject] isEqual:aliceA] && [[veeContacts lastObject] isEqual:aliceC];
+    NSAssert(areSorted, @"Contacts with same lastName are not sorted properly");
 }
 
 -(void)testVeeContactWithNoLastNameSorting
@@ -284,5 +361,6 @@
     }
     return NO;
 }
+
 
 @end

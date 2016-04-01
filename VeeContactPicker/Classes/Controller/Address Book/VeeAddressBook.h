@@ -14,5 +14,6 @@
 - (instancetype)initWithVeeABDelegate:(id<VeeABDelegate>)delegate;
 + (BOOL)hasABPermissions;
 - (void)askABPermissionsWithDelegateCallback:(ABAddressBookRef)addressBookRef;
++ (BOOL)isABSortOrderingByFirstName;
 
 @end
