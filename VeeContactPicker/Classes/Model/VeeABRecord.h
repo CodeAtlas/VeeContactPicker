@@ -28,4 +28,12 @@
 @property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
 @property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
 
+#pragma mark - Postal address keys constants
+
+extern NSString* const kVeePostalAddressStreetKey;
+extern NSString* const kVeePostalAddressCityKey;
+extern NSString* const kVeePostalAddressStateKey;
+extern NSString* const kVeePostalAddressPostalCodeKey;
+extern NSString* const kVeePostalAddressCountryKey;
+
 @end

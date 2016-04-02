@@ -145,7 +145,6 @@
             }
             [_phoneNumbersMutable addObject:phoneNumber];
         }
-        CFRelease(phoneNumbers);
     }
 }
 
@@ -161,7 +160,6 @@
             }
             [_emailsMutable addObject:email];
         }
-        CFRelease(emails);
     }
 }
 
@@ -171,8 +169,7 @@
     CFIndex postalAddressCount = ABMultiValueGetCount(postalAddresses);
     if (postalAddressCount > 0){
         for (CFIndex i = 0; i < postalAddressCount; i++) {
-            CFDictionaryRef postalDictionaryRef = ABMultiValueCopyValueAtIndex(postalAddresses, i);
-            NSDictionary* postalDict = [self postalDictFromPostalDictRef:postalDictionaryRef];
+            NSDictionary* postalDict = CFBridgingRelease(ABMultiValueCopyValueAtIndex(postalAddresses, i));
             if (_postalAddressesMutable == nil){
                 _postalAddressesMutable = [NSMutableSet new];
             }
@@ -180,36 +177,7 @@
                 [_postalAddressesMutable addObject:postalDict];
             }
         }
-        CFRelease(postalAddresses);
     }
-}
-
-- (NSDictionary*)postalDictFromPostalDictRef:(CFDictionaryRef)postalDictRef
-{
-    NSString* street = CFDictionaryGetValue(postalDictRef, kABPersonAddressStreetKey);
-    NSString* city = CFDictionaryGetValue(postalDictRef, kABPersonAddressCityKey);
-    NSString* state = CFDictionaryGetValue(postalDictRef, kABPersonAddressStateKey);
-    NSString* postal = CFDictionaryGetValue(postalDictRef, kABPersonAddressZIPKey);
-    NSString* country = CFDictionaryGetValue(postalDictRef, kABPersonAddressCountryKey);
-    
-    NSMutableDictionary* postalDictMutable = [NSMutableDictionary new];
-    if (street) {
-        [postalDictMutable setObject:street forKey:@"street"];
-    }
-    if (city) {
-        [postalDictMutable setObject:city forKey:@"city"];
-    }
-    if (state) {
-        [postalDictMutable setObject:state forKey:@"state"];
-    }
-    if (postal) {
-        [postalDictMutable setObject:postal forKey:@"postal"];
-    }
-    if (country) {
-        [postalDictMutable setObject:country forKey:@"country"];
-    }
-    
-    return [NSDictionary dictionaryWithDictionary:postalDictMutable];
 }
 
 -(void)addWebsitesFromABRecord:(ABRecordRef)abRecord
@@ -221,9 +189,6 @@
             _websitesMutable = [NSMutableSet new];
         }
         [_websitesMutable addObject:website];
-    }
-    if (websites) {
-        CFRelease(websites);
     }
 }
 
@@ -288,5 +253,13 @@
 {
     return [NSArray arrayWithArray:[_facebookAccountsMutable allObjects]];
 }
+
+#pragma mark - Postal address keys constants
+
+NSString* const kVeePostalAddressStreetKey = @"Street";
+NSString* const kVeePostalAddressCityKey = @"City";
+NSString* const kVeePostalAddressStateKey = @"State";
+NSString* const kVeePostalAddressPostalCodeKey = @"ZIP";
+NSString* const kVeePostalAddressCountryKey = @"Country";
 
 @end

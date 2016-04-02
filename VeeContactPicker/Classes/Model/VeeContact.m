@@ -58,7 +58,8 @@
 {
     NSMutableArray* veePostalAddressesMutable = [NSMutableArray new];
     for (NSDictionary* postalDict in veeABRecord.postalAddresses){
-        VeePostalAddress* veePostalAddress = [[VeePostalAddress alloc] initWithStreet:postalDict[@"street"] city:postalDict[@"city"] state:postalDict[@"state"] postal:postalDict[@"postal"] country:postalDict[@"country"]];
+        VeePostalAddress* veePostalAddress = [[VeePostalAddress alloc] initWithStreet:postalDict[kVeePostalAddressStreetKey] city:postalDict[kVeePostalAddressCityKey] state:postalDict[kVeePostalAddressStateKey] postal:postalDict[kVeePostalAddressPostalCodeKey] country:postalDict[kVeePostalAddressCountryKey]];
+
         [veePostalAddressesMutable addObject:veePostalAddress];
     }
     return [NSArray arrayWithArray:veePostalAddressesMutable];
