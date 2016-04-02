@@ -35,7 +35,7 @@
 
 - (void)createWithLinkedPeopleFromABRecord:(ABRecordRef)abRecord
 {
-    NSArray* linkedPeople = (__bridge NSArray*)ABPersonCopyArrayOfAllLinkedPeople(abRecord);
+    NSArray* linkedPeople = CFBridgingRelease(ABPersonCopyArrayOfAllLinkedPeople(abRecord));
     for (int i = 0; i < linkedPeople.count; i++) {
         ABRecordRef linkedABRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedPeople), i);
         [self updateFromABRecord:linkedABRecord];
@@ -168,25 +168,29 @@
 -(void)addPostalAddressesFromABRecord:(ABRecordRef)abRecord
 {
     ABMultiValueRef postalAddresses = ABRecordCopyValue(abRecord, kABPersonAddressProperty);
-    for (CFIndex i = 0; i < ABMultiValueGetCount(postalAddresses); i++) {
-        NSDictionary* postalDict = [self postalDictFromPostalDictRef:ABMultiValueCopyValueAtIndex(postalAddresses, i)];
-        if (_postalAddressesMutable == nil){
-            _postalAddressesMutable = [NSMutableSet new];
+    CFIndex postalAddressCount = ABMultiValueGetCount(postalAddresses);
+    if (postalAddressCount > 0){
+        for (CFIndex i = 0; i < postalAddressCount; i++) {
+            CFDictionaryRef postalDictionaryRef = ABMultiValueCopyValueAtIndex(postalAddresses, i);
+            NSDictionary* postalDict = [self postalDictFromPostalDictRef:postalDictionaryRef];
+            if (_postalAddressesMutable == nil){
+                _postalAddressesMutable = [NSMutableSet new];
+            }
+            if (postalDict){
+                [_postalAddressesMutable addObject:postalDict];
+            }
         }
-        [_postalAddressesMutable addObject:postalDict];
-        if (postalAddresses) {
-            CFRelease(postalAddresses);
-        }
+        CFRelease(postalAddresses);
     }
 }
 
 - (NSDictionary*)postalDictFromPostalDictRef:(CFDictionaryRef)postalDictRef
 {
-    NSString* street = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressStreetKey);
-    NSString* city = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressCityKey);
-    NSString* state = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressStateKey);
-    NSString* postal = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressZIPKey);
-    NSString* country = (NSString*)CFDictionaryGetValue(postalDictRef, kABPersonAddressCountryKey);
+    NSString* street = CFDictionaryGetValue(postalDictRef, kABPersonAddressStreetKey);
+    NSString* city = CFDictionaryGetValue(postalDictRef, kABPersonAddressCityKey);
+    NSString* state = CFDictionaryGetValue(postalDictRef, kABPersonAddressStateKey);
+    NSString* postal = CFDictionaryGetValue(postalDictRef, kABPersonAddressZIPKey);
+    NSString* country = CFDictionaryGetValue(postalDictRef, kABPersonAddressCountryKey);
     
     NSMutableDictionary* postalDictMutable = [NSMutableDictionary new];
     if (street) {
@@ -227,7 +231,7 @@
 {
     ABMultiValueRef socialAccounts = ABRecordCopyValue(person, kABPersonSocialProfileProperty);
     for (CFIndex i = 0; i < ABMultiValueGetCount(socialAccounts); i++) {
-        NSDictionary* socialDict = (__bridge_transfer NSDictionary*)ABMultiValueCopyValueAtIndex(socialAccounts, i);
+        NSDictionary* socialDict = CFBridgingRelease(ABMultiValueCopyValueAtIndex(socialAccounts, i));
         if (socialDict) {
             NSString* service = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
             NSString* username = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
