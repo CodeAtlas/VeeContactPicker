@@ -113,18 +113,18 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 {
     NSDictionary* corsoSempioneDict;
     for (NSDictionary* postalAddressDict in _veeABRecordComplete.postalAddresses){
-        if ([postalAddressDict[@"street"] isEqualToString:@"Corso Sempione"]){
+        if ([postalAddressDict[kVeePostalAddressStreetKey] isEqualToString:@"Corso Sempione"]){
             corsoSempioneDict = postalAddressDict;
         }
     }
     
     NSAssert(corsoSempioneDict,@"Corso Sempione address not found");
 
-    BOOL isStreetCorrect = [corsoSempioneDict[@"street"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneStreet];
-    BOOL isCityCorrect = [corsoSempioneDict[@"city"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCity];
-    BOOL isStateCorrect = [corsoSempioneDict[@"state"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneState];
-    BOOL isPostalCorrect = [corsoSempioneDict[@"postal"] isEqualToString:kCompleteVeeContactPostalCorsoSempionePostal];
-    BOOL isCountryCorrect = [corsoSempioneDict[@"country"] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCountry];
+    BOOL isStreetCorrect = [corsoSempioneDict[kVeePostalAddressStreetKey] isEqualToString:kCompleteVeeContactPostalCorsoSempioneStreet];
+    BOOL isCityCorrect = [corsoSempioneDict[kVeePostalAddressCityKey] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCity];
+    BOOL isStateCorrect = [corsoSempioneDict[kVeePostalAddressStateKey] isEqualToString:kCompleteVeeContactPostalCorsoSempioneState];
+    BOOL isPostalCorrect = [corsoSempioneDict[kVeePostalAddressPostalCodeKey] isEqualToString:kCompleteVeeContactPostalCorsoSempionePostal];
+    BOOL isCountryCorrect = [corsoSempioneDict[kVeePostalAddressCountryKey] isEqualToString:kCompleteVeeContactPostalCorsoSempioneCountry];
 
     NSAssert(isStreetCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"street"], kCompleteVeeContactPostalCorsoSempioneStreet);
     NSAssert(isCityCorrect, @"Contact complete postal street is %@ but should be %@", corsoSempioneDict[@"city"], kCompleteVeeContactPostalCorsoSempioneCity);
