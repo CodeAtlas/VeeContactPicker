@@ -14,5 +14,7 @@
 @required
 
 - (void)didSelectABContact:(id<VeeContactProt>)abContact;
+- (void)didCancelABContactSelection;
+- (void)didFailToAccessABContacts;
 
 @end

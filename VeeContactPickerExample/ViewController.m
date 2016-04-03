@@ -53,4 +53,14 @@
     _selectedContactLabel.text = [NSString stringWithFormat:@"Last selected contact: %@", veeContact.displayName];
 }
 
+-(void)didCancelABContactSelection
+{
+    NSLog(@"No contact was selected");
+}
+
+-(void)didFailToAccessABContacts
+{
+    NSLog(@"Failed to access contacts. Have you accepted Address book permissions?");
+}
+
 @end

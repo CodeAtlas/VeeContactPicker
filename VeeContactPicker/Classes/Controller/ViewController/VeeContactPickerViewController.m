@@ -239,7 +239,7 @@
     else {
         NSLog(@"Warning - address book permissions not granted");
         [self showEmptyView:YES];
-        //TODO: call delegate with fail
+        [_contactPickerDelegate didFailToAccessABContacts];
     }
 }
 
@@ -293,6 +293,7 @@
 
 - (IBAction)cancelBarButtonItemPressed:(id)sender
 {
+    [_contactPickerDelegate didCancelABContactSelection];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
