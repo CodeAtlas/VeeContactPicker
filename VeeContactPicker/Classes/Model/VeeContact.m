@@ -189,9 +189,6 @@
     NSString* secondContactSortValue = [self sortPropertyOfVeeContact:otherVeeContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
     NSComparisonResult result = [firstContactSortValue compare:secondContactSortValue options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
 
-    if ([[self compositeName] isEqualToString:@"Andrea Barbieri"]) {
-        NSLog(@"Andrea Barbieri compared to %@ == %zd", [otherVeeContact displayName], result);
-    }
     if (result == NSOrderedSame) {
         return [[self displayName] compare:[otherVeeContact displayName] options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
     }
