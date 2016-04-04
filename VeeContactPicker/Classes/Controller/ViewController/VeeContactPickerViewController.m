@@ -247,16 +247,18 @@
 
 - (void)showEmptyView:(BOOL)show
 {
-    if (show){
-        _emptyViewLabel.hidden = NO;
-        _contactsTableView.hidden = YES;
-        _searchBar.hidden = YES;
-    }
-    else{
-        _emptyViewLabel.hidden = YES;
-        _contactsTableView.hidden = NO;
-        _searchBar.hidden = NO;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (show){
+            _emptyViewLabel.hidden = NO;
+            _contactsTableView.hidden = YES;
+            _searchBar.hidden = YES;
+        }
+        else{
+            _emptyViewLabel.hidden = YES;
+            _contactsTableView.hidden = NO;
+            _searchBar.hidden = NO;
+        }
+    });
 }
 
 #pragma mark - TableView delegate
