@@ -15,7 +15,7 @@
 		8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8606969B1CA1618F00997F09 /* VeeContactFactory.m */; };
 		860C626D1C28521200876682 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626C1C28521200876682 /* main.m */; };
 		860C62701C28521200876682 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626F1C28521200876682 /* AppDelegate.m */; };
-		860C62731C28521200876682 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62721C28521200876682 /* ViewController.m */; };
+		860C62731C28521200876682 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C62721C28521200876682 /* ExampleViewController.m */; };
 		860C62761C28521200876682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62741C28521200876682 /* Main.storyboard */; };
 		860C62781C28521200876682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 860C62771C28521200876682 /* Assets.xcassets */; };
 		860C627B1C28521200876682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62791C28521200876682 /* LaunchScreen.storyboard */; };
@@ -125,8 +125,8 @@
 		860C626C1C28521200876682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		860C626E1C28521200876682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		860C626F1C28521200876682 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		860C62711C28521200876682 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		860C62721C28521200876682 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		860C62711C28521200876682 /* ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		860C62721C28521200876682 /* ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		860C62751C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		860C62771C28521200876682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		860C627A1C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -344,8 +344,8 @@
 				860C627C1C28521200876682 /* Info.plist */,
 				860C62791C28521200876682 /* LaunchScreen.storyboard */,
 				860C62741C28521200876682 /* Main.storyboard */,
-				860C62711C28521200876682 /* ViewController.h */,
-				860C62721C28521200876682 /* ViewController.m */,
+				860C62711C28521200876682 /* ExampleViewController.h */,
+				860C62721C28521200876682 /* ExampleViewController.m */,
 			);
 			path = VeeContactPickerExample;
 			sourceTree = "<group>";
@@ -895,7 +895,7 @@
 				860C62AB1C28528E00876682 /* VeeContactPickerViewController.m in Sources */,
 				867AD8771CA04300009A26A2 /* VeeIsEmpty.m in Sources */,
 				86B756AE1CAAE14C0033D286 /* VeePostalAddress.m in Sources */,
-				860C62731C28521200876682 /* ViewController.m in Sources */,
+				860C62731C28521200876682 /* ExampleViewController.m in Sources */,
 				8644055D1CA970970003B355 /* VeeContactCellConfiguration.m in Sources */,
 				86DCEF001C96DD4900EC7FD6 /* VeeContactColors.m in Sources */,
 				862F859F1CA14435004EF57F /* VeeABRecord.m in Sources */,

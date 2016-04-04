@@ -6,15 +6,15 @@
 #import "VeeContact.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactsForTestingFactory.h"
-#import "ViewController.h"
+#import "ExampleViewController.h"
 
-@interface ViewController ()
+@interface ExampleViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel* selectedContactLabel;
 
 @end
 
-@implementation ViewController
+@implementation ExampleViewController
 
 - (void)viewDidLoad
 {
