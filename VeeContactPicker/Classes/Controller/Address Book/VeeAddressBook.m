@@ -27,11 +27,11 @@
 - (void)askABPermissionsWithDelegateCallback:(ABAddressBookRef)addressBookRef
 {
     ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-            [_delegate abPermissionsGranted:granted];
+        [_delegate abPermissionsGranted:granted];
     });
 }
 
-+(BOOL)isABSortOrderingByFirstName
++ (BOOL)isABSortOrderingByFirstName
 {
     return ABPersonGetSortOrdering() == kABPersonSortByFirstName;
 }

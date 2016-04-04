@@ -3,10 +3,10 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
+#import "VeePostalAddressProt.h"
 #import "VeeSectionable.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VeePostalAddressProt.h"
 
 @protocol VeeContactProt <NSObject, VeeSectionableProt>
 
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSArray<NSString*>* emails;
 
 - (NSString*)displayName;
+- (NSString*)displayNameSortedForABOptions;
 - (NSString*)sectionIdentifier;
 
 + (NSPredicate*)searchPredicateForSearchString;
@@ -29,7 +30,7 @@
 @optional
 
 @property (nonatomic, readonly, strong) NSArray<NSNumber*>* recordIds;
-@property (nonatomic, strong) NSArray<id<VeePostalAddressProt>>* postalAddresses;
+@property (nonatomic, strong) NSArray<id<VeePostalAddressProt> >* postalAddresses;
 @property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
 @property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
 
