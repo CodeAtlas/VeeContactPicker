@@ -9,6 +9,7 @@
 #import "VeeContactPickerOptions.h"
 #import "VeeContactColors.h"
 #import "UIImageView+Letters.h"
+#import "VeeIsEmpty.h"
 
 @interface VeeContactCellConfiguration ()
 
@@ -52,12 +53,14 @@
 - (void)configureCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
     veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
-    NSArray* nameComponentes = [[veeContact displayName] componentsSeparatedByString:@" "];
-    if ([nameComponentes count] > 0) {
-        [veeContactUITableViewCell.primaryLabel boldSubstring:[nameComponentes firstObject]];
+    NSArray* nameComponentes = [[veeContact displayNameSortedForABOptions] componentsSeparatedByString:@" "];
+    BOOL isMissingANameComponent = [VeeIsEmpty isEmpty:[veeContact firstName]] || [VeeIsEmpty isEmpty:[veeContact lastName]];
+    if (isMissingANameComponent){
+        [veeContactUITableViewCell.primaryLabel boldSubstring:[veeContact displayName]];
+ 
     }
     else {
-        [veeContactUITableViewCell.primaryLabel boldSubstring:[veeContact displayName]];
+        [veeContactUITableViewCell.primaryLabel boldSubstring:[nameComponentes firstObject]];
     }
 }
 
