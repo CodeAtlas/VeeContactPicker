@@ -143,7 +143,7 @@
     BOOL shouldLoadVeecontactsFromAB = _veeContacts == nil;
     if (shouldLoadVeecontactsFromAB) {
         BOOL hasAlreadyABPermission = [VeeAddressBook hasABPermissions];
-        if (hasAlreadyABPermission) {
+        if (hasAlreadyABPermission == YES) {
             [self loadVeeContactsFromAddressBook];
         }
         else {

@@ -191,7 +191,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 #pragma mark - VeeContactPickerDelegate
 
-- (void)testContactPickerDelegateIsCalled
+- (void)testContactPickerDelegateDidSelectContact
 {
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
@@ -201,6 +201,27 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
     OCMVerify([mockContactDelegate didSelectABContact:[OCMArg any]]);
+}
+
+- (void)testContactPickerDelegateDidCancel
+{
+    id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
+    VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
+    veeContactPicker.contactPickerDelegate = mockContactDelegate;
+    [veeContactPicker view];
+    [veeContactPicker cancelBarButtonItemPressed:nil];
+    OCMVerify([mockContactDelegate didCancelABContactSelection]);
+}
+
+- (void)testContactPickerDelegateDidFailToAccessAddressBook
+{
+    id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
+    VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
+    veeContactPicker.contactPickerDelegate = mockContactDelegate;
+    [veeContactPicker view];
+    [veeContactPicker abPermissionsGranted:NO];
+
+    OCMVerify([mockContactDelegate didFailToAccessABContacts]);
 }
 
 #pragma mark - Completion handler
