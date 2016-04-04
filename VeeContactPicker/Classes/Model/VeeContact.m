@@ -188,7 +188,7 @@
     return [NSPredicate predicateWithFormat:@"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"];
 }
 
-#pragma mark - NSObject
+#pragma mark - Equality
 
 - (BOOL)isEqual:(id)other
 {
@@ -206,10 +206,15 @@
     if (self == veecontact) {
         return YES;
     }
-    if (![[self recordIds] isEqual:[veecontact recordIds]]) {
-        return NO;
+    
+    NSArray<NSNumber*>* sortedRecordIds = [[self recordIds] sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSArray<NSNumber*>* veeContactSortedRecordIds = [[veecontact recordIds] sortedArrayUsingSelector:@selector(compare:)];
+    
+    if ([sortedRecordIds isEqualToArray:veeContactSortedRecordIds]) {
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 - (NSUInteger)hash

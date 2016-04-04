@@ -262,4 +262,37 @@ NSString* const kVeePostalAddressStateKey = @"State";
 NSString* const kVeePostalAddressPostalCodeKey = @"ZIP";
 NSString* const kVeePostalAddressCountryKey = @"Country";
 
+#pragma mark - Equality
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToVeeVeeABRecord:other];
+}
+
+- (BOOL)isEqualToVeeVeeABRecord:(VeeABRecord*)veeABRecord
+{
+    if (self == veeABRecord) {
+        return YES;
+    }
+    NSArray<NSNumber*>* sortedRecordIds = [[self recordIds] sortedArrayUsingSelector:@selector(compare:)];
+                                         
+    NSArray<NSNumber*>* veeABRecordsSortedRecordIds = [[veeABRecord recordIds] sortedArrayUsingSelector:@selector(compare:)];
+                                                     
+    if ([sortedRecordIds isEqualToArray:veeABRecordsSortedRecordIds]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSUInteger)hash
+{
+    return [[self recordIds] hash];
+}
+
 @end

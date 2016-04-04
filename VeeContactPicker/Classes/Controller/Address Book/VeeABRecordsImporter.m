@@ -34,8 +34,8 @@
     NSArray* peopleInSource = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeopleInSource(addressBook, source));
     for (int i = 0; i < peopleInSource.count; i++) {
         ABRecordRef abRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(peopleInSource), i);
-        VeeABRecord* veeRecord = [[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:abRecord];
-        [abRepositoryOfSingleSourceData addObject:veeRecord];
+        VeeABRecord* veeABRecord = [[VeeABRecord alloc] initWithLinkedPeopleOfABRecord:abRecord];
+        [abRepositoryOfSingleSourceData addObject:veeABRecord];
     }
     return [NSArray arrayWithArray:abRepositoryOfSingleSourceData];
 }

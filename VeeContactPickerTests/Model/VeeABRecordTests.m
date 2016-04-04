@@ -165,7 +165,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 #pragma mark - Unified Veecontact
 
-//TODO: ... Can't test unified contacts because I can't reproduce linked records in the address book programmatically, see http://stackoverflow.com/questions/24224929/is-there-a-way-to-programmatically-create-linked-contact
+//TODO: Can't test unified contacts because I can't reproduce linked records in the address book programmatically, see http://stackoverflow.com/questions/24224929/is-there-a-way-to-programmatically-create-linked-contact
 
 #pragma mark - VeecontactsForTesting tests
 
