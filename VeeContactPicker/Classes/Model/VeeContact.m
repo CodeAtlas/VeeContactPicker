@@ -3,18 +3,18 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
+#import "NSObject+VeeCommons.h"
+#import "VeeABRecord.h"
+#import "VeeAddressBook.h"
 #import "VeeContact.h"
 #import "VeeIsEmpty.h"
-#import "VeeABRecord.h"
 #import "VeePostalAddress.h"
-#import "NSObject+VeeCommons.h"
-#import "VeeAddressBook.h"
 
 @implementation VeeContact
 
 #pragma mark - Init
 
--(instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord
+- (instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord
 {
     self = [super init];
     if (self) {
@@ -35,7 +35,7 @@
     return self;
 }
 
--(instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickname organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails
+- (instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickname organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails
 {
     self = [super init];
     if (self) {
@@ -54,10 +54,10 @@
 
 #pragma mark - Private utils
 
--(NSArray<id<VeePostalAddressProt>>*)postalAddressesFromVeeABRecord:(VeeABRecord*)veeABRecord
+- (NSArray<id<VeePostalAddressProt> >*)postalAddressesFromVeeABRecord:(VeeABRecord*)veeABRecord
 {
     NSMutableArray* veePostalAddressesMutable = [NSMutableArray new];
-    for (NSDictionary* postalDict in veeABRecord.postalAddresses){
+    for (NSDictionary* postalDict in veeABRecord.postalAddresses) {
         VeePostalAddress* veePostalAddress = [[VeePostalAddress alloc] initWithStreet:postalDict[kVeePostalAddressStreetKey] city:postalDict[kVeePostalAddressCityKey] state:postalDict[kVeePostalAddressStateKey] postal:postalDict[kVeePostalAddressPostalCodeKey] country:postalDict[kVeePostalAddressCountryKey]];
 
         [veePostalAddressesMutable addObject:veePostalAddress];
@@ -69,15 +69,20 @@
 
 - (NSString*)displayName
 {
+    return [self displayNameWithFirstNameFirst];
+}
+
+- (NSString*)displayNameSortedForABOptions
+{
     if ([VeeAddressBook isABSortOrderingByFirstName]){
-        return [self displayNameOrederedByFirstName];
+        return [self displayNameWithFirstNameFirst];
     }
     else{
-        return [self displayNameOrederedByLastName];
+        return [self displayNameWithLastNameFirst];
     }
 }
 
--(NSString*)displayNameOrederedByFirstName
+- (NSString*)displayNameWithFirstNameFirst
 {
     if (_firstName && _lastName) {
         if (_middleName) {
@@ -88,7 +93,7 @@
     return [self displayNameForNonCompleteCompositeName];
 }
 
--(NSString*)displayNameOrederedByLastName
+- (NSString*)displayNameWithLastNameFirst
 {
     if (_firstName && _lastName) {
         if (_middleName) {
@@ -99,7 +104,7 @@
     return [self displayNameForNonCompleteCompositeName];
 }
 
--(NSString*)displayNameForNonCompleteCompositeName
+- (NSString*)displayNameForNonCompleteCompositeName
 {
     if (_organizationName) {
         return _organizationName;
@@ -124,18 +129,44 @@
 
 - (NSString*)sectionIdentifier
 {
-    NSString* sectionIdentifierForVeecontact;
+    if ([VeeAddressBook isABSortOrderingByFirstName]) {
+        return [self sectionIdentifierForFirstName];
+    }
+    else {
+        return [self sectionIdentiferForLastName];
+    }
+}
+
+- (NSString*)sectionIdentifierForFirstName
+{
+    NSString* sectionIdentifier;
 
     if ([VeeIsEmpty isEmpty:_firstName] == NO) {
-        sectionIdentifierForVeecontact = [[_firstName substringToIndex:1] uppercaseString];
+        sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
     }
     else if ([VeeIsEmpty isEmpty:_lastName] == NO) {
-        sectionIdentifierForVeecontact = [[_lastName substringToIndex:1] uppercaseString];
+        sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
     }
     else if ([VeeIsEmpty isEmpty:[self displayName]] == NO) {
-        sectionIdentifierForVeecontact = [[[self displayName] substringToIndex:1] uppercaseString];
+        sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
     }
-    return sectionIdentifierForVeecontact;
+    return sectionIdentifier;
+}
+
+- (NSString*)sectionIdentiferForLastName
+{
+    NSString* sectionIdentifier;
+
+    if ([VeeIsEmpty isEmpty:_lastName] == NO) {
+        sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
+    }
+    else if ([VeeIsEmpty isEmpty:_firstName] == NO) {
+        sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
+    }
+    else if ([VeeIsEmpty isEmpty:[self displayName]] == NO) {
+        sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
+    }
+    return sectionIdentifier;
 }
 
 #pragma mark - Sort
@@ -144,19 +175,23 @@
 {
     NSString* firstSortProperty;
     NSString* secondSortProperty;
-    
-    if ([VeeAddressBook isABSortOrderingByFirstName]){
+
+    if ([VeeAddressBook isABSortOrderingByFirstName]) {
         firstSortProperty = @"firstName";
         secondSortProperty = @"lastName";
     }
-    else{
+    else {
         firstSortProperty = @"lastName";
         secondSortProperty = @"firstName";
     }
 
-    NSString* firstContactSortProperty = [self sortPropertyOfVeeContact:self withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
-    NSString* secondContactSortProperty = [self sortPropertyOfVeeContact:otherVeeContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
-    NSComparisonResult result = [firstContactSortProperty compare:secondContactSortProperty options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+    NSString* firstContactSortValue = [self sortPropertyOfVeeContact:self withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
+    NSString* secondContactSortValue = [self sortPropertyOfVeeContact:otherVeeContact withFirstOption:firstSortProperty andSecondOption:secondSortProperty];
+    NSComparisonResult result = [firstContactSortValue compare:secondContactSortValue options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
+
+    if ([[self compositeName] isEqualToString:@"Andrea Barbieri"]) {
+        NSLog(@"Andrea Barbieri compared to %@ == %zd", [otherVeeContact displayName], result);
+    }
     if (result == NSOrderedSame) {
         return [[self displayName] compare:[otherVeeContact displayName] options:NSDiacriticInsensitiveSearch | NSCaseInsensitiveSearch];
     }
@@ -183,7 +218,7 @@
 
 #pragma mark - Search predicate
 
-+(NSPredicate*)searchPredicateForSearchString
++ (NSPredicate*)searchPredicateForSearchString
 {
     return [NSPredicate predicateWithFormat:@"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"];
 }
@@ -206,11 +241,11 @@
     if (self == veecontact) {
         return YES;
     }
-    
+
     NSArray<NSNumber*>* sortedRecordIds = [[self recordIds] sortedArrayUsingSelector:@selector(compare:)];
-    
+
     NSArray<NSNumber*>* veeContactSortedRecordIds = [[veecontact recordIds] sortedArrayUsingSelector:@selector(compare:)];
-    
+
     if ([sortedRecordIds isEqualToArray:veeContactSortedRecordIds]) {
         return YES;
     }
@@ -225,13 +260,13 @@
 - (NSString*)description
 {
     NSString* hasImage;
-    if (_thumbnailImage){
+    if (_thumbnailImage) {
         hasImage = @"Has thumbnailImage";
     }
-    else{
+    else {
         hasImage = @"Hasn't thumbnailImage";
     }
-    return [NSString stringWithFormat:@"\n[%@:\n Composite Name: %@\n Record Ids: %@\n %@\n First name: %@\n Last name: %@\n Organization name: %@\n Display name: %@\n Phone numbers: %@\n Email addresses: %@\n postalAddresses: %@\n twitterAccounts: %@\n facebookAccounts: %@\n]", NSStringFromClass([self class]),_compositeName, [self formattedDescriptionOfArray:_recordIds], hasImage, _firstName, _lastName, _organizationName, [self displayName], [self formattedDescriptionOfArray:_phoneNumbers], [self formattedDescriptionOfArray:_emails],[self formattedDescriptionOfArray:_postalAddresses],[self formattedDescriptionOfArray:_twitterAccounts],[self formattedDescriptionOfArray:_facebookAccounts]];
+    return [NSString stringWithFormat:@"\n[%@:\n Composite Name: %@\n Record Ids: %@\n %@\n First name: %@\n Last name: %@\n Organization name: %@\n Display name: %@\n Phone numbers: %@\n Email addresses: %@\n postalAddresses: %@\n twitterAccounts: %@\n facebookAccounts: %@\n]", NSStringFromClass([self class]), _compositeName, [self formattedDescriptionOfArray:_recordIds], hasImage, _firstName, _lastName, _organizationName, [self displayName], [self formattedDescriptionOfArray:_phoneNumbers], [self formattedDescriptionOfArray:_emails], [self formattedDescriptionOfArray:_postalAddresses], [self formattedDescriptionOfArray:_twitterAccounts], [self formattedDescriptionOfArray:_facebookAccounts]];
 }
 
 @end
