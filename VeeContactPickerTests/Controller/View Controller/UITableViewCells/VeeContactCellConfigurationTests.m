@@ -73,6 +73,8 @@
     NSAssert(isCellImageThePlaceholder, @"Cell image is not the placeholder");
 }
 
+//TODO: test boldify
+
 #pragma mark - Private utils
 
 - (void)loadVeeContactCellConfigurationWithDefaultOptions

@@ -51,7 +51,7 @@
     id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
     OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(NO);
     
-    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:kCompleteVeeContactDisplayNameLastNameFirst];
+    BOOL isDisplayNameCorrect = [_veeContactComplete.displayNameSortedForABOptions isEqualToString:kCompleteVeeContactDisplayNameLastNameFirst];
     NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, kCompleteVeeContactDisplayNameLastNameFirst);
 }
 
@@ -64,16 +64,13 @@
     
     NSString* expectedDisplayName = _veeContactComplete.organizationName;
     
-    BOOL isDisplayNameCorrect = [_veeContactComplete.displayName isEqualToString:expectedDisplayName];
+    BOOL isDisplayNameCorrect = [_veeContactComplete.displayNameSortedForABOptions isEqualToString:expectedDisplayName];
     NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, expectedDisplayName);
 }
 
 
 - (void)testVeeContactCompleteDisplayNameWithoutLastName
 {
-    id veeAddressBookMock = OCMClassMock([VeeAddressBook class]);
-    OCMStub([veeAddressBookMock isABSortOrderingByFirstName]).andReturn(NO);
-    
     [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
     
     NSString* aspectedDisplayName = _veeContactComplete.organizationName;
