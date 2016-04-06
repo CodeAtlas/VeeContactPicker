@@ -77,7 +77,7 @@
 
 #pragma mark - Collaboration with "UILabel+Boldify"
 
--(void)testBoldifyIsCalledOnCorrectString
+-(void)testBoldifyOnFirstNameComponent
 {
     id primaryLabelMock = [OCMockObject partialMockForObject:[UILabel new]];
     _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
