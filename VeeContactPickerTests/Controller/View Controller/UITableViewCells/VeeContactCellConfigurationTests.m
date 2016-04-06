@@ -10,6 +10,8 @@
 #import "VeeContactsForTestingFactory.h"
 #import <XCTest/XCTest.h>
 #import "XCTest+VeeCommons.h"
+#import "OCMock.h"
+#import "UILabel+Boldify.h"
 
 @interface VeeContactCellConfigurationTests : XCTestCase
 
@@ -73,7 +75,36 @@
     NSAssert(isCellImageThePlaceholder, @"Cell image is not the placeholder");
 }
 
-//TODO: test boldify
+#pragma mark - Collaboration with "UILabel+Boldify"
+
+-(void)testBoldifyIsCalledOnCorrectString
+{
+    id primaryLabelMock = [OCMockObject partialMockForObject:[UILabel new]];
+    _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
+    [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
+    NSString* nameComponentToBoldify = [[[_veeContactComplete displayNameSortedForABOptions] componentsSeparatedByString:@" "] firstObject];
+    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+}
+
+-(void)testBoldifyOnVeeContactWithOnlyFirstName
+{
+    id primaryLabelMock = [OCMockObject partialMockForObject:[UILabel new]];
+    _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
+    [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
+    [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
+    NSString* nameComponentToBoldify = [_veeContactComplete displayNameSortedForABOptions];
+    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+}
+
+-(void)testBoldifyOnVeeContactWithOnlyCompanyName
+{
+    id primaryLabelMock = [OCMockObject partialMockForObject:[UILabel new]];
+    _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
+    VeeContact* companyVeeContact = [[VeeContact alloc] initWithFirstName:nil middleName:nil lastName:nil nickName:nil organizationName:@"test company" compositeName:nil thubnailImage:nil phoneNumbers:nil emails:nil];
+    [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:companyVeeContact];
+    NSString* nameComponentToBoldify = [companyVeeContact displayNameSortedForABOptions];
+    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+}
 
 #pragma mark - Private utils
 
