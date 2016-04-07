@@ -175,11 +175,19 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
     NSAssert(tableViewShouldNotBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldBeHidden, @"Empty view should not be shown if there are contacts!");
 }
-
+ 
 -(void)testEmptyViewIsShownForNoContacts
 {
     VeeContactPickerViewController* veeContactPickerWithNoVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:@[]];
     [veeContactPickerWithNoVeeContacts view];
+    
+    NSDate *loopTimeout = [NSDate dateWithTimeIntervalSinceNow:10];
+    BOOL isTableViewVisible = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == NO;
+    while (isTableViewVisible && [loopTimeout timeIntervalSinceNow] > 0) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:loopTimeout];
+    }
+
     BOOL tableViewShouldBeHidden = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == YES;
     UISearchBar* searchBar = (UISearchBar*) [veeContactPickerWithNoVeeContacts valueForKey:@"searchBar"];
     BOOL searchBarShouldBeHidden = searchBar.hidden == YES;

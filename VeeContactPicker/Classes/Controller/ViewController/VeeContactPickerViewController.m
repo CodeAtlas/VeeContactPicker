@@ -135,7 +135,7 @@
     _navigationBar.translucent = [[VeeContactPickerConstants sharedInstance] navigationBarTranslucent];
     _statusBarCoverView.backgroundColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
     _tableViewBottomMarginConstraint.constant = [[VeeContactPickerConstants sharedInstance] veeContactPickerTableViewBottomMargin];
-    [self showEmptyView:NO];
+    [self hideEmptyView];
 }
 
 - (void)loadVeeContacts
@@ -163,7 +163,7 @@
 - (void)loadCustomVeecontacts
 {
     if ([VeeIsEmpty isEmpty:_veeContacts]) {
-        [self showEmptyView:YES];
+        [self showEmptyView];
     }
     else {
         _veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
@@ -238,26 +238,29 @@
     }
     else {
         NSLog(@"Warning - address book permissions not granted");
-        [self showEmptyView:YES];
+        [self showEmptyView];
         [_contactPickerDelegate didFailToAccessABContacts];
     }
 }
 
 #pragma mark - UI
 
-- (void)showEmptyView:(BOOL)show
+- (void)showEmptyView
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (show){
-            _emptyViewLabel.hidden = NO;
-            _contactsTableView.hidden = YES;
-            _searchBar.hidden = YES;
-        }
-        else{
-            _emptyViewLabel.hidden = YES;
-            _contactsTableView.hidden = NO;
-            _searchBar.hidden = NO;
-        }
+        _emptyViewLabel.hidden = NO;
+        _contactsTableView.hidden = YES;
+        _searchBar.hidden = YES;
+    });
+}
+
+-(void)hideEmptyView
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _emptyViewLabel.hidden = YES;
+        _contactsTableView.hidden = NO;
+        _searchBar.hidden = NO;
+        
     });
 }
 
