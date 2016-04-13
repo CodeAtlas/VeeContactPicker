@@ -5,7 +5,6 @@
 
 #import "VeeContactPickerViewController.h"
 
-#import "VeeContactColors.h"
 #import "VeeContactPickerConstants.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"

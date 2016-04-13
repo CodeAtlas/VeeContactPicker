@@ -53,7 +53,6 @@
 -(void)testCellImageForVeeContactWithImageAndDefaultOptions
 {
     [self configureCellDefaultOptionsWithCompleteContact];
-    NSAssert(_veeContactComplete.thumbnailImage,@"VeeContact complete doesn't have an image"); //TODO: this test sometimes fails?
     BOOL isCellImageCorrect = [_veeContactUITableViewCell.contactImageView.image isEqual:_veeContactComplete.thumbnailImage];
     NSAssert(isCellImageCorrect, @"Cell image is not correct");
 }

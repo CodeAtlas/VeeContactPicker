@@ -7,8 +7,7 @@
 #import "VeeContactUITableViewCell.h"
 #import "UILabel+Boldify.h"
 #import "VeeContactPickerOptions.h"
-#import "VeeContactColors.h"
-#import "UIImageView+Letters.h"
+#import "UIImageView+AGCInitials.h"
 #import "VeeIsEmpty.h"
 
 @interface VeeContactCellConfiguration ()
@@ -73,7 +72,7 @@
     }
     else {
         if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing) {
-            [veeContactUITableViewCell.contactImageView setImageWithString:[veeContact displayName] color:[_veeContactPickerOptions.veeContactColors colorForVeeContact:veeContact]];
+            [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];             
         }
         else {
             [veeContactUITableViewCell.contactImageView setImage:_veeContactPickerOptions.contactThumbnailImagePlaceholder];

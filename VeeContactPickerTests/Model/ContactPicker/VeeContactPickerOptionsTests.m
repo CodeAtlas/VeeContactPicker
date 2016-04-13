@@ -4,7 +4,6 @@
 
 #import <XCTest/XCTest.h>
 #import "VeeContactPickerOptions.h"
-#import "VeeContactColors.h"
 #import "VeeContactPickerStrings.h"
 
 @interface VeeContactPickerOptionsTests : XCTestCase
@@ -35,12 +34,6 @@
 }
 
 #pragma mark - Default options
-
--(void)testDefaultOptionsColors
-{
-    BOOL colorsAreDefault = [[[_veeContactPickerDefaultOptions veeContactColors] veecontactColorsPalette] isEqual:[[VeeContactColors colorsWithDefaultPalette] valueForKey:@"defaultColors"]];
-    NSAssert(colorsAreDefault, @"Colors should be default");
-}
 
 -(void)testDefaultOptionsStrings
 {

@@ -12,7 +12,6 @@
 #import "VeeSearchResultsDelegate.h"
 @class VeeContactPickerOptions;
 @class VeeContactPickerStrings;
-@class VeeContactColors;
 
 @interface VeeContactPickerViewController : UIViewController <VeeABDelegate, VeeSearchResultsDelegate, UITableViewDelegate>
 

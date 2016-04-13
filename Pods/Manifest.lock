@@ -1,13 +1,22 @@
 PODS:
   - OCMock (3.2.2)
-  - UIImageView-Letters (1.1.4)
+  - UIImageView-AGCInitials (0.1.0)
 
 DEPENDENCIES:
   - OCMock
-  - UIImageView-Letters (~> 1.1)
+  - UIImageView-AGCInitials (from `https://github.com/andreacipriani/UIImageView-AGCInitials.git`)
+
+EXTERNAL SOURCES:
+  UIImageView-AGCInitials:
+    :git: https://github.com/andreacipriani/UIImageView-AGCInitials.git
+
+CHECKOUT OPTIONS:
+  UIImageView-AGCInitials:
+    :commit: 040896b45a25a99982cc773ea12684f8c07d30ee
+    :git: https://github.com/andreacipriani/UIImageView-AGCInitials.git
 
 SPEC CHECKSUMS:
   OCMock: 18c9b7e67d4c2770e95bb77a9cc1ae0c91fe3835
-  UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
+  UIImageView-AGCInitials: 0fdbcd197570e8ab0ace4ec755cee5f777699963
 
 COCOAPODS: 0.39.0.beta.3

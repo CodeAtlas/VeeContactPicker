@@ -3,7 +3,6 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactColors.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 
@@ -20,7 +19,6 @@
 - (instancetype)initWithDefaultOptions
 {
     if (self = [super init]) {
-        _veeContactColors = [VeeContactColors colorsWithDefaultPalette];
         _veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
         _sectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
         _sectionIdentifierWildcard = @"#";

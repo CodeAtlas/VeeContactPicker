@@ -6,7 +6,6 @@
 #import "VeeContactPickerViewController.h"
 #import <XCTest/XCTest.h>
 
-#import "VeeContactColors.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 
@@ -262,7 +261,6 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 {
     if (!_veeContactPickerCustomOptions) {
         _veeContactPickerCustomOptions = [VeeContactPickerOptions new];
-        _veeContactPickerCustomOptions.veeContactColors = [[VeeContactColors alloc] initWithVeeContactsColorPalette:@[ [UIColor purpleColor] ]];
         _veeContactPickerCustomOptions.veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:@"foo" cancelButtonTitle:@"bar" emptyViewLabelText:@"empty"];
         _veeContactPickerCustomOptions.sectionIdentifiers = @[ @"A", @"B", @"C" ];
         _veeContactPickerCustomOptions.sectionIdentifierWildcard = @"$";

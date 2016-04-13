@@ -7,8 +7,8 @@ inhibit_all_warnings!
 target 'VeeContactPicker', :exclusive => true do
 	platform :ios, '7.0'
 
-	#Contacts image placeholders
-	pod 'UIImageView-Letters', '~> 1.1'
+	#Contact's image placeholders
+	pod 'UIImageView-AGCInitials', :git => 'https://github.com/andreacipriani/UIImageView-AGCInitials.git'
 end
 
 target 'VeeContactPickerTests', :exclusive => true do
