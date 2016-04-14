@@ -335,12 +335,12 @@
 				860C626B1C28521200876682 /* Supporting Files */,
 				860C626E1C28521200876682 /* VeeContactPickerExampleAppDelegate.h */,
 				860C626F1C28521200876682 /* VeeContactPickerExampleAppDelegate.m */,
+				86CAE0411CBFC96700552B81 /* VeeContactPickerExampleViewController.h */,
+				86CAE0421CBFC96700552B81 /* VeeContactPickerExampleViewController.m */,
 				860C62771C28521200876682 /* Assets.xcassets */,
 				860C627C1C28521200876682 /* Info.plist */,
 				860C62791C28521200876682 /* LaunchScreen.storyboard */,
 				860C62741C28521200876682 /* Main.storyboard */,
-				86CAE0411CBFC96700552B81 /* VeeContactPickerExampleViewController.h */,
-				86CAE0421CBFC96700552B81 /* VeeContactPickerExampleViewController.m */,
 			);
 			path = VeeContactPickerExample;
 			sourceTree = "<group>";
