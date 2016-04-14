@@ -14,7 +14,7 @@
 		860696991CA160BC00997F09 /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 864AFE301C91913F002F4BF7 /* VeeAddressBookForTestingConstants.m */; };
 		8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8606969B1CA1618F00997F09 /* VeeContactFactory.m */; };
 		860C626D1C28521200876682 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626C1C28521200876682 /* main.m */; };
-		860C62701C28521200876682 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626F1C28521200876682 /* AppDelegate.m */; };
+		860C62701C28521200876682 /* VeeContactPickerExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C626F1C28521200876682 /* VeeContactPickerExampleAppDelegate.m */; };
 		860C62761C28521200876682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62741C28521200876682 /* Main.storyboard */; };
 		860C62781C28521200876682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 860C62771C28521200876682 /* Assets.xcassets */; };
 		860C627B1C28521200876682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860C62791C28521200876682 /* LaunchScreen.storyboard */; };
@@ -121,8 +121,8 @@
 		8606969B1CA1618F00997F09 /* VeeContactFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactFactory.m; sourceTree = "<group>"; };
 		860C62681C28521200876682 /* VeeContactPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeeContactPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		860C626C1C28521200876682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		860C626E1C28521200876682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		860C626F1C28521200876682 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		860C626E1C28521200876682 /* VeeContactPickerExampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerExampleAppDelegate.h; sourceTree = "<group>"; };
+		860C626F1C28521200876682 /* VeeContactPickerExampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerExampleAppDelegate.m; sourceTree = "<group>"; };
 		860C62751C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		860C62771C28521200876682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		860C627A1C28521200876682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -333,8 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				860C626B1C28521200876682 /* Supporting Files */,
-				860C626E1C28521200876682 /* AppDelegate.h */,
-				860C626F1C28521200876682 /* AppDelegate.m */,
+				860C626E1C28521200876682 /* VeeContactPickerExampleAppDelegate.h */,
+				860C626F1C28521200876682 /* VeeContactPickerExampleAppDelegate.m */,
 				860C62771C28521200876682 /* Assets.xcassets */,
 				860C627C1C28521200876682 /* Info.plist */,
 				860C62791C28521200876682 /* LaunchScreen.storyboard */,
@@ -893,7 +893,7 @@
 				864194EE1C96CE60005DC2D6 /* VeeContactPickerOptions.m in Sources */,
 				86DCEF071C96E0A700EC7FD6 /* VeeABRecordsImporter.m in Sources */,
 				864194F81C96D7C0005DC2D6 /* VeeContactPickerStrings.m in Sources */,
-				860C62701C28521200876682 /* AppDelegate.m in Sources */,
+				860C62701C28521200876682 /* VeeContactPickerExampleAppDelegate.m in Sources */,
 				8622C3451CABDD6A009EB7A1 /* NSObject+VeeCommons.m in Sources */,
 				860C62AD1C28528E00876682 /* VeeContactUITableViewCell.m in Sources */,
 				864194F11C96D169005DC2D6 /* VeeContactPickerConstants.m in Sources */,
