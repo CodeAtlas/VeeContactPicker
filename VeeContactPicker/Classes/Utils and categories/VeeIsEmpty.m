@@ -17,4 +17,8 @@ return obj == nil
         && [obj count] == 0);
 }
 
++(BOOL)isNotEmpty:(id)obj
+{
+    return [self isEmpty:obj] == NO;
+}
 @end

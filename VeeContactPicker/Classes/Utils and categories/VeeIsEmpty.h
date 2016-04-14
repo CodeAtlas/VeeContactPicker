@@ -7,6 +7,7 @@
 
 @interface VeeIsEmpty : NSObject
 
-+(BOOL)isEmpty:(id) obj;
++ (BOOL)isEmpty:(id)obj;
++ (BOOL)isNotEmpty:(id)obj;
 
 @end
