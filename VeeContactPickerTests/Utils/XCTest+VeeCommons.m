@@ -20,13 +20,13 @@
     NSAssert(objectRespondToSelector,@"%@ doesn't respond to selector %@",[object class],selectorName);
 }
 
--(UIImage*)codeAtasTestImage
+-(UIImage*)veeTestImage
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *imagePath = [bundle pathForResource:@"codeatlas" ofType:@"png"];
-    UIImage *codeAtlasImage = [UIImage imageWithContentsOfFile:imagePath];
-    NSAssert(codeAtlasImage, @"codeatlas image not found");
-    return codeAtlasImage;
+    NSString *imagePath = [bundle pathForResource:@"vee_test_image" ofType:@"png"];
+    UIImage *veeTestImage = [UIImage imageWithContentsOfFile:imagePath];
+    NSAssert(veeTestImage, @"vee test image not found");
+    return veeTestImage;
 }
 
 @end

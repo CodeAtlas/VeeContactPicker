@@ -53,8 +53,8 @@
 -(void)testCellImageForVeeContactWithImageAndDefaultOptions
 {
     [self configureCellDefaultOptionsWithCompleteContact];
-    //BOOL isCellImageCorrect = [_veeContactUITableViewCell.contactImageView.image isEqual:_veeContactComplete.thumbnailImage];
-    //NSAssert(isCellImageCorrect, @"Cell image is not correct"); //TODO: don't understand why, but sometimes the contactImageView.image is nil
+    BOOL isCellImageCorrect = [_veeContactUITableViewCell.contactImageView.image isEqual:_veeContactComplete.thumbnailImage];
+    NSAssert(isCellImageCorrect, @"Cell image is not set correctly");
 }
 
 -(void)testCellImageWithInitials
@@ -70,7 +70,7 @@
 {
     [self nullifyIvarWithName:@"thumbnailImage" ofObject:_veeContactComplete];
     [self configureCellNoLettersOptionsWithCompleteContact];
-    BOOL isCellImageThePlaceholder = _veeContactUITableViewCell.contactImageView.image.size.width == [self codeAtasTestImage].size.width;
+    BOOL isCellImageThePlaceholder = _veeContactUITableViewCell.contactImageView.image.size.width == [self veeTestImage].size.width;
     NSAssert(isCellImageThePlaceholder, @"Cell image is not the placeholder");
 }
 
@@ -116,7 +116,7 @@
 {
     VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
     veeContactPickerOptions.showLettersWhenContactImageIsMissing = NO;
-    veeContactPickerOptions.contactThumbnailImagePlaceholder = [self codeAtasTestImage];
+    veeContactPickerOptions.contactThumbnailImagePlaceholder = [self veeTestImage];
     _veeContactCellConfigurationWithNoLettersOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:veeContactPickerOptions];
 }
 

@@ -9,6 +9,6 @@
 
 - (void)nullifyIvarWithName:(NSString*)iVarSelectorName ofObject:(id)object;
 - (void)assertObject:(id)object respondToSelectorWithName:(NSString*)selectorName;
-- (UIImage*)codeAtasTestImage;
+- (UIImage*)veeTestImage;
 
 @end

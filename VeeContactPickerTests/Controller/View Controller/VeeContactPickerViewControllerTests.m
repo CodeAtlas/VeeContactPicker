@@ -263,7 +263,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
         _veeContactPickerCustomOptions.sectionIdentifiers = @[ @"A", @"B", @"C" ];
         _veeContactPickerCustomOptions.sectionIdentifierWildcard = @"$";
         _veeContactPickerCustomOptions.showLettersWhenContactImageIsMissing = NO;
-        _veeContactPickerCustomOptions.contactThumbnailImagePlaceholder = [self codeAtasTestImage];
+        _veeContactPickerCustomOptions.contactThumbnailImagePlaceholder = [self veeTestImage];
     }
     return _veeContactPickerCustomOptions;
 }
