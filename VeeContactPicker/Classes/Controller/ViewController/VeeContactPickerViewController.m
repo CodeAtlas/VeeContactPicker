@@ -146,17 +146,12 @@
             [self loadVeeContactsFromAddressBook];
         }
         else {
-            [self askABPermissionsWithDelegateCallback];
+            [_veeAddressBook askABPermissionsWithDelegate:_addressBookRef];
         }
     }
     else {
         [self loadCustomVeecontacts];
     }
-}
-
-- (void)askABPermissionsWithDelegateCallback
-{
-    [_veeAddressBook askABPermissionsWithDelegateCallback:_addressBookRef];
 }
 
 - (void)loadCustomVeecontacts
@@ -230,16 +225,16 @@
 
 #pragma mark - VeeABDelegate
 
-- (void)abPermissionsGranted:(BOOL)granted
+- (void)abPermissionsGranted
 {
-    if (granted) {
-        [self performSelectorOnMainThread:@selector(loadVeeContactsFromAddressBook) withObject:nil waitUntilDone:YES];
-    }
-    else {
-        NSLog(@"Warning - address book permissions not granted");
-        [self showEmptyView];
-        [_contactPickerDelegate didFailToAccessABContacts];
-    }
+    [self performSelectorOnMainThread:@selector(loadVeeContactsFromAddressBook) withObject:nil waitUntilDone:YES];
+}
+
+-(void)abPermissionsNotGranted
+{
+    NSLog(@"Warning - address book permissions not granted");
+    [self showEmptyView];
+    [_contactPickerDelegate didFailToAccessABContacts];
 }
 
 #pragma mark - UI

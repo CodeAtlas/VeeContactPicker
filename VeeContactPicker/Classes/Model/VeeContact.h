@@ -40,9 +40,8 @@
 
 #pragma mark - Getters
 
-- (NSString*)displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress"
+- (NSString*)displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress[0]"
 - (NSString*)displayNameSortedForABOptions; //Display name sorted considering sort-ordering preference for lists of persons in the address book. See ABPersonGetSortOrdering()
-
 - (NSString*)sectionIdentifier; //In which section should the contact be? This is the title of that section
 
 #pragma mark - Search predicate

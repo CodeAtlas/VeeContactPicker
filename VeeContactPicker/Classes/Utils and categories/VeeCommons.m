@@ -21,4 +21,5 @@ return obj == nil
 {
     return [self isEmpty:obj] == NO;
 }
+
 @end

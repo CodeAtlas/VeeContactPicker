@@ -9,4 +9,5 @@
 
 - (void)boldSubstring:(NSString*)substring;
 - (void)boldRange:(NSRange)range;
+
 @end

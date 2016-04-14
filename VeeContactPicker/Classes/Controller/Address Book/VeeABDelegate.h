@@ -7,6 +7,7 @@
 
 @protocol VeeABDelegate <NSObject>
 
-- (void)abPermissionsGranted:(BOOL)granted;
+- (void)abPermissionsGranted;
+- (void)abPermissionsNotGranted;
 
 @end

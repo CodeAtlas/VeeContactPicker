@@ -19,8 +19,7 @@
 
 - (instancetype)initWithDefaultConfiguration;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
-//When veeContacts are not set they are loaded from the address book
-- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts; //When veeContacts are not set they are loaded from the address book
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 
 #pragma mark - Delegate and completion handler

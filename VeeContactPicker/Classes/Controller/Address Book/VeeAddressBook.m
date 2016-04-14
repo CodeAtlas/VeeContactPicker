@@ -16,19 +16,24 @@
     return self;
 }
 
+- (void)askABPermissionsWithDelegate:(ABAddressBookRef)addressBookRef
+{
+    ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+        if (granted){
+            [_delegate abPermissionsGranted];
+        }
+        else{
+            [_delegate abPermissionsNotGranted];
+        }
+    });
+}
+
 + (BOOL)hasABPermissions
 {
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         return YES;
     }
     return NO;
-}
-
-- (void)askABPermissionsWithDelegateCallback:(ABAddressBookRef)addressBookRef
-{
-    ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-        [_delegate abPermissionsGranted:granted];
-    });
 }
 
 + (BOOL)isABSortOrderingByFirstName

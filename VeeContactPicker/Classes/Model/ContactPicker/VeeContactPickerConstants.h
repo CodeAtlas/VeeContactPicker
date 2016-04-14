@@ -8,7 +8,7 @@
 
 @interface VeeContactPickerConstants : NSObject
 
-+ (instancetype)sharedInstance; //Initalize with default constants
++ (instancetype)sharedInstance; //Initialization with default constants
 
 #pragma mark - Table view Constants
 
