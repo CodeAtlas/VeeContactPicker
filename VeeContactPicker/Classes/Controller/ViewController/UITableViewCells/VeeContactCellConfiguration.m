@@ -8,7 +8,7 @@
 #import "UILabel+Boldify.h"
 #import "VeeContactPickerOptions.h"
 #import "UIImageView+AGCInitials.h"
-#import "VeeIsEmpty.h"
+#import "VeeCommons.h"
 
 @interface VeeContactCellConfiguration ()
 
@@ -53,7 +53,7 @@
 {
     veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
     NSArray* nameComponents = [[veeContact displayNameSortedForABOptions] componentsSeparatedByString:@" "];
-    BOOL isMissingANameComponent = [VeeIsEmpty isEmpty:[veeContact firstName]] || [VeeIsEmpty isEmpty:[veeContact lastName]];
+    BOOL isMissingANameComponent = [VeeCommons isEmpty:[veeContact firstName]] || [VeeCommons isEmpty:[veeContact lastName]];
     BOOL nameComponentsAreLessThanOne = [nameComponents count] < 1;
     NSString* toBoldify;
     if (isMissingANameComponent || nameComponentsAreLessThanOne){

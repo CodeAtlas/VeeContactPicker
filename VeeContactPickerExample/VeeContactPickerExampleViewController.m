@@ -6,15 +6,15 @@
 #import "VeeContact.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactsForTestingFactory.h"
-#import "ExampleViewController.h"
+#import "VeeContactPickerExampleViewController.h"
 
-@interface ExampleViewController ()
+@interface VeeContactPickerExampleViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel* selectedContactLabel;
 
 @end
 
-@implementation ExampleViewController
+@implementation VeeContactPickerExampleViewController
 
 - (void)viewDidLoad
 {
@@ -28,8 +28,8 @@
 
 - (IBAction)showVeecontactPickerPressed:(id)sender
 {
-    VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
-    //VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
+    //VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
+    VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
     veePickerVC.contactPickerDelegate = self;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }

@@ -10,7 +10,7 @@
 #import "VeeContactPickerStrings.h"
 
 #import "VeeAddressBook.h"
-#import "VeeIsEmpty.h"
+#import "VeeCommons.h"
 
 #import "VeeContactProtFactoryProducer.h"
 
@@ -161,7 +161,7 @@
 
 - (void)loadCustomVeecontacts
 {
-    if ([VeeIsEmpty isEmpty:_veeContacts]) {
+    if ([VeeCommons isEmpty:_veeContacts]) {
         [self showEmptyView];
     }
     else {

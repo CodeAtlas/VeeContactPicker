@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VeeIsEmpty : NSObject
+@interface VeeCommons : NSObject
 
 + (BOOL)isEmpty:(id)obj;
 + (BOOL)isNotEmpty:(id)obj;

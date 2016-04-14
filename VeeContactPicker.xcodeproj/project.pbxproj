@@ -43,7 +43,6 @@
 		8676C5911C93151100054446 /* vee_testing_ab.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 8676C5901C93151100054446 /* vee_testing_ab.vcf */; };
 		867AD86E1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD86D1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m */; };
 		867AD8711C9DA79D009A26A2 /* VeeSectionableForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */; };
-		867AD8771CA04300009A26A2 /* VeeIsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8761CA04300009A26A2 /* VeeIsEmpty.m */; };
 		867AD8791CA0436B009A26A2 /* VeeIsEmptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AD8781CA0436B009A26A2 /* VeeIsEmptyTests.m */; };
 		868BAB6F1CA2BFAB00B0B0A4 /* FirstNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86C08D161CA1520900319B5A /* FirstNames.txt */; };
 		868BAB701CA2BFAD00B0B0A4 /* MiddleNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = 860696921CA15BC500997F09 /* MiddleNames.txt */; };
@@ -71,6 +70,7 @@
 		868BAB901CA2C14400B0B0A4 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */; };
 		868BAB911CA2C14400B0B0A4 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */; };
 		868BAB971CA2DDB000B0B0A4 /* VeeABRecordsImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 868BAB961CA2DDB000B0B0A4 /* VeeABRecordsImporterTests.m */; };
+		86A43E291CBFD09F0087F167 /* VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A43E281CBFD09F0087F167 /* VeeCommons.m */; };
 		86A6A7011C9AF572004F66E2 /* codeatlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 86A6A7001C9AF572004F66E2 /* codeatlas.png */; };
 		86AB036D1C917A820054B7EC /* XCTest+VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */; };
 		86B756A91CAA8C200033D286 /* UILabelBolfidyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B756A81CAA8C200033D286 /* UILabelBolfidyTests.m */; };
@@ -177,8 +177,6 @@
 		867AD86D1C9C855A009A26A2 /* VeeSectionedArrayDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSourceTests.m; sourceTree = "<group>"; };
 		867AD86F1C9DA79D009A26A2 /* VeeSectionableForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionableForTesting.h; sourceTree = "<group>"; };
 		867AD8701C9DA79D009A26A2 /* VeeSectionableForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionableForTesting.m; sourceTree = "<group>"; };
-		867AD8751CA04300009A26A2 /* VeeIsEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeIsEmpty.h; sourceTree = "<group>"; };
-		867AD8761CA04300009A26A2 /* VeeIsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeIsEmpty.m; sourceTree = "<group>"; };
 		867AD8781CA0436B009A26A2 /* VeeIsEmptyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeIsEmptyTests.m; sourceTree = "<group>"; };
 		868BAB771CA2C14400B0B0A4 /* portrait_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_1.jpg; sourceTree = "<group>"; };
 		868BAB781CA2C14400B0B0A4 /* portrait_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_2.jpg; sourceTree = "<group>"; };
@@ -190,6 +188,8 @@
 		868BAB7E1CA2C14400B0B0A4 /* portrait_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_8.jpg; sourceTree = "<group>"; };
 		868BAB7F1CA2C14400B0B0A4 /* portrait_9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait_9.jpg; sourceTree = "<group>"; };
 		868BAB961CA2DDB000B0B0A4 /* VeeABRecordsImporterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeABRecordsImporterTests.m; sourceTree = "<group>"; };
+		86A43E271CBFD09F0087F167 /* VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeCommons.h; sourceTree = "<group>"; };
+		86A43E281CBFD09F0087F167 /* VeeCommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeCommons.m; sourceTree = "<group>"; };
 		86A6A7001C9AF572004F66E2 /* codeatlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeatlas.png; sourceTree = "<group>"; };
 		86AB036B1C917A820054B7EC /* XCTest+VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTest+VeeCommons.h"; sourceTree = "<group>"; };
 		86AB036C1C917A820054B7EC /* XCTest+VeeCommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTest+VeeCommons.m"; sourceTree = "<group>"; };
@@ -437,8 +437,8 @@
 				8622C3441CABDD6A009EB7A1 /* NSObject+VeeCommons.m */,
 				86F12ABE1C3C0CF900F584C2 /* UILabel+Boldify.h */,
 				86F12ABF1C3C0CF900F584C2 /* UILabel+Boldify.m */,
-				867AD8751CA04300009A26A2 /* VeeIsEmpty.h */,
-				867AD8761CA04300009A26A2 /* VeeIsEmpty.m */,
+				86A43E271CBFD09F0087F167 /* VeeCommons.h */,
+				86A43E281CBFD09F0087F167 /* VeeCommons.m */,
 			);
 			path = "Utils and categories";
 			sourceTree = "<group>";
@@ -886,7 +886,6 @@
 				862BB67B1C9C42A900A71ED6 /* VeeSectionedArrayDataSource.m in Sources */,
 				860696991CA160BC00997F09 /* VeeAddressBookForTestingConstants.m in Sources */,
 				860C62AB1C28528E00876682 /* VeeContactPickerViewController.m in Sources */,
-				867AD8771CA04300009A26A2 /* VeeIsEmpty.m in Sources */,
 				86B756AE1CAAE14C0033D286 /* VeePostalAddress.m in Sources */,
 				8644055D1CA970970003B355 /* VeeContactCellConfiguration.m in Sources */,
 				862F859F1CA14435004EF57F /* VeeABRecord.m in Sources */,
@@ -900,6 +899,7 @@
 				864194F11C96D169005DC2D6 /* VeeContactPickerConstants.m in Sources */,
 				8606969C1CA1618F00997F09 /* VeeContactFactory.m in Sources */,
 				860696981CA1609E00997F09 /* VeeContactsForTestingFactory.m in Sources */,
+				86A43E291CBFD09F0087F167 /* VeeCommons.m in Sources */,
 				86DCEEFD1C96DB4400EC7FD6 /* VeeAddressBook.m in Sources */,
 				860C62B61C2854CB00876682 /* VeeContact.m in Sources */,
 				86F12AC01C3C0CF900F584C2 /* UILabel+Boldify.m in Sources */,
