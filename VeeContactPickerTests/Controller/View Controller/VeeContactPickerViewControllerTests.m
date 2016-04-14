@@ -5,18 +5,16 @@
 
 #import "VeeContactPickerViewController.h"
 #import <XCTest/XCTest.h>
-
+#import "XCTest+VeeCommons.h"
+#import "OCMock.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
-
-#import "OCMock.h"
 #import "VeeABDelegate.h"
 #import "VeeAddressBook.h"
 #import "VeeContactFactory.h"
 #import "VeeContactPickerConstants.h"
 #import "VeeContactPickerDelegate.h"
 #import "VeeContactsForTestingFactory.h"
-#import "XCTest+VeeCommons.h"
 
 #define NUMBER_OF_RANDOM_VEECONTACTS 100
 

@@ -84,8 +84,8 @@
 
 - (NSString*)displayNameWithFirstNameFirst
 {
-    if (_firstName && _lastName) {
-        if (_middleName) {
+    if ([VeeIsEmpty isNotEmpty:_firstName] && [VeeIsEmpty isNotEmpty:_lastName]) {
+        if ([VeeIsEmpty isNotEmpty:_middleName]) {
             return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _lastName]];
         }
         return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@", _lastName]];
@@ -95,8 +95,8 @@
 
 - (NSString*)displayNameWithLastNameFirst
 {
-    if (_firstName && _lastName) {
-        if (_middleName) {
+    if ([VeeIsEmpty isNotEmpty:_firstName] && [VeeIsEmpty isNotEmpty:_lastName]) {
+        if ([VeeIsEmpty isNotEmpty:_middleName]) {
             return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _firstName]];
         }
         return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@", _firstName]];
@@ -106,19 +106,19 @@
 
 - (NSString*)displayNameForNonCompleteCompositeName
 {
-    if (_organizationName) {
+    if ([VeeIsEmpty isNotEmpty:_organizationName]) {
         return _organizationName;
     }
-    if (_lastName) {
+    if ([VeeIsEmpty isNotEmpty:_lastName]) {
         return _lastName;
     }
-    if (_firstName) {
+    if ([VeeIsEmpty isNotEmpty:_firstName]) {
         return _firstName;
     }
-    if (_middleName) {
+    if ([VeeIsEmpty isNotEmpty:_middleName]) {
         return _middleName;
     }
-    if (_nickname) {
+    if ([VeeIsEmpty isNotEmpty:_nickname]) {
         return _nickname;
     }
     if ([_emails count] > 0) {

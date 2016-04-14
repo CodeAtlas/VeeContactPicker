@@ -153,6 +153,26 @@
     NSAssert(isDisplayNameCorrect, @"VeeContact displayName is %@ but should be %@", _veeContactComplete.displayName, aspectedDisplayName);
 }
 
+-(void)testDisplayNameWithEmptyFirstNameStartsWithSpaceBug
+{
+    [_veeContactComplete setFirstName:@""];
+    [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
+
+    NSString* firstDisplayNameChar = [[_veeContactComplete displayName] substringToIndex:1];
+    BOOL firstDisplayNameCharIsNotSpace = [firstDisplayNameChar isEqualToString:@" "] == NO;
+    NSAssert(firstDisplayNameCharIsNotSpace, @"Display name for nil first name start with a space");
+}
+
+-(void)testDisplayNameWithEmptyLastNameStartsWithSpaceBug
+{
+    [_veeContactComplete setLastName:@""];
+    [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
+
+    NSString* firstDisplayNameChar = [[_veeContactComplete displayName] substringToIndex:1];
+    BOOL firstDisplayNameCharIsNotSpace = [firstDisplayNameChar isEqualToString:@" "] == NO;
+    NSAssert(firstDisplayNameCharIsNotSpace, @"Display name for nil last name start with a space");
+}
+
 #pragma mark - Section identifier
 
 - (void)testVeecontactsSectionIdentifierShouldBeOneCharacter
