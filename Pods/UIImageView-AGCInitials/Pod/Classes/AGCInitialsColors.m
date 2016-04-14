@@ -55,7 +55,7 @@
         return [self cachedColorForString:string];
     }
     
-    unsigned long hashNumber = djb2StringToLong((unsigned char*)[string UTF8String]);
+    unsigned long hashNumber = agc_djb2StringToLong((unsigned char*)[string UTF8String]);
     UIColor* color = _colorPalette[hashNumber % [_colorPalette count]];
     _cachedColorsForStrings[string] = color;
     return color;
@@ -70,7 +70,7 @@
  http://www.cse.yorku.ca/~oz/hash.html djb2 algorithm to generate an unsigned long hash from a given string.
  Attention, it could return different values on different architectures for the same string
  */
-unsigned long djb2StringToLong(unsigned char* str)
+unsigned long agc_djb2StringToLong(unsigned char* str)
 {
     unsigned long hash = 5381;
     int c;

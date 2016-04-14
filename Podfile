@@ -8,7 +8,7 @@ target 'VeeContactPicker', :exclusive => true do
 	platform :ios, '7.0'
 
 	#Contact's image placeholders
-	pod 'UIImageView-AGCInitials', :git => 'https://github.com/andreacipriani/UIImageView-AGCInitials.git'
+	pod 'UIImageView-AGCInitials'
 end
 
 target 'VeeContactPickerTests', :exclusive => true do

@@ -21,7 +21,7 @@
     NSString* uppercaseInitials = [initials uppercaseString];
     UIColor* colorForInitials = [[AGCInitialsColors sharedInstance] colorForString:uppercaseInitials];
     self.backgroundColor = colorForInitials;
-    self.image = [self acg_imageWithInitials:uppercaseInitials withTextAttributes:textAttributes];
+    self.image = [self agc_imageWithInitials:uppercaseInitials withTextAttributes:textAttributes];
 }
 
 - (void)agc_setImageWithInitialsFromName:(nonnull NSString*)name separatedByString:(nonnull NSString*)separator
@@ -55,13 +55,13 @@
     return [nameFirstComponentInitial stringByAppendingString:nameSecondComponentInitial];
 }
 
-- (UIImage*)acg_imageWithInitials:(NSString*)initials withTextAttributes:(NSDictionary*)textAttributes
+- (UIImage*)agc_imageWithInitials:(NSString*)initials withTextAttributes:(NSDictionary*)textAttributes
 {
     [self acg_beginImageContext];
     CGSize textSize = [initials sizeWithAttributes:textAttributes];
-    [initials drawInRect:[self acg_initialsRectForTextSize:textSize] withAttributes:textAttributes];
+    [initials drawInRect:[self agc_initialsRectForTextSize:textSize] withAttributes:textAttributes];
     UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
-    [self acg_endContext];
+    [self agc_endContext];
     return newImage;
 }
 
@@ -70,7 +70,7 @@
 -(CGFloat)agc_fontSizeForImageViewSize
 {
     CGFloat scaleFactor = 0.4;
-    CGFloat fontSize = [self acg_imageHeight] * scaleFactor;
+    CGFloat fontSize = [self agc_imageHeight] * scaleFactor;
     return fontSize;
 }
 
@@ -85,24 +85,24 @@
     return self.bounds.size;
 }
 
-- (CGRect)acg_initialsRectForTextSize:(CGSize)textSize
+- (CGRect)agc_initialsRectForTextSize:(CGSize)textSize
 {
-    CGFloat x = [self acg_imageWidth] / 2 - textSize.width / 2;
-    CGFloat y = [self acg_imageHeight] / 2 - textSize.height / 2;
+    CGFloat x = [self agc_imageWidth] / 2 - textSize.width / 2;
+    CGFloat y = [self agc_imageHeight] / 2 - textSize.height / 2;
     return CGRectMake(x, y, textSize.width, textSize.height);
 }
 
-- (CGFloat)acg_imageWidth
+- (CGFloat)agc_imageWidth
 {
     return [self acg_imageSize].width;
 }
 
-- (CGFloat)acg_imageHeight
+- (CGFloat)agc_imageHeight
 {
     return [self acg_imageSize].height;
 }
 
-- (void)acg_endContext
+- (void)agc_endContext
 {
     UIGraphicsEndImageContext();
 }
