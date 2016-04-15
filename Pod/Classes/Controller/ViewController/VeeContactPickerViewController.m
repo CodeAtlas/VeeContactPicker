@@ -51,6 +51,10 @@
 
 @property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfiguration;
 
+#pragma mark - Bundle
+
+@property (nonatomic, strong) NSBundle * podBundle;
+
 @end
 
 @implementation VeeContactPickerViewController
@@ -59,7 +63,8 @@
 
 - (instancetype)initWithDefaultConfiguration
 {
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle bundleForClass:[self class]]];
+    _podBundle = [NSBundle bundleForClass:self.class];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:_podBundle];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
         _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
@@ -215,8 +220,8 @@
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
     NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
-    [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:cellIdentifier];
+    [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:_podBundle] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:_podBundle] forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
