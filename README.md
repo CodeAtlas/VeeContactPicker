@@ -1,6 +1,6 @@
 # VeeContactPicker
 
-[![CI Status](http://img.shields.io/travis/CodeAtlas/VeeContactPicker.svg?style=flat)](https://travis-ci.org/CodeAtls/VeeContactPicker)
+[![CI Status](http://img.shields.io/travis/CodeAtlas/VeeContactPicker.svg?style=flat)](https://travis-ci.org/CodeAtlas/VeeContactPicker)
 [![Version](https://img.shields.io/cocoapods/v/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![License](https://img.shields.io/cocoapods/l/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![Platform](https://img.shields.io/cocoapods/p/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
