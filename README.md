@@ -1,16 +1,29 @@
 # VeeContactPicker
-A replacement for the (bugged) iOS ABPeoplePickerNavigationViewController, with contact images.
 
-![VeeContactPicker screenshot](/Screenshots/veecontactpicker.png?raw=true "Screenshot")
+[![CI Status](http://img.shields.io/travis/CodeAtlas/VeeContactPicker.svg?style=flat)](https://travis-ci.org/CodeAtls/VeeContactPicker)
+[![Version](https://img.shields.io/cocoapods/v/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
+[![License](https://img.shields.io/cocoapods/l/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
+[![Platform](https://img.shields.io/cocoapods/p/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 
-**Features:**
+## Usage
 
-- iOS 7+
-- Loads contacts instantaneously, not like the iOS official controller (http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)
-- Search contacts also for email addresses or phone numbers!
-- Easy customizable apperance, without subclassing or changing the code
-- Choose which contacts you want to show in the picker (for example only contacts with a valid email address)
-- Handle contacts selection with completion block or delegation
-- Good test coverage
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-What do you want more? 😉 (submit an issue or contribute)
+## Requirements
+
+## Installation
+
+VeeContactPicker is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "VeeContactPicker"
+```
+
+## Author
+
+Andrea Cipriani - Code Atlas SRL andrea.g.cipriani@gmail.com
+
+## License
+
+VeeContactPicker is available under the MIT license. See the LICENSE file for more info.

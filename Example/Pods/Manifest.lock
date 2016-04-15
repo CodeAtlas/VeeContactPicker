@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.0):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.0)
+  - FBSnapshotTestCase/Core (2.1.0)
+  - FBSnapshotTestCase/SwiftSupport (2.1.0):
+    - FBSnapshotTestCase/Core
+  - OCMock (3.3)
+  - UIImageView-AGCInitials (0.0.1)
+  - VeeContactPicker (0.0.1):
+    - UIImageView-AGCInitials
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - OCMock
+  - VeeContactPicker (from `../`)
+
+EXTERNAL SOURCES:
+  VeeContactPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
+  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
+  UIImageView-AGCInitials: 197929b894edcb696ff965f7775062d915e4db1a
+  VeeContactPicker: 026b2117c519ea3727527f3426425036f6593397
+
+COCOAPODS: 0.39.0.beta.3

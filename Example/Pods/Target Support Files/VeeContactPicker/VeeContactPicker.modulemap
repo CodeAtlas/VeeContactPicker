@@ -1,0 +1,6 @@
+framework module VeeContactPicker {
+  umbrella header "VeeContactPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
