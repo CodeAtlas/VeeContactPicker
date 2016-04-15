@@ -10,5 +10,6 @@
 - (void)nullifyIvarWithName:(NSString*)iVarSelectorName ofObject:(id)object;
 - (void)assertObject:(id)object respondToSelectorWithName:(NSString*)selectorName;
 - (UIImage*)veeTestImage;
+- (NSBundle*)veeContactPickerBundle;
 
 @end

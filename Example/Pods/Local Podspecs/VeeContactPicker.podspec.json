@@ -20,7 +20,7 @@
   "source_files": "Pod/Classes/**/*",
   "resource_bundles": {
     "VeeContactPicker": [
-      "Pod/Assets/*.{xib, png, jpeg, jpg}"
+      "Pod/Assets/*.{xib}"
     ]
   },
   "dependencies": {

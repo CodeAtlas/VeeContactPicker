@@ -4,6 +4,7 @@
 //
 
 #import "XCTest+VeeCommons.h"
+#import "VeeContactPickerViewController.h"
 
 @implementation XCTest (VeeCommons)
 
@@ -27,6 +28,13 @@
     UIImage *veeTestImage = [UIImage imageWithContentsOfFile:imagePath];
     NSAssert(veeTestImage, @"vee test image not found");
     return veeTestImage;
+}
+
+-(NSBundle*)veeContactPickerBundle
+{
+    NSBundle* bundle = [NSBundle bundleForClass:VeeContactPickerViewController.class];
+    NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
+    return [NSBundle bundleWithURL:bundleURL];
 }
 
 @end

@@ -120,7 +120,7 @@
 
 - (void)loadEmptyVeeContactUITableViewCell
 {
-    _veeContactUITableViewCell = [[NSBundle mainBundle] loadNibNamed:@"VeeContactUITableViewCell" owner:nil options:nil][0];
+    _veeContactUITableViewCell = [[self veeContactPickerBundle] loadNibNamed:@"VeeContactUITableViewCell" owner:nil options:nil][0];
 }
 
 -(void)configureCellDefaultOptionsWithCompleteContact

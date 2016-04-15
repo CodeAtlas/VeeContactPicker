@@ -4,6 +4,7 @@
 //
 
 #import "VeeSectionedArrayDataSource.h"
+#import "VeeContactPickerConstants.h"
 
 @interface VeeSectionedArrayDataSource()
 
@@ -130,7 +131,22 @@
     return _allowedSortedSectionIdentifiers;
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    /*NSBundle* bundle = [NSBundle bundleForClass:self.class];
+    NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
+    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
+    UINib* cellNib = [UINib nibWithNibName:cellNibName bundle:bundle];
+    NSAssert(cellNib, @"Couldn't find nib %@ in bundle %@",cellNib,bundle);
+    [tableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    NSBundle* bundle = [NSBundle bundleForClass:self.class];
+    NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
+    bundle = [NSBundle bundleWithURL:bundleURL];
+    NSString *bundleRoot = [bundle bundlePath];
+    NSArray *paths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
+    //NSLog(@"Data source bundle: %@ paths: %@",bundle, paths);
+       */
     
     id cell = [tableView dequeueReusableCellWithIdentifier:_cellIdentifier forIndexPath:indexPath];
     id item = [self tableView:tableView itemAtIndexPath:indexPath];

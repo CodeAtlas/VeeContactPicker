@@ -63,7 +63,9 @@
 
 - (instancetype)initWithDefaultConfiguration
 {
-    _podBundle = [NSBundle bundleForClass:self.class];
+    [self loadBundleOfPod];
+    NSAssert(_podBundle,@"Bundle can't be nil");
+    
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:_podBundle];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
@@ -71,6 +73,25 @@
         _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
     }
     return self;
+}
+
+-(void)loadBundleOfPod
+{
+    NSBundle* bundle = [NSBundle bundleForClass:self.class];
+    NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
+    _podBundle = [NSBundle bundleWithURL:bundleURL];
+    if ([_podBundle isLoaded] == NO){
+        [_podBundle load];
+    }
+    NSLog(@"Bundle loaded: %@",_podBundle);
+    [self printContentsOfBundle];
+}
+
+- (void)printContentsOfBundle
+{
+    NSString *bundleRoot = [_podBundle bundlePath];
+    NSArray *paths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
+    NSLog(@"%@",paths);
 }
 
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
@@ -220,8 +241,10 @@
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
     NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
-    [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:_podBundle] forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:_podBundle] forCellReuseIdentifier:cellIdentifier];
+    UINib* cellNib = [UINib nibWithNibName:cellNibName bundle:_podBundle];
+    NSAssert(cellNib, @"Couldn't find nib %@ in bundle %@",cellNib,_podBundle);
+    [_contactsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
