@@ -216,7 +216,7 @@
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
     NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
     [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
