@@ -14,7 +14,6 @@
     }
     NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
     [attributedText setAttributes:@{ NSFontAttributeName : [UIFont boldSystemFontOfSize:self.font.pointSize] } range:range];
-
     self.attributedText = attributedText;
 }
 

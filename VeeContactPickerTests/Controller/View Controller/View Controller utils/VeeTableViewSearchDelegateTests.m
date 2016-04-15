@@ -29,7 +29,6 @@
 - (void)setUp
 {
     [super setUp];
-    
     [self loadVeeTableViewSearchDelegateWithMocks];
 }
 

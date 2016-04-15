@@ -79,12 +79,10 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 {
     id veeAB = OCMClassMock([VeeAddressBook class]);
     OCMStub([veeAB askABPermissionsWithDelegate:[OCMArg anyPointer]]).andReturn(YES);
-
     id veeContactFactoryMock = OCMClassMock([VeeContactFactory class]);
     OCMStub([veeContactFactoryMock veeContactProtsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);
-
     [_veeContactPickerVCWithNilVeeContacts view];
-
+    
     NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] count];
     BOOL isNumberOfVeeContactsCorrect = numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
     NSAssert(isNumberOfVeeContactsCorrect, @"There are %zd veeContacts in the Address Book but there are %zd veecontacts laded", NUMBER_OF_RANDOM_VEECONTACTS, numberOfVeeContactsLoaded);
@@ -177,14 +175,12 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 {
     VeeContactPickerViewController* veeContactPickerWithNoVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:@[]];
     [veeContactPickerWithNoVeeContacts view];
-    
     NSDate *loopTimeout = [NSDate dateWithTimeIntervalSinceNow:10];
     BOOL isTableViewVisible = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == NO;
     while (isTableViewVisible && [loopTimeout timeIntervalSinceNow] > 0) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:loopTimeout];
     }
-
     BOOL tableViewShouldBeHidden = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == YES;
     UISearchBar* searchBar = (UISearchBar*) [veeContactPickerWithNoVeeContacts valueForKey:@"searchBar"];
     BOOL searchBarShouldBeHidden = searchBar.hidden == YES;

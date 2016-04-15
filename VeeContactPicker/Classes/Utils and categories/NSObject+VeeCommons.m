@@ -12,7 +12,6 @@
     if (array == nil || [array count] == 0) {
         return @"[]";
     }
-
     NSMutableString* arrayDescriptionMutable = [[NSMutableString alloc] initWithString:@"["];
     for (id obj in array) {
         [arrayDescriptionMutable appendString:[NSString stringWithFormat:@"%@", [obj description]]];

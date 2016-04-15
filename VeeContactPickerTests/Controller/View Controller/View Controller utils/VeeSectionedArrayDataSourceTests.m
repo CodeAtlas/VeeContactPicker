@@ -285,7 +285,6 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
         configurationCellBlock = ^(UITableViewCell* cell, id item) {
         };
     }
-    
     VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable cellIdentifier:TEST_CELL_IDENTIFIER allowedSortedSectionIdentifiers:[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] sectionIdentifierWildcard:@"#" configurationCellBlock:configurationCellBlock];
     return veeSectionedArrayDataSource;
 }

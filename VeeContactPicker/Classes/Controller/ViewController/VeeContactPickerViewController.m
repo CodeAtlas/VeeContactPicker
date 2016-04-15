@@ -176,18 +176,15 @@
 - (void)setupTableView
 {
     [self registerNibsForCellReuse];
-
     ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, id<VeeContactProt> veeContact) {
         [_veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
-
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
     _veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:cellIdentifier allowedSortedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
 
     _contactsTableView.dataSource = _veeSectionedArrayDataSource;
     _contactsTableView.delegate = self;
     [_contactsTableView reloadData];
-
     [self setupSearchDisplayController];
 }
 
@@ -218,7 +215,6 @@
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
     NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
-
     [_contactsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
     [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:cellNibName bundle:nil] forCellReuseIdentifier:cellIdentifier];
 }
@@ -268,16 +264,13 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
     id<VeeContactProt> veeContact = [_veeSectionedArrayDataSource tableView:tableView itemAtIndexPath:indexPath];
-
     if (_contactPickerDelegate) {
         [_contactPickerDelegate didSelectABContact:veeContact];
     }
     if (_contactSelectionHandler) {
         _contactSelectionHandler(veeContact);
     }
-
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

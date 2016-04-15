@@ -160,9 +160,6 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     NSAssert(isFacebookAccountCorrect,@"Complete contact should have a Facebook account: %@, but Facebook accounts are: %@",kCompleteVeeContactFacebookAccount,[_veeABRecordComplete facebookAccounts]);
 }
 
-//Test multiple postal addresses
-
-
 #pragma mark - Unified Veecontact
 
 //TODO: Can't test unified contacts because I can't reproduce linked records in the address book programmatically, see http://stackoverflow.com/questions/24224929/is-there-a-way-to-programmatically-create-linked-contact

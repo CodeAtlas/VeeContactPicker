@@ -26,7 +26,6 @@
     if (cfError) {
         NSLog(@"Error while creating address book");
     }
-    
     _numberOfRecordsInAddressBook = [self numberOfRecordsInAddressBook:_addressBook];
 }
 
@@ -43,7 +42,6 @@
 -(NSUInteger)numberOfRecordsInAddressBook:(ABAddressBookRef)addressBook
 {
     NSUInteger numberOfContactsInAddressBook = 0;
-    
     NSArray* allSources = (__bridge_transfer NSArray*)(ABAddressBookCopyArrayOfAllSources(addressBook));
     for (int s = 0; s < allSources.count; s++) {
         ABRecordRef source = (__bridge ABRecordRef)(allSources[s]);

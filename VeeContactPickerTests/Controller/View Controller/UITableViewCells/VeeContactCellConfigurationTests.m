@@ -37,7 +37,6 @@
 - (void)testConfigureCellPrimaryLabel
 {
     [self configureCellDefaultOptionsWithCompleteContact];
-    
     BOOL isPrimaryLabelCorrect = [_veeContactUITableViewCell.primaryLabel.text isEqualToString:[_veeContactComplete displayName]];
     NSAssert(isPrimaryLabelCorrect, @"Primary label text should be %@ but is %@",[_veeContactComplete displayName],_veeContactUITableViewCell.primaryLabel.text);
 }
@@ -45,7 +44,6 @@
 - (void)testConfigureCellSecondaryLabelIsHiddenWithDefaultOptions
 {
     [self configureCellDefaultOptionsWithCompleteContact];
-    
     BOOL isSecondaryLabelHidden = _veeContactUITableViewCell.secondaryLabel.hidden;
     NSAssert(isSecondaryLabelHidden, @"Secondary label should be hidden with default options");
 }
