@@ -26,6 +26,9 @@
   "dependencies": {
     "UIImageView-AGCInitials": [
 
+    ],
+    "PodAsset": [
+
     ]
   }
 }

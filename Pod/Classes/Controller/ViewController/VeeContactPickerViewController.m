@@ -20,6 +20,8 @@
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
 
+#import "PodAsset.h"
+
 @interface VeeContactPickerViewController ()
 
 #pragma mark - Outlets
@@ -77,14 +79,20 @@
 
 -(void)loadBundleOfPod
 {
+    _podBundle = [NSBundle bundleWithPath:[PodAsset bundlePathForPod:@"VeeContactPicker"]];
+    
+    /*
     NSBundle* bundle = [NSBundle bundleForClass:self.class];
     NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
     _podBundle = [NSBundle bundleWithURL:bundleURL];
+     
     if ([_podBundle isLoaded] == NO){
         [_podBundle load];
     }
+     
     NSLog(@"Bundle loaded: %@",_podBundle);
-    [self printContentsOfBundle];
+    [self printContentsOfBundle]
+     */
 }
 
 - (void)printContentsOfBundle
@@ -243,6 +251,7 @@
     NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
     UINib* cellNib = [UINib nibWithNibName:cellNibName bundle:_podBundle];
     NSAssert(cellNib, @"Couldn't find nib %@ in bundle %@",cellNib,_podBundle);
+    
     [_contactsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     [self.searchDisplayController.searchResultsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
 }

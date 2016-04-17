@@ -82,10 +82,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-VeeContactPicker_Example/PodAsset.framework"
   install_framework "Pods-VeeContactPicker_Example/UIImageView_AGCInitials.framework"
   install_framework "Pods-VeeContactPicker_Example/VeeContactPicker.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-VeeContactPicker_Example/PodAsset.framework"
   install_framework "Pods-VeeContactPicker_Example/UIImageView_AGCInitials.framework"
   install_framework "Pods-VeeContactPicker_Example/VeeContactPicker.framework"
 fi
