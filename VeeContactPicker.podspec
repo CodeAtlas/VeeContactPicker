@@ -22,5 +22,4 @@ s.resource_bundles = {
 }
 s.dependency 'UIImageView-AGCInitials'
 s.dependency 'FLKAutoLayout'
-s.dependency 'PodAsset'
 end

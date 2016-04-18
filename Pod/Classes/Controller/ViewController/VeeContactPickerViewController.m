@@ -20,8 +20,6 @@
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
 
-#import "PodAsset.h"
-
 @interface VeeContactPickerViewController ()
 
 #pragma mark - Outlets
@@ -68,7 +66,7 @@
     [self loadBundleOfPod];
     NSAssert(_podBundle,@"Bundle can't be nil");
     
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass([self class]) bundle:_podBundle];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:_podBundle];
     if (self) {
         _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
         _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
@@ -79,27 +77,11 @@
 
 -(void)loadBundleOfPod
 {
-    _podBundle = [NSBundle bundleWithPath:[PodAsset bundlePathForPod:@"VeeContactPicker"]];
-    
-    /*
-    NSBundle* bundle = [NSBundle bundleForClass:self.class];
-    NSURL* bundleURL = [bundle URLForResource:@"VeeContactPicker" withExtension:@"bundle"];
-    _podBundle = [NSBundle bundleWithURL:bundleURL];
-     
+    NSString *bundlePath = [[NSBundle bundleForClass:[VeeContactPickerViewController class]] pathForResource:@"VeeContactPicker" ofType:@"bundle"];
+    _podBundle = [NSBundle bundleWithPath:bundlePath];
     if ([_podBundle isLoaded] == NO){
         [_podBundle load];
     }
-     
-    NSLog(@"Bundle loaded: %@",_podBundle);
-    [self printContentsOfBundle]
-     */
-}
-
-- (void)printContentsOfBundle
-{
-    NSString *bundleRoot = [_podBundle bundlePath];
-    NSArray *paths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
-    NSLog(@"%@",paths);
 }
 
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
@@ -209,7 +191,7 @@
 
 - (void)setupTableView
 {
-    [self registerNibsForCellReuse];
+    [self registerCellsForReuse];
     ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, id<VeeContactProt> veeContact) {
         [_veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
@@ -245,15 +227,9 @@
     self.searchDisplayController.searchResultsTableView.delegate = self;
 }
 
-- (void)registerNibsForCellReuse
+- (void)registerCellsForReuse
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
-    
-    /*NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
-    UINib* cellNib = [UINib nibWithNibName:cellNibName bundle:_podBundle];
-    NSAssert(cellNib, @"Couldn't find nib %@ in bundle %@",cellNib,_podBundle);
-    */
-    
     [_contactsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     [self.searchDisplayController.searchResultsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 }
