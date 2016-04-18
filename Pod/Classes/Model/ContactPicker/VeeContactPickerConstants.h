@@ -30,7 +30,6 @@
 
 @property (nonatomic, strong) NSNumber* veeContactCellImageDiameter;
 @property (nonatomic, strong) UIFont* veeContactCellPrimaryLabelFont;
-@property (nonatomic, strong) UIFont* veeContactCellSecondaryLabelFont;
 @property (nonatomic, strong) UIColor* veeContactCellBackgroundColor;
 @property (nonatomic, strong) UIColor* veeContactCellBackgroundColorWhenSelected;
 

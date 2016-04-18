@@ -1,8 +1,10 @@
 PODS:
+  - FLKAutoLayout (1.0.0)
   - OCMock (3.3)
   - PodAsset (0.9.0)
   - UIImageView-AGCInitials (0.0.1)
   - VeeContactPicker (0.0.1):
+    - FLKAutoLayout
     - PodAsset
     - UIImageView-AGCInitials
 
@@ -15,9 +17,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  FLKAutoLayout: 106b14dbae09d32c6730190f4e78a959759ba4a4
   OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
   PodAsset: 63862c730e4117d7f2dec2fc7899ed790f7f67ff
   UIImageView-AGCInitials: 197929b894edcb696ff965f7775062d915e4db1a
-  VeeContactPicker: 3ec596e64787bd66792fb4dd35ab156234639ec5
+  VeeContactPicker: fa958efdaf113e2c5065b2a99b258d71c8fb1991
 
 COCOAPODS: 0.39.0.beta.3

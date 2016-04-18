@@ -33,21 +33,11 @@
 
 - (void)configureCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
-    [self configureCellInitialValues:veeContactUITableViewCell];
     [self configureCellLabels:veeContactUITableViewCell forVeeContact:veeContact];
     [self configureCellImage:veeContactUITableViewCell forVeeContact:veeContact];
 }
 
 #pragma mark - Private utils
-
-- (void)configureCellInitialValues:(VeeContactUITableViewCell*)veeContactUITableViewCell
-{
-    veeContactUITableViewCell.primaryLabelCenterYAlignmentConstraint.constant = 0;
-    veeContactUITableViewCell.secondaryLabel.hidden = YES;
-    veeContactUITableViewCell.primaryLabel.text = @"";
-    veeContactUITableViewCell.secondaryLabel.text = @"";
-    veeContactUITableViewCell.contactImageView.image = nil;
-}
 
 - (void)configureCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
 {
@@ -72,7 +62,7 @@
     }
     else {
         if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing) {
-            [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];             
+            [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];
         }
         else {
             [veeContactUITableViewCell.contactImageView setImage:_veeContactPickerOptions.contactThumbnailImagePlaceholder];

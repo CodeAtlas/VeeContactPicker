@@ -32,8 +32,8 @@
 - (void)loadTableViewDefaultConstants
 {
     _veeContactCellNibName = @"VeeContactUITableViewCell";
-    _veeContactCellIdentifier = @"VeeContactCell"; //Also referenced into the xib
-    _veeContactCellHeight = 60.0;
+    _veeContactCellIdentifier = @"VeeContactCell";
+    _veeContactCellHeight = 66.0;
 }
 
 -(void)loadVeeContactPickerDefaultConstants
@@ -51,7 +51,6 @@
 {
     _veeContactCellImageDiameter = @(50.0);
     _veeContactCellPrimaryLabelFont = [UIFont systemFontOfSize:17];
-    _veeContactCellSecondaryLabelFont = [UIFont systemFontOfSize:15];
     _veeContactCellBackgroundColor = [UIColor whiteColor];
     _veeContactCellBackgroundColorWhenSelected = [UIColor lightGrayColor];
 }

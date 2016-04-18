@@ -248,12 +248,14 @@
 - (void)registerNibsForCellReuse
 {
     NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
-    NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
+    
+    /*NSString* cellNibName = [[VeeContactPickerConstants sharedInstance] veeContactCellNibName];
     UINib* cellNib = [UINib nibWithNibName:cellNibName bundle:_podBundle];
     NSAssert(cellNib, @"Couldn't find nib %@ in bundle %@",cellNib,_podBundle);
+    */
     
-    [_contactsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    [_contactsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate
