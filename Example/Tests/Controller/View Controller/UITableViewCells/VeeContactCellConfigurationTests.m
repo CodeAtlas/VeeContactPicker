@@ -12,6 +12,7 @@
 #import "XCTest+VeeCommons.h"
 #import "OCMock.h"
 #import "UILabel+Boldify.h"
+#import "VeeContactPickerConstants.h"
 
 @interface VeeContactCellConfigurationTests : XCTestCase
 
@@ -113,7 +114,8 @@
 
 - (void)loadEmptyVeeContactUITableViewCell
 {
-    _veeContactUITableViewCell = [[self veeContactPickerBundle] loadNibNamed:@"VeeContactUITableViewCell" owner:nil options:nil][0];
+    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    _veeContactUITableViewCell =  [[VeeContactUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 }
 
 -(void)configureCellDefaultOptionsWithCompleteContact
