@@ -6,8 +6,8 @@
 #import "NSObject+VeeCommons.h"
 #import "VeeABRecord.h"
 #import "VeeAddressBook.h"
-#import "VeeContact.h"
 #import "VeeCommons.h"
+#import "VeeContact.h"
 #import "VeePostalAddress.h"
 
 @implementation VeeContact
@@ -74,10 +74,10 @@
 
 - (NSString*)displayNameSortedForABOptions
 {
-    if ([VeeAddressBook isABSortOrderingByFirstName]){
+    if ([VeeAddressBook isABSortOrderingByFirstName]) {
         return [self displayNameWithFirstNameFirst];
     }
-    else{
+    else {
         return [self displayNameWithLastNameFirst];
     }
 }
@@ -256,6 +256,16 @@
 
 - (NSString*)description
 {
+    return [NSString stringWithFormat:@"<%@,\n %@>", self.class, [self propertiesDescriptionDictionary]];
+}
+
+- (NSString*)debugDescription
+{
+    return [NSString stringWithFormat:@"<%@: %p,\n %@>", self.class, self, [self propertiesDescriptionDictionary]];
+}
+
+- (NSDictionary*)propertiesDescriptionDictionary
+{
     NSString* hasImage;
     if (_thumbnailImage) {
         hasImage = @"Has thumbnailImage";
@@ -263,7 +273,19 @@
     else {
         hasImage = @"Hasn't thumbnailImage";
     }
-    return [NSString stringWithFormat:@"\n[%@:\n Composite Name: %@\n Record Ids: %@\n %@\n First name: %@\n Last name: %@\n Organization name: %@\n Display name: %@\n Phone numbers: %@\n Email addresses: %@\n postalAddresses: %@\n twitterAccounts: %@\n facebookAccounts: %@\n]", NSStringFromClass([self class]), _compositeName, [self formattedDescriptionOfArray:_recordIds], hasImage, _firstName, _lastName, _organizationName, [self displayName], [self formattedDescriptionOfArray:_phoneNumbers], [self formattedDescriptionOfArray:_emails], [self formattedDescriptionOfArray:_postalAddresses], [self formattedDescriptionOfArray:_twitterAccounts], [self formattedDescriptionOfArray:_facebookAccounts]];
+    return @{
+        @"compositeName" : _compositeName,
+        @"recordIds" : [self vee_formattedDescriptionOfArray:_recordIds],
+        @"hasImage" : hasImage,
+        @"firstName" : _firstName,
+        @"lastName" : _lastName,
+        @"organizationName" : _organizationName,
+        @"displayName" : [self displayName],
+        @"phoneNumbers" : [self vee_formattedDescriptionOfArray:_phoneNumbers],
+        @"emails" : [self vee_formattedDescriptionOfArray:_emails],
+        @"postalAddresses" : [self vee_formattedDescriptionOfArray:_postalAddresses],
+        @"twitterAccounts" : [self vee_formattedDescriptionOfArray:_twitterAccounts],
+        @"facebookAccounts" : [self vee_formattedDescriptionOfArray:_facebookAccounts]
+    };
 }
-
 @end

@@ -118,10 +118,10 @@
 -(NSString*)prettyVeeContactDescription:(VeeContact*)veeContact
 {
     NSString* veeContactDescription = veeContact.description;
-    if ([veeContactDescription hasPrefix:@"\n[VeeContact"]){
-        veeContactDescription = [veeContactDescription substringFromIndex:13];
-        if ([veeContactDescription hasSuffix:@"]"]){
-            return [veeContactDescription substringToIndex:[veeContactDescription length]-1];
+    if ([veeContactDescription hasPrefix:@"<VeeContact,\n {\n"]){
+        veeContactDescription = [veeContactDescription substringFromIndex:15];
+        if ([veeContactDescription hasSuffix:@"\n}>"]){
+            return [veeContactDescription substringToIndex:[veeContactDescription length]-3];
         }
     }
     return veeContactDescription;

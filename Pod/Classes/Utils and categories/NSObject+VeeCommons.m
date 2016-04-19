@@ -7,7 +7,7 @@
 
 @implementation NSObject (VeeCommons)
 
-- (NSString*)formattedDescriptionOfArray:(NSArray*)array
+- (NSString*)vee_formattedDescriptionOfArray:(NSArray*)array
 {
     if (array == nil || [array count] == 0) {
         return @"[]";
