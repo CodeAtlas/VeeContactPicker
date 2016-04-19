@@ -54,7 +54,7 @@
     [self nullifyIvarWithName:@"thumbnailImage" ofObject:_veeContactComplete];
     [self configureCellDefaultOptionsWithCompleteContact];
 
-    BOOL isCellImageSet = _veeContactUITableViewCell.contactImageView.image;
+    BOOL isCellImageSet = _veeContactUITableViewCell.contactImageView.image != nil;
     NSAssert(isCellImageSet, @"Cell image is not set");
 }
 
