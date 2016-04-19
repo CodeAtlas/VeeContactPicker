@@ -11,10 +11,10 @@ podfile: Example/Podfile
 cache: cocoapods
 
 before_install:
-gem install cocoapods --quiet # Since Travis is not always on latest version
-#pod install --project-directory=Example
-perl allowABPermissions #Script to modify the address book permissions db. Thanks to SocialbitGmbH/SwiftAddressBook
+	- gem install cocoapods --quiet # Since Travis is not always on latest version
+	#-pod install --project-directory=Example
+	- perl allowABPermissions #Script to modify the address book permissions db. Thanks to SocialbitGmbH/SwiftAddressBook
 
 script:
-- set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+	- set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+	- pod lib lint
