@@ -60,9 +60,9 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 - (void)testInitsShouldSetVeeAddressBook
 {
-    BOOL isVeeABSetForInitWithDefaultConfiguration = [_veeContactPickerVCWithDefaultOptions valueForKey:@"veeAddressBook"];
-    BOOL isVeeABBookSetForInitWithVeeNilContacts = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeAddressBook"];
-    BOOL isVeeABBookSetForInitWithCustomVeeContacts = [_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeAddressBook"];
+    BOOL isVeeABSetForInitWithDefaultConfiguration = [_veeContactPickerVCWithDefaultOptions valueForKey:@"veeAddressBook"] != nil;
+    BOOL isVeeABBookSetForInitWithVeeNilContacts = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeAddressBook"] != nil;
+    BOOL isVeeABBookSetForInitWithCustomVeeContacts = [_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeAddressBook"] != nil;
 
     NSAssert(isVeeABSetForInitWithDefaultConfiguration, @"VeeAddressBook should be set in init with default configuration");
     NSAssert(isVeeABBookSetForInitWithVeeNilContacts, @"VeeAddressBook should be set in init with nil veecontacts");
@@ -147,13 +147,13 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 - (void)testTableViewDataSourceIsNotNil
 {
-    BOOL isDataSourceSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.dataSource;
+    BOOL isDataSourceSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.dataSource != nil;
     NSAssert(isDataSourceSet, @"Table view has no data source");
 }
 
 - (void)testTableViewDelegateIsNotNil
 {
-    BOOL isDelegateSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.delegate;
+    BOOL isDelegateSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.delegate != nil;
     NSAssert(isDelegateSet, @"Table view has no delegates");
 }
 

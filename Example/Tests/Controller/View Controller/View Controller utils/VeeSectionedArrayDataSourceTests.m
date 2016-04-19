@@ -59,11 +59,11 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 - (void)testInitShouldSetIVars
 {
-    BOOL areItemsNotNil = [_veeSectionedArrayDataSource valueForKey:@"sectionedItems"];
-    BOOL areSectionIdentifiersNotNil = [_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"];
-    BOOL isCellIdentifierNotNil = [_veeSectionedArrayDataSource valueForKey:@"cellIdentifier"];
-    BOOL isSectionIdentifierWildcardNotNil = [_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"];
-    BOOL isConfigureCellBlockNotNil = [_veeSectionedArrayDataSource valueForKey:@"configureCellBlock"];
+    BOOL areItemsNotNil = [_veeSectionedArrayDataSource valueForKey:@"sectionedItems"] != nil;
+    BOOL areSectionIdentifiersNotNil = [_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"] != nil;
+    BOOL isCellIdentifierNotNil = [_veeSectionedArrayDataSource valueForKey:@"cellIdentifier"] != nil;
+    BOOL isSectionIdentifierWildcardNotNil = [_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"] != nil;
+    BOOL isConfigureCellBlockNotNil = [_veeSectionedArrayDataSource valueForKey:@"configureCellBlock"] != nil;
 
     NSAssert(areItemsNotNil, @"Sectioned items shouldn't be nil");
     NSAssert(areSectionIdentifiersNotNil, @"Sectioned identifiers shouldn't be nil");

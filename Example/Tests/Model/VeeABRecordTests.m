@@ -223,7 +223,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     }
     
     BOOL isPhoneNumberCountCorrect = phoneNumbersCount == kVeeTestingContactsPhoneNumbersCount;
-    NSAssert(isPhoneNumberCountCorrect, @"Phone numbers are %ld, but they should be %ld", phoneNumbersCount, kVeeTestingContactsPhoneNumbersCount);
+    NSAssert(isPhoneNumberCountCorrect, @"Phone numbers are %zd, but they should be %zd", phoneNumbersCount, kVeeTestingContactsPhoneNumbersCount);
 }
 
 - (void)testPhoneNumberDuplicates
@@ -242,7 +242,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     }
     
     BOOL isEmailCountCorrect = emailsCount == kVeeTestingContactsEmailsCount;
-    NSAssert(isEmailCountCorrect, @"Phone numbers are %ld, but they should be %ld", emailsCount, kVeeTestingContactsEmailsCount);
+    NSAssert(isEmailCountCorrect, @"Phone numbers are %zd, but they should be %zd", emailsCount, kVeeTestingContactsEmailsCount);
 }
 
 - (void)testEmailsNoDuplicate
