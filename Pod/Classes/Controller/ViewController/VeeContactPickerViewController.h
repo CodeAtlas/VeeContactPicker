@@ -17,10 +17,11 @@
 
 #pragma mark - Init
 
+//If veeContacts are not set, the picker will show all contacts of the address book
 - (instancetype)initWithDefaultConfiguration;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
-- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts; //When veeContacts are not set they are loaded from the address book
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts; //Designated initializer
 
 #pragma mark - Delegate and completion handler
 

@@ -63,15 +63,36 @@
 
 - (instancetype)initWithDefaultConfiguration
 {
+    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions] andVeeContacts:nil];
+    return self;
+}
+
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
+{
+    self = [self initWithOptions:veeContactPickerOptions andVeeContacts:nil];
+    return self;
+}
+
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
+{
+    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions] andVeeContacts:veeContacts];
+    return self;
+}
+
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
     [self loadBundleOfPod];
     NSAssert(_podBundle,@"Bundle can't be nil");
-    
+
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:_podBundle];
-    if (self) {
-        _veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-        _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
-        _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
-    }
+    _veeContactPickerOptions = veeContactPickerOptions;
+    _veeContacts = veeContacts;
+    _veeAddressBook = [[VeeAddressBook alloc] initWithVeeABDelegate:self];
+    _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
     return self;
 }
 
@@ -82,39 +103,6 @@
     if ([_podBundle isLoaded] == NO){
         [_podBundle load];
     }
-}
-
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
-{
-    self = [self initWithDefaultConfiguration];
-    if (self) {
-        if (veeContactPickerOptions) {
-            _veeContactPickerOptions = veeContactPickerOptions;
-        }
-    }
-    return self;
-}
-
-- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
-{
-    self = [self initWithDefaultConfiguration];
-    if (self) {
-        if (veeContacts) {
-            _veeContacts = veeContacts;
-        }
-    }
-    return self;
-}
-
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
-{
-    self = [self initWithOptions:veeContactPickerOptions];
-    if (self) {
-        if (veeContacts) {
-            _veeContacts = veeContacts;
-        }
-    }
-    return self;
 }
 
 #pragma mark - ViewController lifecycle
