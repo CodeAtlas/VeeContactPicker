@@ -268,15 +268,15 @@
 {
     NSString* hasImage;
     if (_thumbnailImage) {
-        hasImage = @"Has thumbnailImage";
+        hasImage = @"YES";
     }
     else {
-        hasImage = @"Hasn't thumbnailImage";
+        hasImage = @"NO";
     }
     return @{
         @"compositeName" : [self vee_formattedDescriptionOfProperty:_compositeName],
         @"recordIds" : [self vee_formattedDescriptionOfArray:_recordIds],
-        @"hasImage" : hasImage,
+        @"hasThumbnailImage" : hasImage,
         @"firstName" : [self vee_formattedDescriptionOfProperty:_firstName],
         @"lastName" : [self vee_formattedDescriptionOfProperty:_lastName],
         @"organizationName" : [self vee_formattedDescriptionOfProperty:_organizationName],
@@ -288,4 +288,5 @@
         @"facebookAccounts" : [self vee_formattedDescriptionOfArray:_facebookAccounts]
     };
 }
+
 @end
