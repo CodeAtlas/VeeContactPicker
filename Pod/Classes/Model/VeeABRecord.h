@@ -21,12 +21,12 @@
 @property (nonatomic, readonly, copy) NSString* organizationName;
 @property (nonatomic, readonly, copy) NSString* compositeName;
 @property (nonatomic, readonly, strong) UIImage* thumbnailImage;
-@property (nonatomic, strong) NSArray<NSString*>* phoneNumbers;
-@property (nonatomic, strong) NSArray<NSString*>* emails;
-@property (nonatomic, strong) NSArray<NSDictionary*>* postalAddresses;
-@property (nonatomic, strong) NSArray<NSString*>* websites;
-@property (nonatomic, strong) NSArray<NSString*>* facebookAccounts;
-@property (nonatomic, strong) NSArray<NSString*>* twitterAccounts;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* phoneNumbers;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* emails;
+@property (nonatomic, readonly, strong) NSArray<NSDictionary*>* postalAddresses;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* websites;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* facebookAccounts;
+@property (nonatomic, readonly, strong) NSArray<NSString*>* twitterAccounts;
 
 #pragma mark - Postal address keys constants
 

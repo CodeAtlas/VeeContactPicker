@@ -31,9 +31,9 @@
 
 - (void)testNumberOfImportedRecords
 {
-    VeeABRecordsImporter* veeABRecordsImporter = [VeeABRecordsImporter new];
-    NSUInteger numberOfImportedRecords = [[veeABRecordsImporter importVeeABRecordsFromAddressBook:_addressBook] count];
-    BOOL isNumberOfImportedRecordsCorrect = _numberOfRecordsInAddressBook == numberOfImportedRecords;
+    //VeeABRecordsImporter* veeABRecordsImporter = [VeeABRecordsImporter new];
+    //NSUInteger numberOfImportedRecords = [[veeABRecordsImporter importVeeABRecordsFromAddressBook:_addressBook] count];
+    //BOOL isNumberOfImportedRecordsCorrect = _numberOfRecordsInAddressBook == numberOfImportedRecords;
     //TODO: green local, red on travis - NSAssert(isNumberOfImportedRecordsCorrect, @"Number of imported records is %zd but should be %zd",numberOfImportedRecords,_numberOfRecordsInAddressBook);
 }
 
