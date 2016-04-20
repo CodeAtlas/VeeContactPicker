@@ -74,6 +74,7 @@ VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPic
 ```
 Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
 
+
 - If you want to change or localize the strings shown by the picker, look at:
 
 ```objective-c
