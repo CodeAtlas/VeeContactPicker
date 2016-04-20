@@ -10,8 +10,8 @@
 
 @required
 
-- (void)didSelectABContact:(id<VeeContactProt>)abContact;
-- (void)didCancelABContactSelection;
-- (void)didFailToAccessABContacts;
+- (void)didSelectContact:(id<VeeContactProt>)abContact;
+- (void)didCancelContactSelection;
+- (void)didFailToAccessAddressBook;
 
 @end

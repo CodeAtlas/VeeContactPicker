@@ -61,20 +61,20 @@
 
 #pragma mark - VeeContactPickerDelegate
 
-- (void)didSelectABContact:(id<VeeContactProt>)veeContact
+- (void)didSelectContact:(id<VeeContactProt>)veeContact
 {
     NSLog(@"Selected %@", veeContact);
     [self updateUIForSelectedContact:veeContact];
 }
 
--(void)didCancelABContactSelection
+-(void)didCancelContactSelection
 {
     NSLog(@"No contact was selected");
     _selectedContactLabel.text = @"No Contact is selected";
     [self updateUIForNoContactSelected];
 }
 
--(void)didFailToAccessABContacts
+-(void)didFailToAccessAddressBook
 {
     NSLog(@"Failed to access contacts. Have you accepted Address book permissions?");
     [self updateUIForNoContactSelected];

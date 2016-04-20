@@ -233,7 +233,7 @@
 {
     NSLog(@"Warning - address book permissions not granted");
     [self showEmptyView];
-    [_contactPickerDelegate didFailToAccessABContacts];
+    [_contactPickerDelegate didFailToAccessAddressBook];
 }
 
 #pragma mark - UI
@@ -269,7 +269,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id<VeeContactProt> veeContact = [_veeSectionedArrayDataSource tableView:tableView itemAtIndexPath:indexPath];
     if (_contactPickerDelegate) {
-        [_contactPickerDelegate didSelectABContact:veeContact];
+        [_contactPickerDelegate didSelectContact:veeContact];
     }
     if (_contactSelectionHandler) {
         _contactSelectionHandler(veeContact);
@@ -288,7 +288,7 @@
 
 - (IBAction)cancelBarButtonItemPressed:(id)sender
 {
-    [_contactPickerDelegate didCancelABContactSelection];
+    [_contactPickerDelegate didCancelContactSelection];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
