@@ -33,8 +33,8 @@
 
 - (IBAction)showVeecontactPickerPressed:(id)sender
 {
-    //VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
-    VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
+    VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
+    //VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
     veePickerVC.contactPickerDelegate = self;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
