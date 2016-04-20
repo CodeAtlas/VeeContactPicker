@@ -5,7 +5,7 @@
 
 #import "VeeContactCellConfiguration.h"
 #import "VeeContactUITableViewCell.h"
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 #import "VeeContactPickerOptions.h"
 #import "UIImageView+AGCInitials.h"
 #import "VeeCommons.h"

@@ -3,9 +3,9 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 
-@implementation UILabel (Boldify)
+@implementation UILabel (VeeBoldify)
 
 - (void)vee_boldRange:(NSRange)range
 {

@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (Boldify)
+@interface UILabel (VeeBoldify)
 
 - (void)vee_boldSubstring:(NSString*)substring;
 - (void)vee_boldRange:(NSRange)range;

@@ -23,7 +23,7 @@
 #import "VeePostalAddressProt.h"
 #import "VeeSectionable.h"
 #import "NSObject+VeeCommons.h"
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 #import "VeeCommons.h"
 
 FOUNDATION_EXPORT double VeeContactPickerVersionNumber;
