@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![License](https://img.shields.io/cocoapods/l/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![Platform](https://img.shields.io/cocoapods/p/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
-a
+
 **VeeContactPicker** is an objc replacement for the bugged *ABPeoplePickerNavigationController* (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)). It lets you choose a contact from the address book.
 
 ### Features
