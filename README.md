@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![License](https://img.shields.io/cocoapods/l/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![Platform](https://img.shields.io/cocoapods/p/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
-
+a
 **VeeContactPicker** is an objc replacement for the bugged *ABPeoplePickerNavigationController* (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)). It lets you choose a contact from the address book.
 
 ### Features
@@ -62,7 +62,7 @@ You can customize some properties of the picker by changing the object *VeeConta
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
 ```
 
-For example, if you don't like the contact's initials images as the placeholder, you can set your own:
+For example, if you don't like the contact's initials images as the placeholder, you can set your own placeholder:
 
 ```objective-c
 VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
@@ -99,7 +99,7 @@ You can customize most of the appearance properties of the picker by setting the
 For example:
 
 ```objective-c
-[[VeeContactPickerConstants sharedInstance] setNavigationBarBarTintColor:[UIColor purpleColor]];
+[[VeeContactPickerConstants sharedInstance] setNavigationBarTintColor:[UIColor purpleColor]];
 [[VeeContactPickerConstants sharedInstance] setNavigationBarTranslucent:NO];
 [[VeeContactPickerConstants sharedInstance] setContactCellPrimaryLabelFont:[UIFont yourFont]];
 //...
