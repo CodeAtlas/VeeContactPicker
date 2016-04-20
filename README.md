@@ -62,7 +62,7 @@ You can customize some properties of the picker by changing the object *VeeConta
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
 ```
 
-- For example, if you don't like the contact's initials images as the placeholder, you can set your own:
+For example, if you don't like the contact's initials images as the placeholder, you can set your own:
 
 ```objective-c
 VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
@@ -72,8 +72,7 @@ veeContactPickerOptions.contactThumbnailImagePlaceholder = [UIImage imageNamed:@
 VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];
 //...
 ```
-
-- Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
+Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
 
 - If you want to change or localize the strings shown by the picker, look at:
 
