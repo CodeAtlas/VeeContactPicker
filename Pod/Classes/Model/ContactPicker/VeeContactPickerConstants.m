@@ -40,7 +40,7 @@
 {
     _cancelBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
     _navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
-    _navigationBarBarTintColor = [self iOS7DefaultNavigationBarColor];
+    _navigationBarBarTintColor = [UIColor whiteColor];
     _navigationBarTranslucent = NO;
     _veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
     _veeContactEmptyViewLabelTextColor = [UIColor blackColor];
@@ -55,11 +55,6 @@
     _veeContactCellBackgroundColorWhenSelected = [UIColor lightGrayColor];
 }
 
-
--(UIColor*)iOS7DefaultNavigationBarColor
-{
-    return [UIColor colorWithRed:(247.0f/255.0f) green:(247.0f/255.0f) blue:(247.0f/255.0f) alpha:1];
-}
 
 -(UIColor*)iOS7DefaultAccentBlueColor
 {

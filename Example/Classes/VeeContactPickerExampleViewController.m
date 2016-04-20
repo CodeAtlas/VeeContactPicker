@@ -36,7 +36,6 @@
     //VeeContactPickerViewController* veePickerVC = [self pickerWithAddressBookContacts];
     VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
     veePickerVC.contactPickerDelegate = self;
-    //[self setColorPlaceholdersCustomPalette]; //Uncomment to change with your color palette
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 
@@ -51,12 +50,6 @@
 {
     NSArray<id<VeeContactProt> >* randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
     return [[VeeContactPickerViewController alloc] initWithVeeContacts:randomVeeContacts];
-}
-
--(void)setColorPlaceholdersCustomPalette
-{
-    NSArray* replaceWithYourCustomPalette = @[[UIColor purpleColor],[UIColor redColor]];
-    [[AGCInitialsColors sharedInstance] setColorPalette:replaceWithYourCustomPalette];
 }
 
 #pragma mark - VeeContactPickerDelegate
