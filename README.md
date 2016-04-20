@@ -10,7 +10,7 @@
 ### Features
 
 - Load contacts very **fast**! Not like the iOS official controller...
-- Contact's images and colored placeholders with contact's initials!
+- Contact's **images** and colored placeholders with contact's initials!
 - Search contacts also by email addresses or phone numbers!
 - Retro **compatible with iOS 7**
 - Handle contacts selection with completion block or delegation
@@ -39,7 +39,7 @@ And then implement the *VeeContactPickerDelegate*
 ```objective-c
 - (void)didSelectContact:(id<VeeContactProt>)veeContact
 {
-    //Do whatever you want with veeContact!
+    //Do whatever you want with the selected veeContact!
 }
 
 -(void)didCancelContactSelection
@@ -73,7 +73,7 @@ VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPic
 //...
 ```
 
-- Contact's image placeholder are provided by (AGCInitials)[https://github.com/andreacipriani/UIImageView-AGCInitials]. You can customize the color palette if you want, see the README of AGCInitials.
+- Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
 
 - If you want to change or localize the strings shown by the picker, look at:
 
@@ -94,7 +94,7 @@ veeContactPickerOptions.veeContactPickerStrings
 
 **Picker Appearance:**
 
-You can customize most of the appearance properties of the picker by setting them in the singleton class **VeeContactPickerConstants**, before loading the picker.
+You can customize most of the appearance properties of the picker by setting them in the singleton class *VeeContactPickerConstants*, before loading the picker.
 
 For example:
 
