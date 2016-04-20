@@ -43,7 +43,7 @@
 {
     veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
     NSArray* nameComponents = [[veeContact displayNameSortedForABOptions] componentsSeparatedByString:@" "];
-    BOOL isMissingANameComponent = [VeeCommons isEmpty:[veeContact firstName]] || [VeeCommons isEmpty:[veeContact lastName]];
+    BOOL isMissingANameComponent = [VeeCommons vee_isEmpty:[veeContact firstName]] || [VeeCommons vee_isEmpty:[veeContact lastName]];
     BOOL nameComponentsAreLessThanOne = [nameComponents count] < 1;
     NSString* toBoldify;
     if (isMissingANameComponent || nameComponentsAreLessThanOne){
@@ -52,7 +52,7 @@
     else {
         toBoldify = [nameComponents firstObject];
     }
-    [veeContactUITableViewCell.primaryLabel boldSubstring:toBoldify];
+    [veeContactUITableViewCell.primaryLabel vee_boldSubstring:toBoldify];
 }
 
 - (void)configureCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact

@@ -84,8 +84,8 @@
 
 - (NSString*)displayNameWithFirstNameFirst
 {
-    if ([VeeCommons isNotEmpty:_firstName] && [VeeCommons isNotEmpty:_lastName]) {
-        if ([VeeCommons isNotEmpty:_middleName]) {
+    if ([VeeCommons vee_isNotEmpty:_firstName] && [VeeCommons vee_isNotEmpty:_lastName]) {
+        if ([VeeCommons vee_isNotEmpty:_middleName]) {
             return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _lastName]];
         }
         return [_firstName stringByAppendingString:[NSString stringWithFormat:@" %@", _lastName]];
@@ -95,8 +95,8 @@
 
 - (NSString*)displayNameWithLastNameFirst
 {
-    if ([VeeCommons isNotEmpty:_firstName] && [VeeCommons isNotEmpty:_lastName]) {
-        if ([VeeCommons isNotEmpty:_middleName]) {
+    if ([VeeCommons vee_isNotEmpty:_firstName] && [VeeCommons vee_isNotEmpty:_lastName]) {
+        if ([VeeCommons vee_isNotEmpty:_middleName]) {
             return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@ %@", _middleName, _firstName]];
         }
         return [_lastName stringByAppendingString:[NSString stringWithFormat:@" %@", _firstName]];
@@ -106,19 +106,19 @@
 
 - (NSString*)displayNameForNonCompleteCompositeName
 {
-    if ([VeeCommons isNotEmpty:_organizationName]) {
+    if ([VeeCommons vee_isNotEmpty:_organizationName]) {
         return _organizationName;
     }
-    if ([VeeCommons isNotEmpty:_lastName]) {
+    if ([VeeCommons vee_isNotEmpty:_lastName]) {
         return _lastName;
     }
-    if ([VeeCommons isNotEmpty:_firstName]) {
+    if ([VeeCommons vee_isNotEmpty:_firstName]) {
         return _firstName;
     }
-    if ([VeeCommons isNotEmpty:_middleName]) {
+    if ([VeeCommons vee_isNotEmpty:_middleName]) {
         return _middleName;
     }
-    if ([VeeCommons isNotEmpty:_nickname]) {
+    if ([VeeCommons vee_isNotEmpty:_nickname]) {
         return _nickname;
     }
     if ([_emails count] > 0) {
@@ -141,13 +141,13 @@
 {
     NSString* sectionIdentifier;
 
-    if ([VeeCommons isEmpty:_firstName] == NO) {
+    if ([VeeCommons vee_isEmpty:_firstName] == NO) {
         sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
     }
-    else if ([VeeCommons isEmpty:_lastName] == NO) {
+    else if ([VeeCommons vee_isEmpty:_lastName] == NO) {
         sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
     }
-    else if ([VeeCommons isEmpty:[self displayName]] == NO) {
+    else if ([VeeCommons vee_isEmpty:[self displayName]] == NO) {
         sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
     }
     return sectionIdentifier;
@@ -157,13 +157,13 @@
 {
     NSString* sectionIdentifier;
 
-    if ([VeeCommons isEmpty:_lastName] == NO) {
+    if ([VeeCommons vee_isEmpty:_lastName] == NO) {
         sectionIdentifier = [[_lastName substringToIndex:1] uppercaseString];
     }
-    else if ([VeeCommons isEmpty:_firstName] == NO) {
+    else if ([VeeCommons vee_isEmpty:_firstName] == NO) {
         sectionIdentifier = [[_firstName substringToIndex:1] uppercaseString];
     }
-    else if ([VeeCommons isEmpty:[self displayName]] == NO) {
+    else if ([VeeCommons vee_isEmpty:[self displayName]] == NO) {
         sectionIdentifier = [[[self displayName] substringToIndex:1] uppercaseString];
     }
     return sectionIdentifier;
@@ -204,8 +204,8 @@
         return [veeContact displayName];
     }
 
-    if ([VeeCommons isEmpty:[veeContact valueForKey:firstProperty]]) {
-        if ([VeeCommons isEmpty:[veeContact valueForKey:secondProperty]]) {
+    if ([VeeCommons vee_isEmpty:[veeContact valueForKey:firstProperty]]) {
+        if ([VeeCommons vee_isEmpty:[veeContact valueForKey:secondProperty]]) {
             return [veeContact displayName];
         }
         return [veeContact valueForKey:secondProperty];

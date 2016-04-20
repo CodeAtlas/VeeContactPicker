@@ -7,7 +7,7 @@
 
 @implementation VeeCommons
 
-+ (BOOL)isEmpty:(id)obj
++ (BOOL)vee_isEmpty:(id)obj
 {
     return obj == nil
         || [obj isKindOfClass:[NSNull class]]
@@ -17,9 +17,9 @@
                && [obj count] == 0);
 }
 
-+ (BOOL)isNotEmpty:(id)obj
++ (BOOL)vee_isNotEmpty:(id)obj
 {
-    return [self isEmpty:obj] == NO;
+    return [self vee_isEmpty:obj] == NO;
 }
 
 @end

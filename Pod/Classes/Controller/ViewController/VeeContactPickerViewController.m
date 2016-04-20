@@ -160,7 +160,7 @@
 
 - (void)loadCustomVeecontacts
 {
-    if ([VeeCommons isEmpty:_veeContacts]) {
+    if ([VeeCommons vee_isEmpty:_veeContacts]) {
         [self showEmptyView];
     }
     else {

@@ -7,7 +7,7 @@
 
 @implementation UILabel (Boldify)
 
-- (void)boldRange:(NSRange)range
+- (void)vee_boldRange:(NSRange)range
 {
     if (![self respondsToSelector:@selector(setAttributedText:)]) {
         return;
@@ -17,10 +17,10 @@
     self.attributedText = attributedText;
 }
 
-- (void)boldSubstring:(NSString*)substring
+- (void)vee_boldSubstring:(NSString*)substring
 {
     NSRange range = [self.text rangeOfString:substring];
-    [self boldRange:range];
+    [self vee_boldRange:range];
 }
 
 @end

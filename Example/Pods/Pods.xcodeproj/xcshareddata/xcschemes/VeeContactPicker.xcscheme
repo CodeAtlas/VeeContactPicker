@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7D1E7AFC0CA6B29A10F5CAAD'
-               BlueprintName = 'VeeContactPicker'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'VeeContactPicker.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E6193AFCF757AF049E13B498790A2788"
+               BlueprintName = "VeeContactPicker"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "VeeContactPicker.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

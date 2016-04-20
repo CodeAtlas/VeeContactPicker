@@ -75,7 +75,7 @@
     _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
     NSString* nameComponentToBoldify = [[[_veeContactComplete displayNameSortedForABOptions] componentsSeparatedByString:@" "] firstObject];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 -(void)testBoldifyOnVeeContactWithOnlyFirstName
@@ -85,7 +85,7 @@
     [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
     NSString* nameComponentToBoldify = [_veeContactComplete displayNameSortedForABOptions];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 -(void)testBoldifyOnVeeContactWithOnlyCompanyName
@@ -95,7 +95,7 @@
     VeeContact* companyVeeContact = [[VeeContact alloc] initWithFirstName:nil middleName:nil lastName:nil nickName:nil organizationName:@"test company" compositeName:nil thubnailImage:nil phoneNumbers:nil emails:nil];
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:companyVeeContact];
     NSString* nameComponentToBoldify = [companyVeeContact displayNameSortedForABOptions];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 #pragma mark - Private utils

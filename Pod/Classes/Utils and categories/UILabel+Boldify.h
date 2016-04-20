@@ -7,7 +7,7 @@
 
 @interface UILabel (Boldify)
 
-- (void)boldSubstring:(NSString*)substring;
-- (void)boldRange:(NSRange)range;
+- (void)vee_boldSubstring:(NSString*)substring;
+- (void)vee_boldRange:(NSRange)range;
 
 @end
