@@ -274,13 +274,13 @@
         hasImage = @"Hasn't thumbnailImage";
     }
     return @{
-        @"compositeName" : _compositeName,
+        @"compositeName" : [self vee_formattedDescriptionOfProperty:_compositeName],
         @"recordIds" : [self vee_formattedDescriptionOfArray:_recordIds],
         @"hasImage" : hasImage,
-        @"firstName" : _firstName,
-        @"lastName" : _lastName,
-        @"organizationName" : _organizationName,
-        @"displayName" : [self displayName],
+        @"firstName" : [self vee_formattedDescriptionOfProperty:_firstName],
+        @"lastName" : [self vee_formattedDescriptionOfProperty:_lastName],
+        @"organizationName" : [self vee_formattedDescriptionOfProperty:_organizationName],
+        @"displayName" : [self vee_formattedDescriptionOfProperty:[self displayName]],
         @"phoneNumbers" : [self vee_formattedDescriptionOfArray:_phoneNumbers],
         @"emails" : [self vee_formattedDescriptionOfArray:_emails],
         @"postalAddresses" : [self vee_formattedDescriptionOfArray:_postalAddresses],

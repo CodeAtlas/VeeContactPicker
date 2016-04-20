@@ -7,6 +7,14 @@
 
 @implementation NSObject (VeeCommons)
 
+- (NSString*)vee_formattedDescriptionOfProperty:(id)property
+{
+    if (property == nil){
+        return @"nil";
+    }
+    return property;
+}
+
 - (NSString*)vee_formattedDescriptionOfArray:(NSArray*)array
 {
     if (array == nil || [array count] == 0) {
