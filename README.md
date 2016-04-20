@@ -5,21 +5,107 @@
 [![License](https://img.shields.io/cocoapods/l/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 [![Platform](https://img.shields.io/cocoapods/p/VeeContactPicker.svg?style=flat)](http://cocoapods.org/pods/VeeContactPicker)
 
-VeeContactPicker is an objc replacement for the bugged ABPeoplePickerNavigationController (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)). It lets you choose a contact from the address book.
+**VeeContactPicker** is an objc replacement for the bugged *ABPeoplePickerNavigationController* (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)). It lets you choose a contact from the address book.
 
 ### Features
 
-- Load contacts very fast! Not like the iOS official controller...
+- Load contacts very **fast**! Not like the iOS official controller...
+- Contact's images and colored placeholders with contact's initials!
 - Search contacts also by email addresses or phone numbers!
-- Retro compatible with iOS 7
+- Retro **compatible with iOS 7**
 - Handle contacts selection with completion block or delegation
 - Choose which contacts you want to show in the picker (e.g only contacts with a valid email address)
-- Easy customizable apperance, without needing to subclass it. See "How to use it - Details"
+- Easy **customizable appearance**, without needing to subclass it. See "How to use it - Details"
 - Good test coverage
 
 ### How to use it - Basic
 
+Import the ViewController:
+
+```objective-c
+#import "VeeContactPickerViewController.h"
+```
+
+Initialize it and set the delegate:
+
+```objective-c
+VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+veeContactPickerViewController.contactPickerDelegate = self;
+[self presentViewController:veeContactPickerViewController animated:YES completion:nil];
+```
+
+And then implement the *VeeContactPickerDelegate*
+
+```objective-c
+- (void)didSelectContact:(id<VeeContactProt>)veeContact
+{
+    //Do whatever you want with veeContact!
+}
+
+-(void)didCancelContactSelection
+{
+  //No contact was selected
+}
+
+-(void)didFailToAccessAddressBook
+{
+  //Show an error?
+}
+```
+That's all folks!
+
 ### How to use it - Details
+
+You can customize some properties of the picker by changing the object *VeeContactPickerOptions* and pass it to the initializer:
+
+```objective-c
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
+```
+
+- For example, if you don't like the contact's initials images as the placeholder, you can set your own:
+
+```objective-c
+VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
+veeContactPickerOptions.showLettersWhenContactImageIsMissing = NO;
+veeContactPickerOptions.contactThumbnailImagePlaceholder = [UIImage imageNamed:@"your_placeholder"];
+//...
+VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];
+//...
+```
+
+- Contact's image placeholder are provided by (AGCInitials)[https://github.com/andreacipriani/UIImageView-AGCInitials]. You can customize the color palette if you want, see the README of AGCInitials.
+
+- If you want to change or localize the strings shown by the picker, look at:
+
+```objective-c
+veeContactPickerOptions.veeContactPickerStrings
+```
+
+<!--
+- NSArray<NSString*>* sectionIdentifiers; //Contacts section identifiers, default are [[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles]
+@property (nonatomic, copy) NSString* sectionIdentifierWildcard; //Section identifier for contacts that don't fit in a section, default is '#' as in the iOS address book
+-->
+
+- If you want to choose which contacts to show, you can initialize the picker using:
+
+```objective-c
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+```
+
+**Picker Appearance:**
+
+You can customize most of the appearance properties of the picker by setting them in the singleton class **VeeContactPickerConstants**, before loading the picker.
+
+For example:
+
+```objective-c
+[[VeeContactPickerConstants sharedInstance] setNavigationBarBarTintColor:[UIColor purpleColor]];
+[[VeeContactPickerConstants sharedInstance] setNavigationBarTranslucent:NO];
+[[VeeContactPickerConstants sharedInstance] setContactCellPrimaryLabelFont:[UIFont yourFont]];
+//...
+[self presentViewController:veeContactPickerViewController animated:YES completion:nil];
+
+```
 
 ### Run the example
 
@@ -27,8 +113,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ### Requirements
 
-iOS 7+
-At the moment the project is only for iPhone
+- iOS 7+
+- At the moment the project is only for iPhone
 
 ### Installation
 
