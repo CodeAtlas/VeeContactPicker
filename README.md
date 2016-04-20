@@ -75,7 +75,7 @@ VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPic
 Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
 
 
-- If you want to change or localize the strings shown by the picker, look at:
+- If you want to change or localize the strings shown by the picker, look at this property:
 
 ```objective-c
 veeContactPickerOptions.veeContactPickerStrings
@@ -133,4 +133,5 @@ Andrea Cipriani - Code Atlas SRL - info@codeatlas.it
 
 VeeContactPicker is available under the MIT license. See the LICENSE file for more info.
 
-<!-- ###  If you like the picker you can download Veer.. -->
+### App Store
+VeeContactPicker is already used in the App Store for our app [**Veer Contacts Widget**](https://itunes.apple.com/app/id1024064196); if you have appreciated our work, you can download the app for free! 😏
