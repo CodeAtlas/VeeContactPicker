@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 @import UIKit;
 
-@interface VeeContactPickerConstants : NSObject
+@interface VeeContactPickerAppearanceConstants : NSObject
 
 + (instancetype)sharedInstance; //Initialization with default constants
 

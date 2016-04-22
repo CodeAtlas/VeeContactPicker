@@ -10,7 +10,7 @@
 #import "VeeSearchResultsDelegate.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 #import "VeeABRecord.h"

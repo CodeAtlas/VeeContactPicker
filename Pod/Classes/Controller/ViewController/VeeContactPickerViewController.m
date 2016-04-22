@@ -5,7 +5,7 @@
 
 #import "VeeContactPickerViewController.h"
 
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 
@@ -132,12 +132,12 @@
 
 - (void)loadPickerAppearance
 {
-    _cancelBarButtonItem.tintColor = [[VeeContactPickerConstants sharedInstance] cancelBarButtonItemTintColor];
-    _navigationBar.tintColor = [[VeeContactPickerConstants sharedInstance] navigationBarTintColor];
-    _navigationBar.barTintColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
-    _navigationBar.translucent = [[VeeContactPickerConstants sharedInstance] navigationBarTranslucent];
-    _statusBarCoverView.backgroundColor = [[VeeContactPickerConstants sharedInstance] navigationBarBarTintColor];
-    _tableViewBottomMarginConstraint.constant = [[VeeContactPickerConstants sharedInstance] veeContactPickerTableViewBottomMargin];
+    _cancelBarButtonItem.tintColor = [[VeeContactPickerAppearanceConstants sharedInstance] cancelBarButtonItemTintColor];
+    _navigationBar.tintColor = [[VeeContactPickerAppearanceConstants sharedInstance] navigationBarTintColor];
+    _navigationBar.barTintColor = [[VeeContactPickerAppearanceConstants sharedInstance] navigationBarBarTintColor];
+    _navigationBar.translucent = [[VeeContactPickerAppearanceConstants sharedInstance] navigationBarTranslucent];
+    _statusBarCoverView.backgroundColor = [[VeeContactPickerAppearanceConstants sharedInstance] navigationBarBarTintColor];
+    _tableViewBottomMarginConstraint.constant = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactPickerTableViewBottomMargin];
     [self hideEmptyView];
 }
 
@@ -183,7 +183,7 @@
     ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, id<VeeContactProt> veeContact) {
         [_veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
-    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    NSString* cellIdentifier = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellIdentifier];
     _veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:cellIdentifier allowedSortedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
 
     _contactsTableView.dataSource = _veeSectionedArrayDataSource;
@@ -217,7 +217,7 @@
 
 - (void)registerCellsForReuse
 {
-    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    NSString* cellIdentifier = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellIdentifier];
     [_contactsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     [self.searchDisplayController.searchResultsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 }
@@ -261,7 +261,7 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return [[VeeContactPickerConstants sharedInstance] veeContactCellHeight];
+    return [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellHeight];
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath

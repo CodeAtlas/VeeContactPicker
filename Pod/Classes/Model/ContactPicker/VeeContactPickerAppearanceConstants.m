@@ -3,15 +3,15 @@
 //  Copyright © 2016 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 
-@implementation VeeContactPickerConstants
+@implementation VeeContactPickerAppearanceConstants
 
 #pragma mark - Singleton
 
 + (id)sharedInstance
 {
-    static VeeContactPickerConstants* sharedInstance = nil;
+    static VeeContactPickerAppearanceConstants* sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] initWithDefaultConstants];

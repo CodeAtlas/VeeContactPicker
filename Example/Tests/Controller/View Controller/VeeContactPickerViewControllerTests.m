@@ -12,7 +12,7 @@
 #import "VeeABDelegate.h"
 #import "VeeAddressBook.h"
 #import "VeeContactFactory.h"
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 #import "VeeContactPickerDelegate.h"
 #import "VeeContactsForTestingFactory.h"
 

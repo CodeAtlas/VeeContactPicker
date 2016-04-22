@@ -96,14 +96,14 @@ veeContactPickerOptions.veeContactPickerStrings
 
 **Picker Appearance:**
 
-You can customize most of the appearance properties of the picker by setting them in the singleton class *VeeContactPickerConstants*, before loading the picker.
+You can customize most of the appearance properties of the picker by setting them in the singleton class *VeeContactPickerAppearanceConstants*, before loading the picker.
 
 For example:
 
 ```objective-c
-[[VeeContactPickerConstants sharedInstance] setNavigationBarTintColor:[UIColor purpleColor]];
-[[VeeContactPickerConstants sharedInstance] setNavigationBarTranslucent:NO];
-[[VeeContactPickerConstants sharedInstance] setContactCellPrimaryLabelFont:[UIFont yourFont]];
+[[VeeContactPickerAppearanceConstants sharedInstance] setNavigationBarTintColor:[UIColor purpleColor]];
+[[VeeContactPickerAppearanceConstants sharedInstance] setNavigationBarTranslucent:NO];
+[[VeeContactPickerAppearanceConstants sharedInstance] setContactCellPrimaryLabelFont:[UIFont yourFont]];
 //...
 [self presentViewController:veeContactPickerViewController animated:YES completion:nil];
 
