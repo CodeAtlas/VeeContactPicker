@@ -19,4 +19,4 @@ before_install:
 
 script:
 - set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint --verbose
+- pod lib lint --allow-warnings #--verbose
