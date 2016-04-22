@@ -1,8 +1,8 @@
 {
   "name": "VeeContactPicker",
   "version": "0.0.1",
-  "summary": "A replacement for the iOS ABPeoplePickerViewController, with contact's images",
-  "description": "A replacement for the (bugged) iOS ABPeoplePickerViewController, with contact's images",
+  "summary": "A replacement for the iOS ABPeoplePickerNavigationController, with contact's images",
+  "description": "A replacement for the (bugged) iOS ABPeoplePickerNavigationController, with contact's images",
   "homepage": "https://github.com/CodeAtlas/VeeContactPicker",
   "license": "MIT",
   "authors": {
@@ -12,7 +12,7 @@
     "git": "https://github.com/CodeAtlas/VeeContactPicker.git",
     "tag": "0.0.1"
   },
-  "social_media_url": "https://www.linkedin.com/company/code-atlas-srl",
+  "social_media_url": "https://github.com/CodeAtlas",
   "platforms": {
     "ios": "7.0"
   },
