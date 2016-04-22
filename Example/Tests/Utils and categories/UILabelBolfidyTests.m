@@ -4,7 +4,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 @interface UILabelBolfidyTests : XCTestCase
 
 @end

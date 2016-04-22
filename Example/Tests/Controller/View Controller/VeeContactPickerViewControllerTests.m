@@ -259,7 +259,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
         _veeContactPickerCustomOptions.veeContactPickerStrings = [[VeeContactPickerStrings alloc] initWithNavigationBarTitle:@"foo" cancelButtonTitle:@"bar" emptyViewLabelText:@"empty"];
         _veeContactPickerCustomOptions.sectionIdentifiers = @[ @"A", @"B", @"C" ];
         _veeContactPickerCustomOptions.sectionIdentifierWildcard = @"$";
-        _veeContactPickerCustomOptions.showLettersWhenContactImageIsMissing = NO;
+        _veeContactPickerCustomOptions.showInitialsPlaceholder = NO;
         _veeContactPickerCustomOptions.contactThumbnailImagePlaceholder = [self veeTestImage];
     }
     return _veeContactPickerCustomOptions;

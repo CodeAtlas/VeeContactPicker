@@ -57,9 +57,9 @@
     NSAssert(isDefaultSectionIdentifierWildcardCorrect, @"Default sectionIdentifierWildcard is %@ but should be #",_veeContactPickerDefaultOptions.sectionIdentifierWildcard);
 }
 
--(void)testDefaultOptionsShowLettersIsYES
+-(void)testDefaultOptionsShowInitialsIsYES
 {
-    NSAssert(_veeContactPickerDefaultOptions.showLettersWhenContactImageIsMissing, @"Default options showLettersWhenContactImageIsMissing should be YES");
+    NSAssert(_veeContactPickerDefaultOptions.showInitialsPlaceholder, @"Default options showInitialsPlaceholder should be YES");
 }
 
 -(void)testDefaultOptionsContactThumbnailImagePlaceholderIsNil

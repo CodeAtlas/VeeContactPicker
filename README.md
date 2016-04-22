@@ -68,7 +68,7 @@ For example, if you don't like the contact's initials images as the placeholder,
 
 ```objective-c
 VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
-veeContactPickerOptions.showLettersWhenContactImageIsMissing = NO;
+veeContactPickerOptions.showInitialsPlaceholder = NO;
 veeContactPickerOptions.contactThumbnailImagePlaceholder = [UIImage imageNamed:@"your_placeholder"];
 //...
 VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];

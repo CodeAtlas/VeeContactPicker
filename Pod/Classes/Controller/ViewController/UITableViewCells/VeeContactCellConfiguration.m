@@ -61,7 +61,7 @@
         veeContactUITableViewCell.contactImageView.image = [veeContact thumbnailImage];
     }
     else {
-        if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing) {
+        if (_veeContactPickerOptions.showInitialsPlaceholder) {
             [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];
         }
         else {

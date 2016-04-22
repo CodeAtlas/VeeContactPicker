@@ -11,13 +11,13 @@
 #import <XCTest/XCTest.h>
 #import "XCTest+VeeCommons.h"
 #import "OCMock.h"
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 #import "VeeContactPickerConstants.h"
 
 @interface VeeContactCellConfigurationTests : XCTestCase
 
 @property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithDefaultOption;
-@property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithNoLettersOption;
+@property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithNoInitialsOption;
 
 @property (nonatomic, strong) VeeContactUITableViewCell* veeContactUITableViewCell;
 @property (nonatomic, strong) VeeContact* veeContactComplete;
@@ -31,7 +31,7 @@
     [super setUp];
     _veeContactComplete = [VeeContactsForTestingFactory veeContactComplete];
     [self loadVeeContactCellConfigurationWithDefaultOptions];
-    [self loadVeeContactCellConfigurationWithNoLettersOptions];
+    [self loadVeeContactCellConfigurationWithNoInitialsOptions];
     [self loadEmptyVeeContactUITableViewCell];
 }
 
@@ -62,7 +62,7 @@
 -(void)testCellImagePlaceHolder
 {
     [self nullifyIvarWithName:@"thumbnailImage" ofObject:_veeContactComplete];
-    [self configureCellNoLettersOptionsWithCompleteContact];
+    [self configureCellNoInitialsOptionsWithCompleteContact];
     BOOL isCellImageThePlaceholder = _veeContactUITableViewCell.contactImageView.image.size.width == [self veeTestImage].size.width;
     NSAssert(isCellImageThePlaceholder, @"Cell image is not the placeholder");
 }
@@ -105,12 +105,12 @@
     _veeContactCellConfigurationWithDefaultOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:[VeeContactPickerOptions defaultOptions]];
 }
 
-- (void)loadVeeContactCellConfigurationWithNoLettersOptions
+- (void)loadVeeContactCellConfigurationWithNoInitialsOptions
 {
     VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-    veeContactPickerOptions.showLettersWhenContactImageIsMissing = NO;
+    veeContactPickerOptions.showInitialsPlaceholder = NO;
     veeContactPickerOptions.contactThumbnailImagePlaceholder = [self veeTestImage];
-    _veeContactCellConfigurationWithNoLettersOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:veeContactPickerOptions];
+    _veeContactCellConfigurationWithNoInitialsOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:veeContactPickerOptions];
 }
 
 - (void)loadEmptyVeeContactUITableViewCell
@@ -124,9 +124,9 @@
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
 }
 
--(void)configureCellNoLettersOptionsWithCompleteContact
+-(void)configureCellNoInitialsOptionsWithCompleteContact
 {
-    [_veeContactCellConfigurationWithNoLettersOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
+    [_veeContactCellConfigurationWithNoInitialsOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
 }
 
 @end

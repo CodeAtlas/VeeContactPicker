@@ -22,7 +22,7 @@
         _veeContactPickerStrings = [VeeContactPickerStrings defaultStrings];
         _sectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
         _sectionIdentifierWildcard = @"#";
-        _showLettersWhenContactImageIsMissing = YES;
+        _showInitialsPlaceholder = YES;
         _contactThumbnailImagePlaceholder = nil;
     }
     return self;
