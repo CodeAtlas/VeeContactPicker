@@ -12,7 +12,7 @@
 ### Features
 
 - Load contacts very **fast**! Not like the iOS official controller...
-- Contact's **images** and coloured placeholders with contact's initials!
+- Contacts' **images** and coloured placeholders with contacts' initials!
 - Search contacts also by email addresses or phone numbers!
 - Retro **compatible with iOS 7**
 - Handle contacts selection with completion block or delegation
