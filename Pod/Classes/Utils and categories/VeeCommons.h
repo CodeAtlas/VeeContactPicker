@@ -7,7 +7,7 @@
 
 @interface VeeCommons : NSObject
 
-+ (BOOL)isEmpty:(id)obj;
-+ (BOOL)isNotEmpty:(id)obj;
++ (BOOL)vee_isEmpty:(id)obj;
++ (BOOL)vee_isNotEmpty:(id)obj;
 
 @end

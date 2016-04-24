@@ -4,7 +4,7 @@
 //
 
 #import "VeeSectionedArrayDataSource.h"
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 
 @interface VeeSectionedArrayDataSource()
 

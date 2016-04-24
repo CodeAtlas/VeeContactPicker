@@ -11,13 +11,13 @@
 #import <XCTest/XCTest.h>
 #import "XCTest+VeeCommons.h"
 #import "OCMock.h"
-#import "UILabel+Boldify.h"
-#import "VeeContactPickerConstants.h"
+#import "UILabel+VeeBoldify.h"
+#import "VeeContactPickerAppearanceConstants.h"
 
 @interface VeeContactCellConfigurationTests : XCTestCase
 
 @property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithDefaultOption;
-@property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithNoLettersOption;
+@property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfigurationWithNoInitialsOption;
 
 @property (nonatomic, strong) VeeContactUITableViewCell* veeContactUITableViewCell;
 @property (nonatomic, strong) VeeContact* veeContactComplete;
@@ -31,7 +31,7 @@
     [super setUp];
     _veeContactComplete = [VeeContactsForTestingFactory veeContactComplete];
     [self loadVeeContactCellConfigurationWithDefaultOptions];
-    [self loadVeeContactCellConfigurationWithNoLettersOptions];
+    [self loadVeeContactCellConfigurationWithNoInitialsOptions];
     [self loadEmptyVeeContactUITableViewCell];
 }
 
@@ -62,7 +62,7 @@
 -(void)testCellImagePlaceHolder
 {
     [self nullifyIvarWithName:@"thumbnailImage" ofObject:_veeContactComplete];
-    [self configureCellNoLettersOptionsWithCompleteContact];
+    [self configureCellNoInitialsOptionsWithCompleteContact];
     BOOL isCellImageThePlaceholder = _veeContactUITableViewCell.contactImageView.image.size.width == [self veeTestImage].size.width;
     NSAssert(isCellImageThePlaceholder, @"Cell image is not the placeholder");
 }
@@ -75,7 +75,7 @@
     _veeContactUITableViewCell.primaryLabel = primaryLabelMock;
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
     NSString* nameComponentToBoldify = [[[_veeContactComplete displayNameSortedForABOptions] componentsSeparatedByString:@" "] firstObject];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 -(void)testBoldifyOnVeeContactWithOnlyFirstName
@@ -85,7 +85,7 @@
     [self nullifyIvarWithName:@"lastName" ofObject:_veeContactComplete];
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
     NSString* nameComponentToBoldify = [_veeContactComplete displayNameSortedForABOptions];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 -(void)testBoldifyOnVeeContactWithOnlyCompanyName
@@ -95,7 +95,7 @@
     VeeContact* companyVeeContact = [[VeeContact alloc] initWithFirstName:nil middleName:nil lastName:nil nickName:nil organizationName:@"test company" compositeName:nil thubnailImage:nil phoneNumbers:nil emails:nil];
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:companyVeeContact];
     NSString* nameComponentToBoldify = [companyVeeContact displayNameSortedForABOptions];
-    OCMVerify([primaryLabelMock boldSubstring:nameComponentToBoldify]);
+    OCMVerify([primaryLabelMock vee_boldSubstring:nameComponentToBoldify]);
 }
 
 #pragma mark - Private utils
@@ -105,17 +105,17 @@
     _veeContactCellConfigurationWithDefaultOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:[VeeContactPickerOptions defaultOptions]];
 }
 
-- (void)loadVeeContactCellConfigurationWithNoLettersOptions
+- (void)loadVeeContactCellConfigurationWithNoInitialsOptions
 {
     VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions defaultOptions];
-    veeContactPickerOptions.showLettersWhenContactImageIsMissing = NO;
+    veeContactPickerOptions.showInitialsPlaceholder = NO;
     veeContactPickerOptions.contactThumbnailImagePlaceholder = [self veeTestImage];
-    _veeContactCellConfigurationWithNoLettersOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:veeContactPickerOptions];
+    _veeContactCellConfigurationWithNoInitialsOption = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:veeContactPickerOptions];
 }
 
 - (void)loadEmptyVeeContactUITableViewCell
 {
-    NSString* cellIdentifier = [[VeeContactPickerConstants sharedInstance] veeContactCellIdentifier];
+    NSString* cellIdentifier = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellIdentifier];
     _veeContactUITableViewCell =  [[VeeContactUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 }
 
@@ -124,9 +124,9 @@
     [_veeContactCellConfigurationWithDefaultOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
 }
 
--(void)configureCellNoLettersOptionsWithCompleteContact
+-(void)configureCellNoInitialsOptionsWithCompleteContact
 {
-    [_veeContactCellConfigurationWithNoLettersOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
+    [_veeContactCellConfigurationWithNoInitialsOption configureCell:_veeContactUITableViewCell forVeeContact:_veeContactComplete];
 }
 
 @end

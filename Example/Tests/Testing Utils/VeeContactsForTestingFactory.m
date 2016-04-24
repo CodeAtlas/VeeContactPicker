@@ -88,7 +88,7 @@
 +(UIImage*)randomPortraitImage
 {
     NSUInteger numberOfPossiblePortraits = 9;
-    NSUInteger randomInteger = arc4random() % numberOfPossiblePortraits;
+    NSUInteger randomInteger = (arc4random() % numberOfPossiblePortraits) +1;
     NSString* imageName = [NSString stringWithFormat:@"portrait_%zd.jpg",randomInteger];
     return [UIImage imageNamed:imageName];
 }

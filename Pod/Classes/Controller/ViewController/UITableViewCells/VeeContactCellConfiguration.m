@@ -5,7 +5,7 @@
 
 #import "VeeContactCellConfiguration.h"
 #import "VeeContactUITableViewCell.h"
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 #import "VeeContactPickerOptions.h"
 #import "UIImageView+AGCInitials.h"
 #import "VeeCommons.h"
@@ -43,7 +43,7 @@
 {
     veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
     NSArray* nameComponents = [[veeContact displayNameSortedForABOptions] componentsSeparatedByString:@" "];
-    BOOL isMissingANameComponent = [VeeCommons isEmpty:[veeContact firstName]] || [VeeCommons isEmpty:[veeContact lastName]];
+    BOOL isMissingANameComponent = [VeeCommons vee_isEmpty:[veeContact firstName]] || [VeeCommons vee_isEmpty:[veeContact lastName]];
     BOOL nameComponentsAreLessThanOne = [nameComponents count] < 1;
     NSString* toBoldify;
     if (isMissingANameComponent || nameComponentsAreLessThanOne){
@@ -52,7 +52,7 @@
     else {
         toBoldify = [nameComponents firstObject];
     }
-    [veeContactUITableViewCell.primaryLabel boldSubstring:toBoldify];
+    [veeContactUITableViewCell.primaryLabel vee_boldSubstring:toBoldify];
 }
 
 - (void)configureCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
@@ -61,7 +61,7 @@
         veeContactUITableViewCell.contactImageView.image = [veeContact thumbnailImage];
     }
     else {
-        if (_veeContactPickerOptions.showLettersWhenContactImageIsMissing) {
+        if (_veeContactPickerOptions.showInitialsPlaceholder) {
             [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];
         }
         else {

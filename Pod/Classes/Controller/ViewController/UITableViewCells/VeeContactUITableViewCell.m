@@ -3,11 +3,11 @@
 //  Copyright © 2015 Code Atlas SRL. All rights reserved.
 //
 
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 #import "VeeContactUITableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FLKAutoLayout.h"
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 
 @interface VeeContactUITableViewCell ()
 
@@ -23,7 +23,7 @@
         return nil;
     }
     
-    self.backgroundColor = [[VeeContactPickerConstants sharedInstance] veeContactCellBackgroundColor];
+    self.backgroundColor = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellBackgroundColor];
     [self setCellSelectedBackgroundColor];
     
     [self addContactImageViewToSubView];
@@ -35,7 +35,7 @@
 -(void)setCellSelectedBackgroundColor
 {
     UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
-    [selectedBackgroundView setBackgroundColor:[[VeeContactPickerConstants sharedInstance] veeContactCellBackgroundColorWhenSelected]];
+    [selectedBackgroundView setBackgroundColor:[[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellBackgroundColorWhenSelected]];
     self.selectedBackgroundView = selectedBackgroundView;
 }
 
@@ -72,10 +72,10 @@
 
 -(void)addContactImageViewToSubView
 {
-    CGFloat contactImageViewDiameter = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue];
+    CGFloat contactImageViewDiameter = [[[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellImageDiameter] floatValue];
     _contactImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contactImageViewDiameter, contactImageViewDiameter)];
     [self addSubview:_contactImageView];
-    _contactImageView.layer.cornerRadius = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue] / 2;
+    _contactImageView.layer.cornerRadius = [[[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellImageDiameter] floatValue] / 2;
     _contactImageView.contentMode = UIViewContentModeScaleAspectFill;
     _contactImageView.clipsToBounds = YES;
     [self setConstraintsForContactImageView];
@@ -85,13 +85,13 @@
 {
     _primaryLabel = [UILabel new];
     [self addSubview:_primaryLabel];
-    _primaryLabel.font = [[VeeContactPickerConstants sharedInstance] veeContactCellPrimaryLabelFont];
+    _primaryLabel.font = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellPrimaryLabelFont];
     [self setConstraintsForPrimaryLabel];
 }
 
 -(void)setConstraintsForContactImageView
 {
-    NSString* contactImageViewDiameterString = [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] stringValue];
+    NSString* contactImageViewDiameterString = [[[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellImageDiameter] stringValue];
     [_contactImageView constrainWidth:contactImageViewDiameterString height:contactImageViewDiameterString];
  
     NSString* contactImageViewMarginString = [[self contactImageViewMargin] stringValue];
@@ -108,15 +108,15 @@
 
 -(NSNumber*)contactImageViewMargin
 {
-    CGFloat cellHeight = [[VeeContactPickerConstants sharedInstance] veeContactCellHeight];
-    NSNumber* contactImageViewDiameter = [[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter];
+    CGFloat cellHeight = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellHeight];
+    NSNumber* contactImageViewDiameter = [[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellImageDiameter];
     return @((cellHeight - [contactImageViewDiameter integerValue]) / 2);
 }
 
 -(NSNumber*)cellWidthWithoutPrimaryLabelWithHorizontalMarginFromContactImageView:(CGFloat)horizontalMarginFromContactImageView andHorizontalTrailingSpaceToSuperView:(CGFloat)horizontalTrailingSpaceToSuperView
 {
     CGFloat cellWidth = self.contentView.frame.size.width;
-    return @(cellWidth - [[self contactImageViewMargin] floatValue] - [[[VeeContactPickerConstants sharedInstance] veeContactCellImageDiameter] floatValue] - horizontalTrailingSpaceToSuperView);
+    return @(cellWidth - [[self contactImageViewMargin] floatValue] - [[[VeeContactPickerAppearanceConstants sharedInstance] veeContactCellImageDiameter] floatValue] - horizontalTrailingSpaceToSuperView);
 }
 
 @end

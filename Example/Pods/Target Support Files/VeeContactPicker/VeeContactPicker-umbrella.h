@@ -10,7 +10,7 @@
 #import "VeeSearchResultsDelegate.h"
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeTableViewSearchDelegate.h"
-#import "VeeContactPickerConstants.h"
+#import "VeeContactPickerAppearanceConstants.h"
 #import "VeeContactPickerOptions.h"
 #import "VeeContactPickerStrings.h"
 #import "VeeABRecord.h"
@@ -23,7 +23,7 @@
 #import "VeePostalAddressProt.h"
 #import "VeeSectionable.h"
 #import "NSObject+VeeCommons.h"
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 #import "VeeCommons.h"
 
 FOUNDATION_EXPORT double VeeContactPickerVersionNumber;

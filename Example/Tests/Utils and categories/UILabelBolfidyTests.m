@@ -4,7 +4,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UILabel+Boldify.h"
+#import "UILabel+VeeBoldify.h"
 @interface UILabelBolfidyTests : XCTestCase
 
 @end
@@ -26,7 +26,7 @@
     NSString* shouldNotBeBoldSubstring = @"foo ";
     NSString* shouldBeBoldSubstring = @"bar";
     label.text = completeString;
-    [label boldSubstring:shouldBeBoldSubstring];
+    [label vee_boldSubstring:shouldBeBoldSubstring];
 
     BOOL shouldBeBold = [self isLabelFontBold:label forSubstring:shouldBeBoldSubstring] == YES;
     BOOL shouldNotBeBold = [self isLabelFontBold:label forSubstring:shouldNotBeBoldSubstring] == NO;
@@ -38,7 +38,7 @@
 {
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
     label.text = @"foo bar";
-    [label boldSubstring:@"lol"];
+    [label vee_boldSubstring:@"lol"];
     BOOL shouldNotBeBold = [self isLabelFontBold:label forSubstring:@"lol"] == NO;
     NSAssert(shouldNotBeBold, @"Substring should not be bold");
 }
