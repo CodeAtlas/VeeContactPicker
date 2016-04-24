@@ -112,6 +112,8 @@ For example:
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Or you can even try the example online with [Appetize](https://appetize.io/app/c1c5x3vpf7hgngkrr3dr1qabem?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3)
+
 ### Requirements
 
 - iOS 7+
