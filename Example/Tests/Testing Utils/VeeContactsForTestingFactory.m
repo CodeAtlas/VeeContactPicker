@@ -16,6 +16,7 @@
     NSArray* kCompleteVeeContactEmails = @[@"complete@home.it",@"complete@work.org",@"complete@icloud.com",@"duplicate@gmail.com"];
     NSArray* kCompleteVeeContactPhoneNumbers = @[@"+39 02 9387441",@"+1 333 2458774",@"+33 333 2580089",@"+7 331 4458726",@"+39 02 9387441"];
     UIImage* randomImage = [self randomPortraitImage];
+    NSAssert(randomImage, @"Veecontact complete created without an image");
     VeeContact* veeContactComplete = [[VeeContact alloc] initWithFirstName:kCompleteVeeContactFirstName middleName:kCompleteVeeContactMiddleName lastName:kCompleteVeeContactLastName nickName:kCompleteVeeContactNickname organizationName:kCompleteVeeContactOrganizationName compositeName:kCompleteVeeContactCompositeName thubnailImage:randomImage phoneNumbers:kCompleteVeeContactPhoneNumbers emails:kCompleteVeeContactEmails];
     
     return veeContactComplete;
