@@ -12,12 +12,12 @@
 ### Features
 
 - Load contacts very **fast**! Not like the iOS official controller...
-- Contact's **images** and colored placeholders with contact's initials!
+- Contact's **images** and coloured placeholders with contact's initials!
 - Search contacts also by email addresses or phone numbers!
 - Retro **compatible with iOS 7**
 - Handle contacts selection with completion block or delegation
 - Choose which contacts you want to show in the picker (e.g only contacts with a valid email address)
-- Easy **customizable appearance**, without needing to subclass it. See "How to use it - Details"
+- Easy **customizable appearance**, without needing to subclass it.
 - Good test coverage
 
 ### How to use it - Basic
@@ -64,7 +64,7 @@ You can customize some properties of the picker by changing the object *VeeConta
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
 ```
 
-For example, if you don't like the contact's initials images as the placeholder, you can set your own placeholder:
+For example, if you don't like the contacts' initials images as the placeholder, you can set your own placeholder:
 
 ```objective-c
 VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
@@ -74,8 +74,7 @@ veeContactPickerOptions.contactThumbnailImagePlaceholder = [UIImage imageNamed:@
 VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];
 //...
 ```
-Contact's image placeholder are provided by [AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials). You can customize the color palette if you want, see the README of AGCInitials.
-
+Contact's image placeholder are provided by *AGCInitials*. You can customize the color palette if you want, see the [README of AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials/blob/master/README.md).
 
 - If you want to change or localize the strings shown by the picker, look at this property:
 
