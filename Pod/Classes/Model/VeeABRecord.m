@@ -5,7 +5,7 @@
 
 #import "VeeABRecord.h"
 
-@interface VeeABRecord()
+@interface VeeABRecord ()
 
 @property (nonatomic, strong) NSMutableSet<NSNumber*>* recordIdsMutable;
 @property (nonatomic, strong) NSMutableSet<NSString*>* phoneNumbersMutable;
@@ -58,7 +58,7 @@
 - (void)addRecordIdFromABRecord:(ABRecordRef)abRecord
 {
     NSNumber* recordId = [NSNumber numberWithInt:ABRecordGetRecordID(abRecord)];
-    if (_recordIdsMutable == nil){
+    if (_recordIdsMutable == nil) {
         _recordIdsMutable = [NSMutableSet new];
     }
     [_recordIdsMutable addObject:recordId];
@@ -140,7 +140,7 @@
     if (phoneNumbersCount > 0) {
         for (CFIndex i = 0; i < phoneNumbersCount; i++) {
             NSString* phoneNumber = CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneNumbers, i));
-            if (_phoneNumbersMutable == nil){
+            if (_phoneNumbersMutable == nil) {
                 _phoneNumbersMutable = [NSMutableSet new];
             }
             [_phoneNumbersMutable addObject:phoneNumber];
@@ -155,7 +155,7 @@
     if (emailsCount > 0) {
         for (CFIndex i = 0; i < emailsCount; i++) {
             NSString* email = CFBridgingRelease(ABMultiValueCopyValueAtIndex(emails, i));
-            if (_emailsMutable == nil){
+            if (_emailsMutable == nil) {
                 _emailsMutable = [NSMutableSet new];
             }
             [_emailsMutable addObject:email];
@@ -163,29 +163,29 @@
     }
 }
 
--(void)addPostalAddressesFromABRecord:(ABRecordRef)abRecord
+- (void)addPostalAddressesFromABRecord:(ABRecordRef)abRecord
 {
     ABMultiValueRef postalAddresses = ABRecordCopyValue(abRecord, kABPersonAddressProperty);
     CFIndex postalAddressCount = ABMultiValueGetCount(postalAddresses);
-    if (postalAddressCount > 0){
+    if (postalAddressCount > 0) {
         for (CFIndex i = 0; i < postalAddressCount; i++) {
             NSDictionary* postalDict = CFBridgingRelease(ABMultiValueCopyValueAtIndex(postalAddresses, i));
-            if (_postalAddressesMutable == nil){
+            if (_postalAddressesMutable == nil) {
                 _postalAddressesMutable = [NSMutableSet new];
             }
-            if (postalDict){
+            if (postalDict) {
                 [_postalAddressesMutable addObject:postalDict];
             }
         }
     }
 }
 
--(void)addWebsitesFromABRecord:(ABRecordRef)abRecord
+- (void)addWebsitesFromABRecord:(ABRecordRef)abRecord
 {
     ABMultiValueRef websites = ABRecordCopyValue(abRecord, kABPersonURLProperty);
     for (CFIndex i = 0; i < ABMultiValueGetCount(websites); i++) {
         NSString* website = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(websites, i);
-        if (_websitesMutable == nil){
+        if (_websitesMutable == nil) {
             _websitesMutable = [NSMutableSet new];
         }
         [_websitesMutable addObject:website];
@@ -197,26 +197,27 @@
     ABMultiValueRef socialAccounts = ABRecordCopyValue(person, kABPersonSocialProfileProperty);
     for (CFIndex i = 0; i < ABMultiValueGetCount(socialAccounts); i++) {
         NSDictionary* socialDict = CFBridgingRelease(ABMultiValueCopyValueAtIndex(socialAccounts, i));
-        if (socialDict) {
-            NSString* socialServiceName = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
-            NSString* socialAccountUsername = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
-            
-            if (socialServiceName == nil || socialAccountUsername == nil){
-                return;
+        if (socialDict == nil) {
+            continue;
+        }
+        NSString* socialServiceName = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
+        NSString* socialAccountUsername = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
+
+        if (socialServiceName == nil || socialAccountUsername == nil) {
+            continue;
+        }
+
+        if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceTwitter]) {
+            if (_twitterAccountsMutable == nil) {
+                _twitterAccountsMutable = [NSMutableSet new];
             }
-            
-            if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceTwitter]) {
-                if (_twitterAccountsMutable == nil){
-                    _twitterAccountsMutable = [NSMutableSet new];
-                }
-                [_twitterAccountsMutable addObject:socialAccountUsername];
+            [_twitterAccountsMutable addObject:socialAccountUsername];
+        }
+        else if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
+            if (_facebookAccountsMutable == nil) {
+                _facebookAccountsMutable = [NSMutableSet new];
             }
-            else if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
-                if (_facebookAccountsMutable == nil){
-                    _facebookAccountsMutable = [NSMutableSet new];
-                }
-                [_facebookAccountsMutable addObject:socialAccountUsername];
-            }
+            [_facebookAccountsMutable addObject:socialAccountUsername];
         }
     }
 }
@@ -285,9 +286,9 @@ NSString* const kVeePostalAddressCountryKey = @"Country";
         return YES;
     }
     NSArray<NSNumber*>* sortedRecordIds = [[self recordIds] sortedArrayUsingSelector:@selector(compare:)];
-                                         
+
     NSArray<NSNumber*>* veeABRecordsSortedRecordIds = [[veeABRecord recordIds] sortedArrayUsingSelector:@selector(compare:)];
-                                                     
+
     if ([sortedRecordIds isEqualToArray:veeABRecordsSortedRecordIds]) {
         return YES;
     }
