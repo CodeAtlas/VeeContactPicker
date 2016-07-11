@@ -43,11 +43,6 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     _veeABRecordsForTesting = [self veeABRecordsFromAddressBookForTesting];
 }
 
--(void)tearDown
-{
-    
-}
-
 #pragma mark - Complete Veecontact tests
 
 - (void)testCompleteContactCreation

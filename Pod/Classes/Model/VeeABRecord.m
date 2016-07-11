@@ -198,20 +198,24 @@
     for (CFIndex i = 0; i < ABMultiValueGetCount(socialAccounts); i++) {
         NSDictionary* socialDict = CFBridgingRelease(ABMultiValueCopyValueAtIndex(socialAccounts, i));
         if (socialDict) {
-            NSString* service = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
-            NSString* username = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
+            NSString* socialServiceName = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileServiceKey];
+            NSString* socialAccountUsername = [socialDict objectForKey:(__bridge_transfer NSString*)kABPersonSocialProfileUsernameKey];
             
-            if ([service isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceTwitter]) {
+            if (socialServiceName == nil || socialAccountUsername == nil){
+                return;
+            }
+            
+            if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceTwitter]) {
                 if (_twitterAccountsMutable == nil){
                     _twitterAccountsMutable = [NSMutableSet new];
                 }
-                [_twitterAccountsMutable addObject:username];
+                [_twitterAccountsMutable addObject:socialAccountUsername];
             }
-            else if ([service isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
+            else if ([socialServiceName isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
                 if (_facebookAccountsMutable == nil){
                     _facebookAccountsMutable = [NSMutableSet new];
                 }
-                [_facebookAccountsMutable addObject:username];
+                [_facebookAccountsMutable addObject:socialAccountUsername];
             }
         }
     }

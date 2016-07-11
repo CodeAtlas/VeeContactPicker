@@ -252,12 +252,10 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				86B3D9511CC0EE2C00553A12 /* Controller */,
-				86B3D9241CC0EE2C00553A12 /* Model */,
+				860372501D33DC7100D7E7E1 /* Test Classes */,
 				86B3D9391CC0EE2C00553A12 /* Res */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 				86B3D92B1CC0EE2C00553A12 /* Testing Utils */,
-				86B3D94E1CC0EE2C00553A12 /* Utils and categories */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -291,6 +289,16 @@
 				C2642DDE9E367AD4FF227148 /* Pods-VeeContactPicker_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		860372501D33DC7100D7E7E1 /* Test Classes */ = {
+			isa = PBXGroup;
+			children = (
+				86B3D94E1CC0EE2C00553A12 /* Utils and categories */,
+				86B3D9511CC0EE2C00553A12 /* Controller */,
+				86B3D9241CC0EE2C00553A12 /* Model */,
+			);
+			name = "Test Classes";
 			sourceTree = "<group>";
 		};
 		86B3D9241CC0EE2C00553A12 /* Model */ = {
@@ -488,6 +496,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Raiden996;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = B9W2P6QQU7;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -810,6 +821,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/Supporting Files/VeeContactPicker-Prefix.pch";
 				INFOPLIST_FILE = "Classes/Supporting Files/VeeContactPicker-Info.plist";
@@ -817,6 +830,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -828,6 +842,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/Supporting Files/VeeContactPicker-Prefix.pch";
 				INFOPLIST_FILE = "Classes/Supporting Files/VeeContactPicker-Info.plist";
@@ -835,6 +851,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
