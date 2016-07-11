@@ -7,17 +7,17 @@
 
 ![VeeContactPicker Example](Screenshots/VeeContactPicker.gif)
 
-**VeeContactPicker** is an objc replacement for the bugged *ABPeoplePickerNavigationController* (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow)). It lets you choose a contact from the address book.
+**VeeContactPicker** is an Objective-C replacement for the *ABPeoplePickerNavigationController*. It lets you choose a contact from the address book.
 
 ### Features
 
-- Load contacts very **fast**! Not like the iOS official controller...
-- Contact's **images** and coloured placeholders with contact's initials!
+- Load contacts very **fast**! Not like the iOS official controller (see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow))
+- Contacts' **images** and coloured placeholders with contacts' initials!
 - Search contacts also by email addresses or phone numbers!
 - Retro **compatible with iOS 7**
 - Handle contacts selection with completion block or delegation
 - Choose which contacts you want to show in the picker (e.g only contacts with a valid email address)
-- Easy **customizable appearance**, without needing to subclass it.
+- Easy **customizable appearance**, without needing to subclass it
 - Good test coverage
 
 ### How to use it - Basic
@@ -111,6 +111,8 @@ For example:
 ### Run the example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+Or you can even try the example online with [Appetize](https://appetize.io/app/c1c5x3vpf7hgngkrr3dr1qabem?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
 
 ### Requirements
 
