@@ -1,6 +1,8 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/FLKAutoLayout.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/UIImageView_AGCInitials.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/VeeContactPicker.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "FLKAutoLayout" -framework "UIImageView_AGCInitials" -framework "VeeContactPicker"
-PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-VeeContactPicker_Example
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/FLKAutoLayout" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/UIImageView-AGCInitials" "${PODS_ROOT}/Headers/Public/VeeContactPicker"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/FLKAutoLayout" "$PODS_CONFIGURATION_BUILD_DIR/UIImageView-AGCInitials" "$PODS_CONFIGURATION_BUILD_DIR/VeeContactPicker"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/FLKAutoLayout" -isystem "${PODS_ROOT}/Headers/Public/OCMock" -isystem "${PODS_ROOT}/Headers/Public/UIImageView-AGCInitials" -isystem "${PODS_ROOT}/Headers/Public/VeeContactPicker"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"FLKAutoLayout" -l"UIImageView-AGCInitials" -l"VeeContactPicker"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

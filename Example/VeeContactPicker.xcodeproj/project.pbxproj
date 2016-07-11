@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55623D0FDB9F1456F0861B3B /* libPods-VeeContactPicker_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -17,7 +18,7 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		62595871BEA9EEF65C85B306 /* Pods_VeeContactPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17D1CD13FF982FF4D3B7873 /* Pods_VeeContactPicker_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7F17D6E141ACEFA296A117D3 /* libPods-VeeContactPicker_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */; };
 		86B3D9201CC0EC5C00553A12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B3D91A1CC0EC5C00553A12 /* Main.storyboard */; };
 		86B3D9211CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91C1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m */; };
 		86B3D9221CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91E1CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m */; };
@@ -76,7 +77,6 @@
 		86B3D98E1CC0EE3700553A12 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86B3D94B1CC0EE2C00553A12 /* portrait_9.jpg */; };
 		86B3D98F1CC0EE4300553A12 /* VeeContactsForTestingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D9321CC0EE2C00553A12 /* VeeContactsForTestingFactory.m */; };
 		86B3D9901CC0EE4800553A12 /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D9301CC0EE2C00553A12 /* VeeAddressBookForTestingConstants.m */; };
-		C5C8A9C4B37EFE4C83111B1D /* Pods_VeeContactPicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5748E6156931B6D42F8C4F2D /* Pods_VeeContactPicker_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,10 +90,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03967E07139E2A28829BC1F1 /* Pods-VeeContactPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1A91E7D6B74E9FA706640880 /* Pods-VeeContactPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		39B3240FFEA018C8D974F2DC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
+		3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPicker_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB5CECAF89B0F574C929D3E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		5748E6156931B6D42F8C4F2D /* Pods_VeeContactPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPicker_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE1AE8139B043021F1D9A7E /* VeeContactPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VeeContactPicker.podspec; path = ../../VeeContactPicker.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* VeeContactPicker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeeContactPicker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,7 +110,8 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		77798693FB24963F944423AA /* Pods-VeeContactPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		68D6803EDB9C09709B6D7406 /* Pods-VeeContactPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		798D105B636D8443ECFCC5D1 /* Pods-VeeContactPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		86B3D91A1CC0EC5C00553A12 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		86B3D91B1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerExampleAppDelegate.h; sourceTree = "<group>"; };
 		86B3D91C1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerExampleAppDelegate.m; sourceTree = "<group>"; };
@@ -158,9 +160,7 @@
 		86B3D9571CC0EE2C00553A12 /* VeeContactPickerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerViewControllerTests.m; sourceTree = "<group>"; };
 		86B3D9591CC0EE2C00553A12 /* VeeSectionedArrayDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSourceTests.m; sourceTree = "<group>"; };
 		86B3D95A1CC0EE2C00553A12 /* VeeTableViewSearchDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeTableViewSearchDelegateTests.m; sourceTree = "<group>"; };
-		C2642DDE9E367AD4FF227148 /* Pods-VeeContactPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E17D1CD13FF982FF4D3B7873 /* Pods_VeeContactPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E272C2FB74CCE61478945D4D /* Pods-VeeContactPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A20413C776E9277E575FA6A0 /* Pods-VeeContactPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				C5C8A9C4B37EFE4C83111B1D /* Pods_VeeContactPicker_Example.framework in Frameworks */,
+				55623D0FDB9F1456F0861B3B /* libPods-VeeContactPicker_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				62595871BEA9EEF65C85B306 /* Pods_VeeContactPicker_Tests.framework in Frameworks */,
+				7F17D6E141ACEFA296A117D3 /* libPods-VeeContactPicker_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,10 +194,10 @@
 			children = (
 				6003F593195388D20070C39A /* Classes */,
 				6003F58C195388D20070C39A /* Frameworks */,
-				68006911C2BC901F1C5B94E5 /* Pods */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F58B195388D20070C39A /* Products */,
 				6003F5B5195388D20070C39A /* Tests */,
+				BF260BEAFCB64273EFB11A31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,8 +217,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				5748E6156931B6D42F8C4F2D /* Pods_VeeContactPicker_Example.framework */,
-				E17D1CD13FF982FF4D3B7873 /* Pods_VeeContactPicker_Tests.framework */,
+				3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */,
+				4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,17 +278,6 @@
 				5AE1AE8139B043021F1D9A7E /* VeeContactPicker.podspec */,
 			);
 			path = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		68006911C2BC901F1C5B94E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E272C2FB74CCE61478945D4D /* Pods-VeeContactPicker_Example.debug.xcconfig */,
-				77798693FB24963F944423AA /* Pods-VeeContactPicker_Example.release.xcconfig */,
-				03967E07139E2A28829BC1F1 /* Pods-VeeContactPicker_Tests.debug.xcconfig */,
-				C2642DDE9E367AD4FF227148 /* Pods-VeeContactPicker_Tests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		860372501D33DC7100D7E7E1 /* Test Classes */ = {
@@ -442,6 +431,17 @@
 			path = "View Controller utils";
 			sourceTree = "<group>";
 		};
+		BF260BEAFCB64273EFB11A31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				798D105B636D8443ECFCC5D1 /* Pods-VeeContactPicker_Example.debug.xcconfig */,
+				1A91E7D6B74E9FA706640880 /* Pods-VeeContactPicker_Example.release.xcconfig */,
+				A20413C776E9277E575FA6A0 /* Pods-VeeContactPicker_Tests.debug.xcconfig */,
+				68D6803EDB9C09709B6D7406 /* Pods-VeeContactPicker_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -449,12 +449,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "VeeContactPicker_Example" */;
 			buildPhases = (
-				B603623EA406286067F42FDC /* Check Pods Manifest.lock */,
+				CFE6EC1D4F8A6C66C9ED10A1 /* 📦 Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				ADE4E165A817E958060BF36E /* Embed Pods Frameworks */,
-				16E11667B7FFA402576316AD /* Copy Pods Resources */,
+				61DADD97F6E4ACADDA2E0FF7 /* 📦 Embed Pods Frameworks */,
+				3A14E3329A74297938CA94C0 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,12 +469,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "VeeContactPicker_Tests" */;
 			buildPhases = (
-				8F7AEFC8DEA326055CD86BDA /* Check Pods Manifest.lock */,
+				4975B5023E2A7F859C02CE2A /* 📦 Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				FC798D6193A589327312F384 /* Embed Pods Frameworks */,
-				16B5350D9291BBA24EB1E8E8 /* Copy Pods Resources */,
+				7FBC540A6A976DB9169C5C86 /* 📦 Embed Pods Frameworks */,
+				DBFE9EFC0FE09D4CC428D803 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -580,29 +580,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16B5350D9291BBA24EB1E8E8 /* Copy Pods Resources */ = {
+		3A14E3329A74297938CA94C0 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		16E11667B7FFA402576316AD /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,14 +595,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F7AEFC8DEA326055CD86BDA /* Check Pods Manifest.lock */ = {
+		4975B5023E2A7F859C02CE2A /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,14 +610,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		ADE4E165A817E958060BF36E /* Embed Pods Frameworks */ = {
+		61DADD97F6E4ACADDA2E0FF7 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,14 +625,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B603623EA406286067F42FDC /* Check Pods Manifest.lock */ = {
+		7FBC540A6A976DB9169C5C86 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFE6EC1D4F8A6C66C9ED10A1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,19 +655,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FC798D6193A589327312F384 /* Embed Pods Frameworks */ = {
+		DBFE9EFC0FE09D4CC428D803 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -817,7 +817,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E272C2FB74CCE61478945D4D /* Pods-VeeContactPicker_Example.debug.xcconfig */;
+			baseConfigurationReference = 798D105B636D8443ECFCC5D1 /* Pods-VeeContactPicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -838,7 +838,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77798693FB24963F944423AA /* Pods-VeeContactPicker_Example.release.xcconfig */;
+			baseConfigurationReference = 1A91E7D6B74E9FA706640880 /* Pods-VeeContactPicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -859,7 +859,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03967E07139E2A28829BC1F1 /* Pods-VeeContactPicker_Tests.debug.xcconfig */;
+			baseConfigurationReference = A20413C776E9277E575FA6A0 /* Pods-VeeContactPicker_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -883,7 +883,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2642DDE9E367AD4FF227148 /* Pods-VeeContactPicker_Tests.release.xcconfig */;
+			baseConfigurationReference = 68D6803EDB9C09709B6D7406 /* Pods-VeeContactPicker_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

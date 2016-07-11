@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
+platform :ios, '7.0'
 
-target 'VeeContactPicker_Example', :exclusive => true do
+target 'VeeContactPicker_Example' do
   pod 'VeeContactPicker', :path => '../'
 end
 
-target 'VeeContactPicker_Tests', :exclusive => true do
+target 'VeeContactPicker_Tests' do
   pod 'VeeContactPicker', :path => '../'
   pod 'OCMock'
   #pod 'FBSnapshotTestCase'
