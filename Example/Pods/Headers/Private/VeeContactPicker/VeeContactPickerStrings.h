@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Model/ContactPicker/VeeContactPickerStrings.h

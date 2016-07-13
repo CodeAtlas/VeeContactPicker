@@ -1,0 +1,6 @@
+framework module UIImageView_AGCInitials {
+  umbrella header "UIImageView-AGCInitials-umbrella.h"
+
+  export *
+  module * { export * }
+}

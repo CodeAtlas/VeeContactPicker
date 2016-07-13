@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55623D0FDB9F1456F0861B3B /* libPods-VeeContactPicker_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */; };
+		0CA2BA5B26ACE00A3645E37A /* Pods_VeeContactPicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338A931495901A9B58AC9539 /* Pods_VeeContactPicker_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -18,7 +18,6 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		7F17D6E141ACEFA296A117D3 /* libPods-VeeContactPicker_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */; };
 		86B3D9201CC0EC5C00553A12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B3D91A1CC0EC5C00553A12 /* Main.storyboard */; };
 		86B3D9211CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91C1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m */; };
 		86B3D9221CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91E1CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m */; };
@@ -77,6 +76,7 @@
 		86B3D98E1CC0EE3700553A12 /* portrait_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86B3D94B1CC0EE2C00553A12 /* portrait_9.jpg */; };
 		86B3D98F1CC0EE4300553A12 /* VeeContactsForTestingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D9321CC0EE2C00553A12 /* VeeContactsForTestingFactory.m */; };
 		86B3D9901CC0EE4800553A12 /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D9301CC0EE2C00553A12 /* VeeAddressBookForTestingConstants.m */; };
+		8E00C80F821405949917F290 /* Pods_VeeContactPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D185E7206495066FCA414D /* Pods_VeeContactPicker_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,10 +91,9 @@
 
 /* Begin PBXFileReference section */
 		1A91E7D6B74E9FA706640880 /* Pods-VeeContactPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		338A931495901A9B58AC9539 /* Pods_VeeContactPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B3240FFEA018C8D974F2DC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
-		3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPicker_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB5CECAF89B0F574C929D3E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPicker_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE1AE8139B043021F1D9A7E /* VeeContactPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VeeContactPicker.podspec; path = ../../VeeContactPicker.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* VeeContactPicker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeeContactPicker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +109,7 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		64D185E7206495066FCA414D /* Pods_VeeContactPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D6803EDB9C09709B6D7406 /* Pods-VeeContactPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		798D105B636D8443ECFCC5D1 /* Pods-VeeContactPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		86B3D91A1CC0EC5C00553A12 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				55623D0FDB9F1456F0861B3B /* libPods-VeeContactPicker_Example.a in Frameworks */,
+				0CA2BA5B26ACE00A3645E37A /* Pods_VeeContactPicker_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				7F17D6E141ACEFA296A117D3 /* libPods-VeeContactPicker_Tests.a in Frameworks */,
+				8E00C80F821405949917F290 /* Pods_VeeContactPicker_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +217,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				3A05CF64CBCEB97C3D33038D /* libPods-VeeContactPicker_Example.a */,
-				4A5F9839C9F68BD8DED75511 /* libPods-VeeContactPicker_Tests.a */,
+				338A931495901A9B58AC9539 /* Pods_VeeContactPicker_Example.framework */,
+				64D185E7206495066FCA414D /* Pods_VeeContactPicker_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
