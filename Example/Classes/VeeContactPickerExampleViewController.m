@@ -1,8 +1,3 @@
-//
-//  Created by Andrea Cipriani on 21/12/15.
-//  Copyright © 2015 Code Atlas SRL. All rights reserved.
-//
-
 #import "VeeContact.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeContactsForTestingFactory.h"
