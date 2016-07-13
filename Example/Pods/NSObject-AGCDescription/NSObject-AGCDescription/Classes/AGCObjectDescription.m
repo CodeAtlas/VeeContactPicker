@@ -5,6 +5,7 @@
 #import "AGCObjectDescription.h"
 #import "AGCObjectInCollectionDescription.h"
 #import "AGCPropertyConstants.h"
+@import UIKit;
 
 @implementation AGCObjectDescription
 

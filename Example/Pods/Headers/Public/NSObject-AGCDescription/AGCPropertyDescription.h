@@ -1,0 +1,1 @@
+../../../NSObject-AGCDescription/NSObject-AGCDescription/Classes/AGCPropertyDescription.h

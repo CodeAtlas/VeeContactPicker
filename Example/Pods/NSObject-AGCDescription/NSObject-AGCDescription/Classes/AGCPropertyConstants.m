@@ -22,7 +22,7 @@
 {
     _standardClassesWithCustomDescription = @[ NSData.class, UIImage.class ];
     _standardClassesWithShortDescription = @[ NSString.class, NSAttributedString.class, NSNumber.class, NSDate.class, UIView.class, NSBundle.class, NSCache.class, NSCalendar.class, NSError.class, NSLock.class, NSLocale.class, NSData.class ];
-    _defaultIgnoredPropertyNames = @[ @"hash", @"description", @"debugDescription" ];
+    _defaultIgnoredPropertyNames = @[ @"hash", @"description", @"debugDescription", @"superclass" ];
 }
 
 NSString* const kAGCNilWildcard = @"AGC_nil";

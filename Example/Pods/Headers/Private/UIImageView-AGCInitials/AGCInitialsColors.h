@@ -1,0 +1,1 @@
+../../../UIImageView-AGCInitials/Pod/Classes/AGCInitialsColors.h

@@ -1,6 +1,0 @@
-framework module NSObject_AGCDescription {
-  umbrella header "NSObject-AGCDescription-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,14 +1,10 @@
-//
-//  Created by Andrea Cipriani on 14/12/15.
-//  Copyright © 2015 Code Atlas SRL. All rights reserved.
-//
-
 #import "NSObject+VeeCommons.h"
 #import "VeeABRecord.h"
 #import "VeeAddressBook.h"
 #import "VeeCommons.h"
 #import "VeeContact.h"
 #import "VeePostalAddress.h"
+#import "NSObject+AGCDescription.h"
 
 @implementation VeeContact
 
@@ -256,37 +252,12 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"<%@,\n %@>", self.class, [self propertiesDescriptionDictionary]];
+    return [self agc_description];
 }
 
 - (NSString*)debugDescription
 {
-    return [NSString stringWithFormat:@"<%@: %p,\n %@>", self.class, self, [self propertiesDescriptionDictionary]];
-}
-
-- (NSDictionary*)propertiesDescriptionDictionary
-{
-    NSString* hasImage;
-    if (_thumbnailImage) {
-        hasImage = @"YES";
-    }
-    else {
-        hasImage = @"NO";
-    }
-    return @{
-        @"compositeName" : [self vee_formattedDescriptionOfProperty:_compositeName],
-        @"recordIds" : [self vee_formattedDescriptionOfArray:_recordIds],
-        @"hasThumbnailImage" : hasImage,
-        @"firstName" : [self vee_formattedDescriptionOfProperty:_firstName],
-        @"lastName" : [self vee_formattedDescriptionOfProperty:_lastName],
-        @"organizationName" : [self vee_formattedDescriptionOfProperty:_organizationName],
-        @"displayName" : [self vee_formattedDescriptionOfProperty:[self displayName]],
-        @"phoneNumbers" : [self vee_formattedDescriptionOfArray:_phoneNumbers],
-        @"emails" : [self vee_formattedDescriptionOfArray:_emails],
-        @"postalAddresses" : [self vee_formattedDescriptionOfArray:_postalAddresses],
-        @"twitterAccounts" : [self vee_formattedDescriptionOfArray:_twitterAccounts],
-        @"facebookAccounts" : [self vee_formattedDescriptionOfArray:_facebookAccounts]
-    };
+    return [self agc_debugDescription];
 }
 
 @end

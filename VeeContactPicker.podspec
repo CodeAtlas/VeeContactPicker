@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
 s.name             = "VeeContactPicker"
 s.version          = "0.0.2"
 s.summary          = "A replacement for the iOS ABPeoplePickerNavigationController, with contacts' images"
-s.description      = "VeeContactPicker is an objc replacement for the (bugged) ABPeoplePickerNavigationController. It's a ViewController that allows you to choose a contact from the address book."
+s.description      = "VeeContactPicker is a replacement for the (bugged) ABPeoplePickerNavigationController. You can use it to let the user choose a contact from the address book."
 s.homepage         = "https://github.com/CodeAtlas/VeeContactPicker"
 s.screenshots     = "https://raw.githubusercontent.com/CodeAtlas/VeeContactPicker/master/Screenshots/VeeContactPickerScreen1.png
 "

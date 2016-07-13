@@ -37,6 +37,10 @@
         objc_property_t property = properties[i];
         NSString* propertyName = [NSString stringWithUTF8String:property_getName(property)];
         NSString* propertyAttributes = [NSString stringWithUTF8String:property_getAttributes(property)];
+        BOOL isPossibleLoop = [propertyName isEqualToString:@"description"] || [propertyName isEqualToString:@"debugDescription"];
+        if (isPossibleLoop){
+            continue;
+        }
         id propertyValue = [self.targetObject valueForKey:propertyName];
         AGCProperty* agcProperty = [[AGCProperty alloc] initWithName:propertyName value:propertyValue andAttributes:propertyAttributes];
         [self.sortedPropertiesMutable addObject:agcProperty];

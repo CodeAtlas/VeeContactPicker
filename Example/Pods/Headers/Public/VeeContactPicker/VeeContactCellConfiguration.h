@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/Controller/ViewController/UITableViewCells/VeeContactCellConfiguration.h

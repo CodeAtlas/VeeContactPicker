@@ -1,7 +1,7 @@
 PODS:
   - FLKAutoLayout (1.0.0)
-  - NSObject-AGCDescription (0.0.2)
-  - OCMock (3.3)
+  - NSObject-AGCDescription (0.0.3)
+  - OCMock (3.3.1)
   - UIImageView-AGCInitials (0.0.2)
   - VeeContactPicker (0.0.2):
     - FLKAutoLayout
@@ -18,11 +18,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FLKAutoLayout: 106b14dbae09d32c6730190f4e78a959759ba4a4
-  NSObject-AGCDescription: 558fd1c60f6cf83b73c7ff083d86859920fe4b26
-  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
+  NSObject-AGCDescription: a180f782172168d9ac47ca82e91f26668499afec
+  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   UIImageView-AGCInitials: 4326faf01587dbfa2ffdee7e596ae96c1beca05c
-  VeeContactPicker: 7e174305e9607031e86cda5dcdcb31f01d0997fb
+  VeeContactPicker: 7d9d362f69214c1ebd0e187a8d2c5279015b7d48
 
-PODFILE CHECKSUM: c0458ab91b5729062dff013da1f31d5abb4b29ad
+PODFILE CHECKSUM: 7036de6d6e4fc256946086bdba3640851ccdae75
 
 COCOAPODS: 1.0.0

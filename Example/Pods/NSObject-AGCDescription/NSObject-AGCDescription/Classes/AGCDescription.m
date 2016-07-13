@@ -60,7 +60,7 @@
 
 - (void)extractAndFilterProperties
 {
-    AGCPropertiesExtractor* propertyExtractor = [[AGCPropertiesExtractor alloc] initWithTargetObject:_targetObject]; //TODO: dependecy injection
+    AGCPropertiesExtractor* propertyExtractor = [[AGCPropertiesExtractor alloc] initWithTargetObject:_targetObject];
 
     NSArray<AGCProperty*>* sortedPropertyNames = [propertyExtractor extractSortedProperties];
     if ([sortedPropertyNames count] == 0) {

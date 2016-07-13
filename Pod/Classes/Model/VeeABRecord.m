@@ -1,9 +1,5 @@
-//
-//  Created by Andrea Cipriani on 22/03/16.
-//  Copyright © 2016 Code Atlas SRL. All rights reserved.
-//
-
 #import "VeeABRecord.h"
+#import "NSObject+AGCDescription.h"
 
 @interface VeeABRecord ()
 
@@ -298,6 +294,16 @@ NSString* const kVeePostalAddressCountryKey = @"Country";
 - (NSUInteger)hash
 {
     return [[self recordIds] hash];
+}
+
+- (NSString*)description
+{
+    return [self agc_description];
+}
+
+- (NSString*)debugDescription
+{
+    return [self agc_debugDescription];
 }
 
 @end

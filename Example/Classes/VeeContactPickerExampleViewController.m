@@ -56,7 +56,7 @@
 
 - (void)didSelectContact:(id<VeeContactProt>)veeContact
 {
-    NSLog(@"Selected %@", veeContact);
+    NSLog(@"Selected\n%@", veeContact);
     [self updateUIForSelectedContact:veeContact];
 }
 

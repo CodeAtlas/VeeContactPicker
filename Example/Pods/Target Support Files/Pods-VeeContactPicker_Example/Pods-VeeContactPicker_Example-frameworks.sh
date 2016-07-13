@@ -82,16 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/FLKAutoLayout/FLKAutoLayout.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NSObject-AGCDescription/NSObject_AGCDescription.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/UIImageView-AGCInitials/UIImageView_AGCInitials.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/VeeContactPicker/VeeContactPicker.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/FLKAutoLayout/FLKAutoLayout.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NSObject-AGCDescription/NSObject_AGCDescription.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/UIImageView-AGCInitials/UIImageView_AGCInitials.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/VeeContactPicker/VeeContactPicker.framework"
-fi
