@@ -18,6 +18,7 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		869F30CB1D364CFC002006B4 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 869F30CA1D364CFC002006B4 /* CHANGELOG.md */; };
 		86B3D9201CC0EC5C00553A12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B3D91A1CC0EC5C00553A12 /* Main.storyboard */; };
 		86B3D9211CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91C1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m */; };
 		86B3D9221CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D91E1CC0EC5C00553A12 /* VeeContactPickerExampleViewController.m */; };
@@ -112,6 +113,7 @@
 		687FB5885B179B20861F08BC /* libPods-VeeContactPicker_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VeeContactPicker_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D6803EDB9C09709B6D7406 /* Pods-VeeContactPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Tests/Pods-VeeContactPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		798D105B636D8443ECFCC5D1 /* Pods-VeeContactPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeeContactPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeeContactPicker_Example/Pods-VeeContactPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		869F30CA1D364CFC002006B4 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		86B3D91A1CC0EC5C00553A12 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		86B3D91B1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerExampleAppDelegate.h; sourceTree = "<group>"; };
 		86B3D91C1CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerExampleAppDelegate.m; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				39B3240FFEA018C8D974F2DC /* LICENSE */,
 				3FB5CECAF89B0F574C929D3E /* README.md */,
+				869F30CA1D364CFC002006B4 /* CHANGELOG.md */,
 				5AE1AE8139B043021F1D9A7E /* VeeContactPicker.podspec */,
 			);
 			path = "Podspec Metadata";
@@ -678,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				869F30CB1D364CFC002006B4 /* CHANGELOG.md in Sources */,
 				86B3D9901CC0EE4800553A12 /* VeeAddressBookForTestingConstants.m in Sources */,
 				86B3D98F1CC0EE4300553A12 /* VeeContactsForTestingFactory.m in Sources */,
 				86B3D9211CC0EC5C00553A12 /* VeeContactPickerExampleAppDelegate.m in Sources */,
