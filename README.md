@@ -44,12 +44,12 @@ And then implement the *VeeContactPickerDelegate*
     //Do whatever you want with the selected veeContact!
 }
 
--(void)didCancelContactSelection
+- (void)didCancelContactSelection
 {
   //No contact was selected
 }
 
--(void)didFailToAccessAddressBook
+- (void)didFailToAccessAddressBook
 {
   //Show an error?
 }
