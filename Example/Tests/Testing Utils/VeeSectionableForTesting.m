@@ -11,7 +11,7 @@
 {
     self = [super init];
     if (self) {
-        _id = [[NSProcessInfo processInfo] globallyUniqueString];
+        _id = [NSProcessInfo processInfo].globallyUniqueString;
         _sectionIdentifier = sectionIdentifier;
     }
     return self;
@@ -21,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _id = [[NSProcessInfo processInfo] globallyUniqueString];
+        _id = [NSProcessInfo processInfo].globallyUniqueString;
     }
     return self;
 }

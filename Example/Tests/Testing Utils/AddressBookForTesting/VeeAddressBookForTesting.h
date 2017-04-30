@@ -10,9 +10,9 @@
 
 - (void)addVeeTestingContactsToAddressBook;
 - (void)deleteVeeTestingContactsFromAddressBook;
-- (ABRecordRef)abRecordRefOfCompleteContact;
-- (ABRecordRef)abRecordRefOfUnifiedContact;
-- (NSArray*)abRecordRefsOfTestingContacts;
+@property (NS_NONATOMIC_IOSONLY, readonly) ABRecordRef abRecordRefOfCompleteContact CF_RETURNS_NOT_RETAINED;
+@property (NS_NONATOMIC_IOSONLY, readonly) ABRecordRef abRecordRefOfUnifiedContact CF_RETURNS_NOT_RETAINED;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *abRecordRefsOfTestingContacts;
 //- (void)exportABtoVCF:(NSString*)vcfFileName;
 
 @end

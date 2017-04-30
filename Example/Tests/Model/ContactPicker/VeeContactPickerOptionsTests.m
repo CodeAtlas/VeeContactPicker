@@ -38,13 +38,13 @@
 
 -(void)testDefaultOptionsStrings
 {
-    BOOL stringsAreDefault = [[[_veeContactPickerDefaultOptions veeContactPickerStrings] navigationBarTitle] isEqualToString:[[VeeContactPickerStrings defaultStrings] navigationBarTitle]];
+    BOOL stringsAreDefault = [_veeContactPickerDefaultOptions.veeContactPickerStrings.navigationBarTitle isEqualToString:[VeeContactPickerStrings defaultStrings].navigationBarTitle];
     NSAssert(stringsAreDefault, @"Strings should be default");
 }
 
 -(void)testDefaultOptionsSectionIdentifiers
 {
-    NSArray* sectionIndexTitles = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+    NSArray* sectionIndexTitles = [UILocalizedIndexedCollation currentCollation].sectionIndexTitles;
     NSAssert(sectionIndexTitles, @"SectionIndexTitles should not be nil");
     
     BOOL areDefaultSectionIdentifiersCorrect =[_veeContactPickerDefaultOptions.sectionIdentifiers isEqual:sectionIndexTitles];

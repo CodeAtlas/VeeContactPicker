@@ -43,6 +43,11 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
     _veeABRecordsForTesting = [self veeABRecordsFromAddressBookForTesting];
 }
 
+-(void)tearDown
+{
+    
+}
+
 #pragma mark - Complete Veecontact tests
 
 - (void)testCompleteContactCreation
@@ -88,19 +93,19 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testCompleteContactPhoneNumbersCount
 {
-    BOOL isPhoneNumbersCountCorrect = [_veeABRecordComplete.phoneNumbers count] == kCompleteVeeContactPhoneNumbersCount;
+    BOOL isPhoneNumbersCountCorrect = (_veeABRecordComplete.phoneNumbers).count == kCompleteVeeContactPhoneNumbersCount;
     NSAssert(isPhoneNumbersCountCorrect, @"Contact complete phone numbers count is %zd but should be %zd", [_veeABRecordComplete.phoneNumbers count], kCompleteVeeContactPhoneNumbersCount);
 }
 
 - (void)testCompleteContactEmailsCount
 {
-    BOOL isEmailsCountCorrect = [_veeABRecordComplete.emails count] == kCompleteVeeContactEmailsCount;
+    BOOL isEmailsCountCorrect = (_veeABRecordComplete.emails).count == kCompleteVeeContactEmailsCount;
     NSAssert(isEmailsCountCorrect, @"Contact complete emails count is %zd but should be %zd", [_veeABRecordComplete.emails count], kCompleteVeeContactEmailsCount);
 }
 
 -(void)testCompleteContactPostalAddresses
 {
-    BOOL isPostalAddressesCountCorrect = [_veeABRecordComplete.postalAddresses count] == kCompleteVeeContactPostalAddressesCount;
+    BOOL isPostalAddressesCountCorrect = (_veeABRecordComplete.postalAddresses).count == kCompleteVeeContactPostalAddressesCount;
     NSAssert(isPostalAddressesCountCorrect, @"Contact complete postals count is %zd but should be %zd", [_veeABRecordComplete.postalAddresses count], kCompleteVeeContactPostalAddressesCount);
 }
 
@@ -130,7 +135,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 -(void)testCompleteContactWebsitesCount
 {
-    BOOL isWebsitesCountCorrect = [_veeABRecordComplete.websites count] == kCompleteVeeContactWebsitesCount;
+    BOOL isWebsitesCountCorrect = (_veeABRecordComplete.websites).count == kCompleteVeeContactWebsitesCount;
     NSAssert(isWebsitesCountCorrect, @"Contact websites count is %zd but should be %zd", [_veeABRecordComplete.websites count], kCompleteVeeContactWebsitesCount);
 }
 
@@ -145,13 +150,13 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 -(void)testCompleteContactTwitterAccounts
 {
-    BOOL isTwitterCorrect = [[_veeABRecordComplete twitterAccounts] containsObject:kCompleteVeeContactTwitterAccount];
+    BOOL isTwitterCorrect = [_veeABRecordComplete.twitterAccounts containsObject:kCompleteVeeContactTwitterAccount];
     NSAssert(isTwitterCorrect,@"Complete contact should have a Twitter account: %@, but Twitter accounts are: %@",kCompleteVeeContactTwitterAccount,[_veeABRecordComplete twitterAccounts]);
 }
 
 -(void)testCompleteContactFacebookAccounts
 {
-    BOOL isFacebookAccountCorrect = [[_veeABRecordComplete facebookAccounts] containsObject:kCompleteVeeContactFacebookAccount];
+    BOOL isFacebookAccountCorrect = [_veeABRecordComplete.facebookAccounts containsObject:kCompleteVeeContactFacebookAccount];
     NSAssert(isFacebookAccountCorrect,@"Complete contact should have a Facebook account: %@, but Facebook accounts are: %@",kCompleteVeeContactFacebookAccount,[_veeABRecordComplete facebookAccounts]);
 }
 
@@ -163,14 +168,14 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 
 - (void)testTestingRecordsCreationCount
 {
-    BOOL isVeeContactsCountCorrect = [_veeABRecordsForTesting count] == kVeeTestingContactsNumber;
+    BOOL isVeeContactsCountCorrect = _veeABRecordsForTesting.count == kVeeTestingContactsNumber;
     NSAssert(isVeeContactsCountCorrect, @"Loaded %zd contacts from abForTesting, but they should be %zd", [_veeABRecordsForTesting count], kVeeTestingContactsNumber);
 }
 
 - (void)testRecordIdExist
 {
     for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
-        BOOL hasAtLeastOneRecordId = [[veeABRecord recordIds] count] > 0;
+        BOOL hasAtLeastOneRecordId = veeABRecord.recordIds.count > 0;
         NSAssert(hasAtLeastOneRecordId, @"Contact %@ has no recordIds", veeABRecord.compositeName);
     }
 }
@@ -214,7 +219,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 {
     NSUInteger phoneNumbersCount = 0;
     for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
-        phoneNumbersCount += [[veeABRecord phoneNumbers] count];
+        phoneNumbersCount += veeABRecord.phoneNumbers.count;
     }
     
     BOOL isPhoneNumberCountCorrect = phoneNumbersCount == kVeeTestingContactsPhoneNumbersCount;
@@ -233,7 +238,7 @@ static VeeAddressBookForTesting* veeAddressBookForTesting;
 {
     NSUInteger emailsCount = 0;
     for (VeeABRecord* veeABRecord in _veeABRecordsForTesting) {
-        emailsCount += [[veeABRecord emails] count];
+        emailsCount += veeABRecord.emails.count;
     }
     
     BOOL isEmailCountCorrect = emailsCount == kVeeTestingContactsEmailsCount;

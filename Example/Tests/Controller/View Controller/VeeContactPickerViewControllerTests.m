@@ -45,7 +45,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 {
     [super setUp];
     _veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
-    _veeContactPickerCustomOptions = [self veeContactPickerCustomOptions];
+    _veeContactPickerCustomOptions = self.veeContactPickerCustomOptions;
     _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
     _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
     _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:customVeeContacts];
@@ -91,7 +91,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 - (void)testInitWithCustomVeecontacts
 {
-    [_veeContactPickerVCWithCustomVeeContacts view];
+    _veeContactPickerVCWithCustomVeeContacts.view;
     NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeContacts"] count];
     BOOL isNumberOfCustomVeeContactsCorrect = numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
     NSAssert(isNumberOfCustomVeeContactsCorrect, @"Init with %zd custom veecontacts but there are %zd veecontacts loaded", NUMBER_OF_RANDOM_VEECONTACTS, numberOfVeeContactsLoaded);
@@ -118,7 +118,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 - (void)testCancelBarButtonItemPressedAction
 {
-    BOOL isActionCorrect = [_veeContactPickerVCWithDefaultOptions.cancelBarButtonItem action] == @selector(cancelBarButtonItemPressed:);
+    BOOL isActionCorrect = (_veeContactPickerVCWithDefaultOptions.cancelBarButtonItem).action == @selector(cancelBarButtonItemPressed:);
     NSAssert(isActionCorrect, @"CancelBarButtonItem action is not cancelBarButtonItemPressed:");
 }
 
@@ -163,7 +163,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 -(void)testEmptyViewIsNotShownWhenThereAreContacts
 {
     VeeContactPickerViewController* defaultPickerViewController = [self veeContactPickerWithDefaultConfAndViewLoaded];
-    BOOL tableViewShouldNotBeHidden = [defaultPickerViewController contactsTableView].hidden == NO;
+    BOOL tableViewShouldNotBeHidden = defaultPickerViewController.contactsTableView.hidden == NO;
     UISearchBar* searchBar = (UISearchBar*) [defaultPickerViewController valueForKey:@"searchBar"];
     BOOL searchBarShouldBeHidden = searchBar.hidden == NO;
     UILabel* emptyViewLabel = (UILabel*) [defaultPickerViewController valueForKey:@"emptyViewLabel"];
@@ -175,14 +175,14 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 -(void)testEmptyViewIsShownForNoContacts
 {
     VeeContactPickerViewController* veeContactPickerWithNoVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:@[]];
-    [veeContactPickerWithNoVeeContacts view];
+    veeContactPickerWithNoVeeContacts.view;
     NSDate *loopTimeout = [NSDate dateWithTimeIntervalSinceNow:10];
-    BOOL isTableViewVisible = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == NO;
-    while (isTableViewVisible && [loopTimeout timeIntervalSinceNow] > 0) {
+    BOOL isTableViewVisible = veeContactPickerWithNoVeeContacts.contactsTableView.hidden == NO;
+    while (isTableViewVisible && loopTimeout.timeIntervalSinceNow > 0) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:loopTimeout];
     }
-    BOOL tableViewShouldBeHidden = [veeContactPickerWithNoVeeContacts contactsTableView].hidden == YES;
+    BOOL tableViewShouldBeHidden = veeContactPickerWithNoVeeContacts.contactsTableView.hidden == YES;
     UISearchBar* searchBar = (UISearchBar*) [veeContactPickerWithNoVeeContacts valueForKey:@"searchBar"];
     BOOL searchBarShouldBeHidden = searchBar.hidden == YES;
     UILabel* emptyViewLabel = (UILabel*) [veeContactPickerWithNoVeeContacts valueForKey:@"emptyViewLabel"];
@@ -198,7 +198,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    [veeContactPicker view];
+    veeContactPicker.view;
     id mockedTableView = OCMClassMock([UITableView class]);
     [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
@@ -210,7 +210,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    [veeContactPicker view];
+    veeContactPicker.view;
     [veeContactPicker cancelBarButtonItemPressed:nil];
     OCMVerify([mockContactDelegate didCancelContactSelection]);
 }
@@ -220,7 +220,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    [veeContactPicker view];
+    veeContactPicker.view;
     [veeContactPicker abPermissionsNotGranted];
 
     OCMVerify([mockContactDelegate didFailToAccessAddressBook]);
@@ -236,7 +236,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
         isBlockInvoked = YES;
     };
 
-    [veeContactPicker view];
+    veeContactPicker.view;
     id mockedTableView = OCMClassMock([UITableView class]);
     [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
@@ -248,7 +248,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (VeeContactPickerViewController*)veeContactPickerWithDefaultConfAndViewLoaded
 {
     VeeContactPickerViewController* veeContactPickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
-    [veeContactPickerVC view];
+    veeContactPickerVC.view;
     return veeContactPickerVC;
 }
 

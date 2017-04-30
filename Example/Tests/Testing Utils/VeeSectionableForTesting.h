@@ -8,7 +8,7 @@
 
 @interface VeeSectionableForTesting : NSObject <VeeSectionableProt>
 
-- (instancetype)initWithSectionIdentifier:(NSString*)sectionIdentifier;
+- (instancetype)initWithSectionIdentifier:(NSString*)sectionIdentifier NS_DESIGNATED_INITIALIZER;
 @property (nonatomic, copy) NSString* sectionIdentifier;
 @property (nonatomic, copy) NSString* id;
 

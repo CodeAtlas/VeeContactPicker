@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "VeeContactPicker"
-s.version          = "0.0.2"
+s.version          = "0.1.0"
 s.summary          = "A replacement for the iOS ABPeoplePickerNavigationController, with contacts' images"
 s.description      = "VeeContactPicker is a replacement for the (bugged) ABPeoplePickerNavigationController. You can use it to let the user choose a contact from the address book."
 s.homepage         = "https://github.com/CodeAtlas/VeeContactPicker"
@@ -14,13 +14,15 @@ s.license          = 'MIT'
 s.author           = { "Code Atlas SRL" => "andrea.g.cipriani@gmail.com" }
 s.source           = { :git => "https://github.com/CodeAtlas/VeeContactPicker.git", :tag => s.version.to_s }
 s.social_media_url = 'https://github.com/CodeAtlas'
-s.platform     = :ios, '7.0'
+s.ios.deployment_target = '8.0'
 s.requires_arc = true
-s.source_files = 'Pod/Classes/**/*'
+s.source_files = 'VeeContactPicker/Classes/**/*'
 s.resource_bundles = {
-    'VeeContactPicker' => ['Pod/Assets/*.{xib}']
+    'VeeContactPicker' => ['VeeContactPicker/Assets/*.png']
 }
+s.public_header_files = 'Pod/Classes/**/*.h'
+s.frameworks = 'UIKit', 'AddressBook'
 s.dependency 'UIImageView-AGCInitials'
-s.dependency 'NSObject-AGCDescription'
 s.dependency 'FLKAutoLayout'
+
 end

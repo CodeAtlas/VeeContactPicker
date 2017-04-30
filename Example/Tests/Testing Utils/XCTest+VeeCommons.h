@@ -9,7 +9,7 @@
 
 - (void)nullifyIvarWithName:(NSString*)iVarSelectorName ofObject:(id)object;
 - (void)assertObject:(id)object respondToSelectorWithName:(NSString*)selectorName;
-- (UIImage*)veeTestImage;
-- (NSBundle*)veeContactPickerBundle;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *veeTestImage;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSBundle *veeContactPickerBundle;
 
 @end

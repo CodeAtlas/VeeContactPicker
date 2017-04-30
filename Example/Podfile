@@ -1,12 +1,12 @@
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '7.0'
+use_frameworks!
+platform :ios, '8.0'
 
 target 'VeeContactPicker_Example' do
   pod 'VeeContactPicker', :path => '../'
 end
 
 target 'VeeContactPicker_Tests' do
-  pod 'VeeContactPicker', :path => '../'
-  pod 'OCMock'
-  #pod 'FBSnapshotTestCase'
+    inherit! :search_paths
+    pod 'VeeContactPicker', :path => '../'
+    pod 'OCMock'
 end

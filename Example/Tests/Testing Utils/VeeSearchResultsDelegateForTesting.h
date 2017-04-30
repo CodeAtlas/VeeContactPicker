@@ -8,7 +8,7 @@
 
 @interface VeeSearchResultsDelegateForTesting : NSObject <VeeSearchResultsDelegate>
 
--(instancetype)initWithSearchResults:(NSArray*)searchResults;
+-(instancetype)initWithSearchResults:(NSArray*)searchResults NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic,strong) NSArray* searchResults;
 

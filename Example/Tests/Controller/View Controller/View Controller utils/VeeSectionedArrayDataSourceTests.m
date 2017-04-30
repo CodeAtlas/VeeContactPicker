@@ -34,7 +34,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 + (void)setUp
 {
-    allowedSectionIdentifiers = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+    allowedSectionIdentifiers = [UILocalizedIndexedCollation currentCollation].sectionIndexTitles;
     randomVeesectionableObjects = [self randomVeeSectionableObjects:RANDOM_OBJECTS_COUNT];
 }
 
@@ -47,7 +47,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     _sectionedRandomObjects = [self sectionedObjects:randomVeesectionableObjects];
     _nonEmptyRandomObjectsSectionIdentifiers = [self nonEmptySortedSectionIdentifiers:_sectionedRandomObjects];
     _indexPathForTestCell = [NSIndexPath indexPathForRow:0 inSection:0];
-    _mockedTableViewWithTestCellIdentifier = [self mockedTableViewWithTestCellIdentifier];
+    _mockedTableViewWithTestCellIdentifier = self.mockedTableViewWithTestCellIdentifier;
 }
 
 - (void)tearDown
@@ -82,7 +82,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     }
     id mockedTableView = OCMClassMock([UITableView class]);
     NSUInteger numberOfSections = [_veeSectionedArrayDataSource numberOfSectionsInTableView:mockedTableView];
-    BOOL isNumberOfSectionCorrect = [sectionIdentifiers count] == numberOfSections;
+    BOOL isNumberOfSectionCorrect = sectionIdentifiers.count == numberOfSections;
     NSAssert(isNumberOfSectionCorrect, @"number of sections is %zd but should be %zd", numberOfSections, [sectionIdentifiers count]);
 }
 
@@ -105,7 +105,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
         totalNumberOfRows += numberOfRowsInSection;
     }
 
-    BOOL isTotalNumberOfRowsCorrect = totalNumberOfRows == [randomVeesectionableObjects count];
+    BOOL isTotalNumberOfRowsCorrect = totalNumberOfRows == randomVeesectionableObjects.count;
     NSAssert(isTotalNumberOfRowsCorrect, @"Total number of rows is %zd but should be %zd", [randomVeesectionableObjects count], totalNumberOfRows);
 }
 
@@ -113,8 +113,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 {
     for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
         NSUInteger numberOfRowsInSection = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier numberOfRowsInSection:section];
-        NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
-        NSUInteger numberOfObjsForThisSection = [[_sectionedRandomObjects objectForKey:sectionIdenfierOfSection] count];
+        NSString* sectionIdenfierOfSection = _nonEmptyRandomObjectsSectionIdentifiers[section];
+        NSUInteger numberOfObjsForThisSection = [_sectionedRandomObjects[sectionIdenfierOfSection] count];
         BOOL isNumberOfRowsCorrect = numberOfRowsInSection == numberOfObjsForThisSection;
         NSAssert(isNumberOfRowsCorrect, @"Number of rows for section %zd is %zd but should be %zd", section, numberOfRowsInSection, numberOfObjsForThisSection);
     }
@@ -131,7 +131,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 -(void)testTitleForHeaderInSections
 {
     for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
-        NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
+        NSString* sectionIdenfierOfSection = _nonEmptyRandomObjectsSectionIdentifiers[section];
         NSString* titleForHeaderInSection = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier titleForHeaderInSection:section];
         BOOL isTitleForSectionCorrect = [titleForHeaderInSection isEqualToString:sectionIdenfierOfSection];
         NSAssert(isTitleForSectionCorrect, @"Title for header in section %zd is %@ but should be %@", section, titleForHeaderInSection, sectionIdenfierOfSection);
@@ -140,8 +140,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 -(void)testSectionIndexTitlesCount
 {
-    NSUInteger sectionIndexTitlesCount = [[_veeSectionedArrayDataSource sectionIndexTitlesForTableView:_mockedTableViewWithTestCellIdentifier] count];
-    BOOL isSectionIndexTitlesCountCorrect = sectionIndexTitlesCount == [allowedSectionIdentifiers count];
+    NSUInteger sectionIndexTitlesCount = [_veeSectionedArrayDataSource sectionIndexTitlesForTableView:_mockedTableViewWithTestCellIdentifier].count;
+    BOOL isSectionIndexTitlesCountCorrect = sectionIndexTitlesCount == allowedSectionIdentifiers.count;
     NSAssert(isSectionIndexTitlesCountCorrect, @"Section index titles are %zd but they should be %zd",sectionIndexTitlesCount,[allowedSectionIdentifiers count]);
 }
 
@@ -176,8 +176,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier]; section++) {
         for (int row = 0; row < [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier numberOfRowsInSection:section]; row++){
             id itemAtIndexPath = [_veeSectionedArrayDataSource tableView:_mockedTableViewWithTestCellIdentifier itemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-            NSString* sectionIdenfierOfSection = [_nonEmptyRandomObjectsSectionIdentifiers objectAtIndex:section];
-            NSMutableArray* objsForSection = [_sectionedRandomObjects objectForKey:sectionIdenfierOfSection];
+            NSString* sectionIdenfierOfSection = _nonEmptyRandomObjectsSectionIdentifiers[section];
+            NSMutableArray* objsForSection = _sectionedRandomObjects[sectionIdenfierOfSection];
             id obj = objsForSection[row];
             BOOL isItemCorrect = [itemAtIndexPath isEqual:obj];
             NSAssert(isItemCorrect, @"Item at section %zd row %zd is %@ but should be %@",section,row,itemAtIndexPath,obj);
@@ -197,7 +197,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     VeeSectionableForTesting * veeSectionable = [VeeSectionableForTesting new];
     NSString* notAllowedSectionIdentifier = @"ò";
     NSAssert([[_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"] containsObject:notAllowedSectionIdentifier] == NO,@"%@ is allowed",notAllowedSectionIdentifier);
-    [veeSectionable setSectionIdentifier:notAllowedSectionIdentifier];
+    veeSectionable.sectionIdentifier = notAllowedSectionIdentifier;
     NSString* sectionIdentifierNotAllowed = [_veeSectionedArrayDataSource sectionIdentifierForItem:veeSectionable];
     BOOL isWildcard = [sectionIdentifierNotAllowed isEqualToString:[_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"]];
     NSAssert(isWildcard, @"Section identifier for not allowed item should be wildcard but is %@",sectionIdentifierNotAllowed);
@@ -208,8 +208,8 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     VeeSectionableForTesting * veeSectionable = [VeeSectionableForTesting new];
     NSArray* allowedSectionIdentifiers = [_veeSectionedArrayDataSource valueForKey:@"allowedSortedSectionIdentifiers"];
     for (int numberOfTests = 0; numberOfTests < 10; numberOfTests++){
-        NSString* randomSectionIdentifier = [allowedSectionIdentifiers objectAtIndex:(arc4random() % [allowedSectionIdentifiers count])];
-        [veeSectionable setSectionIdentifier:randomSectionIdentifier];
+        NSString* randomSectionIdentifier = allowedSectionIdentifiers[(arc4random() % allowedSectionIdentifiers.count)];
+        veeSectionable.sectionIdentifier = randomSectionIdentifier;
         NSString* sectionIdentifierForItem = [_veeSectionedArrayDataSource sectionIdentifierForItem:veeSectionable];
         BOOL isSectionIdentifierCorrect = [sectionIdentifierForItem isEqualToString:randomSectionIdentifier];
         NSAssert(isSectionIdentifierCorrect,@"Section identifier for %@ is %@ but should be %@",veeSectionable,sectionIdentifierForItem,randomSectionIdentifier);
@@ -227,7 +227,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 
 -(void)testSearchTableViewRowsCount
 {
-    UITableView* searchTableViewMock = [self mockedTableViewWithTestCellIdentifier];
+    UITableView* searchTableViewMock = self.mockedTableViewWithTestCellIdentifier;
     
     [_veeSectionedArrayDataSource setSearchResults:[VeeSectionedArrayDataSourceTests randomVeeSectionableObjects:SEARCH_RESULTS_RANDOM_OBJECTS_COUNT] forSearchTableView:searchTableViewMock];
     
@@ -248,7 +248,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     NSMutableArray* veeSectionableObjectsMutable = [NSMutableArray new];
     for (int i = 0; i < numberOfObjects; i++) {
         VeeSectionableForTesting* veeSectionableObj = [VeeSectionableForTesting new];
-        [veeSectionableObj setSectionIdentifier:[allowedSectionIdentifiers objectAtIndex:arc4random() % [allowedSectionIdentifiers count]]];
+        veeSectionableObj.sectionIdentifier = allowedSectionIdentifiers[arc4random() % allowedSectionIdentifiers.count];
         [veeSectionableObjectsMutable addObject:veeSectionableObj];
     }
     return [NSArray arrayWithArray:veeSectionableObjectsMutable];
@@ -258,12 +258,12 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 {
     NSMutableDictionary* objsForSectionIdentifiers = [NSMutableDictionary new];
     for (NSString* sectionIdentifer in allowedSectionIdentifiers) {
-        [objsForSectionIdentifiers setObject:[NSMutableArray new] forKey:sectionIdentifer];
+        objsForSectionIdentifiers[sectionIdentifer] = [NSMutableArray new];
     }
     for (id<VeeSectionableProt> veeSectionable in veeSectionableObjs) {
-        NSMutableArray* objsForThisSection = [objsForSectionIdentifiers objectForKey:[veeSectionable sectionIdentifier]];
+        NSMutableArray* objsForThisSection = objsForSectionIdentifiers[[veeSectionable sectionIdentifier]];
         [objsForThisSection addObject:veeSectionable];
-        [objsForSectionIdentifiers setObject:objsForThisSection forKey:[veeSectionable sectionIdentifier]];
+        objsForSectionIdentifiers[[veeSectionable sectionIdentifier]] = objsForThisSection;
     }
     return [NSDictionary dictionaryWithDictionary:objsForSectionIdentifiers];
 }
@@ -272,7 +272,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 {
     NSMutableArray* nonEmptySortedSectionIdentifiersMutable = [NSMutableArray new];
     for (NSString* sectionIdentifier in allowedSectionIdentifiers) {
-        if ([[sectionedObjs objectForKey:sectionIdentifier] count] > 0) {
+        if ([sectionedObjs[sectionIdentifier] count] > 0) {
             [nonEmptySortedSectionIdentifiersMutable addObject:sectionIdentifier];
         }
     }
@@ -285,7 +285,7 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
         configurationCellBlock = ^(UITableViewCell* cell, id item) {
         };
     }
-    VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable cellIdentifier:TEST_CELL_IDENTIFIER allowedSortedSectionIdentifiers:[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles] sectionIdentifierWildcard:@"#" configurationCellBlock:configurationCellBlock];
+    VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable cellIdentifier:TEST_CELL_IDENTIFIER allowedSortedSectionIdentifiers:[UILocalizedIndexedCollation currentCollation].sectionIndexTitles sectionIdentifierWildcard:@"#" configurationCellBlock:configurationCellBlock];
     return veeSectionedArrayDataSource;
 }
 

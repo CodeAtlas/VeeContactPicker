@@ -44,7 +44,7 @@
 - (void)deleteVeeTestingContactsFromAddressBook
 {
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
-    NSInteger numberOfPeople = [allPeople count];
+    NSInteger numberOfPeople = allPeople.count;
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef person = (__bridge ABRecordRef)allPeople[i];
         CFErrorRef* cfError = nil;
@@ -72,7 +72,7 @@
 {
     NSMutableArray* testingRecordRefsMutable = [NSMutableArray new];
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
-    NSInteger numberOfPeople = [allPeople count];
+    NSInteger numberOfPeople = allPeople.count;
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef recordRef = (__bridge ABRecordRef)allPeople[i];
         if ([self isVeeTestingContact:recordRef]) {
@@ -108,7 +108,7 @@
 - (ABRecordRef)veeTestingContactWithFirstName:(NSString*)firstName
 {
     NSArray* allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(_addressBook));
-    NSInteger numberOfPeople = [allPeople count];
+    NSInteger numberOfPeople = allPeople.count;
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef abRecord = (__bridge ABRecordRef)allPeople[i];
         if ([self isVeeTestingContact:abRecord]) {

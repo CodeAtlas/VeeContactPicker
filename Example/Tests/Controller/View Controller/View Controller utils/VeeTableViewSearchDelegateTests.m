@@ -46,7 +46,7 @@
 -(void)testFilterContentForEmptyStringShouldReturnInitialValue
 {
     [_veeTableViewSearchDelegate filterContentForSearchText:@"" scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:_dataToFiler];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:_dataToFiler];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be %@ for search for empty string",[_searchResultDelegateForTesting searchResults],_dataToFiler);
 }
 
@@ -54,7 +54,7 @@
 {
     NSString* searchForF = @"f";
     [_veeTableViewSearchDelegate filterContentForSearchText:searchForF scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:_filteredDataForF];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:_filteredDataForF];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be %@ for search f",[_searchResultDelegateForTesting searchResults],_filteredDataForF);
 }
 
@@ -62,7 +62,7 @@
 {
     NSString* searchForB = @"b";
     [_veeTableViewSearchDelegate filterContentForSearchText:searchForB scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:_filteredDataForB];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:_filteredDataForB];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be %@ for search b",[_searchResultDelegateForTesting searchResults],_filteredDataForB);
 }
 
@@ -70,7 +70,7 @@
 {
     NSString* searchForAr = @"ar";
     [_veeTableViewSearchDelegate filterContentForSearchText:searchForAr scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:_filteredDataForAr];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:_filteredDataForAr];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be %@ for search ar",[_searchResultDelegateForTesting searchResults],_filteredDataForAr);
 }
 
@@ -78,7 +78,7 @@
 {
     NSString* searchForVattelapesca = @"Vattelapesca";
     [_veeTableViewSearchDelegate filterContentForSearchText:searchForVattelapesca scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:@[]];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:@[]];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be empty",[_searchResultDelegateForTesting searchResults]);
 }
 
@@ -86,7 +86,7 @@
 {
     [self nullifyIvarWithName:@"dataToFilter" ofObject:_veeTableViewSearchDelegate];
     [_veeTableViewSearchDelegate filterContentForSearchText:@"doesn't matter" scope:nil];
-    BOOL isFilteredDataCorrect = [[_searchResultDelegateForTesting searchResults] isEqual:@[]];
+    BOOL isFilteredDataCorrect = [_searchResultDelegateForTesting.searchResults isEqual:@[]];
     NSAssert(isFilteredDataCorrect, @"Filtered data is %@ but should be empty",[_searchResultDelegateForTesting searchResults]);
 }
 

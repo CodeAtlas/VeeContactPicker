@@ -155,7 +155,7 @@
 
 -(void)testDisplayNameWithEmptyFirstNameStartsWithSpaceBug
 {
-    [_veeContactComplete setFirstName:@""];
+    _veeContactComplete.firstName = @"";
     [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
 
     NSString* firstDisplayNameChar = [[_veeContactComplete displayName] substringToIndex:1];
@@ -165,7 +165,7 @@
 
 -(void)testDisplayNameWithEmptyLastNameStartsWithSpaceBug
 {
-    [_veeContactComplete setLastName:@""];
+    _veeContactComplete.lastName = @"";
     [self nullifyIvarWithName:@"organizationName" ofObject:_veeContactComplete];
 
     NSString* firstDisplayNameChar = [[_veeContactComplete displayName] substringToIndex:1];
@@ -180,7 +180,7 @@
     for (VeeContact* veeContact in _randomVeeContacts) {
         NSString* veeContactSectionIdentifier = [veeContact sectionIdentifier];
         NSAssert(veeContactSectionIdentifier, @"VeeContact %@ has no section identifier", veeContact.displayName);
-        BOOL isSectionIdentiferOneCharacter = [veeContactSectionIdentifier length] == 1;
+        BOOL isSectionIdentiferOneCharacter = veeContactSectionIdentifier.length == 1;
         NSAssert(isSectionIdentiferOneCharacter, @"VeeContact %@ has a section identifier with length != 1: %@", veeContact.displayName, veeContactSectionIdentifier);
     }
 }
@@ -244,7 +244,7 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSortedByFirstName = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:bob];
+    BOOL areSortedByFirstName = [veeContacts.firstObject isEqual:alice] && [veeContacts.lastObject isEqual:bob];
     NSAssert(areSortedByFirstName, @"Contacts are not sorted properly by first name");
 }
 
@@ -270,7 +270,7 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSortedByLastName = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:carl];
+    BOOL areSortedByLastName = [veeContacts.firstObject isEqual:alice] && [veeContacts.lastObject isEqual:carl];
     NSAssert(areSortedByLastName, @"Contacts are not sorted properly by last name");
 }
 
@@ -296,7 +296,7 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSorted = [[veeContacts firstObject] isEqual:aliceA] && [[veeContacts lastObject] isEqual:aliceC];
+    BOOL areSorted = [veeContacts.firstObject isEqual:aliceA] && [veeContacts.lastObject isEqual:aliceC];
     NSAssert(areSorted, @"Contacts with same firstName are not sorted properly");
 }
 
@@ -323,7 +323,7 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSorted = [[veeContacts firstObject] isEqual:aliceA] && [[veeContacts lastObject] isEqual:aliceC];
+    BOOL areSorted = [veeContacts.firstObject isEqual:aliceA] && [veeContacts.lastObject isEqual:aliceC];
     NSAssert(areSorted, @"Contacts with same lastName are not sorted properly");
 }
 
@@ -343,7 +343,7 @@
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
     
-    BOOL areSorted = [[veeContacts firstObject] isEqual:alice];
+    BOOL areSorted = [veeContacts.firstObject isEqual:alice];
     NSAssert(areSorted, @"Alice ALastName and Bob ALastName are not sorted properly");
 }
 
@@ -365,7 +365,7 @@
     [dan setValue:@"DLastName" forKey:@"lastName"];
     
     veeContacts = [veeContacts sortedArrayUsingSelector:@selector(compare:)];
-    BOOL areSorted = [[veeContacts firstObject] isEqual:alice] && [[veeContacts lastObject] isEqual:dan];
+    BOOL areSorted = [veeContacts.firstObject isEqual:alice] && [veeContacts.lastObject isEqual:dan];
     NSAssert(areSorted, @"Alice ALastName and Company are not sorted properly");
 }
 
