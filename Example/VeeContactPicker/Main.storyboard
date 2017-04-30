@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0pg-2S-EDe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Rds-dd-tp3">
+            <objects>
+                <navigationController id="0pg-2S-EDe" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RIo-5D-OAv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TO9-kq-Lg4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fp9-Dz-PQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-392" y="535"/>
+        </scene>
+        <!--VeeContactPicker Example-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="VeeContactPickerExampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teO-Mg-u8n" userLabel="Allow Button">
+                                <rect key="frame" x="48" y="72" width="224" height="50"/>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.29803922770000002" blue="0.23137255009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bah-3u-oca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Choose a contact">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showVeecontactPickerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g27-e0-DaR"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-q7-fyg" userLabel="Separator view">
+                                <rect key="frame" x="16" y="130" width="288" height="2"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="onw-ba-Nb8"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No contact is selected" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2X-wE-rEP">
+                                <rect key="frame" x="75" y="140" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-LN-DIC">
+                                <rect key="frame" x="32" y="263" width="256" height="289"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-5i-4h8">
+                                <rect key="frame" x="125" y="177" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="4Ft-VT-ELC"/>
+                                    <constraint firstAttribute="width" constant="70" id="Nuo-Ll-9LH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="t2D-LN-DIC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="43x-Tf-R73"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bSe-q7-fyg" secondAttribute="trailing" id="7cF-U1-yOp"/>
+                            <constraint firstItem="teO-Mg-u8n" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="FFA-GU-FOC"/>
+                            <constraint firstItem="bSe-q7-fyg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QxA-d6-0Z2"/>
+                            <constraint firstItem="g2X-wE-rEP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VOY-i4-BXC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t2D-LN-DIC" secondAttribute="trailing" constant="16" id="XuR-DM-e6x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="teO-Mg-u8n" secondAttribute="trailing" constant="32" id="gdd-Sl-yhS"/>
+                            <constraint firstItem="t2D-LN-DIC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="jM8-hb-J0J"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="t2D-LN-DIC" secondAttribute="bottom" constant="16" id="jT5-e4-LCB"/>
+                            <constraint firstItem="bSe-q7-fyg" firstAttribute="top" secondItem="teO-Mg-u8n" secondAttribute="bottom" constant="8" id="m0c-9x-Woy"/>
+                            <constraint firstItem="teO-Mg-u8n" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="32" id="oMh-Ic-V9G"/>
+                            <constraint firstItem="Z1M-5i-4h8" firstAttribute="top" secondItem="g2X-wE-rEP" secondAttribute="bottom" constant="16" id="vHf-DW-PRG"/>
+                            <constraint firstItem="Z1M-5i-4h8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vQf-Z7-832"/>
+                            <constraint firstItem="g2X-wE-rEP" firstAttribute="top" secondItem="bSe-q7-fyg" secondAttribute="bottom" constant="8" id="wXi-cS-yWy"/>
+                            <constraint firstItem="t2D-LN-DIC" firstAttribute="top" secondItem="Z1M-5i-4h8" secondAttribute="bottom" constant="16" id="wdr-rn-3hO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="43x-Tf-R73"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="VeeContactPicker Example" id="s1j-hT-mEJ"/>
+                    <connections>
+                        <outlet property="selectedContactImageView" destination="Z1M-5i-4h8" id="gft-se-4zF"/>
+                        <outlet property="selectedContactLabel" destination="g2X-wE-rEP" id="ATM-Cj-Mh3"/>
+                        <outlet property="selectedContactTextView" destination="t2D-LN-DIC" id="XZ8-a0-bDK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="535"/>
+        </scene>
+    </scenes>
+</document>
