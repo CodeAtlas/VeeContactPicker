@@ -21,7 +21,6 @@
 @interface VeeContactPickerViewControllerTests : XCTestCase
 
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithDefaultOptions;
-@property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithNilVeeContacts;
 @property (nonatomic, strong) VeeContactPickerViewController* veeContactPickerVCWithCustomVeeContacts;
 
 @property (nonatomic, strong) VeeContactPickerOptions* veeContactPickerDefaultOptions;
@@ -44,11 +43,10 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (void)setUp
 {
     [super setUp];
-    _veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
-    _veeContactPickerCustomOptions = self.veeContactPickerCustomOptions;
-    _veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
-    _veeContactPickerVCWithNilVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:nil];
-    _veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:customVeeContacts];
+    self.veeContactPickerDefaultOptions = [VeeContactPickerOptions defaultOptions];
+    self.veeContactPickerCustomOptions = self.veeContactPickerCustomOptions;
+    self.veeContactPickerVCWithDefaultOptions = [self veeContactPickerWithDefaultConfAndViewLoaded];
+    self.veeContactPickerVCWithCustomVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:customVeeContacts];
 }
 
 - (void)tearDown
@@ -61,37 +59,15 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (void)testInitsShouldSetVeeAddressBook
 {
     BOOL isVeeABSetForInitWithDefaultConfiguration = [_veeContactPickerVCWithDefaultOptions valueForKey:@"veeAddressBook"] != nil;
-    BOOL isVeeABBookSetForInitWithVeeNilContacts = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeAddressBook"] != nil;
     BOOL isVeeABBookSetForInitWithCustomVeeContacts = [_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeAddressBook"] != nil;
 
     NSAssert(isVeeABSetForInitWithDefaultConfiguration, @"VeeAddressBook should be set in init with default configuration");
-    NSAssert(isVeeABBookSetForInitWithVeeNilContacts, @"VeeAddressBook should be set in init with nil veecontacts");
     NSAssert(isVeeABBookSetForInitWithCustomVeeContacts, @"VeeAddressBook should be set in init with custom veecontacts");
-}
-
-- (void)testInitWithNilVeeContactsShouldHaveNilVeeContactsBeforeLoadingView
-{
-    BOOL veeContactsAreNil = [_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] == nil;
-    NSAssert(veeContactsAreNil, @"Init with nil VeeContacts should have nil veeContactss");
-}
-
-- (void)testInitWithNilVeeContactsShouldUseVeeContactsFromAB
-{
-    /*id veeAB = OCMClassMock([VeeAddressBook class]);
-    OCMStub([veeAB askABPermissionsWithDelegate:[OCMArg anyPointer]]).andReturn(YES);
-    id veeContactFactoryMock = OCMClassMock([VeeContactFactory class]);
-    OCMStub([veeContactFactoryMock veeContactProtsFromAddressBook:[OCMArg anyPointer]]).andReturn(customVeeContacts);
-    [_veeContactPickerVCWithNilVeeContacts view];
-    
-    NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithNilVeeContacts valueForKey:@"veeContacts"] count];
-    BOOL isNumberOfVeeContactsCorrect = numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
-    TODO: green local, red on travis - NSAssert(isNumberOfVeeContactsCorrect, @"There are %zd veeContacts in the Address Book but %zd are loaded", NUMBER_OF_RANDOM_VEECONTACTS, numberOfVeeContactsLoaded);
-     */
 }
 
 - (void)testInitWithCustomVeecontacts
 {
-    _veeContactPickerVCWithCustomVeeContacts.view;
+    [self.veeContactPickerVCWithCustomVeeContacts loadView];
     NSUInteger numberOfVeeContactsLoaded = [[_veeContactPickerVCWithCustomVeeContacts valueForKey:@"veeContacts"] count];
     BOOL isNumberOfCustomVeeContactsCorrect = numberOfVeeContactsLoaded == NUMBER_OF_RANDOM_VEECONTACTS;
     NSAssert(isNumberOfCustomVeeContactsCorrect, @"Init with %zd custom veecontacts but there are %zd veecontacts loaded", NUMBER_OF_RANDOM_VEECONTACTS, numberOfVeeContactsLoaded);
@@ -101,17 +77,17 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
 - (void)testContactsTableViewOutletShouldBeConnected
 {
-    NSAssert(_veeContactPickerVCWithDefaultOptions.contactsTableView, @"TableView outlet is not connected");
+    NSAssert(self.veeContactPickerVCWithDefaultOptions.contactsTableView, @"TableView outlet is not connected");
 }
 
 - (void)testCancelBarButtonItemOutletShouldBeConnected
 {
-    NSAssert(_veeContactPickerVCWithDefaultOptions.cancelBarButtonItem, @"CancelBarButtonItem outlet is not connected");
+    NSAssert(self.veeContactPickerVCWithDefaultOptions.cancelBarButtonItem, @"CancelBarButtonItem outlet is not connected");
 }
 
 - (void)testTitleNavigationItemOutletShouldBeConnected
 {
-    NSAssert(_veeContactPickerVCWithDefaultOptions.titleNavigationItem, @"TitleNavigationItem outlet is not connected");
+    NSAssert(self.veeContactPickerVCWithDefaultOptions.titleNavigationItem, @"TitleNavigationItem outlet is not connected");
 }
 
 #pragma mark - Actions
@@ -127,7 +103,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (void)testTitleNavigationItemTitleShouldBeInitialized
 {
     BOOL isTitleCorrect = [_veeContactPickerVCWithDefaultOptions.titleNavigationItem.title isEqualToString:_veeContactPickerDefaultOptions.veeContactPickerStrings.navigationBarTitle];
-    NSAssert(isTitleCorrect, @"TitleNavigationItem title is %@ but should be %@", _veeContactPickerVCWithDefaultOptions.titleNavigationItem.title, _veeContactPickerDefaultOptions.veeContactPickerStrings.navigationBarTitle);
+    NSAssert(isTitleCorrect, @"TitleNavigationItem title is %@ but should be %@", _veeContactPickerVCWithDefaultOptions.titleNavigationItem.title, self.veeContactPickerDefaultOptions.veeContactPickerStrings.navigationBarTitle);
 }
 
 - (void)testCancelBarButtomItemTitleShouldBeInitialized
