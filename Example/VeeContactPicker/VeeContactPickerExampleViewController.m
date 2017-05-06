@@ -30,7 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)showVeecontactPickerPressed:(id)sender
 {
     VeeContactPickerViewController *veePickerVC = [self pickerWithAddressBookContacts];
-    //VeeContactPickerViewController* veePickerVC = [self pickerWithRandomFakeVeeContacts];
     veePickerVC.contactPickerDelegate = self;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
@@ -41,12 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 {
     return [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
 }
-
-//- (VeeContactPickerViewController *)pickerWithRandomFakeVeeContacts
-//{
-//    NSArray<id<VeeContactProt>> *randomVeeContacts = [VeeContactsForTestingFactory createRandomVeeContacts:100];
-//    return [[VeeContactPickerViewController alloc] initWithVeeContacts:randomVeeContacts];
-//}
 
 #pragma mark - VeeContactPickerDelegate
 
