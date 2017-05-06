@@ -4,7 +4,7 @@
 //
 
 #import "VeeContact.h"
-#import "VeecontactsForTestingFactory.h"
+#import "VeeContactsForTestingFactory.h"
 #import "VeeAddressBookForTestingConstants.h"
 
 @implementation VeeContactsForTestingFactory
@@ -15,9 +15,8 @@
 {
     NSArray* kCompleteVeeContactEmails = @[@"complete@home.it",@"complete@work.org",@"complete@icloud.com",@"duplicate@gmail.com"];
     NSArray* kCompleteVeeContactPhoneNumbers = @[@"+39 02 9387441",@"+1 333 2458774",@"+33 333 2580089",@"+7 331 4458726",@"+39 02 9387441"];
-    UIImage* randomImage = [self randomPortraitImage];
-    VeeContact* veeContactComplete = [[VeeContact alloc] initWithFirstName:kCompleteVeeContactFirstName middleName:kCompleteVeeContactMiddleName lastName:kCompleteVeeContactLastName nickName:kCompleteVeeContactNickname organizationName:kCompleteVeeContactOrganizationName compositeName:kCompleteVeeContactCompositeName thubnailImage:randomImage phoneNumbers:kCompleteVeeContactPhoneNumbers emails:kCompleteVeeContactEmails];
-    
+    UIImage* image = [self veeTestImage];
+    VeeContact* veeContactComplete = [[VeeContact alloc] initWithFirstName:kCompleteVeeContactFirstName middleName:kCompleteVeeContactMiddleName lastName:kCompleteVeeContactLastName nickName:kCompleteVeeContactNickname organizationName:kCompleteVeeContactOrganizationName compositeName:kCompleteVeeContactCompositeName thubnailImage:image phoneNumbers:kCompleteVeeContactPhoneNumbers emails:kCompleteVeeContactEmails];
     return veeContactComplete;
 }
 
@@ -34,7 +33,7 @@
         UIImage* thumbnailImage;
         NSUInteger setImageEveryNVeeContacts = 10;
         if (arc4random() % setImageEveryNVeeContacts == 0){
-            thumbnailImage = [self randomPortraitImage];
+            thumbnailImage = [self veeTestImage];
         }
         NSArray* randomEmails = @[[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName],[self randomEmailWithFirstName:randomFirstName andLastName:randomLastName]];
         randomVeeContact = [[VeeContact alloc] initWithFirstName:randomFirstName middleName:randomMiddleName lastName:randomLastName nickName:[self randomNickname] organizationName:[self randomOrganizationName] compositeName:randomCompositeName thubnailImage:thumbnailImage phoneNumbers:randomPhoneNumbers emails:randomEmails];
@@ -81,17 +80,8 @@
 
 +(NSString*)randomEntryInTxtFileNamed:(NSString*)fileName
 {
-    return @"foo";
-    //     NSArray* randomEntries = [self linesOfTxtFileNamed:fileName];
-    //TODO: fix return randomEntries[arc4random() % randomEntries.count];
-}
-
-+(UIImage*)randomPortraitImage
-{
-    NSUInteger numberOfPossiblePortraits = 9;
-    NSUInteger randomInteger = (arc4random() % numberOfPossiblePortraits) +1;
-    NSString* imageName = [NSString stringWithFormat:@"portrait_%zd.jpg",randomInteger];
-    return [UIImage imageNamed:imageName];
+    NSArray* randomEntries = [self linesOfTxtFileNamed:fileName];
+    return randomEntries[arc4random() % randomEntries.count];
 }
 
 +(NSArray<NSString*>*)linesOfTxtFileNamed:(NSString*)fileName
@@ -106,12 +96,18 @@
 
 +(NSString*)filePathForFileName:(NSString*)fileName withType:(NSString*)fileType
 {
-    NSString* filePath;
-#ifdef TESTING
-    filePath = [[NSBundle bundleForClass:self.class] pathForResource:fileName ofType:fileType];
-#else
-    filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:fileType];;
-#endif
+    NSString *filePath = [[NSBundle bundleForClass:self.class] pathForResource:fileName ofType:fileType];
     return filePath;
 }
+
++(UIImage*)veeTestImage
+{
+    NSString *imageName = @"vee_test_image.png";
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:imageName.stringByDeletingPathExtension ofType:imageName.pathExtension];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    NSAssert(image, @"Can't load vee_test_image.png");
+    return image;
+}
+
 @end
