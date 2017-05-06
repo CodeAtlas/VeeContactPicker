@@ -120,20 +120,6 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     NSAssert(conformsToVeeABDelegate, @"Picker should conforms to VeeABDelegate protocol ");
 }
 
-#pragma mark - Table View
-
-- (void)testTableViewDataSourceIsNotNil
-{
-    //BOOL isDataSourceSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.dataSource != nil;
-    //TODO: green local, red on travis - NSAssert(isDataSourceSet, @"Table view has no data source");
-}
-
-- (void)testTableViewDelegateIsNotNil
-{
-    //BOOL isDelegateSet = _veeContactPickerVCWithDefaultOptions.contactsTableView.delegate != nil;
-    //TODO: green local, red on travis - NSAssert(isDelegateSet, @"Table view has no delegates");
-}
-
 #pragma mark - Empty view
 
 -(void)testEmptyViewIsNotShownWhenThereAreContacts
@@ -147,25 +133,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 
     NSAssert(tableViewShouldNotBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldBeHidden, @"Empty view should not be shown if there are contacts!");
 }
- 
--(void)testEmptyViewIsShownForNoContacts
-{
-    VeeContactPickerViewController* veeContactPickerWithNoVeeContacts = [[VeeContactPickerViewController alloc] initWithVeeContacts:@[]];
-    veeContactPickerWithNoVeeContacts.view;
-    NSDate *loopTimeout = [NSDate dateWithTimeIntervalSinceNow:10];
-    BOOL isTableViewVisible = veeContactPickerWithNoVeeContacts.contactsTableView.hidden == NO;
-    while (isTableViewVisible && loopTimeout.timeIntervalSinceNow > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:loopTimeout];
-    }
-    BOOL tableViewShouldBeHidden = veeContactPickerWithNoVeeContacts.contactsTableView.hidden == YES;
-    UISearchBar* searchBar = (UISearchBar*) [veeContactPickerWithNoVeeContacts valueForKey:@"searchBar"];
-    BOOL searchBarShouldBeHidden = searchBar.hidden == YES;
-    UILabel* emptyViewLabel = (UILabel*) [veeContactPickerWithNoVeeContacts valueForKey:@"emptyViewLabel"];
-    BOOL emptyViewLabelShouldNotBeHidden = emptyViewLabel.hidden == NO;
-    
-    NSAssert(tableViewShouldBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldNotBeHidden, @"Empty view should be shown if there are no contacts!");
-}
+
 
 #pragma mark - VeeContactPickerDelegate
 
@@ -174,7 +142,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    veeContactPicker.view;
+    [veeContactPicker loadView];
     id mockedTableView = OCMClassMock([UITableView class]);
     [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
@@ -186,8 +154,8 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    veeContactPicker.view;
-    [veeContactPicker cancelBarButtonItemPressed:nil];
+    [veeContactPicker loadView];
+    [veeContactPicker cancelBarButtonItemPressed:self];
     OCMVerify([mockContactDelegate didCancelContactSelection]);
 }
 
@@ -196,7 +164,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
     id mockContactDelegate = OCMProtocolMock(@protocol(VeeContactPickerDelegate));
     VeeContactPickerViewController* veeContactPicker = _veeContactPickerVCWithCustomVeeContacts;
     veeContactPicker.contactPickerDelegate = mockContactDelegate;
-    veeContactPicker.view;
+    [veeContactPicker loadView];
     [veeContactPicker abPermissionsNotGranted];
 
     OCMVerify([mockContactDelegate didFailToAccessAddressBook]);
@@ -212,7 +180,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
         isBlockInvoked = YES;
     };
 
-    veeContactPicker.view;
+    [veeContactPicker loadView];
     id mockedTableView = OCMClassMock([UITableView class]);
     [veeContactPicker tableView:mockedTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
@@ -224,7 +192,7 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 - (VeeContactPickerViewController*)veeContactPickerWithDefaultConfAndViewLoaded
 {
     VeeContactPickerViewController* veeContactPickerVC = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
-    veeContactPickerVC.view;
+    [veeContactPickerVC loadView];
     return veeContactPickerVC;
 }
 

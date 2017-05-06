@@ -153,7 +153,7 @@
 
 - (void)saveABContext
 {
-    CFErrorRef* cfError;
+    CFErrorRef* cfError = nil;
     BOOL success = ABAddressBookSave(_addressBook, cfError);
     if (cfError || success == NO) {
         NSLog(@"Error while saving test address book context");

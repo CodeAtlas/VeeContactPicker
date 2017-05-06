@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithFirstName:(NSString*)firstName middleName:(NSString*)middleName lastName:(NSString*)lastName nickName:(NSString*)nickName organizationName:(NSString*)organizationName compositeName:(NSString*)compositeName thubnailImage:(UIImage*)thumbnailImage phoneNumbers:(NSArray<NSString*>*)phoneNumbers emails:(NSArray<NSString*>*)emails NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithVeeABRecord:(VeeABRecord*)veeABRecord;
+- (instancetype)initWithFirstName:(nullable NSString*)firstName middleName:(nullable NSString*)middleName lastName:(nullable NSString*)lastName nickName:(nullable NSString*)nickName organizationName:(nullable NSString*)organizationName compositeName:(nullable NSString*)compositeName thubnailImage:(nullable UIImage*)thumbnailImage phoneNumbers:(nullable NSArray<NSString*>*)phoneNumbers emails:(nullable NSArray<NSString*>*)emails;
 
 #pragma mark - Readonly
 

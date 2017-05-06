@@ -185,13 +185,6 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     }
 }
 
--(void)testSectionIdentifierForItemNilShouldBeWildcard
-{
-    NSString* sectionIdentifierForNil = [_veeSectionedArrayDataSource sectionIdentifierForItem:nil];
-    BOOL isWildcard = [sectionIdentifierForNil isEqualToString:[_veeSectionedArrayDataSource valueForKey:@"sectionIdentifierWildcard"]];
-    NSAssert(isWildcard, @"Section identifier for nil item should be wildcard but is %@",sectionIdentifierForNil);
-}
-
 -(void)testSectionIdentifierNotAllowedShouldBeWildcard
 {
     VeeSectionableForTesting * veeSectionable = [VeeSectionableForTesting new];
@@ -217,13 +210,6 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
 }
 
 #pragma mark - Search table view
-
--(void)testShouldNotUseSearchTableViewIfSearchResultIsNil
-{
-    [_veeSectionedArrayDataSource setSearchResults:nil forSearchTableView:nil];
-    BOOL isNotUsingSearchTableView = [_veeSectionedArrayDataSource numberOfSectionsInTableView:_mockedTableViewWithTestCellIdentifier] > 0;
-    NSAssert(isNotUsingSearchTableView, @"When search results are nil, should not use search table view");
-}
 
 -(void)testSearchTableViewRowsCount
 {

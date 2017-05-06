@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VeePostalAddress : NSObject <VeePostalAddressProt>
 
 - (instancetype)init NS_UNAVAILABLE;
--(instancetype)initWithStreet:(NSString*)street city:(NSString*)city state:(NSString*)state postal:(NSString*)postal country:(NSString*)country NS_DESIGNATED_INITIALIZER;
+-(instancetype)initWithStreet:(nullable NSString*)street city:(nullable NSString*)city state:(nullable NSString*)state postal:(nullable NSString*)postal country:(nullable NSString*)country;
 
 @property (nonatomic, copy) NSString * street;
 @property (nonatomic, copy) NSString * city;

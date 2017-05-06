@@ -1,8 +1,3 @@
-//
-//  Created by Andrea Cipriani on 28/03/16.
-//  Copyright © 2016 Code Atlas SRL. All rights reserved.
-//
-
 #import "VeeSearchResultsDelegateForTesting.h"
 
 @implementation VeeSearchResultsDelegateForTesting

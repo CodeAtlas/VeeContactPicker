@@ -5,7 +5,7 @@
 @interface VeeTableViewSearchDelegate : NSObject <UISearchDisplayDelegate>
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithSearchDisplayController:(UISearchDisplayController*)searchDisplayController dataToFiler:(NSArray*)dataToFiler withPredicate:(NSPredicate*)filterPredicate andSearchResultsDelegate:(id<VeeSearchResultsDelegate>)searchResultsDelegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSearchDisplayController:(UISearchDisplayController*)searchDisplayController dataToFiler:(NSArray*)dataToFiler withPredicate:(NSPredicate*)filterPredicate andSearchResultsDelegate:(id<VeeSearchResultsDelegate>)searchResultsDelegate;
 
 #pragma mark - UISearchDisplayDelegate
 

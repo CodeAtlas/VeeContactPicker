@@ -56,30 +56,38 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDefaultConfiguration
 {
-    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions] andVeeContacts:nil];
+    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions]];
     return self;
 }
 
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
-{
-    self = [self initWithOptions:veeContactPickerOptions andVeeContacts:nil];
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    NSBundle *podBundle = [NSBundle bundleForClass:self.class];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:podBundle];
+    _veeContactPickerOptions = veeContactPickerOptions;
+    _veeAddressBook = [[VeeAddressBook alloc] init];
+    _veeAddressBook.delegate = self;
+    _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
     return self;
 }
 
-- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
-{
-    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions] andVeeContacts:veeContacts];
+- (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts {
+    self = [self initWithOptions:[VeeContactPickerOptions defaultOptions] veeContacts:veeContacts];
     return self;
 }
 
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions andVeeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions veeContacts:(NSArray<id<VeeContactProt> >*)veeContacts
 {
     self = [super init];
     if (!self) {
         return nil;
     }
 
-    NSBundle *podBundle = [NSBundle bundleForClass:VeeContactPickerViewController.class];
+    NSBundle *podBundle = [NSBundle bundleForClass:self.class];
     self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:podBundle];
     _veeContactPickerOptions = veeContactPickerOptions;
     _veeContacts = veeContacts;

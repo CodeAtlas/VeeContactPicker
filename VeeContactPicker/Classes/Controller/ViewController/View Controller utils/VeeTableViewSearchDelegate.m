@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller
 {
-    [self.searchResultsDelegate handleSearchResults:nil forSearchTableView:self.searchDisplayController.searchResultsTableView];
+    [self.searchResultsDelegate handleSearchResults:@[] forSearchTableView:self.searchDisplayController.searchResultsTableView];
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope

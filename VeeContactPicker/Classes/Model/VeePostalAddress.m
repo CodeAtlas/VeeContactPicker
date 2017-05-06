@@ -4,7 +4,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation VeePostalAddress
 
--(instancetype)initWithStreet:(NSString*)street city:(NSString*)city state:(NSString*)state postal:(NSString*)postal country:(NSString*)country
+-(instancetype)initWithStreet:(nullable NSString*)street city:(nullable NSString*)city state:(nullable NSString*)state postal:(nullable NSString*)postal country:(nullable NSString*)country
 {
     self = [super init];
     if (!self) {
