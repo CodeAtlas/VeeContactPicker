@@ -238,13 +238,13 @@
 /* Begin PBXFileReference section */
 		00A8C11BC59006010DE5FA0BE64BAE5F /* OCMStubRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMStubRecorder.m; path = Source/OCMock/OCMStubRecorder.m; sourceTree = "<group>"; };
 		010629016EAD6D8C47B116882AB097D9 /* OCMObserverRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMObserverRecorder.m; path = Source/OCMock/OCMObserverRecorder.m; sourceTree = "<group>"; };
-		01669B8A479C4A12BED4BA981C4C4E85 /* Pods_VeeContactPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VeeContactPicker_Tests.framework; path = "Pods-VeeContactPicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01669B8A479C4A12BED4BA981C4C4E85 /* Pods_VeeContactPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		021DDCAAFF6A457F7A0E742DAE4DB2F1 /* VeeContactProtFactoryProducer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContactProtFactoryProducer.m; sourceTree = "<group>"; };
 		0335EA6C65DAEA6E06E982751A006003 /* Pods-VeeContactPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VeeContactPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		06104D11B8CF1B29FC4714AA39B2EAB3 /* VeeContactUITableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContactUITableViewCell.m; sourceTree = "<group>"; };
 		07C4F563338900E9272CBA86919C02BC /* FLKAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLKAutoLayout-dummy.m"; sourceTree = "<group>"; };
 		09291CC92A181C0E04D71F78D26936C4 /* UIView+FLKAutoLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FLKAutoLayout.m"; path = "FLKAutoLayout/UIView+FLKAutoLayout.m"; sourceTree = "<group>"; };
-		092FB3C5DBD41998252E225787B5EFC6 /* VeeContactPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = VeeContactPicker.modulemap; sourceTree = "<group>"; };
+		092FB3C5DBD41998252E225787B5EFC6 /* VeeContactPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VeeContactPicker.modulemap; sourceTree = "<group>"; };
 		094E4445FDB90FB32BE748822B1A6543 /* VeePostalAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeePostalAddress.m; sourceTree = "<group>"; };
 		09B69FE4953DFA4FAA5E0A173DD0FFB6 /* VeeContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContact.m; sourceTree = "<group>"; };
 		0B2CCEDBE46D4B91D867F60D8480659B /* OCMFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctions.h; path = Source/OCMock/OCMFunctions.h; sourceTree = "<group>"; };
@@ -284,12 +284,12 @@
 		3A833BEE109D10B07B2C652DF73F75AA /* OCMArg.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMArg.m; path = Source/OCMock/OCMArg.m; sourceTree = "<group>"; };
 		3A8650BA613FC7B9E8988A4472E28739 /* Pods-VeeContactPicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VeeContactPicker_Tests-resources.sh"; sourceTree = "<group>"; };
 		3AD3F5A0558CDC194E79BC374A0592C9 /* OCMConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMConstraint.h; path = Source/OCMock/OCMConstraint.h; sourceTree = "<group>"; };
-		3B8DCF542EA25D7381883BD35249672C /* FLKAutoLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FLKAutoLayout.modulemap; sourceTree = "<group>"; };
+		3B8DCF542EA25D7381883BD35249672C /* FLKAutoLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FLKAutoLayout.modulemap; sourceTree = "<group>"; };
 		3CAD1520D6D26E6492111CCBE3EED588 /* UIViewController+FLKAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+FLKAutoLayout.h"; path = "FLKAutoLayout/UIViewController+FLKAutoLayout.h"; sourceTree = "<group>"; };
-		3CFEA95C253E57564F2C419E9C262A72 /* Pods-VeeContactPicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VeeContactPicker_Example.modulemap"; sourceTree = "<group>"; };
+		3CFEA95C253E57564F2C419E9C262A72 /* Pods-VeeContactPicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VeeContactPicker_Example.modulemap"; sourceTree = "<group>"; };
 		3D26DB92882A9E6CC24F1C63C0094C4F /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		3DA0196D750C00DD3F808B452D7A7218 /* VeeABRecordsImporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeABRecordsImporter.m; sourceTree = "<group>"; };
-		3DF709C21BC106E102DCEB436731B277 /* VeeContactPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = VeeContactPicker.framework; path = VeeContactPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF709C21BC106E102DCEB436731B277 /* VeeContactPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VeeContactPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AE8ED733F854E294587979C2EA8DF6 /* OCMArg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArg.h; path = Source/OCMock/OCMArg.h; sourceTree = "<group>"; };
 		43D49389F7158F5C6ACB6AA178513760 /* OCMVerifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMVerifier.m; path = Source/OCMock/OCMVerifier.m; sourceTree = "<group>"; };
 		444A364BD0B68755EE6BD7F9AAC5224C /* VeeContactPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VeeContactPicker-prefix.pch"; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 		64EF74DEB2B0307CF5B1E1125AEAF7D4 /* VeeContactPickerStrings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerStrings.h; sourceTree = "<group>"; };
 		6783EB1CDDE5D426FC95491C8D931B63 /* VeeAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBook.m; sourceTree = "<group>"; };
 		67B750B4539DA0ACED30054816E9CBB2 /* OCMock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OCMock.xcconfig; sourceTree = "<group>"; };
-		68145A5A98A562140C32682677DA3C14 /* OCMock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = OCMock.modulemap; sourceTree = "<group>"; };
+		68145A5A98A562140C32682677DA3C14 /* OCMock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OCMock.modulemap; sourceTree = "<group>"; };
 		68E57080A23CDE6DC0362468845C00D9 /* OCMNotificationPoster.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMNotificationPoster.m; path = Source/OCMock/OCMNotificationPoster.m; sourceTree = "<group>"; };
 		6984C4636951E7838E1A9F42AFDF5A56 /* OCMReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMReturnValueProvider.h; path = Source/OCMock/OCMReturnValueProvider.h; sourceTree = "<group>"; };
 		6A6D6BBEED272F68CEE82C123289E5EB /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "Source/OCMock/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		6D8070C5E4CE2F67DB52162A540BCDCC /* OCMPassByRefSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMPassByRefSetter.m; path = Source/OCMock/OCMPassByRefSetter.m; sourceTree = "<group>"; };
 		6F959FF06FA2F6B53FFE2D304A3A9D98 /* OCMFunctionsPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctionsPrivate.h; path = Source/OCMock/OCMFunctionsPrivate.h; sourceTree = "<group>"; };
 		7065A60E5F71ED078A5C6C819ACEA9A3 /* UIImageView-AGCInitials-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImageView-AGCInitials-umbrella.h"; sourceTree = "<group>"; };
-		70BB543ADCB40532EA58DFF9A295EBF9 /* Pods_VeeContactPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VeeContactPicker_Example.framework; path = "Pods-VeeContactPicker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70BB543ADCB40532EA58DFF9A295EBF9 /* Pods_VeeContactPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeeContactPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		716B979C412FB032161D39DAB4222FB4 /* OCMInvocationExpectation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationExpectation.h; path = Source/OCMock/OCMInvocationExpectation.h; sourceTree = "<group>"; };
 		7174D42FDE06BA86D5117FD626325D1B /* UIView+FLKAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FLKAutoLayout.h"; path = "FLKAutoLayout/UIView+FLKAutoLayout.h"; sourceTree = "<group>"; };
 		72278721576891D7140F72C674135EEA /* NSValue+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+OCMAdditions.m"; path = "Source/OCMock/NSValue+OCMAdditions.m"; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 		86D58B2EAA40D65A956D6C311760E84C /* VeeCommons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeCommons.h; sourceTree = "<group>"; };
 		879512A7E34AF27BFBAECE6C931734F6 /* OCMObserverRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMObserverRecorder.h; path = Source/OCMock/OCMObserverRecorder.h; sourceTree = "<group>"; };
 		91C1F8F48EAD77F4DD078309910251D2 /* OCObserverMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCObserverMockObject.h; path = Source/OCMock/OCObserverMockObject.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96DB6DA2773301F65C55764DB221755B /* UILabel+VeeBoldify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VeeBoldify.m"; sourceTree = "<group>"; };
 		979E2B0A7052061195B9DB0C5EFB8655 /* OCMRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRecorder.m; path = Source/OCMock/OCMRecorder.m; sourceTree = "<group>"; };
 		9838CC50E8A5A34E2CB7DEAF8243D087 /* VeeContactCellConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContactCellConfiguration.m; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		9EB86CD31376767D9C1CB43CFFE1749B /* VeeContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeContact.h; sourceTree = "<group>"; };
 		A0CEAEE4A286AB397341D676C085786A /* NSMethodSignature+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OCMAdditions.m"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.m"; sourceTree = "<group>"; };
 		A153864057756C009A481972F557EC84 /* OCMock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OCMock-prefix.pch"; sourceTree = "<group>"; };
-		A2059C12E9F508EBE790743A3277D8F2 /* FLKAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FLKAutoLayout.framework; path = FLKAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2059C12E9F508EBE790743A3277D8F2 /* FLKAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLKAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E08B054203EBE5CC139808266E0263 /* OCMock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OCMock-dummy.m"; sourceTree = "<group>"; };
 		A65D9A5ADAA61170CF30AB5624740626 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+OCMAdditions.h"; path = "Source/OCMock/NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		A80FB3C1865CF90A1259884C68D22B8C /* VeeContactProtFactoryProducer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeContactProtFactoryProducer.h; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 		B33C77A70F5AD56470933D45ED83F163 /* OCObserverMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCObserverMockObject.m; path = Source/OCMock/OCObserverMockObject.m; sourceTree = "<group>"; };
 		B4502FEF331633CB2F8321BC2F9134D6 /* VeeContactCellConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeContactCellConfiguration.h; sourceTree = "<group>"; };
 		BDF6D82E002457554CB3F20E5E915E5A /* UIImageView_AGCInitials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageView_AGCInitials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE2D8E4B6F59E4E77B006C37F28332EA /* OCMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OCMock.framework; path = OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE2D8E4B6F59E4E77B006C37F28332EA /* OCMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4627156AE7CC407C5971858CCA1AE1 /* OCClassMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCClassMockObject.h; path = Source/OCMock/OCClassMockObject.h; sourceTree = "<group>"; };
 		C0BED164130A5CAF884A5DB36268FB81 /* UIView+FLKAutoLayoutPredicate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FLKAutoLayoutPredicate.h"; path = "FLKAutoLayout/Private/UIView+FLKAutoLayoutPredicate.h"; sourceTree = "<group>"; };
 		C3286061C8C426EFDCE356C25D3072CD /* OCMMacroState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMMacroState.m; path = Source/OCMock/OCMMacroState.m; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 		C6C6ECBDDD9AC21A26115EEF5F78B22B /* OCMInvocationStub.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationStub.h; path = Source/OCMock/OCMInvocationStub.h; sourceTree = "<group>"; };
 		C8044F02ACDF6EEF0BFC42B340E601F0 /* OCMRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMRecorder.h; path = Source/OCMock/OCMRecorder.h; sourceTree = "<group>"; };
 		C920D4EA5316C309BD209426C215DADF /* OCMBoxedReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBoxedReturnValueProvider.h; path = Source/OCMock/OCMBoxedReturnValueProvider.h; sourceTree = "<group>"; };
-		C9AA3B344677A3DE83854873FA3EC74B /* VeeContactPicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = VeeContactPicker.bundle; path = VeeContactPicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9AA3B344677A3DE83854873FA3EC74B /* VeeContactPicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeeContactPicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC05490DC8720F634BBB4C2DC2836F69 /* OCMExceptionReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMExceptionReturnValueProvider.m; path = Source/OCMock/OCMExceptionReturnValueProvider.m; sourceTree = "<group>"; };
 		CE4A6B01B95BA0FF3910C4E4660F314E /* NSObject+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+OCMAdditions.h"; path = "Source/OCMock/NSObject+OCMAdditions.h"; sourceTree = "<group>"; };
 		D0EE4A8C063B8BC25F6901042264FE17 /* VeeContactPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VeeContactPicker-umbrella.h"; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 		D417213914149D126F1A7308310A7177 /* FLKAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLKAutoLayout-prefix.pch"; sourceTree = "<group>"; };
 		D427BC2B01E57096A9D00E6B278911AC /* FLKAutoLayoutPredicateList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLKAutoLayoutPredicateList.h; path = FLKAutoLayout/Private/FLKAutoLayoutPredicateList.h; sourceTree = "<group>"; };
 		D4CCA9FDCFF016C5B287E1CDDAA54755 /* Pods-VeeContactPicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VeeContactPicker_Example-umbrella.h"; sourceTree = "<group>"; };
-		D62D4D4D344C053131BD2F628943A30B /* UIImageView_AGCInitials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIImageView_AGCInitials.framework; path = "UIImageView-AGCInitials.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62D4D4D344C053131BD2F628943A30B /* UIImageView_AGCInitials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageView_AGCInitials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66B8F910F9D585A59F76E12D82EBE01 /* NSLayoutConstraint+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+FLKAutoLayoutDebug.h"; path = "FLKAutoLayout/Private/NSLayoutConstraint+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
 		D67DCFF2F0BFDD783DD8899733C0A550 /* OCMBoxedReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBoxedReturnValueProvider.m; path = Source/OCMock/OCMBoxedReturnValueProvider.m; sourceTree = "<group>"; };
 		DC7B92D04CDA555D4614A7EEC5D49F4E /* OCMExpectationRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMExpectationRecorder.h; path = Source/OCMock/OCMExpectationRecorder.h; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 		E8530D6BA3D84751F4A93F5C3BECABEF /* VeeABRecord.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeABRecord.m; sourceTree = "<group>"; };
 		E987B3EEF7B7A7178BE05FBAE011BAA7 /* VeeContactPickerOptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerOptions.m; sourceTree = "<group>"; };
 		EAE8B35295D9C630DCF13E8535920D48 /* VeePostalAddressProt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeePostalAddressProt.h; sourceTree = "<group>"; };
-		EF23FA6F8EEAE83B8E5C0A0F28146209 /* Pods-VeeContactPicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VeeContactPicker_Tests.modulemap"; sourceTree = "<group>"; };
+		EF23FA6F8EEAE83B8E5C0A0F28146209 /* Pods-VeeContactPicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VeeContactPicker_Tests.modulemap"; sourceTree = "<group>"; };
 		EFAB82830EC7182FD2108A26A18302A5 /* VeeSectionable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeSectionable.h; sourceTree = "<group>"; };
 		F1935DE9AA4C208D5DA8306599E69193 /* AGCInitialsColors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AGCInitialsColors.m; path = Pod/Classes/AGCInitialsColors.m; sourceTree = "<group>"; };
 		F2EDE990A0D032DF2A6AB1A762D10A53 /* OCMRealObjectForwarder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRealObjectForwarder.m; path = Source/OCMock/OCMRealObjectForwarder.m; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 		F9C4B66138600751A05DDFA27D8D694E /* OCMBlockArgCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockArgCaller.m; path = Source/OCMock/OCMBlockArgCaller.m; sourceTree = "<group>"; };
 		FB63AC564E8EE473E9C503496FAD94B1 /* UIView+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FLKAutoLayoutDebug.m"; path = "FLKAutoLayout/UIView+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
 		FC44996437A672E3774A284172DF4707 /* OCMFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMFunctions.m; path = Source/OCMock/OCMFunctions.m; sourceTree = "<group>"; };
-		FCBF5A054B60BADCE59BA62BAAE38411 /* UIImageView-AGCInitials.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "UIImageView-AGCInitials.modulemap"; sourceTree = "<group>"; };
+		FCBF5A054B60BADCE59BA62BAAE38411 /* UIImageView-AGCInitials.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "UIImageView-AGCInitials.modulemap"; sourceTree = "<group>"; };
 		FDE2928F5BC076902CBEEECD588AF19C /* UILabel+VeeBoldify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UILabel+VeeBoldify.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -495,7 +495,6 @@
 				555F93781CA83A925A7E1386994F98B4 /* Address Book */,
 				396480F7991950F7D01C6BE6CC131575 /* ViewController */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -522,7 +521,6 @@
 				CE390CBFAC991CA417E8B90231DC1DFE /* UITableViewCells */,
 				5977F7FCDC1314FF09E5E3239266B8DF /* View Controller utils */,
 			);
-			name = ViewController;
 			path = ViewController;
 			sourceTree = "<group>";
 		};
@@ -536,7 +534,6 @@
 				64EF74DEB2B0307CF5B1E1125AEAF7D4 /* VeeContactPickerStrings.h */,
 				5DF6F271279890648F9BEF6BBD4B0E05 /* VeeContactPickerStrings.m */,
 			);
-			name = ContactPicker;
 			path = ContactPicker;
 			sourceTree = "<group>";
 		};
@@ -572,7 +569,6 @@
 				2A2122C46125024DB7FAF4CF9828DF67 /* VeeAddressBook.h */,
 				6783EB1CDDE5D426FC95491C8D931B63 /* VeeAddressBook.m */,
 			);
-			name = "Address Book";
 			path = "Address Book";
 			sourceTree = "<group>";
 		};
@@ -585,7 +581,6 @@
 				F900DC2E9554FBD39B86331BDABBBECE /* VeeTableViewSearchDelegate.h */,
 				46EDEC37B6B3808B8A3664A5CC020BC1 /* VeeTableViewSearchDelegate.m */,
 			);
-			name = "View Controller utils";
 			path = "View Controller utils";
 			sourceTree = "<group>";
 		};
@@ -609,7 +604,6 @@
 				5FEAEDFDC87CE0971243E64E0A05329F /* UIViewController+FLKAutoLayout.m */,
 				A393DAFFB3CB12C61CBDC8055B33F17D /* Support Files */,
 			);
-			name = FLKAutoLayout;
 			path = FLKAutoLayout;
 			sourceTree = "<group>";
 		};
@@ -658,13 +652,12 @@
 				EAE8B35295D9C630DCF13E8535920D48 /* VeePostalAddressProt.h */,
 				EFAB82830EC7182FD2108A26A18302A5 /* VeeSectionable.h */,
 				44A0B594E5B696A7507A0EBD693D8120 /* ContactPicker */,
-				965B9A5113EF550918A17B9A871EB278 /* VeeContact Abstract Factory */,
+				965B9A5113EF550918A17B9A871EB278 /* VeeContact Factory */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
-		965B9A5113EF550918A17B9A871EB278 /* VeeContact Abstract Factory */ = {
+		965B9A5113EF550918A17B9A871EB278 /* VeeContact Factory */ = {
 			isa = PBXGroup;
 			children = (
 				5CA2F8BB6E5149DF045D16F6E759DB70 /* VeeContactFactory.h */,
@@ -673,7 +666,7 @@
 				A80FB3C1865CF90A1259884C68D22B8C /* VeeContactProtFactoryProducer.h */,
 				021DDCAAFF6A457F7A0E742DAE4DB2F1 /* VeeContactProtFactoryProducer.m */,
 			);
-			name = "VeeContact Abstract Factory";
+			name = "VeeContact Factory";
 			path = "VeeContact Abstract Factory";
 			sourceTree = "<group>";
 		};
@@ -740,7 +733,6 @@
 				8982EAD30C97EB86202E9539D4C4A601 /* Model */,
 				C570861D6FA9D34D633B42EB45CF58C0 /* Utils and categories */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -825,7 +817,6 @@
 				29F8C529FD8A3310B76279D9E983A59E /* OCProtocolMockObject.m */,
 				A730A78D9354B1260105E9AB691C46D1 /* Support Files */,
 			);
-			name = OCMock;
 			path = OCMock;
 			sourceTree = "<group>";
 		};
@@ -854,7 +845,6 @@
 				86D58B2EAA40D65A956D6C311760E84C /* VeeCommons.h */,
 				F459BA0B1FE74DC8DB4BF96B40FCFFCA /* VeeCommons.m */,
 			);
-			name = "Utils and categories";
 			path = "Utils and categories";
 			sourceTree = "<group>";
 		};
@@ -867,7 +857,6 @@
 				5F24AFAD78740CCB524FFCFC3C7D589F /* UIImageView+AGCInitials.m */,
 				30B9EF002DBE2DC3CD20C0DD6ECB0393 /* Support Files */,
 			);
-			name = "UIImageView-AGCInitials";
 			path = "UIImageView-AGCInitials";
 			sourceTree = "<group>";
 		};
@@ -879,7 +868,6 @@
 				858F4AE9507E73A3EFA06B2A2ABD1C71 /* VeeContactUITableViewCell.h */,
 				06104D11B8CF1B29FC4714AA39B2EAB3 /* VeeContactUITableViewCell.m */,
 			);
-			name = UITableViewCells;
 			path = UITableViewCells;
 			sourceTree = "<group>";
 		};
@@ -888,7 +876,6 @@
 			children = (
 				C0BD86EF78C1160BD7B29E60EF16E179 /* Classes */,
 			);
-			name = VeeContactPicker;
 			path = VeeContactPicker;
 			sourceTree = "<group>";
 		};

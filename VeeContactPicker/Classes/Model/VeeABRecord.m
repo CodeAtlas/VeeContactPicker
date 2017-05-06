@@ -37,21 +37,16 @@ NS_ASSUME_NONNULL_BEGIN
     self = [super init];
     if (self) {
         NSAssert(abRecord, @"abRecord must exist");
-        [self createWithLinkedPeopleFromABRecord:abRecord];
+        NSArray* linkedPeople = CFBridgingRelease(ABPersonCopyArrayOfAllLinkedPeople(abRecord));
+        for (int i = 0; i < linkedPeople.count; i++) {
+            ABRecordRef linkedABRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedPeople), i);
+            [self updateFromABRecord:linkedABRecord];
+        }
     }
     return self;
 }
 
-#pragma mark - Initalization utils
-
-- (void)createWithLinkedPeopleFromABRecord:(ABRecordRef)abRecord
-{
-    NSArray* linkedPeople = CFBridgingRelease(ABPersonCopyArrayOfAllLinkedPeople(abRecord));
-    for (int i = 0; i < linkedPeople.count; i++) {
-        ABRecordRef linkedABRecord = CFArrayGetValueAtIndex((__bridge CFArrayRef)(linkedPeople), i);
-        [self updateFromABRecord:linkedABRecord];
-    }
-}
+#pragma mark - Private
 
 - (void)updateFromABRecord:(ABRecordRef)abRecord
 {

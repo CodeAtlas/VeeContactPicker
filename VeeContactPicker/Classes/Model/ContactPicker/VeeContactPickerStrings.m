@@ -4,15 +4,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation VeeContactPickerStrings
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self = [self initWithDefaultStrings];
-    }
-    return self;
-}
-
 - (instancetype)initWithDefaultStrings
 {
     self = [super init];

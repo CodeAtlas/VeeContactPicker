@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString* middleName;
 @property (nonatomic, copy) NSString* nickname;
 @property (nonatomic, copy) NSString* organizationName;
-@property (nonatomic, copy) NSString* compositeName; //The concatenated value of these properties: Prefix, Suffix, Organization, First name, and Last name.
+@property (nonatomic, copy) NSString* compositeName; //Prefix, Suffix, Organization, First name, and Last name.
 @property (nonatomic, strong) UIImage* thumbnailImage;
 
 #pragma mark - Multivalue properties
@@ -38,13 +38,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Getters
 
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull displayName; // It's based on which fields are not nil, in this order: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress[0]"
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull displayNameSortedForABOptions; //Display name sorted considering sort-ordering preference for lists of persons in the address book. See ABPersonGetSortOrdering()
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull sectionIdentifier; //In which section should the contact be? This is the title of that section
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull displayName; // It's based on non-empty fields of the contact: "FirstName LastName" - "OrganizationName" - "LastName" - "First Name" - "Middle Name" - "Nickname" - "emailAddress[0]"
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull displayNameSortedForABOptions; //Display name is sorted considering the sort-ordering preference in the address book. See ABPersonGetSortOrdering()
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString * _Nonnull sectionIdentifier;
 
 #pragma mark - Search predicate
 
-+ (NSPredicate*)searchPredicateForSearchString; //$searchString will be used for substitution. Default predicate is: @"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"
++ (NSPredicate*)searchPredicateForSearchString; //$searchString is used for substitution. Default predicate is: @"displayName contains[c] $searchString || ANY emails contains[c] $searchString || ANY phoneNumbers contains[c] $searchString"
 ;
 
 @end

@@ -28,28 +28,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadTableViewDefaultConstants
 {
-    _veeContactCellNibName = @"VeeContactUITableViewCell";
-    _veeContactCellIdentifier = @"VeeContactCell";
-    _veeContactCellHeight = 66.0;
+    self.veeContactCellNibName = @"VeeContactUITableViewCell";
+    self.veeContactCellIdentifier = @"VeeContactCell";
+    self.veeContactCellHeight = 66.0;
 }
 
 -(void)loadVeeContactPickerDefaultConstants
 {
-    _cancelBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
-    _navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
-    _navigationBarBarTintColor = [UIColor whiteColor];
-    _navigationBarTranslucent = NO;
-    _veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
-    _veeContactEmptyViewLabelTextColor = [UIColor blackColor];
-    _veeContactPickerTableViewBottomMargin = 0;
+    self.cancelBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
+    self.navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
+    self.navigationBarBarTintColor = [UIColor whiteColor];
+    self.navigationBarTranslucent = NO;
+    self.veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
+    self.veeContactEmptyViewLabelTextColor = [UIColor blackColor];
+    self.veeContactPickerTableViewBottomMargin = 0;
 }
 
 - (void)loadVeeContactTableViewCellDefaultConstants
 {
-    _veeContactCellImageDiameter = @(50.0);
-    _veeContactCellPrimaryLabelFont = [UIFont systemFontOfSize:17];
-    _veeContactCellBackgroundColor = [UIColor whiteColor];
-    _veeContactCellBackgroundColorWhenSelected = [UIColor lightGrayColor];
+    self.veeContactCellImageDiameter = @(50.0);
+    self.veeContactCellPrimaryLabelFont = [UIFont systemFontOfSize:17];
+    self.veeContactCellBackgroundColor = [UIColor whiteColor];
+    self.veeContactCellBackgroundColorWhenSelected = [UIColor lightGrayColor];
 }
 
 

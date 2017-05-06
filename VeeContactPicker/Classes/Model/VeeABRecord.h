@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, strong) NSArray<NSString*> *facebookAccounts;
 @property (nonatomic, readonly, strong) NSArray<NSString*> *twitterAccounts;
 
-#pragma mark - Postal address keys constants
+#pragma mark - Postal address constants
 
 extern NSString* const kVeePostalAddressStreetKey;
 extern NSString* const kVeePostalAddressCityKey;
