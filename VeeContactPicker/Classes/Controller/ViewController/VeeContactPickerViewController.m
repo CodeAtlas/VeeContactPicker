@@ -48,10 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) VeeContactCellConfiguration* veeContactCellConfiguration;
 
-#pragma mark - Bundle
-
-@property (nonatomic, strong) NSBundle * podBundle;
-
 @end
 
 @implementation VeeContactPickerViewController
@@ -82,25 +78,15 @@ NS_ASSUME_NONNULL_BEGIN
     if (!self) {
         return nil;
     }
-    [self loadBundleOfPod];
-    NSAssert(_podBundle,@"Bundle can't be nil");
 
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:_podBundle];
+    NSBundle *podBundle = [NSBundle bundleForClass:VeeContactPickerViewController.class];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:podBundle];
     _veeContactPickerOptions = veeContactPickerOptions;
     _veeContacts = veeContacts;
     _veeAddressBook = [[VeeAddressBook alloc] init];
     _veeAddressBook.delegate = self;
     _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
     return self;
-}
-
--(void)loadBundleOfPod
-{
-    NSString *bundlePath = [[NSBundle bundleForClass:[VeeContactPickerViewController class]] pathForResource:@"VeeContactPicker" ofType:@"bundle"];
-    _podBundle = [NSBundle bundleWithPath:bundlePath];
-    if (_podBundle.loaded == NO){
-        [_podBundle load];
-    }
 }
 
 #pragma mark - ViewController lifecycle
