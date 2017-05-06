@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
     self = [super init];
     if (self) {
         _navigationBarTitle = @"Choose a contact";
+        _navigationBarTitleForMultipleContacts = @"Choose contacts";
         _cancelButtonTitle = @"Cancel";
         _emptyViewLabelText = @"There are no contacts to display";
     }

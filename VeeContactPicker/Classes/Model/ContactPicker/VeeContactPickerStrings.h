@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (VeeContactPickerStrings *)defaultStrings;
 
 @property (nonatomic, strong) NSString *navigationBarTitle;
+@property (nonatomic, strong) NSString *navigationBarTitleForMultipleContacts;
 @property (nonatomic, strong) NSString *cancelButtonTitle;
 @property (nonatomic, strong) NSString *emptyViewLabelText;
 

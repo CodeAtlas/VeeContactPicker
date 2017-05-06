@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     VeeContactPickerViewController *veePickerVC = [self pickerWithAddressBookContacts];
     veePickerVC.contactPickerDelegate = self;
+    veePickerVC.multipleSelection = YES;
     [self presentViewController:veePickerVC animated:YES completion:nil];
 }
 
@@ -47,6 +48,12 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSLog(@"Selected %@", veeContact);
     [self updateUIForSelectedContact:veeContact];
+}
+
+- (void)didSelectContacts:(NSArray<id<VeeContactProt>> *)veeContacts
+{
+    NSLog(@"Selected multiple contacts %@", veeContacts);
+    [self updateUIForSelectedContact:[veeContacts lastObject]];
 }
 
 -(void)didCancelContactSelection

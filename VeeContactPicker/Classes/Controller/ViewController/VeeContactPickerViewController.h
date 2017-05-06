@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions veeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 
+@property (nonatomic, assign) BOOL multipleSelection;
+
 #pragma mark - Delegate and completion handler
 
 @property (nonatomic, weak) id<VeeContactPickerDelegate> contactPickerDelegate;
@@ -31,10 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBarButtonItem;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 @property (weak, nonatomic) IBOutlet UILabel *emptyViewLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *multipleSelecitonDoneButton;
+
 
 #pragma mark - IBActions
 
 - (IBAction)cancelBarButtonItemPressed:(id)sender;
+- (IBAction)multipleSelectionDoneButtonItemPressed:(id)sender;
 
 @end
 

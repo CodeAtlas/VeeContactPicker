@@ -4,7 +4,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VeeContactPickerDelegate <NSObject>
-- (void)didSelectContact:(id<VeeContactProt>)abContact;
+- (void)didSelectContact:(id<VeeContactProt>)veeContact;
+- (void)didSelectContacts:(NSArray<id<VeeContactProt>> *)veeContacts;
 - (void)didCancelContactSelection;
 - (void)didFailToAccessAddressBook;
 @end

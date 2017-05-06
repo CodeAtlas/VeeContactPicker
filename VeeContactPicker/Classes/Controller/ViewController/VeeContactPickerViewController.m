@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<id<VeeContactProt> >* veeContacts;
 @property (nonatomic, strong) VeeSectionedArrayDataSource* veeSectionedArrayDataSource;
+@property (nonatomic, strong) NSMutableArray<id<VeeContactProt> >* selectedVeeContacts;
 
 #pragma mark - Search
 
@@ -72,6 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
     _veeAddressBook = [[VeeAddressBook alloc] init];
     _veeAddressBook.delegate = self;
     _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
+    _multipleSelection = NO;
     return self;
 }
 
@@ -94,6 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
     _veeAddressBook = [[VeeAddressBook alloc] init];
     _veeAddressBook.delegate = self;
     _veeContactCellConfiguration = [[VeeContactCellConfiguration alloc] initWithVeePickerOptions:_veeContactPickerOptions];
+    _multipleSelection = NO;
     return self;
 }
 
@@ -118,7 +121,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadStrings
 {
-    self.titleNavigationItem.title = (_veeContactPickerOptions.veeContactPickerStrings).navigationBarTitle;
+    if (self.multipleSelection) {
+        self.titleNavigationItem.title = (_veeContactPickerOptions.veeContactPickerStrings).navigationBarTitleForMultipleContacts;
+    } else {
+        self.titleNavigationItem.title = (_veeContactPickerOptions.veeContactPickerStrings).navigationBarTitle;
+    }
     self.cancelBarButtonItem.title = (_veeContactPickerOptions.veeContactPickerStrings).cancelButtonTitle;
 }
 
@@ -177,7 +184,7 @@ NS_ASSUME_NONNULL_BEGIN
     };
     NSString* cellIdentifier = [VeeContactPickerAppearanceConstants sharedInstance].veeContactCellIdentifier;
     self.veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:_veeContacts cellIdentifier:cellIdentifier allowedSortedSectionIdentifiers:_veeContactPickerOptions.sectionIdentifiers sectionIdentifierWildcard:_veeContactPickerOptions.sectionIdentifierWildcard configurationCellBlock:veeContactConfigureCellBlock];
-
+    self.contactsTableView.allowsMultipleSelection = self.multipleSelection;
     self.contactsTableView.dataSource = _veeSectionedArrayDataSource;
     self.contactsTableView.delegate = self;
     [self.contactsTableView reloadData];
@@ -257,15 +264,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id<VeeContactProt> veeContact = [_veeSectionedArrayDataSource tableView:tableView itemAtIndexPath:indexPath];
+    if (self.multipleSelection == YES) {
+        [self handleMultipleSelectionWith:veeContact];
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self handleSingleSelection:veeContact];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<VeeContactProt> veeContact = [_veeSectionedArrayDataSource tableView:tableView itemAtIndexPath:indexPath];
+    if (self.multipleSelection == YES) {
+        [self handleMultipleSelectionWith:veeContact];
+    }
+}
+
+- (void)handleSingleSelection:(id<VeeContactProt>)veeContact
+{
     if (self.contactPickerDelegate) {
         [self.contactPickerDelegate didSelectContact:veeContact];
     }
     if (_contactSelectionHandler) {
-        _contactSelectionHandler(veeContact);
+        self.contactSelectionHandler(veeContact);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)handleMultipleSelectionWith:(id<VeeContactProt>)veeContact
+{
+    if (self.selectedVeeContacts == nil) {
+        self.selectedVeeContacts = [[NSMutableArray alloc] init];
+    }
+    if ([self.selectedVeeContacts containsObject:veeContact]) {
+        [self.selectedVeeContacts removeObject:veeContact];
+    } else {
+        [self.selectedVeeContacts addObject:veeContact];
+    }
+}
+
+- (void)completeMultipleSelection
+{
+    if (self.contactPickerDelegate) {
+        [self.contactPickerDelegate didSelectContacts:self.selectedVeeContacts];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.selectedVeeContacts removeAllObjects];
+    }];
 }
 
 #pragma mark - VeeSearchResultDelegate
@@ -283,6 +328,11 @@ NS_ASSUME_NONNULL_BEGIN
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)multipleSelectionDoneButtonItemPressed:(id)sender {
+
+    [self completeMultipleSelection];
+}
+
 @end
 
-NS_ASSUME_NONNULL_END
+ NS_ASSUME_NONNULL_END

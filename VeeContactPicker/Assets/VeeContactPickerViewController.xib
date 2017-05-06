@@ -14,6 +14,7 @@
                 <outlet property="cancelBarButtonItem" destination="xsp-I1-qeu" id="Phf-dh-77O"/>
                 <outlet property="contactsTableView" destination="NzL-9t-n6C" id="JqC-Ov-YUZ"/>
                 <outlet property="emptyViewLabel" destination="nbe-Id-pC7" id="A3S-Ec-z2Q"/>
+                <outlet property="multipleSelecitonDoneButton" destination="zNO-TN-k7w" id="tva-IM-Tl0"/>
                 <outlet property="navigationBar" destination="IxQ-cp-jGd" id="NCQ-CB-Hae"/>
                 <outlet property="searchBar" destination="Bxf-DJ-a7d" id="Vt9-n9-kD4"/>
                 <outlet property="searchDisplayController" destination="nVF-SD-Cbm" id="je8-VG-jbu"/>
@@ -65,6 +66,12 @@
                                 <color key="tintColor" red="0.090196080505847931" green="0.5215686559677124" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="cancelBarButtonItemPressed:" destination="-1" id="cds-JE-b2u"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Done" id="zNO-TN-k7w">
+                                <color key="tintColor" red="0.090196080509999998" green="0.52156865600000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="multipleSelectionDoneButtonItemPressed:" destination="-1" id="Lnp-qu-eC9"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>
