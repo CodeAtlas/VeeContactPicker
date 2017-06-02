@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString* sectionIdentifierWildcard;
 @property (nonatomic, copy) ConfigureCellBlock configureCellBlock;
 @property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray<id<VeeContactProt>> *selectedVeeContacts;
 @end
 
 @implementation VeeSectionedArrayDataSource
@@ -55,16 +56,16 @@ allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentif
     return [self itemsForSection:indexPath.section][indexPath.row];
 }
 
--(void)updateForSearchText:(NSString *)searchText
+- (void)updateForSearchText:(NSString *)searchText selectedVeeContacts:(NSMutableArray<id<VeeContactProt>>*)selectedVeeContacts
 {
+    self.selectedVeeContacts = selectedVeeContacts;
     NSArray<id<VeeContactProt>> *searchResults = [self.items filteredArrayUsingPredicate:[self predicateForSearchString:searchText]];
     self.sectionedSearchedItems = [self sectionedItems:searchResults];
     self.sortedSearchedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:self.sectionedSearchedItems.allKeys];
 }
 
--(NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item
-{
-    NSString* sectionIdenfier = [item sectionIdentifier];
+- (NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item {
+    NSString *sectionIdenfier = [item sectionIdentifier];
     if (sectionIdenfier == nil || [self.allowedSortedSectionIdentifiers containsObject:sectionIdenfier] == NO){
         return self.sectionIdentifierWildcard;
     }
@@ -130,6 +131,9 @@ allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentif
 {
     id cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
     id item = [self tableView:tableView itemAtIndexPath:indexPath];
+    if ([self.selectedVeeContacts containsObject:item]) {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
     self.configureCellBlock(cell,item);
     return cell;
 }

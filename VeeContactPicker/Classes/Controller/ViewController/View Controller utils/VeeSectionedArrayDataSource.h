@@ -1,5 +1,6 @@
 @import Foundation;
 @import UIKit;
+@protocol VeeContactProt;
 #import "VeeSectionable.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,7 +29,7 @@ allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentif
 
 - (id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
 - (NSString *)sectionIdentifierForItem:(id<VeeSectionableProt>)item;
-- (void)updateForSearchText:(NSString *)searchText;
+- (void)updateForSearchText:(NSString *)searchText selectedVeeContacts:(NSMutableArray<id<VeeContactProt>>*)selectedVeeContacts;
 
 @end
 

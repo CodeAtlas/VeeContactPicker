@@ -292,6 +292,9 @@ NS_ASSUME_NONNULL_BEGIN
     if (self.contactPickerDelegate) {
         [self.contactPickerDelegate didSelectContacts:self.selectedVeeContacts];
     }
+    if (self.searchController.isActive){
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
     [self dismissViewControllerAnimated:YES completion:^{
         [self.selectedVeeContacts removeAllObjects];
     }];
@@ -302,7 +305,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
     NSString *searchText = searchController.searchBar.text;
-    [self.veeSectionedArrayDataSource updateForSearchText:searchText];
+    [self.veeSectionedArrayDataSource updateForSearchText:searchText selectedVeeContacts:self.selectedVeeContacts];
     [self.contactsTableView reloadData];
 }
 
