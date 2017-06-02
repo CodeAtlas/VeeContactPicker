@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBarButtonItem;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 @property (weak, nonatomic) IBOutlet UILabel *emptyViewLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *multipleSelecitonDoneButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *multipleSelectionDoneButton;
 
 
 #pragma mark - IBActions
