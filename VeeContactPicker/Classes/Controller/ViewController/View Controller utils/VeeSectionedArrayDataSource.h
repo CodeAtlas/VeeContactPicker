@@ -9,7 +9,12 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^ConfigureCellBlock)(id cell, id item);
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithItems:(NSArray<id<VeeSectionableProt> >*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)block NS_DESIGNATED_INITIALIZER;
+-(instancetype)initWithItems:(NSArray<id<VeeSectionableProt>>*)items
+              cellIdentifier:(NSString*)cellIdentifier
+allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers
+   sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard
+            searchController:(UISearchController *) searchController
+      configurationCellBlock:(ConfigureCellBlock)configureCellBlock;
 
 #pragma mark - UITableViewDataSource
 
@@ -22,11 +27,8 @@ typedef void (^ConfigureCellBlock)(id cell, id item);
 #pragma mark - Public methods
 
 - (id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath;
--(NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item;
-
-#pragma mark - SearchTableView
-
-- (void)setSearchResults:(NSArray<id<VeeSectionableProt> >*)searchResults forSearchTableView:(UITableView*)searchTableView;
+- (NSString *)sectionIdentifierForItem:(id<VeeSectionableProt>)item;
+- (void)updateForSearchText:(NSString *)searchText;
 
 @end
 

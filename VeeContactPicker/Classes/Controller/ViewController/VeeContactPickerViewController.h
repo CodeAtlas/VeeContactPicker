@@ -4,13 +4,12 @@
 #import "VeeContactPickerDelegate.h"
 #import "VeeContactProt.h"
 #import "VeeABDelegate.h"
-#import "VeeSearchResultsDelegate.h"
 @class VeeContactPickerOptions;
 @class VeeContactPickerStrings;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VeeContactPickerViewController : UIViewController <VeeABDelegate, VeeSearchResultsDelegate, UITableViewDelegate>
+@interface VeeContactPickerViewController : UIViewController <VeeABDelegate, UITableViewDelegate>
 
 #pragma mark - Init
 

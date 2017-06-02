@@ -24,7 +24,6 @@
 		6824D18F1EB662E30040700A /* VeeContactCellConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1571EB662E30040700A /* VeeContactCellConfigurationTests.m */; };
 		6824D1901EB662E30040700A /* VeeContactPickerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1581EB662E30040700A /* VeeContactPickerViewControllerTests.m */; };
 		6824D1911EB662E30040700A /* VeeSectionedArrayDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D15A1EB662E30040700A /* VeeSectionedArrayDataSourceTests.m */; };
-		6824D1921EB662E30040700A /* VeeTableViewSearchDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D15B1EB662E30040700A /* VeeTableViewSearchDelegateTests.m */; };
 		6824D1931EB662E30040700A /* VeeContactPickerOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D15E1EB662E30040700A /* VeeContactPickerOptionsTests.m */; };
 		6824D1941EB662E30040700A /* VeeContactPickerStringsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D15F1EB662E30040700A /* VeeContactPickerStringsTests.m */; };
 		6824D1951EB662E30040700A /* VeeABRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1601EB662E30040700A /* VeeABRecordTests.m */; };
@@ -44,7 +43,6 @@
 		6824D1AC1EB662E30040700A /* VeeAddressBookForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1801EB662E30040700A /* VeeAddressBookForTesting.m */; };
 		6824D1AD1EB662E30040700A /* VeeAddressBookForTestingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1821EB662E30040700A /* VeeAddressBookForTestingConstants.m */; };
 		6824D1AE1EB662E30040700A /* VeeContactsForTestingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1841EB662E30040700A /* VeeContactsForTestingFactory.m */; };
-		6824D1AF1EB662E30040700A /* VeeSearchResultsDelegateForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1861EB662E30040700A /* VeeSearchResultsDelegateForTesting.m */; };
 		6824D1B01EB662E30040700A /* VeeSectionableForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D1881EB662E30040700A /* VeeSectionableForTesting.m */; };
 		6824D1B11EB662E30040700A /* XCTest+VeeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D18A1EB662E30040700A /* XCTest+VeeCommons.m */; };
 		6824D1B21EB662E30040700A /* UILabelBolfidyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824D18C1EB662E30040700A /* UILabelBolfidyTests.m */; };
@@ -91,7 +89,6 @@
 		6824D1571EB662E30040700A /* VeeContactCellConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactCellConfigurationTests.m; sourceTree = "<group>"; };
 		6824D1581EB662E30040700A /* VeeContactPickerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerViewControllerTests.m; sourceTree = "<group>"; };
 		6824D15A1EB662E30040700A /* VeeSectionedArrayDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionedArrayDataSourceTests.m; sourceTree = "<group>"; };
-		6824D15B1EB662E30040700A /* VeeTableViewSearchDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeTableViewSearchDelegateTests.m; sourceTree = "<group>"; };
 		6824D15E1EB662E30040700A /* VeeContactPickerOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerOptionsTests.m; sourceTree = "<group>"; };
 		6824D15F1EB662E30040700A /* VeeContactPickerStringsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerStringsTests.m; sourceTree = "<group>"; };
 		6824D1601EB662E30040700A /* VeeABRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeABRecordTests.m; sourceTree = "<group>"; };
@@ -115,8 +112,6 @@
 		6824D1821EB662E30040700A /* VeeAddressBookForTestingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeAddressBookForTestingConstants.m; sourceTree = "<group>"; };
 		6824D1831EB662E30040700A /* VeeContactsForTestingFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeContactsForTestingFactory.h; sourceTree = "<group>"; };
 		6824D1841EB662E30040700A /* VeeContactsForTestingFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeContactsForTestingFactory.m; sourceTree = "<group>"; };
-		6824D1851EB662E30040700A /* VeeSearchResultsDelegateForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSearchResultsDelegateForTesting.h; sourceTree = "<group>"; };
-		6824D1861EB662E30040700A /* VeeSearchResultsDelegateForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSearchResultsDelegateForTesting.m; sourceTree = "<group>"; };
 		6824D1871EB662E30040700A /* VeeSectionableForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeeSectionableForTesting.h; sourceTree = "<group>"; };
 		6824D1881EB662E30040700A /* VeeSectionableForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeeSectionableForTesting.m; sourceTree = "<group>"; };
 		6824D1891EB662E30040700A /* XCTest+VeeCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTest+VeeCommons.h"; sourceTree = "<group>"; };
@@ -309,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				6824D15A1EB662E30040700A /* VeeSectionedArrayDataSourceTests.m */,
-				6824D15B1EB662E30040700A /* VeeTableViewSearchDelegateTests.m */,
 			);
 			path = "View Controller utils";
 			sourceTree = "<group>";
@@ -374,8 +368,6 @@
 				6824D17E1EB662E30040700A /* AddressBookForTesting */,
 				6824D1831EB662E30040700A /* VeeContactsForTestingFactory.h */,
 				6824D1841EB662E30040700A /* VeeContactsForTestingFactory.m */,
-				6824D1851EB662E30040700A /* VeeSearchResultsDelegateForTesting.h */,
-				6824D1861EB662E30040700A /* VeeSearchResultsDelegateForTesting.m */,
 				6824D1871EB662E30040700A /* VeeSectionableForTesting.h */,
 				6824D1881EB662E30040700A /* VeeSectionableForTesting.m */,
 				6824D1891EB662E30040700A /* XCTest+VeeCommons.h */,
@@ -633,12 +625,10 @@
 				6824D1AC1EB662E30040700A /* VeeAddressBookForTesting.m in Sources */,
 				6824D1931EB662E30040700A /* VeeContactPickerOptionsTests.m in Sources */,
 				6824D18E1EB662E30040700A /* VeeABRecordsImporterTests.m in Sources */,
-				6824D1921EB662E30040700A /* VeeTableViewSearchDelegateTests.m in Sources */,
 				6824D1941EB662E30040700A /* VeeContactPickerStringsTests.m in Sources */,
 				6824D1AE1EB662E30040700A /* VeeContactsForTestingFactory.m in Sources */,
 				6824D1961EB662E30040700A /* VeeContactTests.m in Sources */,
 				6824D1AD1EB662E30040700A /* VeeAddressBookForTestingConstants.m in Sources */,
-				6824D1AF1EB662E30040700A /* VeeSearchResultsDelegateForTesting.m in Sources */,
 				6824D1971EB662E30040700A /* VeePostalAddressTests.m in Sources */,
 				6824D1901EB662E30040700A /* VeeContactPickerViewControllerTests.m in Sources */,
 			);

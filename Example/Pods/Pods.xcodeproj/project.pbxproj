@@ -42,7 +42,6 @@
 		2AE2D85646E14A7525A9650C8BC6BEB7 /* VeeCommons.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D58B2EAA40D65A956D6C311760E84C /* VeeCommons.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C6899F9E37B8733E04D3B1A476CB8BA /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = E3C7DC612F75BF661D47D9E2AEB68457 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */; };
 		2D4E0191BFBD238F7079DA9353B9D523 /* Pods-VeeContactPicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B10D49E5FFBD0F3D88190ACF2D7EA946 /* Pods-VeeContactPicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3211805AD21F210CC0AB9BFD0429EFCB /* VeeTableViewSearchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EDEC37B6B3808B8A3664A5CC020BC1 /* VeeTableViewSearchDelegate.m */; };
 		32D754981779F294098B65D1A6B25CD3 /* UILabel+VeeBoldify.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE2928F5BC076902CBEEECD588AF19C /* UILabel+VeeBoldify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34F25E608CA5B04676DFCDCE27B1E23B /* UIImageView+AGCInitials.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24AFAD78740CCB524FFCFC3C7D589F /* UIImageView+AGCInitials.m */; };
 		353759005B92EEC29E4B15765C4D3EEB /* OCPartialMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5A06AAD8EDB199488EB66E657F4E08 /* OCPartialMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -144,8 +143,6 @@
 		E4A87D8BA9BA24EE81DEC41C8BE98F2B /* OCMVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 482F3CA0CB2DBC5ADFB664F01F6B97A1 /* OCMVerifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E61FEAB563814E928FFF2C1EF239058A /* NSObject+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4A6B01B95BA0FF3910C4E4660F314E /* NSObject+OCMAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E6F1B20197D630B80285B5F6E5FAE80F /* OCMRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = C8044F02ACDF6EEF0BFC42B340E601F0 /* OCMRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7F7530E0B65F53DF0EE009E4BE5DC22 /* VeeSearchResultsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 35CD3DD5F8B3A6D171EB94E4AD1A2C2F /* VeeSearchResultsDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E99A025F418A6C1D72FB394F3D1515CB /* VeeTableViewSearchDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F900DC2E9554FBD39B86331BDABBBECE /* VeeTableViewSearchDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC33739AB54F71355C4FD5AAEF92F4B1 /* OCMStubRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = D22E2F7EE6041CB059E326BC9C70049E /* OCMStubRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC81D745AD6A59AE26D870ACC45EF914 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16671FE7E9068B7A18BD01F1AE037916 /* Foundation.framework */; };
 		EDE42101F5279DE53CD60E1C2C631746 /* NSObject+FLKAutoLayoutDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C6E0CEB8C248A0D62E3EEF38A865666 /* NSObject+FLKAutoLayoutDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -279,7 +276,6 @@
 		2EEC0C70E95FF12043E29D88DBB75491 /* VeeContactPickerAppearanceConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeContactPickerAppearanceConstants.m; sourceTree = "<group>"; };
 		2F786AA57BF17DE1A49546D35F48F92C /* Pods-VeeContactPicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VeeContactPicker_Tests-dummy.m"; sourceTree = "<group>"; };
 		354CF348F2CE0ECE022904331E02449D /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "Source/OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
-		35CD3DD5F8B3A6D171EB94E4AD1A2C2F /* VeeSearchResultsDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeSearchResultsDelegate.h; sourceTree = "<group>"; };
 		396F53B0982EDD3D6A746EA63A46529D /* VeeSectionedArrayDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeSectionedArrayDataSource.h; sourceTree = "<group>"; };
 		39DE71871276E3563283397E24475B95 /* OCMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMockObject.h; path = Source/OCMock/OCMockObject.h; sourceTree = "<group>"; };
 		3A833BEE109D10B07B2C652DF73F75AA /* OCMArg.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMArg.m; path = Source/OCMock/OCMArg.m; sourceTree = "<group>"; };
@@ -297,7 +293,6 @@
 		453BE33E8F3887750FA3C0FEC5937998 /* UIView+FLKAutoLayoutPredicate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FLKAutoLayoutPredicate.m"; path = "FLKAutoLayout/Private/UIView+FLKAutoLayoutPredicate.m"; sourceTree = "<group>"; };
 		4563AE6E4C088E262B3B203AA4D873C2 /* Pods-VeeContactPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VeeContactPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		45CC7C9AA289DA7E469FF9A3ED8EDF24 /* UIView+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FLKAutoLayoutDebug.h"; path = "FLKAutoLayout/UIView+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
-		46EDEC37B6B3808B8A3664A5CC020BC1 /* VeeTableViewSearchDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeTableViewSearchDelegate.m; sourceTree = "<group>"; };
 		482F3CA0CB2DBC5ADFB664F01F6B97A1 /* OCMVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMVerifier.h; path = Source/OCMock/OCMVerifier.h; sourceTree = "<group>"; };
 		4FE5C24EA3250FCDD4AB496ACA482386 /* OCMArgAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArgAction.h; path = Source/OCMock/OCMArgAction.h; sourceTree = "<group>"; };
 		501CE6218B15C4F85D310E5D41C05A9A /* OCMBlockCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockCaller.m; path = Source/OCMock/OCMBlockCaller.m; sourceTree = "<group>"; };
@@ -419,7 +414,6 @@
 		F2EDE990A0D032DF2A6AB1A762D10A53 /* OCMRealObjectForwarder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRealObjectForwarder.m; path = Source/OCMock/OCMRealObjectForwarder.m; sourceTree = "<group>"; };
 		F459BA0B1FE74DC8DB4BF96B40FCFFCA /* VeeCommons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VeeCommons.m; sourceTree = "<group>"; };
 		F67080C59FCA7E475C3D92EFABD7899B /* VeeContactPickerAppearanceConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeContactPickerAppearanceConstants.h; sourceTree = "<group>"; };
-		F900DC2E9554FBD39B86331BDABBBECE /* VeeTableViewSearchDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VeeTableViewSearchDelegate.h; sourceTree = "<group>"; };
 		F9A071482189E12B88250F68112C0D6B /* Pods-VeeContactPicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VeeContactPicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F9C4B66138600751A05DDFA27D8D694E /* OCMBlockArgCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockArgCaller.m; path = Source/OCMock/OCMBlockArgCaller.m; sourceTree = "<group>"; };
 		FB63AC564E8EE473E9C503496FAD94B1 /* UIView+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FLKAutoLayoutDebug.m"; path = "FLKAutoLayout/UIView+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
@@ -577,11 +571,8 @@
 		5977F7FCDC1314FF09E5E3239266B8DF /* View Controller utils */ = {
 			isa = PBXGroup;
 			children = (
-				35CD3DD5F8B3A6D171EB94E4AD1A2C2F /* VeeSearchResultsDelegate.h */,
 				396F53B0982EDD3D6A746EA63A46529D /* VeeSectionedArrayDataSource.h */,
 				D19A47B3957313549D41508161E818BC /* VeeSectionedArrayDataSource.m */,
-				F900DC2E9554FBD39B86331BDABBBECE /* VeeTableViewSearchDelegate.h */,
-				46EDEC37B6B3808B8A3664A5CC020BC1 /* VeeTableViewSearchDelegate.m */,
 			);
 			path = "View Controller utils";
 			sourceTree = "<group>";
@@ -947,10 +938,8 @@
 				7F73ADAD5E20C6F8200EC0604A456BE1 /* VeeContactUITableViewCell.h in Headers */,
 				4818FC3EAD05C7AF5A980C2BC2E11D5B /* VeePostalAddress.h in Headers */,
 				F72B95BD2190651195A37188B3EBD1F2 /* VeePostalAddressProt.h in Headers */,
-				E7F7530E0B65F53DF0EE009E4BE5DC22 /* VeeSearchResultsDelegate.h in Headers */,
 				FC7478AD646259391E2846181D1E1371 /* VeeSectionable.h in Headers */,
 				8E75B5078060723007FA5E4BD85B4486 /* VeeSectionedArrayDataSource.h in Headers */,
-				E99A025F418A6C1D72FB394F3D1515CB /* VeeTableViewSearchDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,7 +1235,6 @@
 				3FFFAD4F0DCCCD0768BBE5DD627EDD0C /* VeeContactUITableViewCell.m in Sources */,
 				F7F7B7EE12B68D0D752C8F9A61D6546C /* VeePostalAddress.m in Sources */,
 				77E8A0CD69CA2737CAB79BF19A79DFB7 /* VeeSectionedArrayDataSource.m in Sources */,
-				3211805AD21F210CC0AB9BFD0429EFCB /* VeeTableViewSearchDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

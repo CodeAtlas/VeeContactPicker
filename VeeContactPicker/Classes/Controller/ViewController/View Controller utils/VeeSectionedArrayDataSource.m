@@ -1,9 +1,11 @@
 #import "VeeSectionedArrayDataSource.h"
 #import "VeeContactPickerAppearanceConstants.h"
+#import "VeeContactProt.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VeeSectionedArrayDataSource()
+@property (nonatomic, strong) NSArray<id<VeeContactProt>>* items;
 @property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedItems;
 @property (nonatomic, strong) NSDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedSearchedItems;
 @property (nonatomic, strong) NSArray<NSString*>* sortedNonEmptySectionIdentifiers;
@@ -12,22 +14,29 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString* cellIdentifier;
 @property (nonatomic, copy) NSString* sectionIdentifierWildcard;
 @property (nonatomic, copy) ConfigureCellBlock configureCellBlock;
-@property (nonatomic, strong) UITableView *searchTableView;
+@property (nonatomic, strong) UISearchController *searchController;
 @end
 
 @implementation VeeSectionedArrayDataSource
 
 #pragma mark - Initializers
 
--(instancetype)initWithItems:(NSArray<id<VeeSectionableProt>>*)items cellIdentifier:(NSString*)cellIdentifier allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard configurationCellBlock:(ConfigureCellBlock)configureCellBlock
+-(instancetype)initWithItems:(NSArray<id<VeeContactProt>>*)items
+              cellIdentifier:(NSString*)cellIdentifier
+allowedSortedSectionIdentifiers:(NSArray<NSString*>*)allowedSortedSectionIdentifiers
+   sectionIdentifierWildcard:(NSString*)sectionIdentifierWildcard
+            searchController:(UISearchController *)searchController
+      configurationCellBlock:(ConfigureCellBlock)configureCellBlock;
 {
     self = [super init];
     if (self) {
+        _items = items;
         _allowedSortedSectionIdentifiers = allowedSortedSectionIdentifiers;
         _sectionIdentifierWildcard = sectionIdentifierWildcard;
         _sectionedItems = [self sectionedItems:items];
         _sortedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:_sectionedItems.allKeys];
         _cellIdentifier = cellIdentifier;
+        _searchController = searchController;
         if (configureCellBlock){
             _configureCellBlock = configureCellBlock;
         }
@@ -39,24 +48,18 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-#pragma mark - Public methods
+#pragma mark - Public methods 
 
 -(id)tableView:(UITableView*)tableView itemAtIndexPath:(NSIndexPath*)indexPath
 {
-    BOOL isSearchTableView = [self isSearchTableView:tableView];
-    NSArray<id<VeeSectionableProt>>* itemsForSection = [self itemsForSection:indexPath.section isSearchTableView:isSearchTableView];
-    return itemsForSection[indexPath.row];
+    return [self itemsForSection:indexPath.section][indexPath.row];
 }
 
--(void)setSearchResults:(NSArray<id<VeeSectionableProt>>*)searchResults forSearchTableView:(UITableView*)searchTableView
+-(void)updateForSearchText:(NSString *)searchText
 {
-    if (searchTableView){
-        self.searchTableView = searchTableView;
-    }
-    if (searchResults){
-        self.sectionedSearchedItems = [self sectionedItems:searchResults];
-        self.sortedSearchedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:(self.sectionedSearchedItems).allKeys];
-    }
+    NSArray<id<VeeContactProt>> *searchResults = [self.items filteredArrayUsingPredicate:[self predicateForSearchString:searchText]];
+    self.sectionedSearchedItems = [self sectionedItems:searchResults];
+    self.sortedSearchedNonEmptySectionIdentifiers = [self nonEmptySortedSectionIdentifiers:self.sectionedSearchedItems.allKeys];
 }
 
 -(NSString*)sectionIdentifierForItem:(id<VeeSectionableProt>)item
@@ -74,8 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSMutableDictionary<NSString*,NSArray<id<VeeSectionableProt>>*>* sectionedItemsMutable = [NSMutableDictionary new];
     for (id item in items) {
-        NSString* itemSectionIdentifier = [self sectionIdentifierForItem:item];
-        NSArray* itemsForThisSectionIdentifier = sectionedItemsMutable[itemSectionIdentifier];
+        NSString *itemSectionIdentifier = [self sectionIdentifierForItem:item];
+        NSArray *itemsForThisSectionIdentifier = sectionedItemsMutable[itemSectionIdentifier];
         if (itemsForThisSectionIdentifier == nil) {
             sectionedItemsMutable[itemSectionIdentifier] = @[item];
         }
@@ -88,37 +91,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSArray<NSString*>*)nonEmptySortedSectionIdentifiers:(NSArray<NSString*>*)sectionIdentifiers
 {
-    NSMutableArray* sortedNonEmptySectionIdentifiers = [NSMutableArray arrayWithArray:self.allowedSortedSectionIdentifiers];
-    
+    NSMutableArray* nonEmptySortedSectionIdentifiers = [NSMutableArray arrayWithArray:self.allowedSortedSectionIdentifiers];
+
     for (NSString* sectionIdentifier in self.allowedSortedSectionIdentifiers) {
         if ([sectionIdentifiers containsObject:sectionIdentifier] == NO){
-            [sortedNonEmptySectionIdentifiers removeObject:sectionIdentifier];
+            [nonEmptySortedSectionIdentifiers removeObject:sectionIdentifier];
         }
     }
-    return [NSArray arrayWithArray:sortedNonEmptySectionIdentifiers];
+    return [NSArray arrayWithArray:nonEmptySortedSectionIdentifiers];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-    BOOL isSearchTableView = [self isSearchTableView:tableView];
-    if (isSearchTableView){
-        return (self.sectionedSearchedItems).allKeys.count;
+    if ([self isSearching]) {
+        return self.sectionedSearchedItems.allKeys.count;
     }
-    return (self.sectionedItems).allKeys.count;
+    return self.sectionedItems.allKeys.count;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    BOOL isSearchTableView = [self isSearchTableView:tableView];
-    return [self itemsForSection:section isSearchTableView:isSearchTableView].count;
+    return [self itemsForSection:section].count;
 }
 
 - (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
-    BOOL isSearchTableView = [self isSearchTableView:tableView];
-    return [self sectionIdentifierFromSection:section isSearchTableView:isSearchTableView];
+    return [self sectionIdentifierFromSection:section];
 }
 
 - (NSArray<NSString*>*)sectionIndexTitlesForTableView:(UITableView*)tableView
@@ -136,26 +136,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Data source utils
 
-- (NSArray<id<VeeSectionableProt>>*)itemsForSection:(NSUInteger)section isSearchTableView:(BOOL)isSearchTableView
+- (NSArray<id<VeeSectionableProt>>*)itemsForSection:(NSUInteger)section
 {
-    NSString* sectionIdentifier = [self sectionIdentifierFromSection:section isSearchTableView:isSearchTableView];
-    if (isSearchTableView){
-        return (self.sectionedSearchedItems)[sectionIdentifier];
+    NSString* sectionIdentifier = [self sectionIdentifierFromSection:section];
+    if ([self isSearching]) {
+        return self.sectionedSearchedItems[sectionIdentifier];
     }
-    return (self.sectionedItems)[sectionIdentifier];
+    return self.sectionedItems[sectionIdentifier];
 }
 
--(NSString*)sectionIdentifierFromSection:(NSUInteger)section isSearchTableView:(BOOL)isSearchTableView
+-(NSString*)sectionIdentifierFromSection:(NSUInteger)section
 {
-    if (isSearchTableView){
-        return (self.sortedSearchedNonEmptySectionIdentifiers)[section];
+    if ([self isSearching]) {
+        return self.sortedSearchedNonEmptySectionIdentifiers[section];
     }
-    return (self.sortedNonEmptySectionIdentifiers)[section];
+    return self.sortedNonEmptySectionIdentifiers[section];
 }
 
--(BOOL)isSearchTableView:(UITableView*)tableView
+#pragma mark - Private
+
+- (NSPredicate*)predicateForSearchString:(NSString *)searchString
 {
-    if ([tableView isEqual:self.searchTableView]) {
+    if (self.items.count <= 0) {
+        return nil;
+    }
+    NSPredicate *searchPredicate = [[self.items.firstObject class] searchPredicateForSearchString];
+    searchPredicate = [searchPredicate predicateWithSubstitutionVariables:@{@"searchString": searchString}];
+    return searchPredicate;
+}
+
+- (BOOL)isSearching {
+    if (self.searchController.isActive && ![self.searchController.searchBar.text isEqualToString:@""]) {
         return YES;
     }
     return NO;

@@ -209,24 +209,6 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
     }
 }
 
-#pragma mark - Search table view
-
--(void)testSearchTableViewRowsCount
-{
-    UITableView* searchTableViewMock = self.mockedTableViewWithTestCellIdentifier;
-    
-    [_veeSectionedArrayDataSource setSearchResults:[VeeSectionedArrayDataSourceTests randomVeeSectionableObjects:SEARCH_RESULTS_RANDOM_OBJECTS_COUNT] forSearchTableView:searchTableViewMock];
-    
-    NSUInteger totalNumberOfRows = 0;
-    for (int section = 0; section < [_veeSectionedArrayDataSource numberOfSectionsInTableView:searchTableViewMock]; section++) {
-        NSUInteger numberOfRowsInSection = [_veeSectionedArrayDataSource tableView:searchTableViewMock numberOfRowsInSection:section];
-        totalNumberOfRows += numberOfRowsInSection;
-    }
-    
-    BOOL isNumberOfRowsCorrect = SEARCH_RESULTS_RANDOM_OBJECTS_COUNT == totalNumberOfRows;
-    NSAssert(isNumberOfRowsCorrect, @"Number of rows in search table view is %zd but should be %zd", totalNumberOfRows, SEARCH_RESULTS_RANDOM_OBJECTS_COUNT);
-}
-
 #pragma mark - Private utils
 
 + (NSArray<id<VeeSectionableProt> >*)randomVeeSectionableObjects:(NSUInteger)numberOfObjects
@@ -271,7 +253,12 @@ static NSArray<NSString*>* allowedSectionIdentifiers;
         configurationCellBlock = ^(UITableViewCell* cell, id item) {
         };
     }
-    VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable cellIdentifier:TEST_CELL_IDENTIFIER allowedSortedSectionIdentifiers:[UILocalizedIndexedCollation currentCollation].sectionIndexTitles sectionIdentifierWildcard:@"#" configurationCellBlock:configurationCellBlock];
+    VeeSectionedArrayDataSource* veeSectionedArrayDataSource = [[VeeSectionedArrayDataSource alloc] initWithItems:veeSectionable
+                                                                                                   cellIdentifier:TEST_CELL_IDENTIFIER
+                                                                                  allowedSortedSectionIdentifiers:[UILocalizedIndexedCollation currentCollation].sectionIndexTitles
+                                                                                        sectionIdentifierWildcard:@"#"
+                                                                                                 searchController: [UISearchController new]
+                                                                                           configurationCellBlock:configurationCellBlock];
     return veeSectionedArrayDataSource;
 }
 

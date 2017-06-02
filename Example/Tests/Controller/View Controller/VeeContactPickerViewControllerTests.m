@@ -126,12 +126,10 @@ static NSArray<id<VeeContactProt> >* customVeeContacts;
 {
     VeeContactPickerViewController* defaultPickerViewController = [self veeContactPickerWithDefaultConfAndViewLoaded];
     BOOL tableViewShouldNotBeHidden = defaultPickerViewController.contactsTableView.hidden == NO;
-    UISearchBar* searchBar = (UISearchBar*) [defaultPickerViewController valueForKey:@"searchBar"];
-    BOOL searchBarShouldBeHidden = searchBar.hidden == NO;
     UILabel* emptyViewLabel = (UILabel*) [defaultPickerViewController valueForKey:@"emptyViewLabel"];
     BOOL emptyViewLabelShouldBeHidden = emptyViewLabel.hidden == YES;
 
-    NSAssert(tableViewShouldNotBeHidden && searchBarShouldBeHidden && emptyViewLabelShouldBeHidden, @"Empty view should not be shown if there are contacts!");
+    NSAssert(tableViewShouldNotBeHidden && emptyViewLabelShouldBeHidden, @"Empty view should not be shown if there are contacts!");
 }
 
 
