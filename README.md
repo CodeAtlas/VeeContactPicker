@@ -11,9 +11,9 @@
 
 ### Features
 
-- 🏃🏿🏃🏿🏃🏿 It load the contacts very **fast**! Note that the official *ABPeoplePickerNavigationController* is super slow: see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow))
+- 🏃🏿 It load the contacts very **fast**! Note that the official *ABPeoplePickerNavigationController* is super slow: see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow))
 - 👨‍👨‍👧‍👧 You can enable the selection of multiple contacts!  🎉🎉 New from v1 🎉🎉
-- 🔵🔵🔵 Contacts' **images** and coloured placeholders
+- 🔵 Contacts' **images** and coloured placeholders
 - 🔍 Search for your contacts! Also by email address or phone number.
 - 🛂Choose which contacts you want to show in the picker (e.g only contacts with a valid email address)
 - 🤡 Easy **customizable appearance**
