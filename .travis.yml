@@ -1,21 +1,11 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
-#Validate travis: http://lint.travis-ci.org
-
 language: objective-c
-osx_image: xcode8.3.2
-#xcode_project: name.xcodeproj
-#xcode_scheme: name
-#xcode_sdk: iphonesimulator9.3
+osx_image: xcode8.3
+xcode_project: Example/VeeContactPicker.xcworkspace
 podfile: Example/Podfile
 cache: cocoapods
 
 before_install:
 - gem install cocoapods --quiet
-# -pod install --project-directory=Example
-#- perl allowABPermissions #Script to modify the address book permissions db. Thanks to SocialbitGmbH/SwiftAddressBook
 
 script:
 - set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
