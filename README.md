@@ -65,20 +65,20 @@ That's all folks!
 
 ### How to use it - Details
 
-You can customize some properties of the picker by changing the object *VeeContactPickerOptions* and pass it to the initializer:
+You can customize some properties of the picker by changing the *VeeContactPickerOptions* object and pass it to the initializer:
 
 ```objective-c
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
 ```
 
-For example, if you don't like the contacts' initials images as the placeholder, you can set your own placeholder:
+For example, if you don't like the contacts' initials images as the placeholder, you can set your own placeholder image:
 
 ```objective-c
-VeeContactPickerOptions* veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
+VeeContactPickerOptions *veeContactPickerOptions = [VeeContactPickerOptions alloc] initWithDefaultOptions];
 veeContactPickerOptions.showInitialsPlaceholder = NO;
 veeContactPickerOptions.contactThumbnailImagePlaceholder = [UIImage imageNamed:@"your_placeholder"];
 //...
-VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];
+VeeContactPickerViewController *veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithOptions:veeContactPickerOptions];
 //...
 ```
 Contact's image placeholder are provided by *AGCInitials*. You can customize the color palette if you want, see the [README of AGCInitials](https://github.com/andreacipriani/UIImageView-AGCInitials/blob/master/README.md).
@@ -91,7 +91,7 @@ veeContactPickerOptions.veeContactPickerStrings
 
 <!--
 - NSArray<NSString*>* sectionIdentifiers; //Contacts section identifiers, default are [[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles]
-@property (nonatomic, copy) NSString* sectionIdentifierWildcard; //Section identifier for contacts that don't fit in a section, default is '#' as in the iOS address book
+@property (nonatomic, copy) NSString *sectionIdentifierWildcard; //Section identifier for contacts that don't fit in a section, default is '#' as in the iOS address book
 -->
 
 - If you want to choose which contacts to show, you can initialize the picker using:
