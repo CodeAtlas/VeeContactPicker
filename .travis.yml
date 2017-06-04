@@ -8,5 +8,5 @@ before_install:
 - gem install cocoapods --quiet
 
 script:
-- set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild test -workspace Example/VeeContactPicker.xcworkspace -destination "platform=iOS Simulator,name=iPhone 7" -scheme VeeContactPicker-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint --allow-warnings #--verbose
