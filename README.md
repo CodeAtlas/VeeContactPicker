@@ -143,4 +143,4 @@ Andrea Cipriani andrea.g.cipriani@gmail.com - Code Atlas SRL
 VeeContactPicker is available under the MIT license. See the LICENSE file for more info.
 
 ### App Store
-VeeContactPicker is already used in the App Store for our app [**Veer Contacts Widget**](https://itunes.apple.com/app/id1024064196); if you have appreciated our work, you can download the app for free! 😏
+VeeContactPicker is already used in the App Store for our app [**Veer Contacts Widget**](https://itunes.apple.com/app/id1024064196); if you appreciate our work, you can download the app for free! 🤗
