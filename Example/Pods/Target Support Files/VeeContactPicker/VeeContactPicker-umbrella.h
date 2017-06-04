@@ -14,7 +14,6 @@
 #import "VeeABRecordsImporter.h"
 #import "VeeAddressBook.h"
 #import "VeeContactCellConfiguration.h"
-#import "VeeContactUITableViewCell.h"
 #import "VeeContactPickerDelegate.h"
 #import "VeeContactPickerViewController.h"
 #import "VeeSectionedArrayDataSource.h"
