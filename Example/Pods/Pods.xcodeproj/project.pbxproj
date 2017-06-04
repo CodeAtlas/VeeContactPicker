@@ -66,9 +66,9 @@
 		5E71D2EDE1C014A7A21928A0D2FEC2BC /* UILabel+VeeBoldify.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB6DA2773301F65C55764DB221755B /* UILabel+VeeBoldify.m */; };
 		5EFAA0AAEE4C701D1C36E75568053C2F /* VeeContactCellConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 727B5BE4EAB9399B326B9C3C9B7B0C4A /* VeeContactCellConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66EDE17ED7BD996D1221F33D112C4B6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1422CE02D33D579CFC8C88D1F9CD81D /* UIKit.framework */; };
-		688FA82F1EE46DDC003F7318 /* NSBundle+VeeContactPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 688FA82D1EE46DDC003F7318 /* NSBundle+VeeContactPicker.h */; };
+		688FA82F1EE46DDC003F7318 /* NSBundle+VeeContactPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 688FA82D1EE46DDC003F7318 /* NSBundle+VeeContactPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		688FA8301EE46DDC003F7318 /* NSBundle+VeeContactPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FA82E1EE46DDC003F7318 /* NSBundle+VeeContactPicker.m */; };
-		688FA8341EE46FFB003F7318 /* VeeContactTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 688FA8311EE46FFB003F7318 /* VeeContactTableViewCell.h */; };
+		688FA8341EE46FFB003F7318 /* VeeContactTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 688FA8311EE46FFB003F7318 /* VeeContactTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		688FA8351EE46FFB003F7318 /* VeeContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FA8321EE46FFB003F7318 /* VeeContactTableViewCell.m */; };
 		688FA8361EE46FFB003F7318 /* VeeContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 688FA8331EE46FFB003F7318 /* VeeContactTableViewCell.xib */; };
 		688FA8381EE4722F003F7318 /* VeeContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 688FA8371EE4722F003F7318 /* VeeContactPickerViewController.xib */; };
