@@ -30,17 +30,24 @@ Import the ViewController:
 Initialize it and set the delegate:
 
 ```objective-c
-VeeContactPickerViewController* veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
+VeeContactPickerViewController *veeContactPickerViewController = [[VeeContactPickerViewController alloc] initWithDefaultConfiguration];
 veeContactPickerViewController.contactPickerDelegate = self;
+//do you want to select multiple contacts? veeContactPickerViewController.multipleSelection = YES;
 [self presentViewController:veeContactPickerViewController animated:YES completion:nil];
+
 ```
 
-And then implement the *VeeContactPickerDelegate*
+Implement the delegate:
 
 ```objective-c
 - (void)didSelectContact:(id<VeeContactProt>)veeContact
 {
-    //Do whatever you want with the selected veeContact!
+    //veeContact was selected
+}
+
+- (void)didSelectContacts:(NSArray<id<VeeContactProt>> *)veeContacts
+{
+    //veeContact were selected
 }
 
 - (void)didCancelContactSelection
@@ -52,6 +59,7 @@ And then implement the *VeeContactPickerDelegate*
 {
   //Show an error?
 }
+
 ```
 That's all folks!
 
