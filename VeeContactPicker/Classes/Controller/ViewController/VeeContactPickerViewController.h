@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDefaultConfiguration;
 - (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions;
 - (instancetype)initWithVeeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
-- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions veeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
+- (instancetype)initWithOptions:(VeeContactPickerOptions*)veeContactPickerOptions
+                    veeContacts:(NSArray<id<VeeContactProt>>*)veeContacts;
 
 @property (nonatomic, assign) BOOL multipleSelection;
 
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public Outlets
 
-@property (nonatomic, strong) IBOutlet UITableView *contactsTableView;
+@property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBarButtonItem;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 @property (weak, nonatomic) IBOutlet UILabel *emptyViewLabel;
