@@ -1,13 +1,10 @@
-//
-//  NSBundle+VeeContactPicker.m
-//  Pods
-//
-//  Created by Andrea Cipriani on 04.06.17.
-//
-//
-
 #import "NSBundle+VeeContactPicker.h"
+#import "VeeCommons.h"
 
 @implementation NSBundle (VeeContactPicker)
+
++ (NSBundle *)veeContactPickerBundle {
+    return [NSBundle bundleForClass:VeeCommons.class];
+}
 
 @end

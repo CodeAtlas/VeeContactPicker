@@ -23,6 +23,5 @@ s.resource_bundles = {
 s.public_header_files = 'Pod/Classes/**/*.h'
 s.frameworks = 'UIKit', 'AddressBook'
 s.dependency 'UIImageView-AGCInitials'
-s.dependency 'FLKAutoLayout'
 
 end

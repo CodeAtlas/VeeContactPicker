@@ -1,6 +1,6 @@
 @import Foundation;
 #import "VeeContactProt.h"
-@class VeeContactUITableViewCell;
+@class VeeContactTableViewCell;
 @class VeeContactPickerOptions;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public Methods
 
-- (void)configureCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact;
+- (void)configureCell:(VeeContactTableViewCell*)cell forVeeContact:(id<VeeContactProt>)veeContact;
 
 @end
 

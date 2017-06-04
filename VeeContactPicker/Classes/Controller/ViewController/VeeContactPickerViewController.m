@@ -11,8 +11,9 @@
 
 #import "VeeContactCellConfiguration.h"
 #import "VeeContactProtFactoryProducer.h"
-#import "VeeContactUITableViewCell.h"
+#import "VeeContactTableViewCell.h"
 #import "VeeSectionedArrayDataSource.h"
+#import "NSBundle+VeeContactPicker.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,8 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-    NSBundle *podBundle = [NSBundle bundleForClass:self.class];
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:podBundle];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:[NSBundle veeContactPickerBundle]];
     _veeContactPickerOptions = veeContactPickerOptions;
     _veeAddressBook = [[VeeAddressBook alloc] init];
     _veeAddressBook.delegate = self;
@@ -84,8 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-    NSBundle *podBundle = [NSBundle bundleForClass:self.class];
-    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:podBundle];
+    self = [[VeeContactPickerViewController alloc] initWithNibName:NSStringFromClass(self.class) bundle:[NSBundle veeContactPickerBundle]];
     _veeContactPickerOptions = veeContactPickerOptions;
     _veeContacts = veeContacts;
     _veeAddressBook = [[VeeAddressBook alloc] init];
@@ -175,7 +174,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     [self setupSearchController];
     [self registerCellsForReuse];
-    ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactUITableViewCell* cell, id<VeeContactProt> veeContact) {
+    ConfigureCellBlock veeContactConfigureCellBlock = ^(VeeContactTableViewCell* cell, id<VeeContactProt> veeContact) {
         [self.veeContactCellConfiguration configureCell:cell forVeeContact:veeContact];
     };
     NSString* cellIdentifier = [VeeContactPickerAppearanceConstants sharedInstance].veeContactCellIdentifier;
@@ -204,8 +203,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)registerCellsForReuse
 {
-    NSString* cellIdentifier = [VeeContactPickerAppearanceConstants sharedInstance].veeContactCellIdentifier;
-    [self.contactsTableView registerClass:[VeeContactUITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    NSString *cellIdentifier = [VeeContactPickerAppearanceConstants sharedInstance].veeContactCellIdentifier;
+    UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:[NSBundle veeContactPickerBundle]];
+    [self.contactsTableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
 }
 
 #pragma mark - VeeABDelegate

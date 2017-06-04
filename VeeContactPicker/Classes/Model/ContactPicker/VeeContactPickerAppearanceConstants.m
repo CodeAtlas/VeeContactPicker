@@ -28,8 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadTableViewDefaultConstants
 {
-    self.veeContactCellNibName = @"VeeContactUITableViewCell";
-    self.veeContactCellIdentifier = @"VeeContactCell";
+    self.veeContactCellIdentifier = @"VeeContactTableViewCell";
     self.veeContactCellHeight = 66.0;
 }
 

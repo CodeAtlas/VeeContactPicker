@@ -1,5 +1,5 @@
 #import "VeeContactCellConfiguration.h"
-#import "VeeContactUITableViewCell.h"
+#import "VeeContactTableViewCell.h"
 #import "UILabel+VeeBoldify.h"
 #import "VeeContactPickerOptions.h"
 #import "UIImageView+AGCInitials.h"
@@ -26,17 +26,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public Methods
 
-- (void)configureCell:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
+- (void)configureCell:(VeeContactTableViewCell*)cell forVeeContact:(id<VeeContactProt>)veeContact
 {
-    [self configureCellLabels:veeContactUITableViewCell forVeeContact:veeContact];
-    [self configureCellImage:veeContactUITableViewCell forVeeContact:veeContact];
+    [self configureCellLabels:cell forVeeContact:veeContact];
+    [self configureCellImage:cell forVeeContact:veeContact];
 }
 
 #pragma mark - Private utils
 
-- (void)configureCellLabels:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
+- (void)configureCellLabels:(VeeContactTableViewCell*)cell forVeeContact:(id<VeeContactProt>)veeContact
 {
-    veeContactUITableViewCell.primaryLabel.text = [veeContact displayName];
+    cell.primaryLabel.text = [veeContact displayName];
     NSArray* nameComponents = [[veeContact displayNameSortedForABOptions] componentsSeparatedByString:@" "];
     BOOL isMissingANameComponent = [VeeCommons vee_isEmpty:veeContact.firstName] || [VeeCommons vee_isEmpty:veeContact.lastName];
     BOOL nameComponentsAreLessThanOne = nameComponents.count < 1;
@@ -47,20 +47,20 @@ NS_ASSUME_NONNULL_BEGIN
     else {
         toBoldify = nameComponents.firstObject;
     }
-    [veeContactUITableViewCell.primaryLabel vee_boldSubstring:toBoldify];
+    [cell.primaryLabel vee_boldSubstring:toBoldify];
 }
 
-- (void)configureCellImage:(VeeContactUITableViewCell*)veeContactUITableViewCell forVeeContact:(id<VeeContactProt>)veeContact
+- (void)configureCellImage:(VeeContactTableViewCell*)cell forVeeContact:(id<VeeContactProt>)veeContact
 {
     if (veeContact.thumbnailImage) {
-        veeContactUITableViewCell.contactImageView.image = veeContact.thumbnailImage;
+        cell.contactImageView.image = veeContact.thumbnailImage;
     }
     else {
         if (_veeContactPickerOptions.showInitialsPlaceholder) {
-            [veeContactUITableViewCell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];
+            [cell.contactImageView agc_setImageWithInitialsFromName:[veeContact displayName] separatedByString:@" "];
         }
         else {
-            (veeContactUITableViewCell.contactImageView).image = _veeContactPickerOptions.contactThumbnailImagePlaceholder;
+            (cell.contactImageView).image = _veeContactPickerOptions.contactThumbnailImagePlaceholder;
         }
     }
 }

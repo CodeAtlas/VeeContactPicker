@@ -1,13 +1,5 @@
-//
-//  NSBundle+VeeContactPicker.h
-//  Pods
-//
-//  Created by Andrea Cipriani on 04.06.17.
-//
-//
-
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSBundle (VeeContactPicker)
-
++ (NSBundle *)veeContactPickerBundle;
 @end

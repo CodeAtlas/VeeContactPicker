@@ -1,13 +1,7 @@
-//
-//  VeeContactTableViewCell.h
-//  Pods
-//
-//  Created by Andrea Cipriani on 04.06.17.
-//
-//
-
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface VeeContactTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *contactImageView;
+@property (weak, nonatomic) IBOutlet UILabel *primaryLabel;
 
 @end

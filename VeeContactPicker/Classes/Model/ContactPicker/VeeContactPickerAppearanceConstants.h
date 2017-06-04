@@ -9,7 +9,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Table view Constants
 
-@property (nonatomic, copy) NSString *veeContactCellNibName;
 @property (nonatomic, copy) NSString *veeContactCellIdentifier;
 @property (nonatomic, assign) NSUInteger veeContactCellHeight;
 
