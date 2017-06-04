@@ -102,7 +102,7 @@ veeContactPickerOptions.veeContactPickerStrings
 
 **Picker Appearance:**
 
-You can customize most of the appearance properties of the picker by setting them in the singleton class *VeeContactPickerAppearanceConstants*, before loading the picker.
+You can customize the appearance of the contact picker by manipulating the object *VeeContactPickerAppearanceConstants*, before loading the picker.
 
 For example:
 
