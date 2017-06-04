@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "VeeContactPicker"
-s.version          = "0.1.0"
+s.version          = "1.0"
 s.summary          = "A replacement for the iOS ABPeoplePickerNavigationController, with contacts' images"
 s.description      = "VeeContactPicker is a replacement for the (bugged) ABPeoplePickerNavigationController. You can use it to let the user choose a contact from the address book."
 s.homepage         = "https://github.com/CodeAtlas/VeeContactPicker"
@@ -18,9 +18,9 @@ s.ios.deployment_target = '8.0'
 s.requires_arc = true
 s.source_files = 'VeeContactPicker/Classes/**/*'
 s.resource_bundles = {
-    'VeeContactPicker' => ['VeeContactPicker/Assets/*.png']
+#'VeeContactPicker' => ['VeeContactPicker/Assets/*.png']
 }
-s.public_header_files = 'Pod/Classes/**/*.h'
+s.public_header_files = 'VeeContactPicker/Classes/**/*.h'
 s.frameworks = 'UIKit', 'AddressBook'
 s.dependency 'UIImageView-AGCInitials'
 
