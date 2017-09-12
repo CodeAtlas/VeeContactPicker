@@ -24,7 +24,7 @@
 Import the ViewController:
 
 ```objective-c
-#import "VeeContactPickerViewController.h"
+# import "VeeContactPickerViewController.h"
 ```
 
 Initialize it and set the delegate:
