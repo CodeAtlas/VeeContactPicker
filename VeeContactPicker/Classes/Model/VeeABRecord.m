@@ -211,13 +211,17 @@ NS_ASSUME_NONNULL_BEGIN
                 if (self.twitterAccountsMutable == nil){
                     self.twitterAccountsMutable = [NSMutableSet new];
                 }
-                [self.twitterAccountsMutable addObject:username];
+                if (username != nil) {
+                    [self.twitterAccountsMutable addObject:username];
+                }
             }
             else if ([service isEqualToString:(__bridge_transfer NSString*)kABPersonSocialProfileServiceFacebook]) {
                 if (self.facebookAccountsMutable == nil){
                     self.facebookAccountsMutable = [NSMutableSet new];
                 }
-                [self.facebookAccountsMutable addObject:username];
+                if (username != nil) {
+                    [self.facebookAccountsMutable addObject:username];
+                }
             }
         }
     }
