@@ -7,15 +7,15 @@
 
 ![VeeContactPicker Example](Screenshots/VeeContactPicker.gif)
 
-**VeeContactPicker** is an Objective-C replacement of the buggy *ABPeoplePickerNavigationController*: a view controller for selecting contacts from the address book.
+**VeeContactPicker** is an Objective-C replacement of the buggy *ABPeoplePickerNavigationController*: a ViewController for selecting contacts from the address book.
 
 ### Features
 
-- 🏃🏿 It load the contacts very **fast**! Note that the official *ABPeoplePickerNavigationController* is super slow: see [this SO question](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow))
-- 👨‍👨‍👧‍👧 You can enable the selection of multiple contacts!  🎉🎉 New from v1 🎉🎉
+- 🏃🏿 It loads the contacts very **fast**! Note that the official *ABPeoplePickerNavigationController* is really slow: see [this thread](http://stackoverflow.com/questions/30372190/is-abpeoplepickernavigationcontroller-slow))
+- 👨‍👨‍👧‍👧 You can select multiple contacts!  🎉🎉 New from v1 🎉🎉
 - 🔵 Contacts' **images** and coloured placeholders
 - 🔍 Search for your contacts! Also by email address or phone number.
-- 🛂Choose which contacts you want to show in the picker (e.g only contacts with a valid email address)
+- 🛂 Choose the contacts that you want to show in the picker (e.g only contacts with a valid email address)
 - 🤡 Easy **customizable appearance**
 - ✅ Good test coverage
 
