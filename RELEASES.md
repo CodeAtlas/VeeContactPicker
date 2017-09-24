@@ -1,6 +1,6 @@
 ### VeeContactPicker releases
 - **v1.1** 
-	- Bug fix: avoid crashing when a social username is nil, thanks to @freeskys 
+	- Bug fix: avoid crashing when a social username is nil, thanks to [@freeskys](https://github.com/freeskys)
 - **v1.0** 
 	- Enabled support for selecting multiple contacts
 	- iPad support
