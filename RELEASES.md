@@ -1,0 +1,11 @@
+### VeeContactPicker releases
+- **v1.1** 
+	- Bug fix: avoid crashing when a social username is nil, thanks to @freeskys 
+- **v1.0** 
+	- Enabled support for selecting multiple contacts
+	- iPad support
+	- The minimum target is now iOS 8
+	- Removed some external dependencies
+	- Changed public API's
+- **v0.1** 
+	- VeeContactPicker first release! You can select a contact from your address book
