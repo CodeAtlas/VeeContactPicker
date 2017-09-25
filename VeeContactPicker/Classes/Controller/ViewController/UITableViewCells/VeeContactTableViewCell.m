@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)prepareForReuse
 {
+    [super prepareForReuse];
     self.primaryLabel.text = @"";
     self.contactImageView.image = nil;
 }
