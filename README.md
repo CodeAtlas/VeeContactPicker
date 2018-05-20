@@ -21,6 +21,13 @@
 
 ### How to use it - Basic
 
+Add `contact` usage key to project **info.plist** file :
+
+```
+<key>NSContactsUsageDescription</key> 
+<string>This app requires contacts access to function properly.</string> 
+```
+
 Import the ViewController:
 
 ```objective-c
