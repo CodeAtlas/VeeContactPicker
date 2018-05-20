@@ -170,10 +170,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadVeeContactsFromAddressBook
 {
-    id<VeeContactFactoryProt> veeContactFactoryProt = [VeeContactProtFactoryProducer veeContactProtFactory];
-    self.veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
-    self.veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
-    [self setupTableView];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        id<VeeContactFactoryProt> veeContactFactoryProt = [VeeContactProtFactoryProducer veeContactProtFactory];
+        self.veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
+        self.veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self setupTableView];
+        });
+    });
 }
 
 - (void) loadFontForNavigationBarButtons{
