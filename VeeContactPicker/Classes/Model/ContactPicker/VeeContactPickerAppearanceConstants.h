@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - VeeContactPicker Appearance Constants
 
 @property (nonatomic, strong) UIColor *cancelBarButtonItemTintColor;
+@property (nonatomic, strong) UIColor *doneBarButtonItemTintColor;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;
 @property (nonatomic, strong) UIColor *navigationBarBarTintColor;
 @property (nonatomic, assign) BOOL navigationBarTranslucent;
