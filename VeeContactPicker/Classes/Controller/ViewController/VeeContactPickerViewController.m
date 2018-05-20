@@ -121,11 +121,14 @@ NS_ASSUME_NONNULL_BEGIN
         self.titleNavigationItem.title = (_veeContactPickerOptions.veeContactPickerStrings).navigationBarTitle;
     }
     self.cancelBarButtonItem.title = (_veeContactPickerOptions.veeContactPickerStrings).cancelButtonTitle;
+    self.multipleSelectionDoneButton.title = (_veeContactPickerOptions.veeContactPickerStrings).doneButtonTitle;
 }
 
 - (void)loadPickerAppearance
 {
+    [self loadFontForNavigationBarButtons];
     self.cancelBarButtonItem.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].cancelBarButtonItemTintColor;
+    self.multipleSelectionDoneButton.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].cancelBarButtonItemTintColor;
     self.navigationBar.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarTintColor;
     self.navigationBar.barTintColor = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarBarTintColor;
     self.navigationBar.translucent = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarTranslucent;
@@ -168,6 +171,26 @@ NS_ASSUME_NONNULL_BEGIN
     self.veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
     self.veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
     [self setupTableView];
+}
+
+- (void) loadFontForNavigationBarButtons{
+    UIFont *buttonsFont = VeeContactPickerAppearanceConstants.sharedInstance.barButtonItemsUIFont;
+    [self.cancelBarButtonItem setTitleTextAttributes:@{
+                                                       NSFontAttributeName: buttonsFont
+                                                       }
+                                            forState:UIControlStateNormal];
+    [self.cancelBarButtonItem setTitleTextAttributes:@{
+                                                       NSFontAttributeName: buttonsFont
+                                                       }
+                                            forState:UIControlStateSelected];
+    [self.multipleSelectionDoneButton setTitleTextAttributes:@{
+                                                               NSFontAttributeName: buttonsFont
+                                                               }
+                                                    forState:UIControlStateNormal];
+    [self.multipleSelectionDoneButton setTitleTextAttributes:@{
+                                                               NSFontAttributeName: buttonsFont
+                                                               }
+                                                    forState:UIControlStateSelected];
 }
 
 - (void)setupTableView
