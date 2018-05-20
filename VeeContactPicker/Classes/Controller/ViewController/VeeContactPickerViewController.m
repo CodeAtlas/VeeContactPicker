@@ -298,6 +298,9 @@ NS_ASSUME_NONNULL_BEGIN
     if (_contactSelectionHandler) {
         self.contactSelectionHandler(veeContact);
     }
+    if (!self.multipleSelectionDoneButton) {
+        [self.searchController setActive:NO];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
