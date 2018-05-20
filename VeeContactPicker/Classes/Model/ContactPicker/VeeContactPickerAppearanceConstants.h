@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIColor *cancelBarButtonItemTintColor;
 @property (nonatomic, strong) UIColor *doneBarButtonItemTintColor;
+@property (nonatomic, strong) UIFont *barButtonItemsUIFont;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;
 @property (nonatomic, strong) UIColor *navigationBarBarTintColor;
 @property (nonatomic, assign) BOOL navigationBarTranslucent;

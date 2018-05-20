@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
     self.navigationBarBarTintColor = [UIColor whiteColor];
     self.navigationBarTranslucent = NO;
+    self.barButtonItemsUIFont = [UIFont systemFontOfSize:15];
     self.veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
     self.veeContactEmptyViewLabelTextColor = [UIColor blackColor];
     self.veeContactPickerTableViewBottomMargin = 0;
