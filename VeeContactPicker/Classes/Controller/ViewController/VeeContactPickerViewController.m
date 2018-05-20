@@ -139,6 +139,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadVeeContacts
 {
+    if (self.contactPickerDelegate && [self.contactPickerDelegate respondsToSelector:@selector(willLoadContactData)]) {
+        [self.contactPickerDelegate willLoadContactData];
+    }
     BOOL shouldLoadVeecontactsFromAB = self.veeContacts == nil;
     if (shouldLoadVeecontactsFromAB) {
         BOOL hasAlreadyABPermission = [VeeAddressBook hasABPermissions];
@@ -207,6 +210,9 @@ NS_ASSUME_NONNULL_BEGIN
                                                                 sectionIdentifierWildcard:self.veeContactPickerOptions.sectionIdentifierWildcard
                                                                          searchController:self.searchController
                                                                    configurationCellBlock:veeContactConfigureCellBlock];
+    if (self.contactPickerDelegate && [self.contactPickerDelegate respondsToSelector:@selector(didLoadContactData)]) {
+        [self.contactPickerDelegate didLoadContactData];
+    }
     self.contactsTableView.allowsMultipleSelection = self.multipleSelection;
     self.contactsTableView.dataSource = _veeSectionedArrayDataSource;
     self.contactsTableView.delegate = self;

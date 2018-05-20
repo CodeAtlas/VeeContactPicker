@@ -8,6 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didSelectContacts:(NSArray<id<VeeContactProt>> *)veeContacts;
 - (void)didCancelContactSelection;
 - (void)didFailToAccessAddressBook;
+- (void)willLoadContactData;
+- (void)didLoadContactData;
 @end
 
 NS_ASSUME_NONNULL_END
