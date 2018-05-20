@@ -43,5 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSContactsUsageDescription</key>
+    <string>This app requires contacts access to function properly.</string>
 </dict>
 </plist>
