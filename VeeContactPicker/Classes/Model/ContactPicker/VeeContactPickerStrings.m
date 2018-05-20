@@ -6,14 +6,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDefaultStrings
 {
-    self = [super init];
-    if (self) {
-        _navigationBarTitle = @"Choose a contact";
-        _navigationBarTitleForMultipleContacts = @"Choose contacts";
-        _cancelButtonTitle = @"Cancel";
-        _emptyViewLabelText = @"There are no contacts to display";
-    }
-    return self;
+    return [self initWithNavigationBarTitle:@"Choose a contact"
+                          cancelButtonTitle:@"Cancel"
+                         emptyViewLabelText:@"There are no contacts to display"
+                            doneButtonTitle:@"Done"];
 }
 
 + (VeeContactPickerStrings*)defaultStrings
@@ -22,13 +18,25 @@ NS_ASSUME_NONNULL_BEGIN
     return veeContactPickerDefaultStrings;
 }
 
-- (instancetype)initWithNavigationBarTitle:(NSString*)navigationBarTitle cancelButtonTitle:(NSString*)cancelButtonTitle emptyViewLabelText:(NSString*)emptyViewLabelText;
-{
+- (instancetype)initWithNavigationBarTitle:(NSString *)navigationBarTitle
+                         cancelButtonTitle:(NSString *)cancelButtonTitle
+                        emptyViewLabelText:(NSString *)emptyViewLabelText {
+    return [self initWithNavigationBarTitle:navigationBarTitle
+                          cancelButtonTitle:cancelButtonTitle
+                         emptyViewLabelText:emptyViewLabelText];
+}
+
+- (instancetype)initWithNavigationBarTitle:(NSString *)navigationBarTitle
+                         cancelButtonTitle:(NSString *)cancelButtonTitle
+                        emptyViewLabelText:(NSString *)emptyViewLabelText
+                           doneButtonTitle:(NSString *)doneButtonTitle {
     self = [super init];
     if (self) {
+        _doneButtonTitle = doneButtonTitle;
         _navigationBarTitle = navigationBarTitle;
         _cancelButtonTitle = cancelButtonTitle;
         _emptyViewLabelText = emptyViewLabelText;
+        _navigationBarTitleForMultipleContacts = @"Choose a contact";
     }
     return self;
 }
