@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
         _navigationBarTitle = navigationBarTitle;
         _cancelButtonTitle = cancelButtonTitle;
         _emptyViewLabelText = emptyViewLabelText;
+        _searchBarPlaceholder = @"Search";
         _navigationBarTitleForMultipleContacts = @"Choose a contact";
     }
     return self;

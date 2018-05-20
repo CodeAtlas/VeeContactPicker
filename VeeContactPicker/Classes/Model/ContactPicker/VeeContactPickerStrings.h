@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *navigationBarTitleForMultipleContacts;
 @property (nonatomic, strong) NSString *cancelButtonTitle;
 @property (nonatomic, strong) NSString *doneButtonTitle;
+@property (nonatomic, strong) NSString *searchBarPlaceholder;
 @property (nonatomic, strong) NSString *emptyViewLabelText;
 
 @end
