@@ -35,9 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)loadVeeContactPickerDefaultConstants
 {
     self.cancelBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
+    self.doneBarButtonItemTintColor = [self iOS7DefaultAccentBlueColor];
     self.navigationBarTintColor = [self iOS7DefaultAccentBlueColor];
     self.navigationBarBarTintColor = [UIColor whiteColor];
     self.navigationBarTranslucent = NO;
+    self.barButtonItemsUIFont = [UIFont systemFontOfSize:15];
     self.veeContactEmptyViewLabelFont = [UIFont systemFontOfSize:15];
     self.veeContactEmptyViewLabelTextColor = [UIColor blackColor];
     self.veeContactPickerTableViewBottomMargin = 0;

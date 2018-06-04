@@ -121,11 +121,14 @@ NS_ASSUME_NONNULL_BEGIN
         self.titleNavigationItem.title = (_veeContactPickerOptions.veeContactPickerStrings).navigationBarTitle;
     }
     self.cancelBarButtonItem.title = (_veeContactPickerOptions.veeContactPickerStrings).cancelButtonTitle;
+    self.multipleSelectionDoneButton.title = (_veeContactPickerOptions.veeContactPickerStrings).doneButtonTitle;
 }
 
 - (void)loadPickerAppearance
 {
+    [self loadFontForNavigationBarButtons];
     self.cancelBarButtonItem.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].cancelBarButtonItemTintColor;
+    self.multipleSelectionDoneButton.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].cancelBarButtonItemTintColor;
     self.navigationBar.tintColor = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarTintColor;
     self.navigationBar.barTintColor = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarBarTintColor;
     self.navigationBar.translucent = [VeeContactPickerAppearanceConstants sharedInstance].navigationBarTranslucent;
@@ -136,6 +139,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadVeeContacts
 {
+    if (self.contactPickerDelegate && [self.contactPickerDelegate respondsToSelector:@selector(willLoadContactData)]) {
+        [self.contactPickerDelegate willLoadContactData];
+    }
     BOOL shouldLoadVeecontactsFromAB = self.veeContacts == nil;
     if (shouldLoadVeecontactsFromAB) {
         BOOL hasAlreadyABPermission = [VeeAddressBook hasABPermissions];
@@ -164,10 +170,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadVeeContactsFromAddressBook
 {
-    id<VeeContactFactoryProt> veeContactFactoryProt = [VeeContactProtFactoryProducer veeContactProtFactory];
-    self.veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
-    self.veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
-    [self setupTableView];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        id<VeeContactFactoryProt> veeContactFactoryProt = [VeeContactProtFactoryProducer veeContactProtFactory];
+        self.veeContacts = [[veeContactFactoryProt class] veeContactProtsFromAddressBook:_addressBookRef];
+        self.veeContacts = [_veeContacts sortedArrayUsingSelector:@selector(compare:)];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self setupTableView];
+        });
+    });
+}
+
+- (void) loadFontForNavigationBarButtons{
+    UIFont *buttonsFont = VeeContactPickerAppearanceConstants.sharedInstance.barButtonItemsUIFont;
+    [self.cancelBarButtonItem setTitleTextAttributes:@{
+                                                       NSFontAttributeName: buttonsFont
+                                                       }
+                                            forState:UIControlStateNormal];
+    [self.cancelBarButtonItem setTitleTextAttributes:@{
+                                                       NSFontAttributeName: buttonsFont
+                                                       }
+                                            forState:UIControlStateSelected];
+    [self.multipleSelectionDoneButton setTitleTextAttributes:@{
+                                                               NSFontAttributeName: buttonsFont
+                                                               }
+                                                    forState:UIControlStateNormal];
+    [self.multipleSelectionDoneButton setTitleTextAttributes:@{
+                                                               NSFontAttributeName: buttonsFont
+                                                               }
+                                                    forState:UIControlStateSelected];
 }
 
 - (void)setupTableView
@@ -184,6 +215,9 @@ NS_ASSUME_NONNULL_BEGIN
                                                                 sectionIdentifierWildcard:self.veeContactPickerOptions.sectionIdentifierWildcard
                                                                          searchController:self.searchController
                                                                    configurationCellBlock:veeContactConfigureCellBlock];
+    if (self.contactPickerDelegate && [self.contactPickerDelegate respondsToSelector:@selector(didLoadContactData)]) {
+        [self.contactPickerDelegate didLoadContactData];
+    }
     self.contactsTableView.allowsMultipleSelection = self.multipleSelection;
     self.contactsTableView.dataSource = _veeSectionedArrayDataSource;
     self.contactsTableView.delegate = self;
@@ -199,6 +233,9 @@ NS_ASSUME_NONNULL_BEGIN
     self.searchController.searchResultsUpdater = self;
     [self.searchController.searchBar sizeToFit];
     self.contactsTableView.tableHeaderView = self.searchController.searchBar;
+    self.searchController.searchBar.placeholder = (_veeContactPickerOptions.veeContactPickerStrings).searchBarPlaceholder;
+    [self.searchController.searchBar setValue:self.cancelBarButtonItem.title
+                                       forKey:@"_cancelButtonText"];
 }
 
 - (void)registerCellsForReuse
@@ -271,6 +308,9 @@ NS_ASSUME_NONNULL_BEGIN
     }
     if (_contactSelectionHandler) {
         self.contactSelectionHandler(veeContact);
+    }
+    if (!self.multipleSelection) {
+        [self.searchController setActive:NO];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
