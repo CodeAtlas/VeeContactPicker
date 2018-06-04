@@ -1,4 +1,6 @@
 ### VeeContactPicker releases
+- **v1.2** 
+	- Styling improvements, thanks to [@Husseinhj](https://github.com/Husseinhj)
 - **v1.1** 
 	- Bug fix: avoid crashing when a social username is nil, thanks to [@freeskys](https://github.com/freeskys)
 - **v1.0** 

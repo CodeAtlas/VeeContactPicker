@@ -4,14 +4,14 @@
 
 Pod::Spec.new do |s|
 s.name             = "VeeContactPicker"
-s.version          = "1.1"
+s.version          = "1.2"
 s.summary          = "A replacement for the iOS ABPeoplePickerNavigationController, with contacts' images"
 s.description      = "VeeContactPicker is a replacement for the (bugged) ABPeoplePickerNavigationController. You can use it to let the user choose a contact from the address book."
 s.homepage         = "https://github.com/CodeAtlas/VeeContactPicker"
 s.screenshots     = "https://raw.githubusercontent.com/CodeAtlas/VeeContactPicker/master/Screenshots/VeeContactPickerScreen1.png
 "
 s.license          = 'MIT'
-s.author           = { "Code Atlas SRL" => "andrea.g.cipriani@gmail.com" }
+s.author           = { "Code Atlas SRL" => "info@codeatlas.it" }
 s.source           = { :git => "https://github.com/CodeAtlas/VeeContactPicker.git", :tag => s.version.to_s }
 s.social_media_url = 'https://github.com/CodeAtlas'
 s.ios.deployment_target = '8.0'

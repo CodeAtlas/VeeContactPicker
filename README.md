@@ -143,7 +143,8 @@ pod "VeeContactPicker"
 
 ### Author
 
-Andrea Cipriani andrea.g.cipriani@gmail.com - Code Atlas SRL
+Code Atlas SRL info@codeatlas.it
+Andrea Cipriani andrea.g.cipriani@gmail.com - Main developer
 
 ### License
 
