@@ -234,8 +234,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self.searchController.searchBar sizeToFit];
     self.contactsTableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.searchBar.placeholder = (_veeContactPickerOptions.veeContactPickerStrings).searchBarPlaceholder;
-    //[self.searchController.searchBar setValue:self.cancelBarButtonItem.title
-    //                                   forKey:@"_cancelButtonText"];
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitle:self.cancelBarButtonItem.title];
 }
 
 - (void)registerCellsForReuse
