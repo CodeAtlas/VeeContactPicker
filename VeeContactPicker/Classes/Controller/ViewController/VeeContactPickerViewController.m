@@ -235,7 +235,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.contactsTableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.searchBar.placeholder = (_veeContactPickerOptions.veeContactPickerStrings).searchBarPlaceholder;
     //[self.searchController.searchBar setValue:self.cancelBarButtonItem.title
-                                       forKey:@"_cancelButtonText"];
+    //                                   forKey:@"_cancelButtonText"];
 }
 
 - (void)registerCellsForReuse
