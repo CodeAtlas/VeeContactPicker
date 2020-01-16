@@ -234,6 +234,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self.searchController.searchBar sizeToFit];
     self.contactsTableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.searchBar.placeholder = (_veeContactPickerOptions.veeContactPickerStrings).searchBarPlaceholder;
+    // This code pasted from https://stackoverflow.com/questions/58040519/uisearchbars-set-cancelbuttontext-ivar-is-prohibited
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitle:self.cancelBarButtonItem.title];
 }
 
